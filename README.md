@@ -722,8 +722,8 @@ We use [Stylelint](https://stylelint.io/) for CSS/Sass linting and [ESLint](http
 
 To set up your local development environment:
 
-1. Clone the repository: `git clone https://github.com/[your-org]/[your-framework-name].git`
-2. Navigate into the directory: `cd [your-framework-name]`
+1. Clone the repository: `git clone https://github.com/tobassum786/trueno_css_framework.git`
+2. Navigate into the directory: `cd trueno-css`
 3. Install dependencies: `npm install` (or `yarn install`)
 4. Run the development server: `npm run dev` (or `yarn dev`) - This will typically open a local server with HMR.
 5. Build for production: `npm run build` (or `yarn build`)
@@ -738,11 +738,11 @@ Trueno CSS is open-source software licensed under the [MIT License / Apache 2.0 
 
 ### **2. Version History / Changelog**
 
-For a detailed list of changes in each release, including new features, bug fixes, and deprecations, please refer to our [Changelog](https://github.com/%5Byour-org%5D/%5Byour-framework-name%5D/releases) on GitHub.
+For a detailed list of changes in each release, including new features, bug fixes, and deprecations, please refer to our [Changelog](https://github.com/tobassum786) on GitHub.
 
 ### **3. Team / Credits**
 
-[Your Framework Name] is developed and maintained by [Your Name/Team Name]. Special thanks to all contributors!
+Trueno CSS is developed and maintained by Tobassum Munir/Code4Mind team. Special thanks to all contributors!
 
 ### **4. FAQ / Troubleshooting**
 
