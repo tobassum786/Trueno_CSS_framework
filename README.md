@@ -1,3 +1,5 @@
+![trueno logo](img/logo-alt.png)
+
 # **⚡Trueno CSS Documentation**
 
 Welcome to the official documentation for Trueno CSS!
