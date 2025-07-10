@@ -1,4 +1,4 @@
-![trueno logo](logo-alt.png)
+![trueno logo](Logo-alt.png)
 
 # **⚡Trueno CSS Documentation**
 
