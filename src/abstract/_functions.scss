@@ -1,0 +1,23 @@
+// Convert px to rem for responsive typography and spacing
+@function rem($pixels) {
+  @return ($pixels / 16px) * 1rem;
+}
+
+// Get color by name
+@function get-color($color-name) {
+  @if map-has-key($colors, $color-name) {
+    @return map-get($colors, $color-name);
+  } @else {
+    @error "Color '#{$color-name}' not found in $colors map.";
+  }
+}
+
+// Example usage (if using a map for colors, or direct variable access)
+// For now, we are using direct variables, so this function is illustrative.
+// If you want to use a map:
+// $colors: (
+//   primary: #007bff,
+//   secondary: #6c757d,
+//   ...
+// );
+// .element { color: get-color(primary); }

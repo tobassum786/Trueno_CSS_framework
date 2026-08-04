@@ -1,0 +1,63 @@
+
+
+### `src/abstract/_variables.scss`
+```scss
+// Colors
+$color-primary: #007bff;
+$color-secondary: #6c757d;
+$color-success: #28a745;
+$color-danger: #dc3545;
+$color-warning: #ffc107;
+$color-info: #17a2b8;
+$color-light: #f8f9fa;
+$color-dark: #343a40;
+$color-white: #ffffff;
+$color-black: #000000;
+
+// Text Colors
+$text-color-base: #333333;
+$text-color-light: #555555;
+$text-color-muted: #6c757d;
+
+// Typography
+$font-family-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-heading: 'Roboto', sans-serif;
+$font-size-base: 1rem; // 16px
+$line-height-base: 1.5;
+
+$h1-font-size: 2.5rem;
+$h2-font-size: 2rem;
+$h3-font-size: 1.75rem;
+$h4-font-size: 1.5rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1rem;
+
+// Spacing
+$spacing-unit: 0.25rem; // 4px
+$spacing-xxs: $spacing-unit * 0.5; // 2px
+$spacing-xs: $spacing-unit; // 4px
+$spacing-sm: $spacing-unit * 2; // 8px
+$spacing-md: $spacing-unit * 4; // 16px
+$spacing-lg: $spacing-unit * 6; // 24px
+$spacing-xl: $spacing-unit * 8; // 32px
+$spacing-xxl: $spacing-unit * 12; // 48px
+
+// Borders
+$border-color-base: #dee2e6;
+$border-radius-sm: 0.25rem;
+$border-radius-base: 0.5rem;
+$border-width-base: 1px;
+
+// Breakpoints (Mobile First)
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Z-index
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-tooltip: 1070;

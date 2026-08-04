@@ -1,0 +1,20 @@
+// Visually hidden (accessible hiding)
+%visually-hidden {
+  @include visually-hidden; // Using the mixin for consistency
+}
+
+// Basic list reset
+%list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// Clearfix for floated elements
+%clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
