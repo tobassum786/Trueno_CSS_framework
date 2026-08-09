@@ -1,6 +1,8 @@
 // Convert px to rem for responsive typography and spacing
+@use 'sass:math';
+
 @function rem($pixels) {
-  @return ($pixels / 16px) * 1rem;
+  @return math.div($pixels, 16px) * 1rem;
 }
 
 // Get color by name

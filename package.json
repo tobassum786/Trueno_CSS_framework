@@ -1,34 +1,38 @@
 {
-  "name": "trueno_css_framework",
+  "name": "trueno-css-framework",
   "version": "1.0.0",
-  "description": "Welcome to the official documentation for Trueno CSS!",
-  "main": "index.js",
+  "description": "A new CSS library named Trueno CSS Framework, built with Sass following best practices.",
+  "main": "dist/trueno-css-framework.css",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "sass:compile": "sass src/main.scss:dist/trueno-css-framework.css --style expanded --no-source-map",
+    "sass:minify": "sass src/main.scss:dist/trueno-css-framework.min.css --style compressed --no-source-map",
+    "build": "npm run clean && npm run sass:compile && npm run sass:minify",
+    "dev": "sass --watch src/main.scss:dist/trueno-css-framework.css --style expanded --no-source-map",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "library",
+    "framework",
+    "frontend",
+    "styles"
+  ],
+  "author": "Tobassum Munir",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.77.0"
+  },
+  "directories": {
+    "example": "examples"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tobassum786/Trueno_CSS_framework.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/tobassum786/Trueno_CSS_framework/issues"
   },
-  "homepage": "https://github.com/tobassum786/Trueno_CSS_framework#readme",
-  "devDependencies": {
-    "sass": "^1.102.0"
-  },
-  "dependencies": {
-    "chokidar": "^5.0.0",
-    "detect-libc": "^2.1.2",
-    "immutable": "^5.1.9",
-    "is-extglob": "^2.1.1",
-    "is-glob": "^4.0.3",
-    "node-addon-api": "^7.1.1",
-    "picomatch": "^4.0.5",
-    "readdirp": "^5.0.0",
-    "source-map-js": "^1.2.1"
-  }
+  "homepage": "https://github.com/tobassum786/Trueno_CSS_framework#readme"
 }

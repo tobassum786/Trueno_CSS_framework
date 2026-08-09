@@ -1,4 +1,8 @@
 // Flexbox Utilities
+@use 'sass:color';
+@use 'variables' as *;
+@use 'functions' as *;
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -81,4 +85,4 @@
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
-}
+}// 

@@ -1,0 +1,28 @@
+// Margin Utilities
+@use '../abstract/variables' as *;
+
+@each $prop, $abbr in (margin, m), (padding, p) {
+  @each $dir, $abbr-dir in (top, t), (bottom, b), (left, l), (right, r), (top-bottom, y), (left-right, x), (all, '') {
+    @each $size-name, $size-value in (0, 0), (xxs, $spacing-xxs), (xs, $spacing-xs), (sm, $spacing-sm), (md, $spacing-md), (lg, $spacing-lg), (xl, $spacing-xl), (xxl, $spacing-xxl), (auto, auto) {
+      @if $abbr-dir == 'y' {
+        .#{$abbr}#{$abbr-dir}-#{$size-name} {
+          #{$prop}-top: $size-value !important;
+          #{$prop}-bottom: $size-value !important;
+        }
+      } @else if $abbr-dir == 'x' {
+        .#{$abbr}#{$abbr-dir}-#{$size-name} {
+          #{$prop}-left: $size-value !important;
+          #{$prop}-right: $size-value !important;
+        }
+      } @else if $abbr-dir == '' {
+        .#{$abbr}-#{$size-name} {
+          #{$prop}: $size-value !important;
+        }
+      } @else {
+        .#{$abbr}#{$abbr-dir}-#{$size-name} {
+          #{$prop}-#{$dir}: $size-value !important;
+        }
+      }
+    }
+  }
+}

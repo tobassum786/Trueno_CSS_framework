@@ -1,0 +1,1347 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ca",
+				"cashback"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"trans",
+				"transition"
+			],
+			[
+				"--",
+				"--space-sm"
+			],
+			[
+				"margin-b",
+				"margin-block-start"
+			],
+			[
+				"--cl",
+				"--accent-clr"
+			],
+			[
+				"--clr",
+				"--text-light-clr"
+			],
+			[
+				"border",
+				"border"
+			],
+			[
+				"align-",
+				"align-content"
+			],
+			[
+				"grid-temp",
+				"grid-template-columns"
+			],
+			[
+				"--fo",
+				"--font-xsm"
+			],
+			[
+				"--s",
+				"--space-xs"
+			],
+			[
+				"mb",
+				"margin-bottom"
+			],
+			[
+				"--font-",
+				"--font-xl"
+			],
+			[
+				"backgroun",
+				"background-color"
+			],
+			[
+				"--font",
+				"--font-xsm"
+			],
+			[
+				"--f",
+				"--font-sm"
+			],
+			[
+				"--space-",
+				"--space-sm"
+			],
+			[
+				"tran",
+				"translate()"
+			],
+			[
+				"--sp",
+				"--space-md"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"c",
+				"cover"
+			],
+			[
+				"che",
+				"checkout"
+			],
+			[
+				"box-s",
+				"box-shadow"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"text-",
+				"text-decoration"
+			],
+			[
+				"--sm",
+				"--space-sm"
+			],
+			[
+				"n",
+				"none"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"high",
+				"height"
+			],
+			[
+				"ali",
+				"align-items"
+			],
+			[
+				"trim",
+				"text-box-trim"
+			],
+			[
+				"bor",
+				"border-bottom"
+			],
+			[
+				"--b",
+				"--border-radius-md"
+			],
+			[
+				"tra",
+				"translateX()"
+			],
+			[
+				"trafor",
+				"transform"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"offer",
+				"offers__wrapper"
+			],
+			[
+				"contact",
+				"contact__me"
+			],
+			[
+				"aut",
+				"auto-fit"
+			],
+			[
+				"fle",
+				"flex-direction"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"ma",
+				"margin-bottom"
+			],
+			[
+				"m",
+				"margin-bottom"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"ope",
+				"open__menu"
+			],
+			[
+				"pa",
+				"padding-block-end"
+			],
+			[
+				"paddi",
+				"padding-block"
+			],
+			[
+				"--pri",
+				"--primary-clr-light"
+			],
+			[
+				"box",
+				"box-shadow"
+			],
+			[
+				"bt",
+				"border-top"
+			],
+			[
+				"--prima",
+				"--primary-clr-light"
+			],
+			[
+				"ima",
+				"image-orientation"
+			],
+			[
+				"image",
+				"image-rendering"
+			],
+			[
+				"--te",
+				"--tertiary-clr"
+			],
+			[
+				"margin-bl",
+				"margin-block-end"
+			],
+			[
+				"pb",
+				"padding-block-end"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"bord",
+				"border"
+			],
+			[
+				"jus",
+				"justify-self"
+			],
+			[
+				"text-tr",
+				"text-box-trim"
+			],
+			[
+				"--r",
+				"--border-radius-md"
+			],
+			[
+				"f",
+				"fixed"
+			],
+			[
+				"flex",
+				"flex"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"fa",
+				"faqItems"
+			],
+			[
+				"sel",
+				"selectElementAll"
+			],
+			[
+				"toggle",
+				"toggleBtn"
+			],
+			[
+				"faq",
+				"faq__items"
+			],
+			[
+				"acti",
+				"activated"
+			],
+			[
+				"sele",
+				"selectElementAll"
+			],
+			[
+				"r",
+				"row-reverse"
+			],
+			[
+				"s",
+				"space-between"
+			],
+			[
+				"d",
+				"dashed"
+			],
+			[
+				"brd",
+				"border"
+			],
+			[
+				"the",
+				"themeToggleBtn"
+			],
+			[
+				"eas",
+				"ease-in-out"
+			],
+			[
+				"sc",
+				"scroll-behavior"
+			],
+			[
+				"fi",
+				"fill"
+			],
+			[
+				"--bo",
+				"--font-bold"
+			],
+			[
+				"spa",
+				"space-around"
+			],
+			[
+				"border-botto",
+				"border-bottom"
+			],
+			[
+				"lis",
+				"list-style-image"
+			],
+			[
+				"list-",
+				"list-style-position"
+			],
+			[
+				"--spac",
+				"--spacing-md"
+			],
+			[
+				"--sa",
+				"--spacing-lg"
+			],
+			[
+				"pad",
+				"padding-block"
+			],
+			[
+				"--br",
+				"--border-radius-md"
+			],
+			[
+				"--spa",
+				"--spacing-md"
+			],
+			[
+				"p",
+				"padding-block-end"
+			],
+			[
+				"--spacing-",
+				"--spacing-lg"
+			],
+			[
+				"un",
+				"underline"
+			],
+			[
+				"le",
+				"letter-spacing"
+			],
+			[
+				"about",
+				"about__me-cta"
+			],
+			[
+				"about__",
+				"about__niche"
+			],
+			[
+				"--primary",
+				"--primary-clr-light"
+			],
+			[
+				"justify-",
+				"justify-tracks"
+			],
+			[
+				"gri",
+				"grid-column"
+			],
+			[
+				"grid",
+				"grid-column"
+			],
+			[
+				"e",
+				"space-evenly"
+			],
+			[
+				"list",
+				"list-style-image"
+			],
+			[
+				"i",
+				"inline-flex"
+			],
+			[
+				"fon",
+				"font-sm"
+			],
+			[
+				"--defua",
+				"font-family-default"
+			],
+			[
+				"--fon",
+				"--font-xl"
+			],
+			[
+				"heading",
+				"heading__data"
+			],
+			[
+				"ar",
+				"article"
+			],
+			[
+				"--tra",
+				"--transition-timing-function"
+			],
+			[
+				"space-",
+				"space-evenly"
+			],
+			[
+				"w",
+				"wrap"
+			],
+			[
+				"cl",
+				"primary-clr-light"
+			],
+			[
+				"inline",
+				"inline-flex"
+			],
+			[
+				"--font-x",
+				"--font-xl"
+			],
+			[
+				"co",
+				"column"
+			],
+			[
+				"--fl",
+				"--fluid-padding"
+			],
+			[
+				"au",
+				"auto-fit"
+			],
+			[
+				"auto",
+				"auto-fit"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"wr",
+				"wrap"
+			],
+			[
+				"margin-in",
+				"margin-inline-end"
+			],
+			[
+				"liner",
+				"linear-gradient()"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"li",
+				"line-height"
+			],
+			[
+				"grid-co",
+				"grid-template-columns"
+			],
+			[
+				"grid-t",
+				"grid-template-columns"
+			],
+			[
+				"bu",
+				"blur()"
+			],
+			[
+				"fil",
+				"filter"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/main.scss",
+			"settings":
+			{
+				"buffer_size": 690,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					4,
+					3,
+					"left_delete",
+					null,
+					"AwAAAAEBAAAAAAAAAQEAAAAAAAABAAAAZQABAAAAAAAAAAEAAAAAAAABAAAAc/8AAAAAAAAA/wAAAAAAAAABAAAAdQ",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAACAQAAAAAAAAIBAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					5,
+					1,
+					"insert",
+					{
+						"characters": "export"
+					},
+					"BgAAAP8AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAABAQAAAAAAAAAAAAABAQAAAAAAAAIBAAAAAAAAAAAAAAIBAAAAAAAAAwEAAAAAAAAAAAAAAwEAAAAAAAAEAQAAAAAAAAAAAAAEAQAAAAAAAAUBAAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAD/AAAAAAAAAP8AAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					10,
+					2,
+					"left_delete",
+					null,
+					"AgAAAAABAAAAAAAAAAEAAAAAAAABAAAAeP8AAAAAAAAA/wAAAAAAAAABAAAAZQ",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAABAQAAAAAAAAEBAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					11,
+					1,
+					"insert",
+					{
+						"characters": "im"
+					},
+					"AgAAAP8AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAABAQAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAD/AAAAAAAAAP8AAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					20,
+					1,
+					"insert",
+					{
+						"characters": "\\\\"
+					},
+					"AgAAABoBAAAAAAAAGwEAAAAAAAAAAAAAGwEAAAAAAAAcAQAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAaAQAAAAAAABoBAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					21,
+					5,
+					"left_delete",
+					null,
+					"BQAAABsBAAAAAAAAGwEAAAAAAAABAAAAXBoBAAAAAAAAGgEAAAAAAAABAAAAXBkBAAAAAAAAGQEAAAAAAAABAAAAZRgBAAAAAAAAGAEAAAAAAAABAAAAcxcBAAAAAAAAFwEAAAAAAAABAAAAdQ",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAcAQAAAAAAABwBAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					22,
+					1,
+					"insert",
+					{
+						"characters": "import"
+					},
+					"BgAAABcBAAAAAAAAGAEAAAAAAAAAAAAAGAEAAAAAAAAZAQAAAAAAAAAAAAAZAQAAAAAAABoBAAAAAAAAAAAAABoBAAAAAAAAGwEAAAAAAAAAAAAAGwEAAAAAAAAcAQAAAAAAAAAAAAAcAQAAAAAAAB0BAAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAXAQAAAAAAABcBAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					27,
+					6,
+					"left_delete",
+					null,
+					"BgAAAAQBAAAAAAAABAEAAAAAAAABAAAAdAMBAAAAAAAAAwEAAAAAAAABAAAAcgIBAAAAAAAAAgEAAAAAAAABAAAAbwEBAAAAAAAAAQEAAAAAAAABAAAAcAABAAAAAAAAAAEAAAAAAAABAAAAbf8AAAAAAAAA/wAAAAAAAAABAAAAaQ",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAFAQAAAAAAAAUBAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					28,
+					1,
+					"insert",
+					{
+						"characters": "use"
+					},
+					"AwAAAP8AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAABAQAAAAAAAAAAAAABAQAAAAAAAAIBAAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAD/AAAAAAAAAP8AAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					33,
+					6,
+					"left_delete",
+					null,
+					"BgAAABkBAAAAAAAAGQEAAAAAAAABAAAAdBgBAAAAAAAAGAEAAAAAAAABAAAAchcBAAAAAAAAFwEAAAAAAAABAAAAbxYBAAAAAAAAFgEAAAAAAAABAAAAcBUBAAAAAAAAFQEAAAAAAAABAAAAbRQBAAAAAAAAFAEAAAAAAAABAAAAaQ",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAaAQAAAAAAABoBAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					34,
+					1,
+					"insert",
+					{
+						"characters": "use"
+					},
+					"AwAAABQBAAAAAAAAFQEAAAAAAAAAAAAAFQEAAAAAAAAWAQAAAAAAAAAAAAAWAQAAAAAAABcBAAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAUAQAAAAAAABQBAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					44,
+					3,
+					"left_delete",
+					null,
+					"AwAAAAEBAAAAAAAAAQEAAAAAAAABAAAAZQABAAAAAAAAAAEAAAAAAAABAAAAc/8AAAAAAAAA/wAAAAAAAAABAAAAdQ",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAACAQAAAAAAAAIBAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					45,
+					1,
+					"insert",
+					{
+						"characters": "import"
+					},
+					"BgAAAP8AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAABAQAAAAAAAAAAAAABAQAAAAAAAAIBAAAAAAAAAAAAAAIBAAAAAAAAAwEAAAAAAAAAAAAAAwEAAAAAAAAEAQAAAAAAAAAAAAAEAQAAAAAAAAUBAAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAD/AAAAAAAAAP8AAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					47,
+					6,
+					"left_delete",
+					null,
+					"BgAAAAQBAAAAAAAABAEAAAAAAAABAAAAdAMBAAAAAAAAAwEAAAAAAAABAAAAcgIBAAAAAAAAAgEAAAAAAAABAAAAbwEBAAAAAAAAAQEAAAAAAAABAAAAcAABAAAAAAAAAAEAAAAAAAABAAAAbf8AAAAAAAAA/wAAAAAAAAABAAAAaQ",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAFAQAAAAAAAAUBAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					48,
+					1,
+					"insert",
+					{
+						"characters": "use"
+					},
+					"AwAAAP8AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAABAQAAAAAAAAAAAAABAQAAAAAAAAIBAAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAD/AAAAAAAAAP8AAAAAAAAAAAAAAAAA8L8"
+				]
+			]
+		},
+		{
+			"file": "src/base/_resets.scss",
+			"redo_stack":
+			[
+				[
+					6,
+					1,
+					"toggle_comment",
+					{
+						"block": false
+					},
+					"BwAAAL8CAAAAAAAAvwIAAAAAAAADAAAALy8gwwIAAAAAAADDAgAAAAAAAAMAAAAvLyDcAgAAAAAAANwCAAAAAAAAAwAAAC8vIPYCAAAAAAAA9gIAAAAAAAADAAAALy8gAgMAAAAAAAACAwAAAAAAAAMAAAAvLyAiAwAAAAAAACIDAAAAAAAAAwAAAC8vICYDAAAAAAAAJgMAAAAAAAADAAAALy8g",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAA8AwAAAAAAAMICAAAAAAAAAAAAAAAA8L8"
+				]
+			],
+			"settings":
+			{
+				"buffer_size": 807,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "                                                                                      \n✔ Claude Code successfully installed!                                                 \n                                                                                      \n  Version: 2.1.224                                                                    \n                                                                                      \n  Location: C:\\Users\\me_33\\.local\\bin\\claude.exe                                      \n                                                                                      \n                                                                                      \n  Next: Run claude --help to get started                                              \n                                                                                      \n⚠ Setup notes:                                                                        \n  ● Native installation exists but C:\\Users\\me_33\\.local\\bin is not in your PATH. Add \n    it by opening: System Properties → Environment Variables → Edit User PATH → New → \n    Add the path above. Then restart your terminal.                                   \n                                                                                      \n                                                                                      \n✅ Installation complete!                                                             \n                                                                                      \nClaude Code installed successfully                                                    \n                                                                                      \nSelect model for Claude Code: Type to filter...                                       \n                                                                                      \n  Recommended                                                                         \n    glm-5.2:cloud                                                                     \n      Long-horizon coding and agentic engineering with a solid 1M context             \n    minimax-m3:cloud                                                                  \n      State-of-the-art coding & agent capabilities with multimodal reasoning and suppo​‌​\n  ▸ gemma4:26b                                                                        \n      Agentic workflows and multimodal reasoning, ~19GB, (not downloaded)             \n                                                                                      \n↑/↓ navigate • enter select • ← back                                                  \nSelect model for Claude Code: Type to filter...                                       \n                                                                                      \n  Recommended                                                                         \n    glm-5.2:cloud                                                                     \n      Long-horizon coding and agentic engineering with a solid 1M context             \n    minimax-m3:cloud                                                                  \n      State-of-the-art coding & agent capabilities with multimodal reasoning and suppo\n  ▸ gemma4:26b                                                                        \n      Agentic workflows and multimodal reasoning, ~19GB, (not downloaded)             \n                                                                                      \n↑/↓ navigate • enter select • ← back                                                  \nSelect model for Claude Code: Type to filter...                                          \n                                                                                         \n  Recommended                                                                            \n    glm-5.2:cloud                                                                        \n      Long-horizon coding and agentic engineering with a solid 1M context                \n    minimax-m3:cloud                                                                     \n      State-of-the-art coding & agent capabilities with multimodal reasoning and support \n  ▸ gemma4:26b                                                                           \n      Agentic workflows and multimodal reasoning, ~19GB, (not downloaded)                \n                                                                                         \n↑/↓ navigate • enter select • ← back                                                     \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n                                                                                         \n",
+			"settings":
+			{
+				"buffer_size": 6986,
+				"line_ending": "Windows",
+				"name": "Git Bash",
+				"scratch": true
+			},
+			"undo_stack":
+			[
+				[
+					145,
+					1,
+					"terminus_render",
+					null,
+					"dwAAAEgOAAAAAAAAdw4AAAAAAABZAAAAU2VsZWN0IG1vZGVsIGZvciBDbGF1ZGUgQ29kZTogVHlwZSB0byBmaWx0ZXIuLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB3DgAAAAAAAKEOAAAAAAAAAAAAAKIOAAAAAAAAog4AAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCiDgAAAAAAAPsOAAAAAAAAAAAAAPwOAAAAAAAACQ8AAAAAAABZAAAAICBSZWNvbW1lbmRlZCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAJDwAAAAAAAFUPAAAAAAAAAAAAAFYPAAAAAAAAZw8AAAAAAABZAAAAICAgIGdsbS01LjI6Y2xvdWQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBnDwAAAAAAAK8PAAAAAAAAAAAAALAPAAAAAAAA+Q8AAAAAAABZAAAAICAgICAgTG9uZy1ob3Jpem9uIGNvZGluZyBhbmQgYWdlbnRpYyBlbmdpbmVlcmluZyB3aXRoIGEgc29saWQgMU0gY29udGV4dCAgICAgICAgICAgICAgICD5DwAAAAAAAAkQAAAAAAAAAAAAAAoQAAAAAAAAHhAAAAAAAABZAAAAICAgIG1pbmltYXgtbTM6Y2xvdWQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAeEAAAAAAAAGMQAAAAAAAAAAAAAGQQAAAAAAAAvBAAAAAAAABZAAAAICAgICAgU3RhdGUtb2YtdGhlLWFydCBjb2RpbmcgJiBhZ2VudCBjYXBhYmlsaXRpZXMgd2l0aCBtdWx0aW1vZGFsIHJlYXNvbmluZyBhbmQgc3VwcG9ydCC8EAAAAAAAAL0QAAAAAAAAAAAAAL4QAAAAAAAAzBAAAAAAAABbAAAAICDilrggZ2VtbWE0OjI2YiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIMwQAAAAAAAAFxEAAAAAAAAAAAAAGBEAAAAAAABhEQAAAAAAAFkAAAAgICAgICBBZ2VudGljIHdvcmtmbG93cyBhbmQgbXVsdGltb2RhbCByZWFzb25pbmcsIH4xOUdCLCAobm90IGRvd25sb2FkZWQpICAgICAgICAgICAgICAgIGERAAAAAAAAcREAAAAAAAAAAAAAchEAAAAAAAByEQAAAAAAAFkAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHIRAAAAAAAAyxEAAAAAAAAAAAAAzBEAAAAAAADwEQAAAAAAAGMAAADihpEv4oaTIG5hdmlnYXRlIOKAoiBlbnRlciBzZWxlY3Qg4oCiIOKGkCBiYWNrICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDwEQAAAAAAACUSAAAAAAAAAAAAACYSAAAAAAAAJhIAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmEgAAAAAAAH8SAAAAAAAAAAAAAIASAAAAAAAAgBIAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCAEgAAAAAAANkSAAAAAAAAAAAAANoSAAAAAAAA2hIAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDaEgAAAAAAADMTAAAAAAAAAAAAADQTAAAAAAAANBMAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA0EwAAAAAAAI0TAAAAAAAAAAAAAI4TAAAAAAAAjhMAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCOEwAAAAAAAOcTAAAAAAAAAAAAAOgTAAAAAAAA6BMAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDoEwAAAAAAAEEUAAAAAAAAAAAAAEIUAAAAAAAAQhQAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBCFAAAAAAAAJsUAAAAAAAAAAAAAJwUAAAAAAAAnBQAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCcFAAAAAAAAPUUAAAAAAAAAAAAAPYUAAAAAAAA9hQAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICD2FAAAAAAAAE8VAAAAAAAAAAAAAFAVAAAAAAAAUBUAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBQFQAAAAAAAKkVAAAAAAAAAAAAAKoVAAAAAAAAqhUAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCqFQAAAAAAAAMWAAAAAAAAAAAAAAQWAAAAAAAABBYAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAEFgAAAAAAAF0WAAAAAAAAAAAAAF4WAAAAAAAAXhYAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeFgAAAAAAALcWAAAAAAAAAAAAALgWAAAAAAAAuBYAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICC4FgAAAAAAABEXAAAAAAAAAAAAABIXAAAAAAAAEhcAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICASFwAAAAAAAGsXAAAAAAAAAAAAAGwXAAAAAAAAbBcAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsFwAAAAAAAMUXAAAAAAAAAAAAAMYXAAAAAAAAxhcAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDGFwAAAAAAAB8YAAAAAAAAAAAAACAYAAAAAAAAIBgAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgGAAAAAAAAHkYAAAAAAAAAAAAAHoYAAAAAAAAehgAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB6GAAAAAAAANMYAAAAAAAAAAAAANQYAAAAAAAA1BgAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDUGAAAAAAAAC0ZAAAAAAAAAAAAAC4ZAAAAAAAALhkAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAuGQAAAAAAAIcZAAAAAAAAAAAAAIgZAAAAAAAAiBkAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCIGQAAAAAAAOEZAAAAAAAAAAAAAOIZAAAAAAAA4hkAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDiGQAAAAAAADsaAAAAAAAAAAAAADwaAAAAAAAAPBoAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8GgAAAAAAAJUaAAAAAAAAAAAAAJYaAAAAAAAAlhoAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCWGgAAAAAAAO8aAAAAAAAAAAAAAPAaAAAAAAAA8BoAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDwGgAAAAAAAEkbAAAAAAAAAAAAAEobAAAAAAAAShsAAAAAAAAAAAAAShsAAAAAAACjGwAAAAAAAAAAAACjGwAAAAAAAKQbAAAAAAAAAAAAAKQbAAAAAAAApBsAAAAAAAAAAAAApBsAAAAAAAClGwAAAAAAAAAAAAClGwAAAAAAAKUbAAAAAAAAAAAAAKUbAAAAAAAAphsAAAAAAAAAAAAAphsAAAAAAACmGwAAAAAAAAAAAACmGwAAAAAAAKcbAAAAAAAAAAAAAKcbAAAAAAAApxsAAAAAAAAAAAAApxsAAAAAAACoGwAAAAAAAAAAAACoGwAAAAAAAKgbAAAAAAAAAAAAAKgbAAAAAAAAqRsAAAAAAAAAAAAAqRsAAAAAAACpGwAAAAAAAAAAAACpGwAAAAAAAKobAAAAAAAAAAAAAKobAAAAAAAAqhsAAAAAAAAAAAAAqhsAAAAAAACrGwAAAAAAAAAAAACrGwAAAAAAAKsbAAAAAAAAAAAAAKsbAAAAAAAArBsAAAAAAAAAAAAArBsAAAAAAACsGwAAAAAAAAAAAACsGwAAAAAAAK0bAAAAAAAAAAAAAK0bAAAAAAAArRsAAAAAAAAAAAAArRsAAAAAAACuGwAAAAAAAAAAAACuGwAAAAAAAK4bAAAAAAAAAAAAAK4bAAAAAAAArxsAAAAAAAAAAAAArxsAAAAAAACvGwAAAAAAAAAAAACvGwAAAAAAALAbAAAAAAAAAAAAALAbAAAAAAAAsBsAAAAAAAAAAAAAsBsAAAAAAACxGwAAAAAAAAAAAACxGwAAAAAAALEbAAAAAAAAAAAAALAbAAAAAAAAsBsAAAAAAAABAAAACq8bAAAAAAAArxsAAAAAAAABAAAACq4bAAAAAAAArhsAAAAAAAABAAAACq0bAAAAAAAArRsAAAAAAAABAAAACqwbAAAAAAAArBsAAAAAAAABAAAACqsbAAAAAAAAqxsAAAAAAAABAAAACqobAAAAAAAAqhsAAAAAAAABAAAACqkbAAAAAAAAqRsAAAAAAAABAAAACqgbAAAAAAAAqBsAAAAAAAABAAAACqcbAAAAAAAApxsAAAAAAAABAAAACqYbAAAAAAAAphsAAAAAAAABAAAACqUbAAAAAAAApRsAAAAAAAABAAAACqQbAAAAAAAApBsAAAAAAAABAAAACqMbAAAAAAAAoxsAAAAAAAABAAAACkobAAAAAAAAShsAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA",
+					"AQAAAAAAAAAAAAAA"
+				],
+				[
+					147,
+					1,
+					"terminus_render",
+					null,
+					"TQAAAEgOAAAAAAAAdw4AAAAAAABZAAAAU2VsZWN0IG1vZGVsIGZvciBDbGF1ZGUgQ29kZTogVHlwZSB0byBmaWx0ZXIuLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB3DgAAAAAAAKEOAAAAAAAAAAAAAKIOAAAAAAAAog4AAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCiDgAAAAAAAPsOAAAAAAAAAAAAAPwOAAAAAAAACQ8AAAAAAABZAAAAICBSZWNvbW1lbmRlZCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAJDwAAAAAAAFUPAAAAAAAAAAAAAFYPAAAAAAAAZw8AAAAAAABZAAAAICAgIGdsbS01LjI6Y2xvdWQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBnDwAAAAAAAK8PAAAAAAAAAAAAALAPAAAAAAAA+Q8AAAAAAABZAAAAICAgICAgTG9uZy1ob3Jpem9uIGNvZGluZyBhbmQgYWdlbnRpYyBlbmdpbmVlcmluZyB3aXRoIGEgc29saWQgMU0gY29udGV4dCAgICAgICAgICAgICAgICD5DwAAAAAAAAkQAAAAAAAAAAAAAAoQAAAAAAAAHhAAAAAAAABZAAAAICAgIG1pbmltYXgtbTM6Y2xvdWQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAeEAAAAAAAAGMQAAAAAAAAAAAAAGQQAAAAAAAAvBAAAAAAAABZAAAAICAgICAgU3RhdGUtb2YtdGhlLWFydCBjb2RpbmcgJiBhZ2VudCBjYXBhYmlsaXRpZXMgd2l0aCBtdWx0aW1vZGFsIHJlYXNvbmluZyBhbmQgc3VwcG9ydCC8EAAAAAAAAL0QAAAAAAAAAAAAAL4QAAAAAAAAzBAAAAAAAABbAAAAICDilrggZ2VtbWE0OjI2YiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIMwQAAAAAAAAFxEAAAAAAAAAAAAAGBEAAAAAAABhEQAAAAAAAFkAAAAgICAgICBBZ2VudGljIHdvcmtmbG93cyBhbmQgbXVsdGltb2RhbCByZWFzb25pbmcsIH4xOUdCLCAobm90IGRvd25sb2FkZWQpICAgICAgICAgICAgICAgIGERAAAAAAAAcREAAAAAAAAAAAAAchEAAAAAAAByEQAAAAAAAFkAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHIRAAAAAAAAyxEAAAAAAAAAAAAAzBEAAAAAAADwEQAAAAAAAGMAAADihpEv4oaTIG5hdmlnYXRlIOKAoiBlbnRlciBzZWxlY3Qg4oCiIOKGkCBiYWNrICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDwEQAAAAAAACUSAAAAAAAAAAAAACYSAAAAAAAAJhIAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmEgAAAAAAAH8SAAAAAAAAAAAAAIASAAAAAAAAgBIAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCAEgAAAAAAANkSAAAAAAAAAAAAANoSAAAAAAAA2hIAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDaEgAAAAAAADMTAAAAAAAAAAAAADQTAAAAAAAANBMAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA0EwAAAAAAAI0TAAAAAAAAAAAAAI4TAAAAAAAAjhMAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCOEwAAAAAAAOcTAAAAAAAAAAAAAOgTAAAAAAAA6BMAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDoEwAAAAAAAEEUAAAAAAAAAAAAAEIUAAAAAAAAQhQAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBCFAAAAAAAAJsUAAAAAAAAAAAAAJwUAAAAAAAAnBQAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCcFAAAAAAAAPUUAAAAAAAAAAAAAPYUAAAAAAAA9hQAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICD2FAAAAAAAAE8VAAAAAAAAAAAAAFAVAAAAAAAAUBUAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBQFQAAAAAAAKkVAAAAAAAAAAAAAKoVAAAAAAAAqhUAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCqFQAAAAAAAAMWAAAAAAAAAAAAAAQWAAAAAAAABBYAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAEFgAAAAAAAF0WAAAAAAAAAAAAAF4WAAAAAAAAXhYAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeFgAAAAAAALcWAAAAAAAAAAAAALgWAAAAAAAAuBYAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICC4FgAAAAAAABEXAAAAAAAAAAAAABIXAAAAAAAAEhcAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICASFwAAAAAAAGsXAAAAAAAAAAAAAGwXAAAAAAAAbBcAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsFwAAAAAAAMUXAAAAAAAAAAAAAMYXAAAAAAAAxhcAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDGFwAAAAAAAB8YAAAAAAAAAAAAACAYAAAAAAAAIBgAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgGAAAAAAAAHkYAAAAAAAAAAAAAHoYAAAAAAAAehgAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB6GAAAAAAAANMYAAAAAAAAAAAAANQYAAAAAAAA1BgAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDUGAAAAAAAAC0ZAAAAAAAAAAAAAC4ZAAAAAAAALhkAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAuGQAAAAAAAIcZAAAAAAAAAAAAAIgZAAAAAAAAiBkAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCIGQAAAAAAAOEZAAAAAAAAAAAAAOIZAAAAAAAA4hkAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDiGQAAAAAAADsaAAAAAAAAAAAAADwaAAAAAAAAPBoAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8GgAAAAAAAJUaAAAAAAAAAAAAAJYaAAAAAAAAlhoAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCWGgAAAAAAAO8aAAAAAAAAAAAAAPAaAAAAAAAA8BoAAAAAAABZAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDwGgAAAAAAAEkbAAAAAAAAAAAAAEobAAAAAAAAShsAAAAAAAAAAAAAShsAAAAAAACjGwAAAAAAAAAAAABKGwAAAAAAAEobAAAAAAAAWQAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg",
+					"AQAAAAAAAAAAAAAA"
+				]
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"bash",
+				"Git Bash (new Window)"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"pie",
+				"Pieces: Change LLM"
+			],
+			[
+				"llm",
+				"LLM: Open Chat"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"re",
+				"Package Control: Remove Package"
+			],
+			[
+				"piec",
+				"Pieces: Change LLM"
+			],
+			[
+				"pieces",
+				"Pieces: Launch Onboarding"
+			],
+			[
+				"p",
+				"Pieces: Change LLM"
+			],
+			[
+				"Package Control: piac",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"olla",
+				"Yollama: Ask anything"
+			],
+			[
+				"open",
+				"OpenAI: Chat Select Mode"
+			],
+			[
+				"ope",
+				"OpenAI: Chat Select Mode"
+			],
+			[
+				"open ",
+				"OpenAI: New Message"
+			],
+			[
+				"op",
+				"OpenAI: Chat Model Select"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Bookmarks: Clear All"
+			],
+			[
+				"cop",
+				"Preferences: LSP-copilot Settings"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"chat",
+				"OpenAI: Chat Model Select"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"code",
+				"Codex AI: Instruct AI to edit highlighted text"
+			],
+			[
+				"codex",
+				"Codex AI: Instruct AI to edit highlighted text"
+			],
+			[
+				"ollama",
+				"Yollama: Autocomplete"
+			],
+			[
+				"openai",
+				"OpenAI: New Message"
+			],
+			[
+				"oen",
+				"OpenAI: New Message With LSP Output"
+			],
+			[
+				"opena",
+				"OpenAI: Chat Select Mode"
+			],
+			[
+				"gemi",
+				"Browser Integration: Type into selected elements"
+			],
+			[
+				"bro",
+				"Browser Integration: Main Menu"
+			],
+			[
+				"yoll",
+				"Yollama: Autocomplete"
+			],
+			[
+				"yo",
+				"Yollama: Autocomplete"
+			],
+			[
+				"oll",
+				"Yollama: Ask anything"
+			],
+			[
+				"ollama: ",
+				"Yollama: Autocomplete"
+			],
+			[
+				"tabni",
+				"⌬ tabnine: Open Configuration"
+			],
+			[
+				"tabnine",
+				"⌬ tabnine: Open Configuration"
+			],
+			[
+				"openAI",
+				"OpenAI: Open in Tab"
+			],
+			[
+				"lsp",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"copilot",
+				"Preferences: LSP-copilot Settings"
+			],
+			[
+				"li",
+				"Live Server Plus: Start"
+			],
+			[
+				"live",
+				"Live Server: Start"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"browe",
+				"Browser Integration: Reload"
+			],
+			[
+				"liveeload",
+				"Snippet: Insert livereload.js script"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"LiveReload: Enable/disable plugins",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"livereload.js",
+				"Snippet: Insert livereload.js script"
+			],
+			[
+				"live reload:",
+				"LiveReload: Help"
+			],
+			[
+				"live reload",
+				"LiveReload: Self test"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 148.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/El/Trueno_CSS_framework",
+		"/E/El/Trueno_CSS_framework/examples",
+		"/E/El/Trueno_CSS_framework/src",
+		"/E/El/Trueno_CSS_framework/src/base"
+	],
+	"file_history":
+	[
+		"/E/El/Trueno_CSS_framework/src/abstract/_mixins.scss",
+		"/E/El/Trueno_CSS_framework/src/main.scss",
+		"/D/Dev Profile/46 fintect landing pages/Atlas Card/js/main.js",
+		"/D/Dev Profile/46 fintect landing pages/Atlas Card/css/styles.css",
+		"/D/Dev Profile/46 fintect landing pages/Atlas Card/index.html",
+		"/D/Dev Profile/46 fintect landing pages/Atlas Card/package.json",
+		"/D/Dev Profile/46 fintect landing pages/Atlas Card/.gitignore",
+		"/F/El/New__projects/Travel agency template/css/styles.css",
+		"/F/El/New__projects/Travel agency template/index.html",
+		"/C/Users/me_33/AppData/Roaming/Sublime Text/Packages/User/Side Bar.sublime-settings",
+		"/C/Users/me_33/AppData/Roaming/Sublime Text/Packages/SideBarEnhancements/Side Bar.sublime-settings",
+		"/E/El/New__projects/Travel agency template/index.html",
+		"/E/El/New__projects/Travel agency template/css/styles.css",
+		"/E/El/New__projects/Travel agency template/css/normalize.css",
+		"/E/El/New__projects/Travel agency template/package.json",
+		"/E/El/New__projects/Travel agency template/package-lock.json",
+		"/E/El/New__projects/Travel agency template/postcss.config.cjs",
+		"/E/El/New__projects/Travel agency template/.gitignore",
+		"/E/El/New__projects/Travel agency template/js/main.js",
+		"/E/El/Portfolio_website/dist/css/styles.min.css",
+		"/E/El/Portfolio_website/styles/styles.css",
+		"/E/El/Portfolio_website/.gitignore",
+		"/E/El/Portfolio_website/Index.html",
+		"/E/El/Portfolio_website/js/main.js",
+		"/E/El/My-professional/Index.html",
+		"/E/El/My-professional/styles/styles.css",
+		"/E/El/My-professional/styles/responsive-typography.css",
+		"/E/El/My-professional/styles/variables.css",
+		"/E/El/My-professional/variables.css",
+		"/E/El/My-professional/styles/boilerplate.css",
+		"/E/El/My-professional/styles/reset.css",
+		"/C/Users/me_33/AppData/Roaming/Sublime Text/Packages/BrowserIntegration/BrowserIntegration.sublime-settings",
+		"/e/el/my-professional/js/main.js",
+		"/C/Users/me_33/AppData/Roaming/Sublime Text/Packages/User/LiveReload.sublime-settings",
+		"/C/Users/me_33/AppData/Roaming/Sublime Text/Packages/LiveReload/LiveReload.sublime-settings"
+	],
+	"find":
+	{
+		"height": 54.0
+	},
+	"find_in_files":
+	{
+		"height": 134.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/main.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 690,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								258,
+								258
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/base/_resets.scss",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 807,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								277,
+								277
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6986,
+						"regions":
+						{
+						},
+						"selection":
+						[
+						],
+						"settings":
+						{
+							"__vi_external_disable": true,
+							"auto_complete": false,
+							"auto_complete_commit_on_tab": false,
+							"bracket_highlighter.clone_locations":
+							{
+							},
+							"bracket_highlighter.ignore": true,
+							"color_scheme": "Terminus.hidden-color-scheme",
+							"default_dir": "E:\\El\\Trueno_CSS_framework",
+							"draw_centered": false,
+							"draw_indent_guides": false,
+							"draw_unicode_white_space": false,
+							"draw_white_space": "none",
+							"gutter": false,
+							"highlight_line": false,
+							"is_widget": true,
+							"result_base_dir": "E:\\El\\Trueno_CSS_framework",
+							"result_file_regex": null,
+							"result_line_regex": null,
+							"rulers":
+							[
+								500
+							],
+							"scroll_past_end": true,
+							"syntax": "Terminus View.sublime-syntax",
+							"terminus.highlight_counter": 349,
+							"terminus_view": true,
+							"terminus_view.args":
+							{
+								"auto_close": true,
+								"cancellable": false,
+								"cmd":
+								[
+									"C:\\Program Files\\Git\\bin\\bash.exe",
+									"-i",
+									"-l"
+								],
+								"cwd": "E:\\El\\Trueno_CSS_framework",
+								"default_title": "Terminus",
+								"env":
+								{
+									"PROMPT_TOOLKIT_COLOR_DEPTH": "DEPTH_8_BIT",
+									"TERMINUS_SUBLIME": "1",
+									"TERM_PROGRAM": "Terminus-Sublime"
+								},
+								"file_regex": null,
+								"line_regex": null,
+								"panel_name": "Terminus 2",
+								"reactivable": true,
+								"show_in_panel": null,
+								"tag": null,
+								"timeit": false,
+								"title": "Git Bash",
+								"view_settings":
+								{
+								}
+							},
+							"terminus_view.cancellable": false,
+							"terminus_view.key.ctrl+k": true,
+							"terminus_view.key.ctrl+p": true,
+							"terminus_view.natural_keyboard": true,
+							"terminus_view.reactivable": true,
+							"terminus_view.tag": null,
+							"terminus_view.viewport_y": 756.0,
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 756.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 52.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.AI Chat":
+	{
+		"height": 90.0,
+		"history":
+		[
+		]
+	},
+	"output.LSP Log Panel":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.LiveServerPlus":
+	{
+		"height": 142.0,
+		"history":
+		[
+		]
+	},
+	"output.Pieces Auth":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.Terminus":
+	{
+		"height": 241.0,
+		"history":
+		[
+		]
+	},
+	"output.diagnostics":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.find_results":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.mdpopups-dummy":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.yollama":
+	{
+		"height": 142.0,
+		"history":
+		[
+		]
+	},
+	"pinned_build_system": "",
+	"project": "Trueno CSS Project.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 499.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 378.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 1,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 245.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,30 @@
+// 1. Abstracts & Tools
+@use 'abstract/_variables';
+@use 'abstract/_mixins';
+@use 'abstract/_functions';
+@use 'abstract/_placeholders';
+
+// 2. Vendors (if any)
+// @use 'vendors/_normalize'; // Uncomment if you place normalize.css here
+
+// 3. Base styles
+@use 'base/_resets';
+@use 'base/_typography';
+
+// 4. Layout
+@use 'layout/_grid';
+@use 'layout/_header';
+
+// 5. Components
+@use 'components/_button';
+@use 'components/_card';
+@use 'components/_modal';
+
+// 6. Utilities
+@use 'utilities/_spacing';
+@use 'utilities/_helpers';
+
+// 7. Themes (if any)
+@use 'themes/_light-theme'; // Base/default theme
+@use 'themes/_dark-theme'; // Example dark theme that applies when .theme--dark is present
+

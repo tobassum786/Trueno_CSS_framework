@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trueno CSS — a modern, responsive, mobile-first CSS framework. Ship beautiful interfaces at the speed of lightning.">
+    <title>Trueno CSS — Lightning-fast, mobile-first CSS framework</title>
+
+    <!-- Trueno CSS Framework -->
+    <link rel="stylesheet" href="../dist/trueno-css-framework.css">
+
+    <!-- Google Fonts for the landing page demo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Demo styles: customizations for the landing page beyond the framework -->
+    <link rel="stylesheet" href="assets/css/demo.css">
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- Header: main-header / main-nav__list / main-nav__item        -->
+    <!-- ============================================================ -->
+    <header class="main-header" id="siteHeader">
+        <div class="container">
+            <div class="main-header__logo">
+                <a href="#top">
+                    <span class="logo-mark" aria-hidden="true">⚡</span>
+                    <span>Trueno CSS</span>
+                </a>
+            </div>
+
+            <nav class="main-nav" id="mainNav" aria-label="Primary navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item"><a href="#features">Features</a></li>
+                    <li class="main-nav__item"><a href="#components">Components</a></li>
+                    <li class="main-nav__item"><a href="#grid">Grid</a></li>
+                    <li class="main-nav__item"><a href="#utilities">Utilities</a></li>
+                    <li class="main-nav__item"><a href="#install">Install</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-cta">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <span id="themeIcon" aria-hidden="true">🌙</span>
+                </button>
+                <a href="#install" class="btn btn--primary btn--sm d-none-sm">Get Started</a>
+                <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mainNav">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M4 7h16M4 12h16M4 17h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+
+        <!-- ============================================================ -->
+        <!-- Hero                                                         -->
+        <!-- ============================================================ -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-7">
+                        <span class="hero__badge"><span class="dot"></span> v1.0.0 · Mobile-first · MIT licensed</span>
+                        <h1 class="hero__title" id="hero-title">Build interfaces at the<br>speed of <span class="grad">lightning ⚡</span></h1>
+                        <p class="hero__lead">
+                            Trueno CSS is a modern, responsive, and highly customizable CSS framework.
+                            Reusable components, a flexible grid, and utility classes — all optimized for
+                            performance and accessibility.
+                        </p>
+                        <div class="hero__cta">
+                            <a href="#install" class="btn btn--primary btn--lg">Get started free</a>
+                            <a href="#components" class="btn btn--outline-primary btn--lg">See the showcase</a>
+                        </div>
+                        <div class="hero__stats">
+                            <div class="hero__stat">
+                                <div class="num">12-col</div>
+                                <div class="label">Responsive grid</div>
+                            </div>
+                            <div class="hero__stat">
+                                <div class="num">4</div>
+                                <div class="label">Breakpoints</div>
+                            </div>
+                            <div class="hero__stat">
+                                <div class="num">0</div>
+                                <div class="label">Dependencies</div>
+                            </div>
+                            <div class="hero__stat">
+                                <div class="num">100%</div>
+                                <div class="label">A11y focused</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5">
+                        <div class="terminal" aria-hidden="true">
+                            <div class="terminal__bar">
+                                <i></i><i></i><i></i>
+                                <span class="terminal__title">trueno-demo — bash</span>
+                            </div>
+                            <div class="terminal__body"><span class="com"># Install the framework</span>
+$ <span class="tok">npm install</span> trueno-css-framework
+
+<span class="com"># And link it — that's it</span>
+&lt;<span class="tok">link</span> rel="stylesheet" href="trueno.min.css"&gt;
+
+<span class="str">⚡ Build something great.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- Features: grid + card composition                            -->
+        <!-- ============================================================ -->
+        <section class="section" id="features">
+            <div class="container">
+                <div class="u-text-center">
+                    <span class="section__eyebrow">Why Trueno</span>
+                    <h2 class="section__title">Everything you need. Nothing you don't.</h2>
+                    <p class="section__lead lead-center">
+                        Built with Sass following best practices — every feature below is a ready-to-use
+                        framework class you can drop into your markup today.
+                    </p>
+                </div>
+
+                <div class="row mt-xl">
+                    <div class="col-12 col-sm-6 col-lg-4 mb-lg">
+                        <div class="card feature-card">
+                            <div class="card__body">
+                                <span class="feature-card__icon ic-primary">🧩</span>
+                                <h3 class="feature-card__title">Modular by design</h3>
+                                <p class="feature-card__text">
+                                    Use only what you need. Every component and utility lives in its own
+                                    Sass module, so you can tree-shake to a lean build.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 mb-lg">
+                        <div class="card feature-card">
+                            <div class="card__body">
+                                <span class="feature-card__icon ic-green">📱</span>
+                                <h3 class="feature-card__title">Mobile-first</h3>
+                                <p class="feature-card__text">
+                                    Four breakpoints — sm, md, lg, xl — built mobile-first. Designs reflow
+                                    gracefully from a phone to a widescreen monitor.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 mb-lg">
+                        <div class="card feature-card">
+                            <div class="card__body">
+                                <span class="feature-card__icon ic-violet">🎨</span>
+                                <h3 class="feature-card__title">Theme with ease</h3>
+                                <p class="feature-card__text">
+                                    Override a handful of Sass variables or switch the built-in dark theme.
+                                    Try the toggle in the header — this page is themed live.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 mb-lg">
+                        <div class="card feature-card">
+                            <div class="card__body">
+                                <span class="feature-card__icon ic-amber">🗂️</span>
+                                <h3 class="feature-card__title">Flexible grid</h3>
+                                <p class="feature-card__text">
+                                    A 12-column Flexbox grid with auto-layout columns, nesting, and
+                                    responsive modifiers like <code>col-md-6</code> and <code>col-lg-4</code>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 mb-lg">
+                        <div class="card feature-card">
+                            <div class="card__body">
+                                <span class="feature-card__icon ic-rose">⚙️</span>
+                                <h3 class="feature-card__title">Essential components</h3>
+                                <p class="feature-card__text">
+                                    Buttons, cards, and modals — styled with BEM naming and accessible
+                                    defaults out of the box.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 mb-lg">
+                        <div class="card feature-card">
+                            <div class="card__body">
+                                <span class="feature-card__icon ic-sky">♿</span>
+                                <h3 class="feature-card__title">Accessibility first</h3>
+                                <p class="feature-card__text">
+                                    Semantic HTML, keyboard focus rings, visible states, and WCAG AA
+                                    contrast built into every component.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- Components showcase: buttons, cards, modal                    -->
+        <!-- ============================================================ -->
+        <section class="section section--soft" id="components">
+            <div class="container">
+                <div class="u-text-center">
+                    <span class="section__eyebrow">Showcase</span>
+                    <h2 class="section__title">Components, live</h2>
+                    <p class="section__lead lead-center">
+                        Real framework classes rendering real UI. Click the button to open the modal.
+                    </p>
+                </div>
+
+                <div class="row mt-xl">
+                    <!-- Buttons -->
+                    <div class="col-12 col-lg-6 mb-lg">
+                        <div class="showcase">
+                            <p class="showcase-label">Buttons · btn + modifiers</p>
+                            <div class="swatch-row">
+                                <button class="btn btn--primary">Primary</button>
+                                <button class="btn btn--secondary">Secondary</button>
+                                <button class="btn btn--outline-primary">Outline</button>
+                                <button class="btn btn--primary" disabled>Disabled</button>
+                            </div>
+
+                            <p class="showcase-label">Sizes</p>
+                            <div class="swatch-row">
+                                <button class="btn btn--primary btn--sm">Small</button>
+                                <button class="btn btn--primary">Default</button>
+                                <button class="btn btn--primary btn--lg">Large</button>
+                            </div>
+
+                            <p class="showcase-label">Buttons as links</p>
+                            <div class="swatch-row">
+                                <a href="#install" class="btn btn--primary">Link button</a>
+                                <a href="#" class="btn btn--outline-primary">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cards -->
+                    <div class="col-12 col-lg-6 mb-lg">
+                        <div class="showcase">
+                            <p class="showcase-label">Cards · card + BEM elements</p>
+                            <div class="card">
+                                <div class="card__header">Featured</div>
+                                <div class="card__body">
+                                    <h3 class="card__title">Full-featured card</h3>
+                                    <p class="card__text">
+                                        Header, body, and footer — composable via BEM. Drop in any content
+                                        you like.
+                                    </p>
+                                    <div class="actions-row">
+                                        <button class="btn btn--primary btn--sm">Action</button>
+                                        <button class="btn btn--outline-primary btn--sm">Cancel</button>
+                                    </div>
+                                </div>
+                                <div class="card__footer">Updated just now</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-lg">
+                    <!-- Modal -->
+                    <div class="col-12 col-lg-6 mb-lg">
+                        <div class="showcase">
+                            <p class="showcase-label">Modal · .modal.is-open via JS</p>
+                            <button class="btn btn--primary" id="openModal">Launch demo modal</button>
+                            <p class="text-muted mt-md mb-0">
+                                Styles ship with the framework — open/close is handled by toggling the
+                                <code>.is-open</code> class. Focus trapping, backdrop, and Escape handled
+                                below.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Typography -->
+                    <div class="col-12 col-lg-6 mb-lg">
+                        <div class="showcase">
+                            <p class="showcase-label">Typography · headings &amp; text</p>
+                            <h1 class="heading-demo">h1. Heading</h1>
+                            <h2 class="heading-demo">h2. Heading</h2>
+                            <h3 class="heading-demo">h3. Heading</h3>
+                            <h4 class="heading-demo">h4. Heading</h4>
+                            <p class="text-muted mt-md mb-0">
+                                Responsive, readable, and set in relative units so users can scale text
+                                however they like.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- Grid showcase                                                 -->
+        <!-- ============================================================ -->
+        <section class="section" id="grid">
+            <div class="container">
+                <div class="u-text-center">
+                    <span class="section__eyebrow">Layout</span>
+                    <h2 class="section__title">A grid that flexes</h2>
+                    <p class="section__lead lead-center">
+                        Twelve columns, four breakpoints, responsive modifiers, and full nesting support.
+                    </p>
+                </div>
+
+                <div class="showcase mt-xl grid-demo">
+                    <p class="showcase-label">Equal columns</p>
+                    <div class="row">
+                        <div class="col c-blue">.col</div>
+                        <div class="col c-green">.col</div>
+                        <div class="col c-amber">.col</div>
+                    </div>
+
+                    <p class="showcase-label">col-md-* on medium and up</p>
+                    <div class="row">
+                        <div class="col-12 col-md-4 c-blue">.col-12 .col-md-4</div>
+                        <div class="col-12 col-md-4 c-indigo">.col-12 .col-md-4</div>
+                        <div class="col-12 col-md-4 c-violet">.col-12 .col-md-4</div>
+                    </div>
+
+                    <p class="showcase-label">Asymmetric layout · col-lg-8 / col-lg-4</p>
+                    <div class="row">
+                        <div class="col-12 col-lg-8 c-green">.col-lg-8</div>
+                        <div class="col-12 col-lg-4 c-rose">.col-lg-4</div>
+                    </div>
+
+                    <p class="showcase-label">Nested grids</p>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="c-blue">.col-md-6</div>
+                            <div class="row mt-sm">
+                                <div class="col c-green">nested .col</div>
+                                <div class="col c-amber">nested .col</div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 c-violet">.col-md-6</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- Utilities: spacing + helpers                                  -->
+        <!-- ============================================================ -->
+        <section class="section section--soft" id="utilities">
+            <div class="container">
+                <div class="u-text-center">
+                    <span class="section__eyebrow">Utilities</span>
+                    <h2 class="section__title">Spacing &amp; helpers</h2>
+                    <p class="section__lead lead-center">
+                        Composable spacing utilities and single-purpose helpers to style anything without
+                        writing CSS.
+                    </p>
+                </div>
+
+                <div class="row mt-xl">
+                    <div class="col-12 col-lg-6 mb-lg">
+                        <div class="showcase">
+                            <p class="showcase-label">Spacing scale · m / p + t / b / l / r / x / y</p>
+                            <div class="spacing-demo mb-md">
+                                <div class="spacing-box">p-0</div>
+                            </div>
+                            <div class="spacing-demo mb-md">
+                                <div class="spacing-box spacing-box--sm">p-sm</div>
+                            </div>
+                            <div class="spacing-demo mb-md">
+                                <div class="spacing-box spacing-box--md">p-md</div>
+                            </div>
+                            <div class="spacing-demo mb-md">
+                                <div class="spacing-box spacing-box--lg">p-lg</div>
+                            </div>
+                            <div class="spacing-demo">
+                                <div class="spacing-box spacing-box--xl">p-xl</div>
+                            </div>
+                            <p class="text-muted mt-md mb-0">
+                                Responsive variants too — e.g. <code>mt-xl</code>, <code>px-md</code>,
+                                <code>pb-lg</code>, <code>mx-auto</code>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 mb-lg">
+                        <div class="showcase">
+                            <p class="showcase-label">Text &amp; display helpers</p>
+                            <p class="u-text-left">.u-text-left</p>
+                            <p class="u-text-center">.u-text-center</p>
+                            <p class="u-text-right">.u-text-right</p>
+                            <p class="showcase-label demo-label--offset">Display helpers</p>
+                            <div class="swatch-row">
+                                <div class="spacing-demo flex-1"><code>u-d-block</code></div>
+                                <div class="spacing-demo flex-1"><code>u-d-flex</code></div>
+                                <div class="spacing-demo flex-1"><code>u-d-none</code></div>
+                            </div>
+                            <p class="showcase-label demo-label--offset">More helpers</p>
+                            <div class="swatch-row">
+                                <div class="spacing-demo"><code>u-sr-only</code></div>
+                                <div class="spacing-demo"><code>u-float-left</code></div>
+                                <div class="spacing-demo"><code>u-float-right</code></div>
+                                <div class="spacing-demo"><code>u-clearfix</code></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- Install / getting started                                     -->
+        <!-- ============================================================ -->
+        <section class="section" id="install">
+            <div class="container">
+                <div class="u-text-center">
+                    <span class="section__eyebrow">Getting Started</span>
+                    <h2 class="section__title">Up and running in seconds</h2>
+                    <p class="section__lead lead-center">
+                        Choose npm for modern workflows or a CDN link for quick prototyping.
+                    </p>
+                </div>
+
+                <div class="row mt-xl">
+                    <div class="col-12 col-lg-6 mb-lg">
+                        <div class="code-block">
+                            <div class="code-block__bar">
+                                <span>npm</span>
+                                <button class="code-block__copy" type="button" data-copy="npm">
+                                    Copy
+                                </button>
+                            </div>
+                            <pre data-code="npm">npm install trueno-css-framework
+<span class="com">// main.js</span>
+<span class="tok">import</span> <span class="str">'trueno-css-framework/dist/trueno-css-framework.min.css'</span>;</pre>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 mb-lg">
+                        <div class="code-block">
+                            <div class="code-block__bar">
+                                <span>CDN</span>
+                                <button class="code-block__copy" type="button" data-copy="cdn">
+                                    Copy
+                                </button>
+                            </div>
+                            <pre data-code="cdn">&lt;<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"https://cdn.jsdelivr.net/npm/trueno-css-framework"</span>&gt;
+<span class="com">&lt;!-- Done. Start styling --&gt;</span></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-block mt-lg">
+                    <div class="code-block__bar">
+                        <span>index.html — basic usage</span>
+                        <button class="code-block__copy" type="button" data-copy="usage">Copy</button>
+                    </div>
+                    <pre data-code="usage">&lt;<span class="tag">body</span>&gt;
+  &lt;<span class="tag">div</span> class=<span class="str">"container"</span>&gt;
+    &lt;<span class="tag">h1</span> class=<span class="str">"u-text-center"</span>&gt;Hello, Trueno!&lt;/<span class="tag">h1</span>&gt;
+    &lt;<span class="tag">div</span> class=<span class="str">"row"</span>&gt;
+      &lt;<span class="tag">div</span> class=<span class="str">"col-md-6"</span>&gt;
+        &lt;<span class="tag">button</span> class=<span class="str">"btn btn--primary btn--lg"</span>&gt;Primary&lt;/<span class="tag">button</span>&gt;
+      &lt;/<span class="tag">div</span>&gt;
+      &lt;<span class="tag">div</span> class=<span class="str">"col-md-6"</span>&gt;
+        &lt;<span class="tag">button</span> class=<span class="str">"btn btn--outline-primary btn--lg"</span>&gt;Outline&lt;/<span class="tag">button</span>&gt;
+      &lt;/<span class="tag">div</span>&gt;
+    &lt;/<span class="tag">div</span>&gt;
+  &lt;/<span class="tag">div</span>&gt;
+&lt;/<span class="tag">body</span>&gt;</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- CTA band                                                      -->
+        <!-- ============================================================ -->
+        <section class="section" aria-label="Call to action">
+            <div class="container">
+                <div class="cta-band">
+                    <h2 class="cta-band__title">Ready to build at the speed of lightning?</h2>
+                    <p class="cta-band__text">
+                        Star the repo, explore the docs, and join the community building with Trueno CSS.
+                    </p>
+                    <div class="actions-row actions-row--center">
+                        <a href="https://github.com/tobassum786/Trueno_CSS_framework" class="btn btn--primary btn--lg" rel="noopener">View on GitHub</a>
+                        <a href="https://github.com/tobassum786/Trueno_CSS_framework/blob/main/docs/README.md" class="btn btn--outline-primary btn--lg" rel="noopener">Read the docs</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- Footer                                                       -->
+    <!-- ============================================================ -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5 mb-lg">
+                    <p class="main-footer__logo">⚡ Trueno CSS</p>
+                    <p class="main-footer__text">
+                        A modern, responsive, and highly customizable CSS framework — built with Sass,
+                        following best practices. MIT licensed.
+                    </p>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="main-footer__heading">Product</p>
+                    <ul class="main-footer__list">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#components">Components</a></li>
+                        <li><a href="#grid">Grid</a></li>
+                        <li><a href="#utilities">Utilities</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="main-footer__heading">Resources</p>
+                    <ul class="main-footer__list">
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/blob/main/docs/README.md" rel="noopener">Documentation</a></li>
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/releases" rel="noopener">Releases</a></li>
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/blob/main/docs/changelog.md" rel="noopener">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-lg">
+                    <p class="main-footer__heading">Community</p>
+                    <ul class="main-footer__list">
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/issues" rel="noopener">Report a bug</a></li>
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/blob/main/docs/contributing.md" rel="noopener">Contributing</a></li>
+                        <li><a href="https://github.com/tobassum786" rel="noopener">The team</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-footer__bottom u-text-center">
+                © 2026 Trueno CSS · Built with <a href="https://github.com/tobassum786/Trueno_CSS_framework" rel="noopener">Trueno CSS</a> by Tobassum Munir
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- Modal                                                        -->
+    <!-- ============================================================ -->
+    <div class="modal" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle" aria-hidden="true">
+        <div class="modal__dialog">
+            <div class="modal__header">
+                <h2 class="modal__title" id="demoModalTitle">Trueno modal ⚡</h2>
+                <button type="button" class="modal__close-btn" aria-label="Close modal" data-modal-close>×</button>
+            </div>
+            <div class="modal__body">
+                <p>You've opened a modal styled entirely by the Trueno framework.</p>
+                <p class="text-muted mb-0">
+                    Close it with the × button, the Cancel button, clicking the backdrop, or pressing
+                    <kbd>Escape</kbd>. Focus is trapped inside while open and restored afterwards.
+                </p>
+            </div>
+            <div class="modal__footer">
+                <button type="button" class="btn btn--secondary" data-modal-close>Cancel</button>
+                <button type="button" class="btn btn--primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ---- Sticky header shadow ----
+        const header = document.getElementById('siteHeader');
+        const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        // ---- Mobile nav toggle ----
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+        navToggle.addEventListener('click', () => {
+            const open = mainNav.classList.toggle('is-open');
+            navToggle.setAttribute('aria-expanded', String(open));
+        });
+        // Close nav when a link is tapped (mobile)
+        mainNav.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // ---- Modal ----
+        const modal = document.getElementById('demoModal');
+        const openModal = document.getElementById('openModal');
+        let lastFocused = null;
+
+        function openDialog() {
+            lastFocused = document.activeElement;
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            // Move focus into the dialog
+            modal.querySelector('.modal__close-btn').focus();
+        }
+
+        function closeDialog() {
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            if (lastFocused) lastFocused.focus();
+        }
+
+        openModal.addEventListener('click', openDialog);
+        modal.querySelectorAll('[data-modal-close]').forEach((btn) => {
+            btn.addEventListener('click', closeDialog);
+        });
+        // Backdrop click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeDialog();
+        });
+        // Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('is-open')) closeDialog();
+        });
+        // Focus trap (simple version)
+        modal.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab' && modal.classList.contains('is-open')) {
+                const focusables = modal.querySelectorAll(
+                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                );
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        });
+
+        // ---- Theme toggle ----
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        function applyTheme(dark) {
+            document.body.classList.toggle('theme--dark', dark);
+            themeIcon.textContent = dark ? '☀️' : '🌙';
+            themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+            try { localStorage.setItem('trueno-theme', dark ? 'dark' : 'light'); } catch (e) { /* ignore */ }
+        }
+
+        const saved = (() => { try { return localStorage.getItem('trueno-theme'); } catch (e) { return null; } })();
+        applyTheme(saved === 'dark');
+        themeToggle.addEventListener('click', () => applyTheme(!document.body.classList.contains('theme--dark')));
+
+        // ---- Copy code buttons ----
+        document.querySelectorAll('.code-block__copy').forEach((btn) => {
+            btn.addEventListener('click', async () => {
+                const key = btn.getAttribute('data-copy');
+                const codeEl = document.querySelector(`pre[data-code="${key}"]`);
+                const text = codeEl.textContent.trim();
+                try {
+                    await navigator.clipboard.writeText(text);
+                    btn.textContent = 'Copied ✓';
+                } catch (e) {
+                    btn.textContent = 'Copy failed';
+                }
+                setTimeout(() => { btn.textContent = 'Copy'; }, 1800);
+            });
+        });
+
+        // ---- Scroll reveal ----
+        const revealEls = document.querySelectorAll('.section, .cta-band');
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            revealEls.forEach((el) => el.classList.add('reveal'));
+            revealEls.forEach((el) => io.observe(el));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+@use 'sass:color';
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/functions' as *;
+
+.btn {
+  @include button-base; // Use the base button mixin
+}
+
+.btn--primary {
+  background-color: $color-primary;
+  border-color: $color-primary;
+  color: $color-white;
+
+  &:hover {
+    background-color: color.adjust($color-primary, $lightness: -7%);
+    border-color: color.adjust($color-primary, $lightness: -7%);
+  }
+}
+
+.btn--secondary {
+  background-color: $color-secondary;
+  border-color: $color-secondary;
+  color: $color-white;
+
+  &:hover {
+    background-color: color.adjust($color-secondary, $lightness: -7%);
+    border-color: color.adjust($color-secondary, $lightness: -7%);
+  }
+}
+
+.btn--outline-primary {
+  background-color: transparent;
+  border-color: $color-primary;
+  color: $color-primary;
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+}
+
+.btn--sm {
+  padding: $spacing-xs $spacing-sm;
+  font-size: rem(14px);
+}
+
+.btn--lg {
+  padding: $spacing-md $spacing-xl;
+  font-size: rem(20px);
+}

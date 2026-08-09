@@ -1,0 +1,69 @@
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+
+.container {
+  max-width: $breakpoint-xl;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$spacing-sm; // Compensate for column padding
+  margin-right: -$spacing-sm;
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  padding-left: $spacing-sm;
+  padding-right: $spacing-sm;
+}
+
+// Simple responsive columns (e.g., col-md-6 means 50% width on medium screens and up)
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 calc(100% / 12 * #{$i});
+    max-width: calc(100% / 12 * #{$i});
+  }
+}
+
+@include media-sm {
+  @for $i from 1 through 12 {
+    .col-sm-#{$i} {
+      flex: 0 0 calc(100% / 12 * #{$i});
+      max-width: calc(100% / 12 * #{$i});
+    }
+  }
+}
+
+@include media-md {
+  @for $i from 1 through 12 {
+    .col-md-#{$i} {
+      flex: 0 0 calc(100% / 12 * #{$i});
+      max-width: calc(100% / 12 * #{$i});
+    }
+  }
+}
+
+@include media-lg {
+  @for $i from 1 through 12 {
+    .col-lg-#{$i} {
+      flex: 0 0 calc(100% / 12 * #{$i});
+      max-width: calc(100% / 12 * #{$i});
+    }
+  }
+}
+
+@include media-xl {
+  @for $i from 1 through 12 {
+    .col-xl-#{$i} {
+      flex: 0 0 calc(100% / 12 * #{$i});
+      max-width: calc(100% / 12 * #{$i});
+    }
+  }
+}
