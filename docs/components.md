@@ -29,6 +29,7 @@ The button system is built on a shared `button-base` mixin (from `abstract/_mixi
 | Modifier | `.btn--outline-primary` | Outlined primary — transparent fill, colored border. |
 | Modifier | `.btn--sm` | Small button. |
 | Modifier | `.btn--lg` | Large button. |
+| Modifier | `.btn--hero` | Hero button — large, solid primary fill with white text. |
 
 ### Default button
 
@@ -49,6 +50,12 @@ The `.btn` class is the minimum required for the button to render correctly. It 
 `.btn--primary` and `.btn--secondary` set a solid background and white text. On hover, the background darkens by 7% via `color.adjust($color-primary, $lightness: -7%)`.
 
 `.btn--outline-primary` has a transparent background, colored border, and colored text. On hover, the background fills with the primary color and the text becomes white.
+
+`.btn--hero` is designed for hero sections — a large primary button with white text that stands out against dark backgrounds. It combines a bigger size with a solid primary fill:
+
+```html
+<button class="btn btn--hero">Get started</button>
+```
 
 ### Size modifiers
 
@@ -134,6 +141,19 @@ Apply `.btn` to an `<a>` element to get a link styled as a button:
 .btn--lg {
   padding: $spacing-md $spacing-xl;
   font-size: rem(20px);
+}
+
+.btn--hero {
+  padding: $spacing-md $spacing-xxl;
+  font-size: rem(22px);
+  color: $color-white;
+  background-color: $color-primary;
+  border-color: $color-primary;
+
+  &:hover {
+    background-color: color.adjust($color-primary, $lightness: -7%);
+    border-color: color.adjust($color-primary, $lightness: -7%);
+  }
 }
 ```
 

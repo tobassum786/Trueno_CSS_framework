@@ -49,3 +49,16 @@
   padding: $spacing-md $spacing-xl;
   font-size: rem(20px);
 }
+
+.btn--hero {
+  padding: $spacing-md $spacing-xxl;
+  font-size: rem(22px);
+  color: $color-white;
+  background-color: $color-primary;
+  border-color: $color-primary;
+
+  &:hover {
+    background-color: color.adjust($color-primary, $lightness: -7%);
+    border-color: color.adjust($color-primary, $lightness: -7%);
+  }
+}
