@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trueno CSS Framework documentation — a modern, responsive, mobile-first CSS framework built with Sass using the 7-1 architecture pattern.">
+    <title>Trueno CSS — Documentation</title>
+
+    <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- Header                                                        -->
+    <!-- ============================================================ -->
+    <header class="docs-header" id="siteHeader">
+        <div class="container">
+            <div class="docs-header__logo">
+                <a href="index.html">
+                    <span class="logo-mark" aria-hidden="true">⚡</span>
+                    <span>Trueno CSS</span>
+                </a>
+            </div>
+
+            <nav class="docs-nav" aria-label="Primary navigation">
+                <ul class="docs-nav__list" id="navList">
+                    <li class="docs-nav__item"><a href="index.html" class="docs-nav__link--active">Docs</a></li>
+                    <li class="docs-nav__item"><a href="../examples/index.html">Home</a></li>
+                    <li class="docs-nav__item"><a href="https://github.com/tobassum786/Trueno_CSS_framework">GitHub</a></li>
+                </ul>
+
+                <div class="docs-nav__cta">
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                        <span id="themeIcon" aria-hidden="true">🌙</span>
+                    </button>
+                    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navList">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M4 7h16M4 12h16M4 17h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- Hero                                                          -->
+    <!-- ============================================================ -->
+    <section class="docs-hero" aria-labelledby="page-title">
+        <div class="container">
+            <span class="docs-hero__badge"><span class="dot"></span> v1.0.0 · Sass · MIT licensed</span>
+            <h1 class="docs-hero__title" id="page-title">Trueno CSS Documentation</h1>
+            <p class="docs-hero__lead">
+                A modern, responsive, mobile-first CSS framework built with Sass using the 7-1 architecture
+                pattern. Everything you need to understand and tailor every layer of the framework.
+            </p>
+            <div class="docs-hero-cta">
+                <a href="getting-started.html" class="btn btn--primary btn--lg">Get started</a>
+                <a href="#index" class="btn btn--outline-primary btn--lg">Browse the docs</a>
+                <a href="../examples/index.html" class="btn btn--outline-primary btn--lg">Main site</a>
+            </div>
+            <div class="docs-hero-stats">
+                <div class="hero__stat">
+                    <div class="num">13</div>
+                    <div class="label">Doc pages</div>
+                </div>
+                <div class="hero__stat">
+                    <div class="num">7-1</div>
+                    <div class="label">Architecture</div>
+                </div>
+                <div class="hero__stat">
+                    <div class="num">0</div>
+                    <div class="label">JS dependencies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Docs body -->
+    <!-- ============================================================ -->
+    <div class="container">
+        <div class="docs-body" id="index">
+
+            <!-- Sidebar -->
+            <aside class="docs-sidebar" id="docsSidebar">
+                <button class="docs-sidebar-toggle" id="sidebarToggle" type="button">☰ Table of contents</button>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🚀 Getting Started</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="getting-started.html">Getting Started</a></li>
+                        <li><a class="sidebar-block__link" href="architecture.html">Architecture</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🎨 Design System</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="abstract.html">Abstract Layer</a></li>
+                        <li><a class="sidebar-block__link" href="customization.html">Customization &amp; Tokens</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🧱 Framework Layers</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="base.html">Base Styles</a></li>
+                        <li><a class="sidebar-block__link" href="layout.html">Layout</a></li>
+                        <li><a class="sidebar-block__link" href="components.html">Components</a></li>
+                        <li><a class="sidebar-block__link" href="utilities.html">Utilities</a></li>
+                        <li><a class="sidebar-block__link" href="themes.html">Themes</a></li>
+                        <li><a class="sidebar-block__link" href="vendors.html">Vendors</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🤝 Community</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="contributing.html">Contributing</a></li>
+                        <li><a class="sidebar-block__link" href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Content -->
+            <main class="docs-content">
+                <article class="docs-page">
+
+                    <h1>Documentation Index</h1>
+                    <p class="docs-subtitle">
+                        Welcome to the official documentation for <strong>Trueno CSS Framework</strong>. Every
+                        layer is covered here — from abstract design tokens to fully styled components,
+                        layout primitives, theming, and utility classes.
+                    </p>
+
+                    <h2>📚 Documentation Index</h2>
+
+                    <div class="row">
+                        <div class="col-12 col-sm-6 mb-lg">
+                            <div class="card doc-card">
+                                <div class="card__body">
+                                    <span class="doc-card__icon ic-blue">🚀</span>
+                                    <h3 class="doc-card__title">Getting Started</h3>
+                                    <p class="doc-card__text">Installation, build, dev workflow, and basic usage.</p>
+                                    <a class="doc-card__link" href="getting-started.html">Getting Started →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 mb-lg">
+                            <div class="card doc-card">
+                                <div class="card__body">
+                                    <span class="doc-card__icon ic-violet">🗂️</span>
+                                    <h3 class="doc-card__title">Architecture</h3>
+                                    <p class="doc-card__text">Folder structure and the 7-1 pattern.</p>
+                                    <a class="doc-card__link" href="architecture.html">Architecture →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 mb-lg">
+                            <div class="card doc-card">
+                                <div class="card__body">
+                                    <span class="doc-card__icon ic-green">🎨</span>
+                                    <h3 class="doc-card__title">Abstract Layer</h3>
+                                    <p class="doc-card__text">Sass variables, mixins, functions, and placeholders.</p>
+                                    <a class="doc-card__link" href="abstract.html">Abstract Layer →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 mb-lg">
+                            <div class="card doc-card">
+                                <div class="card__body">
+                                    <span class="doc-card__icon ic-amber">⚙️</span>
+                                    <h3 class="doc-card__title">Customization &amp; Design Tokens</h3>
+                                    <p class="doc-card__text">CSS custom properties, overrides, and theming.</p>
+                                    <a class="doc-card__link" href="customization.html">Customization →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 mb-lg">
+                            <div class="card doc-card">
+                                <div class="card__body">
+                                    <span class="doc-card__icon ic-rose">🧱</span>
+                                    <h3 class="doc-card__title">Base Styles</h3>
+                                    <p class="doc-card__text">Resets and typography defaults.</p>
+                                    <a class="doc-card__link" href="base.html">Base Styles →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 mb-lg">
+                            <div class="card doc-card">
+                                <div class="card__body">
+                                    <span class="doc-card__icon ic-sky">📐</span>
+                                    <h3 class="doc-card__title">Layout</h3>
+                                    <p class="doc-card__text">Grid system and site header.</p>
+                                    <a class="doc-card__link" href="layout.html">Layout →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 mb-lg">
+                            <div class="card doc-card">
+                                <div class="card__body">
+                                    <span class="doc-card__icon ic-primary">🧩</span>
+                                    <h3 class="doc-card__title">Components</h3>
+                                    <p class="doc-card__text">Buttons, cards, and modals.</p>
+                                    <a class="doc-card__link" href="components.html">Components →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 mb-lg">
+                            <div class="card doc-card">
+                                <div class="card__body">
+                                    <span class="doc-card__icon ic-green">🔧</span>
+                                    <h3 class="doc-card__title">Utilities</h3>
+                                    <p class="doc-card__text">Spacing and single-purpose helper classes.</p>
+                                    <a class="doc-card__link" href="utilities.html">Utilities →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 mb-lg">
+                            <div class="card doc-card">
+                                <div class="card__body">
+                                    <span class="doc-card__icon ic-violet">🌙</span>
+                                    <h3 class="doc-card__title">Themes</h3>
+                                    <p class="doc-card__text">Light and dark themes.</p>
+                                    <a class="doc-card__link" href="themes.html">Themes →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 mb-lg">
+                            <div class="card doc-card">
+                                <div class="card__body">
+                                    <span class="doc-card__icon ic-amber">📦</span>
+                                    <h3 class="doc-card__title">Vendors</h3>
+                                    <p class="doc-card__text">Third-party stylesheet integration.</p>
+                                    <a class="doc-card__link" href="vendors.html">Vendors →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 mb-lg">
+                            <div class="card doc-card">
+                                <div class="card__body">
+                                    <span class="doc-card__icon ic-rose">🤝</span>
+                                    <h3 class="doc-card__title">Contributing</h3>
+                                    <p class="doc-card__text">Contribution guide and code standards.</p>
+                                    <a class="doc-card__link" href="contributing.html">Contributing →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 mb-lg">
+                            <div class="card doc-card">
+                                <div class="card__body">
+                                    <span class="doc-card__icon ic-sky">📝</span>
+                                    <h3 class="doc-card__title">Changelog</h3>
+                                    <p class="doc-card__text">Version history and release notes.</p>
+                                    <a class="doc-card__link" href="changelog.html">Changelog →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h2>⚡ What is Trueno CSS?</h2>
+                    <p>
+                        Trueno CSS is a lightweight, modular CSS framework written in <strong>Sass</strong>.
+                        It provides:
+                    </p>
+                    <ul>
+                        <li><strong>Modular Architecture</strong> — import only the partials you need.</li>
+                        <li><strong>Mobile-First Design</strong> — every breakpoint is min-width based.</li>
+                        <li><strong>Theming Support</strong> — light and dark themes out of the box.</li>
+                        <li><strong>Utility-First Utilities</strong> — spacing, display, text alignment, and more.</li>
+                        <li><strong>Pre-Built Components</strong> — buttons, cards, and modals.</li>
+                        <li><strong>Accessible by Default</strong> — semantic patterns and ARIA-friendly markup.</li>
+                        <li><strong>Zero Runtime Dependencies</strong> — pure CSS output, no JavaScript required.</li>
+                    </ul>
+
+                    <h2>🏗️ Framework at a Glance</h2>
+                    <div class="docs-demo">
+                        <div class="glance-row"><span class="layer">Abstract</span><span class="folder">src/abstract/</span><span class="purpose">Variables, mixins, functions, placeholders</span></div>
+                        <div class="glance-row"><span class="layer">Vendors</span><span class="folder">src/vendors/</span><span class="purpose">Third-party styles</span></div>
+                        <div class="glance-row"><span class="layer">Base</span><span class="folder">src/base/</span><span class="purpose">Resets, typography, defaults</span></div>
+                        <div class="glance-row"><span class="layer">Layout</span><span class="folder">src/layout/</span><span class="purpose">Grid, header, structure</span></div>
+                        <div class="glance-row"><span class="layer">Components</span><span class="folder">src/components/</span><span class="purpose">Buttons, cards, modals</span></div>
+                        <div class="glance-row"><span class="layer">Utilities</span><span class="folder">src/utilities/</span><span class="purpose">Spacing, helpers, display</span></div>
+                        <div class="glance-row"><span class="layer">Themes</span><span class="folder">src/themes/</span><span class="purpose">Light and dark overrides</span></div>
+                    </div>
+                    <p class="lead">
+                        The entry point is <code>src/main.scss</code>, which composes the partials in the
+                        canonical 7-1 order.
+                    </p>
+
+                    <h2>🛠️ Quick Start</h2>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>Terminal</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre><span class="com"># 1. Install dependencies</span>
+npm install
+
+<span class="com"># 2. Build the framework (outputs to dist/)</span>
+npm run build
+
+<span class="com"># 3. Watch for changes during development</span>
+npm run dev</pre>
+                    </div>
+                    <p>Then include the compiled stylesheet in your HTML:</p>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre>&lt;<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"dist/trueno-css-framework.min.css"</span>&gt;</pre>
+                    </div>
+
+                    <h2>📦 Build Outputs</h2>
+                    <div class="docs-table-wrapper">
+                        <table class="docs-table">
+                            <thead>
+                                <tr><th>File</th><th>Description</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><code>dist/trueno-css-framework.css</code></td><td>Expanded (development) build</td></tr>
+                                <tr><td><code>dist/trueno-css-framework.min.css</code></td><td>Compressed (production) build</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>📖 Reading Order</h2>
+                    <p>If you're new to Trueno CSS, read the docs in this order:</p>
+                    <ol>
+                        <li><strong>Getting Started</strong> → install and run the framework.</li>
+                        <li><strong>Architecture</strong> → understand how the source is organized.</li>
+                        <li><strong>Abstract</strong> → learn the design tokens (variables, mixins).</li>
+                        <li><strong>Base</strong>, <strong>Layout</strong>, <strong>Components</strong>, <strong>Utilities</strong> → consume the framework.</li>
+                        <li><strong>Customization &amp; Themes</strong> → tailor the framework to your brand.</li>
+                    </ol>
+
+                    <hr>
+
+                    <h2>📄 License</h2>
+                    <p>Trueno CSS is released under the <strong>MIT License</strong>.</p>
+                    <p>Built with ⚡ by the Code4Mind team.</p>
+
+                    <nav class="docs-pager" aria-label="Continue reading">
+                        <a href="getting-started.html" class="docs-pager--left">
+                            <span class="dir">Next up</span>
+                            <span class="name">Getting Started →</span>
+                        </a>
+                    </nav>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- Footer                                                        -->
+    <!-- ============================================================ -->
+    <footer class="docs-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5 mb-lg">
+                    <p class="docs-footer__logo">⚡ Trueno CSS</p>
+                    <p class="docs-footer__text">
+                        A modern, responsive, and highly customizable CSS framework — built with Sass,
+                        following best practices. MIT licensed.
+                    </p>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Docs</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="architecture.html">Architecture</a></li>
+                        <li><a href="components.html">Components</a></li>
+                        <li><a href="utilities.html">Utilities</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Resources</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="../examples/index.html">Main site</a></li>
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/releases" rel="noopener">Releases</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-lg">
+                    <p class="docs-footer__heading">Community</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/issues" rel="noopener">Report a bug</a></li>
+                        <li><a href="contributing.html">Contributing</a></li>
+                        <li><a href="https://github.com/tobassum786" rel="noopener">The team</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="docs-footer__bottom u-text-center">
+                © 2026 Trueno CSS · Built with
+                <a href="../examples/index.html" rel="noopener">Trueno CSS</a> by Code4Mind Tobassum Munir
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

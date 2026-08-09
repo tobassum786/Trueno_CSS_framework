@@ -1,0 +1,177 @@
+<h1>Base Styles</h1>
+<p class="docs-subtitle">
+    The <strong>base layer</strong> applies element-level styles: resets that normalize cross-browser
+    behavior, and typography defaults for headings, paragraphs, links, and forms. Base styles are
+    intentionally low-specificity — components and utilities are expected to override them.
+    Source: <code>src/base/</code>
+</p>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>tree</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>base/
+├── _resets.scss
+└── _typography.scss</pre>
+</div>
+
+<h2>1. <code>_resets.scss</code></h2>
+<p>
+    A lightweight, modern CSS reset. It does not rely on Normalize.css; instead, it implements the
+    small set of rules Trueno CSS needs.
+</p>
+
+<h3>What it does</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Concern</th><th>Behavior</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Box-sizing</strong></td><td><code>html</code> is set to <code>box-sizing: border-box;</code>; every element inherits it.</td></tr>
+        <tr><td><strong>Font size baseline</strong></td><td><code>html { font-size: 100% }</code> — guarantees <code>1rem = 16px</code>.</td></tr>
+        <tr><td><strong>Margin/padding reset</strong></td><td>Default margins and padding are zeroed on <code>body</code>, <code>h1</code>–<code>h6</code>, <code>p</code>, <code>blockquote</code>, <code>pre</code>, <code>dl</code>, <code>dd</code>, <code>ol</code>, <code>ul</code>, <code>figure</code>, <code>figcaption</code>.</td></tr>
+        <tr><td><strong>Images</strong></td><td><code>max-width: 100%</code>, <code>height: auto</code>, and <code>display: block</code> so images never overflow their parent and never add a baseline gap.</td></tr>
+        <tr><td><strong>Lists</strong></td><td><code>&lt;ul&gt;</code> and <code>&lt;ol&gt;</code> are reset to no margin/padding/list-style via <code>%list-reset</code>.</td></tr>
+        <tr><td><strong>Form elements</strong></td><td><code>input</code>, <code>button</code>, <code>textarea</code>, and <code>select</code> inherit font and color from their parent.</td></tr>
+        <tr><td><strong>Links</strong></td><td>No underline, color <code>$color-primary</code>; underline on <code>:hover</code>.</td></tr>
+    </tbody>
+</table>
+
+<h3>Code reference</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, dl, dd, ol, ul,
+figure, figcaption {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  @extend %list-reset;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+
+  &amp;:hover {
+    text-decoration: underline;
+  }
+}</pre>
+</div>
+
+<h3>Usage</h3>
+<p>
+    The base layer is included automatically by <code>main.scss</code> — you do not need to import it
+    directly. If you want to write a custom reset, place it <strong>after</strong>
+    <code>base/_resets.scss</code> in your own entry file.
+</p>
+
+<h2>2. <code>_typography.scss</code></h2>
+<p>Type defaults for <code>body</code>, <code>h1</code>–<code>h6</code>, <code>p</code>, and <code>a</code>.</p>
+
+<h3>What it does</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Element</th><th>Styles applied</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>body</code></td><td><code>font-family</code>, <code>font-size</code>, <code>line-height</code>, <code>color</code>, <code>background-color</code></td></tr>
+        <tr><td><code>h1</code>–<code>h6</code></td><td><code>font-family</code> (heading stack), <code>line-height: 1.2</code>, <code>margin-bottom: $spacing-sm</code>, <code>color</code></td></tr>
+        <tr><td><code>p</code></td><td><code>margin-bottom: $spacing-md</code></td></tr>
+        <tr><td><code>a</code></td><td>Link styles are handled in <code>_resets.scss</code>; this file can be extended for additional link states.</td></tr>
+    </tbody>
+</table>
+
+<h3>Code reference</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color-base;
+  background-color: $color-white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  line-height: 1.2;
+  margin-bottom: $spacing-sm;
+  color: $text-color-base;
+}
+
+h1 { font-size: $h1-font-size; }
+h2 { font-size: $h2-font-size; }
+h3 { font-size: $h3-font-size; }
+h4 { font-size: $h4-font-size; }
+h5 { font-size: $h5-font-size; }
+h6 { font-size: $h6-font-size; }
+
+p {
+  margin-bottom: $spacing-md;
+}</pre>
+</div>
+
+<h3>Default values</h3>
+<p>Pulled from <code>abstract/_variables.scss</code>:</p>
+<table class="docs-table">
+    <thead>
+        <tr><th>Token</th><th>Value</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>$font-family-base</code></td><td><code>'Helvetica Neue', Helvetica, Arial, sans-serif</code></td></tr>
+        <tr><td><code>$font-family-heading</code></td><td><code>'Roboto', sans-serif</code></td></tr>
+        <tr><td><code>$font-size-base</code></td><td><code>1rem</code></td></tr>
+        <tr><td><code>$line-height-base</code></td><td><code>1.5</code></td></tr>
+        <tr><td><code>$text-color-base</code></td><td><code>#333333</code></td></tr>
+    </tbody>
+</table>
+
+<h3>Usage</h3>
+<p>The base typography is applied automatically. To change fonts globally, override the variables before the framework compiles:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// your-overrides.scss</span>
+$font-family-base: <span class="str">'Inter'</span>, -apple-system, BlinkMacSystemFont, <span class="str">'Segoe UI'</span>, sans-serif;
+$font-family-heading: <span class="str">'Poppins'</span>, sans-serif;
+$text-color-base: <span class="str">#1a1a1a</span>;</pre>
+</div>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// your-app.scss</span>
+@use <span class="str">'your-overrides'</span> as *;
+@use <span class="str">'trueno/src/main'</span>;</pre>
+</div>
+
+<h3>Per-element overrides</h3>
+<p>
+    For one-off typographic tweaks, use utility classes from <a href="utilities.html">Utilities</a>
+    or write your own CSS — Trueno CSS sets only what is needed, so most elements remain easy to style.
+</p>
+
+<h2>Best Practices</h2>
+<ol>
+    <li><strong>Do not duplicate base styles in components.</strong> Use components to <em>compose</em> a heading or a paragraph inside a card, not to redefine <code>h1</code>–<code>h6</code> defaults.</li>
+    <li><strong>Override variables, not selectors.</strong> Adjusting <code>$font-family-base</code> in your override file is much safer than writing a global <code>* { font-family: ... }</code> later.</li>
+    <li><strong>Respect the cascade order.</strong> Base styles are intentionally low-specificity. If a component's style is not winning, the answer is rarely <code>!important</code> — usually it's an issue with selector order or specificity.</li>
+</ol>

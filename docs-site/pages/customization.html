@@ -1,0 +1,313 @@
+<h1>Customization &amp; Design Tokens</h1>
+<p class="docs-subtitle">
+    Trueno CSS is designed to be customized at three levels, in order of increasing effort:
+</p>
+<ol>
+    <li><strong>Sass variables</strong> — change the source and recompile.</li>
+    <li><strong>Class-scope overrides</strong> — append CSS to theme classes like <code>.theme--dark</code>.</li>
+    <li><strong>CSS custom properties</strong> — drive the framework with runtime values.</li>
+</ol>
+<p>
+    This page documents the full set of design tokens and walks through each customization strategy.
+</p>
+
+<h2>1. Design Tokens</h2>
+<p>
+    The complete set of tokens defined in <code>src/abstract/_variables.scss</code>.
+</p>
+
+<h3>Colors</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Token</th><th>Value</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>$color-primary</code></td><td><code>#007bff</code></td><td>Primary actions, links by default</td></tr>
+        <tr><td><code>$color-secondary</code></td><td><code>#6c757d</code></td><td>Secondary actions</td></tr>
+        <tr><td><code>$color-success</code></td><td><code>#28a745</code></td><td>Success states</td></tr>
+        <tr><td><code>$color-danger</code></td><td><code>#dc3545</code></td><td>Errors and destructive actions</td></tr>
+        <tr><td><code>$color-warning</code></td><td><code>#ffc107</code></td><td>Warnings</td></tr>
+        <tr><td><code>$color-info</code></td><td><code>#17a2b8</code></td><td>Informational accents</td></tr>
+        <tr><td><code>$color-light</code></td><td><code>#f8f9fa</code></td><td>Light surface</td></tr>
+        <tr><td><code>$color-dark</code></td><td><code>#343a40</code></td><td>Dark surface</td></tr>
+        <tr><td><code>$color-white</code></td><td><code>#ffffff</code></td><td>Pure white</td></tr>
+        <tr><td><code>$color-black</code></td><td><code>#000000</code></td><td>Pure black</td></tr>
+        <tr><td><code>$text-color-base</code></td><td><code>#333333</code></td><td>Default body text</td></tr>
+        <tr><td><code>$text-color-light</code></td><td><code>#555555</code></td><td>Secondary text</td></tr>
+        <tr><td><code>$text-color-muted</code></td><td><code>#6c757d</code></td><td>Muted text</td></tr>
+    </tbody>
+</table>
+
+<h3>Typography</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Token</th><th>Value</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>$font-family-base</code></td><td><code>'Helvetica Neue', Helvetica, Arial, sans-serif</code></td><td>Body font stack</td></tr>
+        <tr><td><code>$font-family-heading</code></td><td><code>'Roboto', sans-serif</code></td><td>Headings</td></tr>
+        <tr><td><code>$font-size-base</code></td><td><code>1rem</code></td><td>Body size</td></tr>
+        <tr><td><code>$line-height-base</code></td><td><code>1.5</code></td><td>Body line height</td></tr>
+        <tr><td><code>$h1-font-size</code></td><td><code>2.5rem</code></td><td>h1</td></tr>
+        <tr><td><code>$h2-font-size</code></td><td><code>2rem</code></td><td>h2</td></tr>
+        <tr><td><code>$h3-font-size</code></td><td><code>1.75rem</code></td><td>h3</td></tr>
+        <tr><td><code>$h4-font-size</code></td><td><code>1.5rem</code></td><td>h4</td></tr>
+        <tr><td><code>$h5-font-size</code></td><td><code>1.25rem</code></td><td>h5</td></tr>
+        <tr><td><code>$h6-font-size</code></td><td><code>1rem</code></td><td>h6</td></tr>
+    </tbody>
+</table>
+
+<h3>Spacing</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Token</th><th>Value</th><th>Pixels (at 16px root)</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>$spacing-unit</code></td><td><code>0.25rem</code></td><td>4px</td></tr>
+        <tr><td><code>$spacing-xxs</code></td><td><code>0.125rem</code></td><td>2px</td></tr>
+        <tr><td><code>$spacing-xs</code></td><td><code>0.25rem</code></td><td>4px</td></tr>
+        <tr><td><code>$spacing-sm</code></td><td><code>0.5rem</code></td><td>8px</td></tr>
+        <tr><td><code>$spacing-md</code></td><td><code>1rem</code></td><td>16px</td></tr>
+        <tr><td><code>$spacing-lg</code></td><td><code>1.5rem</code></td><td>24px</td></tr>
+        <tr><td><code>$spacing-xl</code></td><td><code>2rem</code></td><td>32px</td></tr>
+        <tr><td><code>$spacing-xxl</code></td><td><code>3rem</code></td><td>48px</td></tr>
+    </tbody>
+</table>
+
+<h3>Borders</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Token</th><th>Value</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>$border-color-base</code></td><td><code>#dee2e6</code></td><td>Default border color</td></tr>
+        <tr><td><code>$border-radius-sm</code></td><td><code>0.25rem</code></td><td>Subtle rounding</td></tr>
+        <tr><td><code>$border-radius-base</code></td><td><code>0.5rem</code></td><td>Default rounding</td></tr>
+        <tr><td><code>$border-width-base</code></td><td><code>1px</code></td><td>Default border thickness</td></tr>
+    </tbody>
+</table>
+
+<h3>Breakpoints</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Token</th><th>Value</th><th>Sass mixin</th><th>Class prefix</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>$breakpoint-sm</code></td><td><code>576px</code></td><td><code>@include media-sm { }</code></td><td><code>col-sm-</code></td></tr>
+        <tr><td><code>$breakpoint-md</code></td><td><code>768px</code></td><td><code>@include media-md { }</code></td><td><code>col-md-</code></td></tr>
+        <tr><td><code>$breakpoint-lg</code></td><td><code>992px</code></td><td><code>@include media-lg { }</code></td><td><code>col-lg-</code></td></tr>
+        <tr><td><code>$breakpoint-xl</code></td><td><code>1200px</code></td><td><code>@include media-xl { }</code></td><td><code>col-xl-</code></td></tr>
+    </tbody>
+</table>
+
+<h3>Z-index</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Token</th><th>Value</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>$z-index-dropdown</code></td><td><code>1000</code></td><td>Dropdown menus</td></tr>
+        <tr><td><code>$z-index-sticky</code></td><td><code>1020</code></td><td>Sticky elements</td></tr>
+        <tr><td><code>$z-index-fixed</code></td><td><code>1030</code></td><td>Fixed elements</td></tr>
+        <tr><td><code>$z-index-modal-backdrop</code></td><td><code>1040</code></td><td>Modal overlay</td></tr>
+        <tr><td><code>$z-index-modal</code></td><td><code>1050</code></td><td>Modal dialog</td></tr>
+        <tr><td><code>$z-index-tooltip</code></td><td><code>1070</code></td><td>Tooltips</td></tr>
+    </tbody>
+</table>
+
+<h2>2. Customizing via Sass Variables</h2>
+<p>
+    The cleanest way to customize Trueno CSS is to override the variables in
+    <code>src/abstract/_variables.scss</code> (or a copy of it) <strong>before</strong> the framework
+    compiles.
+</p>
+
+<h3>Project-level override pattern</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// your-overrides.scss</span>
+$color-primary: <span class="str">#6c5ce7</span>;        <span class="com">// brand color</span>
+$color-secondary: <span class="str">#00b894</span>;      <span class="com">// accent color</span>
+$font-family-base: <span class="str">'Inter'</span>, system-ui, sans-serif;
+$border-radius-base: 0.75rem;   <span class="com">// softer corners</span>
+$spacing-md: 1.25rem;           <span class="com">// slightly larger default spacing</span></pre>
+</div>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// your-app.scss</span>
+@use <span class="str">'your-overrides'</span> as *;
+@use <span class="str">'trueno/src/main'</span>;           <span class="com">// framework compiles with your overrides</span></pre>
+</div>
+
+<h3>Sass module caveats</h3>
+<ul>
+    <li><code>@use</code> evaluates each file <strong>once</strong> and caches the result. The order of <code>@use</code> calls does matter — your override file must be <code>@use</code>d <strong>before</strong> the framework's variables file.</li>
+    <li>If you <code>@use 'trueno/src/abstract/variables' as *</code> <em>after</em> your overrides, your values still win for components that read variables from the same module. To guarantee a value, you can use the <code>!default</code> flag inside the framework's variables.</li>
+</ul>
+
+<h3>Recompile</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>npm run build</pre>
+</div>
+<p>Your overrides are baked into the compiled CSS.</p>
+
+<h2>3. Customizing at the CSS Level (No Recompile)</h2>
+<p>
+    For teams that consume the <strong>pre-built</strong> CSS, you can override styles in your own
+    stylesheet. The CSS specificity rules of the cascade apply.
+</p>
+
+<h3>Override framework styles</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>css</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">/* your-styles.css */</span>
+<span class="tok">.btn--primary</span> {
+  background-color: <span class="str">#6c5ce7</span>;
+  border-color: <span class="str">#6c5ce7</span>;
+}
+
+<span class="tok">.card</span> {
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}</pre>
+</div>
+<div class="docs-callout docs-callout--warning">
+    <span class="docs-callout__icon">⚠️</span>
+    <p>
+        Avoid <code>!important</code> for general overrides — it makes future overrides harder. Use it
+        only when you must beat a utility class.
+    </p>
+</div>
+
+<h3>Override per-section</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>css</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.hero .btn--primary</span> {
+  font-size: 1.25rem;
+  padding: 1rem 2rem;
+}</pre>
+</div>
+
+<h3>Use CSS custom properties (preferred for runtime theming)</h3>
+<p>
+    If you want the option to switch colors at runtime, expose tokens as CSS custom properties and
+    consume them in your overrides:
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>css</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>:root {
+  --primary: <span class="str">#6c5ce7</span>;
+  --secondary: <span class="str">#00b894</span>;
+}
+
+<span class="tok">.btn--primary</span> {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}</pre>
+</div>
+<p>Then change <code>--primary</code> at runtime to retheme every button.</p>
+
+<h2>4. Extending Components</h2>
+<p>The recommended way to add a brand-specific button variant is to compose with the existing modifiers:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">button</span> class=<span class="str">"btn btn--primary btn--lg"</span>&gt;Big primary&lt;/<span class="tag">button</span>&gt;</pre>
+</div>
+<p>
+    If you need a brand-specific look that the existing modifiers don't cover, <strong>add a new
+    modifier</strong> rather than overriding the framework source:
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// your-app.scss</span>
+<span class="tok">.btn--brand</span> {
+  background: linear-gradient(135deg, <span class="str">#6c5ce7</span> 0%, <span class="str">#00b894</span> 100%);
+  border: none;
+  color: <span class="str">#fff</span>;
+}</pre>
+</div>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">button</span> class=<span class="str">"btn btn--brand"</span>&gt;Brand Button&lt;/<span class="tag">button</span>&gt;</pre>
+</div>
+<div class="docs-callout docs-callout--tip">
+    <span class="docs-callout__icon">💡</span>
+    <p>
+        This is the safest customization strategy: the framework stays untouched, and your custom code
+        lives in your own stylesheet where it can be versioned and reviewed normally.
+    </p>
+</div>
+
+<h2>5. Tree-Shaking Unused CSS</h2>
+<p>
+    The compiled framework includes every component, utility, and theme. For very lean production
+    builds, you can:
+</p>
+<ol>
+    <li>
+        <strong>Import only the partials you need</strong> into your own <code>main.scss</code>:
+        <div class="docs-code" style="margin:12px 0 16px;">
+            <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+            <pre><span class="com">// your-app.scss</span>
+@use <span class="str">'trueno/src/abstract/variables'</span> as *;
+@use <span class="str">'trueno/src/abstract/mixins'</span> as *;
+@use <span class="str">'trueno/src/base/typography'</span>;
+@use <span class="str">'trueno/src/layout/grid'</span>;
+@use <span class="str">'trueno/src/components/button'</span>;
+@use <span class="str">'trueno/src/components/card'</span>;
+@use <span class="str">'trueno/src/utilities/spacing'</span>;
+@use <span class="str">'trueno/src/utilities/helpers'</span>;</pre>
+        </div>
+    </li>
+    <li>
+        <strong>Use PurgeCSS</strong> in your build pipeline to remove any classes you don't reference
+        in your HTML:
+        <div class="docs-code" style="margin:12px 0 16px;">
+            <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>js</span><button class="docs-code__copy" type="button">Copy</button></div>
+            <pre><span class="com">// webpack.config.js (PostCSS)</span>
+require(<span class="str">'@fullhuman/postcss-purgecss'</span>)({
+  content: [<span class="str">'./src/**/*.html'</span>],
+  safelist: [<span class="str">'is-open'</span>, /^theme--/],
+})</pre>
+        </div>
+    </li>
+    <li><strong>Run the build</strong> with <code>npm run build</code> (or your own build tool) to produce a minified, dead-code-free CSS file.</li>
+</ol>
+
+<h2>6. Custom Builds (Modifying the Source)</h2>
+<p>
+    If you need a deeper change — for example, renaming <code>.btn--primary</code> to <code>.c-btn</code>
+    everywhere — fork the framework, edit the partials, and recompile. The 7-1 architecture keeps the
+    change local:
+</p>
+<ul>
+    <li>Renaming a modifier: edit the relevant component file (e.g., <code>_button.scss</code>).</li>
+    <li>Changing a class prefix: do a project-wide search/replace.</li>
+    <li>Adding a new token: add a variable to <code>_variables.scss</code> and consume it in the appropriate file.</li>
+</ul>
+<div class="docs-callout docs-callout--warning">
+    <span class="docs-callout__icon">⚠️</span>
+    <p>
+        Forking means you own the maintenance burden. The community will continue to evolve the
+        upstream framework and you will need to merge changes carefully.
+    </p>
+</div>
+
+<h2>7. Quick Reference — Common Customizations</h2>
+<table class="docs-table">
+    <thead>
+        <tr><th>I want to…</th><th>Strategy</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Change the primary color</td><td>Override <code>$color-primary</code> in your Sass overrides.</td></tr>
+        <tr><td>Switch fonts globally</td><td>Override <code>$font-family-base</code> and <code>$font-family-heading</code>.</td></tr>
+        <tr><td>Round corners more</td><td>Override <code>$border-radius-base</code> and <code>$border-radius-sm</code>.</td></tr>
+        <tr><td>Tweak spacing scale</td><td>Override <code>$spacing-md</code> (and other spacing variables).</td></tr>
+        <tr><td>Switch to dark mode at runtime</td><td>Toggle the <code>.theme--dark</code> class on <code>&lt;body&gt;</code> (see <a href="themes.html">Themes</a>).</td></tr>
+        <tr><td>Add a new button variant</td><td>Compose a new <code>.btn--{name}</code> class in your own Sass file.</td></tr>
+        <tr><td>Add a brand new component</td><td>Create a new partial in <code>src/components/</code>, register it in <code>main.scss</code>.</td></tr>
+        <tr><td>Reduce CSS size</td><td>Use Sass partials selectively or run PurgeCSS against your HTML.</td></tr>
+        <tr><td>Rename a framework class</td><td>Search/replace the source, recompile, or fork the framework.</td></tr>
+    </tbody>
+</table>

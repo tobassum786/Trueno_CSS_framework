@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trueno CSS 7-1 Sass architecture — folder structure, loading order, and naming conventions.">
+    <title>Architecture — Trueno CSS Docs</title>
+
+    <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body>
+
+    <header class="docs-header" id="siteHeader">
+        <div class="container">
+            <div class="docs-header__logo">
+                <a href="index.html">
+                    <span class="logo-mark" aria-hidden="true">⚡</span>
+                    <span>Trueno CSS</span>
+                </a>
+            </div>
+
+            <nav class="docs-nav" aria-label="Primary navigation">
+                <ul class="docs-nav__list" id="navList">
+                    <li class="docs-nav__item"><a href="index.html" class="docs-nav__link--active">Docs</a></li>
+                    <li class="docs-nav__item"><a href="../examples/index.html">Home</a></li>
+                    <li class="docs-nav__item"><a href="https://github.com/tobassum786/Trueno_CSS_framework">GitHub</a></li>
+                </ul>
+
+                <div class="docs-nav__cta">
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                        <span id="themeIcon" aria-hidden="true">🌙</span>
+                    </button>
+                    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navList">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M4 7h16M4 12h16M4 17h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="docs-hero" aria-labelledby="page-title">
+        <div class="container">
+            <span class="docs-hero__badge">🏗️ Architecture</span>
+            <h1 class="docs-hero__title" id="page-title">Architecture</h1>
+            <p class="docs-hero__lead">Trueno CSS follows the 7-1 pattern — the most widely adopted Sass architecture for scalable, maintainable CSS frameworks.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="docs-body">
+
+            <aside class="docs-sidebar" id="docsSidebar">
+                <button class="docs-sidebar-toggle" id="sidebarToggle" type="button">☰ Table of contents</button>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🚀 Getting Started</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="getting-started.html">Getting Started</a></li>
+                        <li><a class="sidebar-block__link sidebar-active" href="architecture.html">Architecture</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🎨 Design System</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="abstract.html">Abstract Layer</a></li>
+                        <li><a class="sidebar-block__link" href="customization.html">Customization &amp; Tokens</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🧱 Framework Layers</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="base.html">Base Styles</a></li>
+                        <li><a class="sidebar-block__link" href="layout.html">Layout</a></li>
+                        <li><a class="sidebar-block__link" href="components.html">Components</a></li>
+                        <li><a class="sidebar-block__link" href="utilities.html">Utilities</a></li>
+                        <li><a class="sidebar-block__link" href="themes.html">Themes</a></li>
+                        <li><a class="sidebar-block__link" href="vendors.html">Vendors</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🤝 Community</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="contributing.html">Contributing</a></li>
+                        <li><a class="sidebar-block__link" href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="docs-content">
+                <article class="docs-page">
+                    <h1>Architecture</h1>
+<p class="docs-subtitle">
+    Trueno CSS follows the <strong>7-1 pattern</strong> — the most widely adopted Sass architecture
+    for scalable, maintainable CSS frameworks: <strong>7 folders</strong> and <strong>1 entry file</strong>.
+</p>
+
+<h2>Why 7-1?</h2>
+<ul>
+    <li>✅ <strong>Clear separation of concerns</strong> — design tokens, base styles, components, and utilities each live in their own folder.</li>
+    <li>✅ <strong>Tree-shakeable</strong> — import only the layers you need.</li>
+    <li>✅ <strong>Discoverable</strong> — new contributors instantly know where to find or add a file.</li>
+    <li>✅ <strong>No naming conflicts</strong> — the partial-prefix convention (<code>u-</code>, <code>col-</code>, <code>btn--</code>, etc.) keeps the cascade predictable.</li>
+</ul>
+
+<h2>Folder Layout</h2>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>tree</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>src/
+├── abstract/              <span class="com"># 1. Design tokens &amp; Sass toolkit</span>
+│   ├── _variables.scss    <span class="com">#   Colors, typography, spacing, breakpoints, z-index</span>
+│   ├── _mixins.scss       <span class="com">#   Flex helpers, media queries, button-base, visually-hidden</span>
+│   ├── _functions.scss    <span class="com">#   rem(), get-color()</span>
+│   └── _placeholders.scss <span class="com">#   %visually-hidden, %list-reset, %clearfix</span>
+│
+├── vendors/               <span class="com"># 2. Third-party styles</span>
+│   └── _normalize.scss    <span class="com">#   Placeholder for Normalize.css / resets</span>
+│
+├── base/                  <span class="com"># 3. Element-level styles</span>
+│   ├── _resets.scss       <span class="com">#   Box-sizing, margin reset, link defaults</span>
+│   └── _typography.scss   <span class="com">#   Headings, body, paragraphs</span>
+│
+├── layout/                <span class="com"># 4. Page-level primitives</span>
+│   ├── _grid.scss         <span class="com">#   .container, .row, .col, .col-{breakpoint}-{n}</span>
+│   └── _header.scss       <span class="com">#   .main-header, .main-nav</span>
+│
+├── components/            <span class="com"># 5. Reusable UI components</span>
+│   ├── _button.scss       <span class="com">#   .btn, .btn--primary, .btn--outline-primary, sizes</span>
+│   ├── _card.scss         <span class="com">#   .card, .card__header, .card__body, .card__footer</span>
+│   └── _modal.scss        <span class="com">#   .modal, .modal__dialog, .modal__header, ...</span>
+│
+├── utilities/             <span class="com"># 6. Single-purpose helper classes</span>
+│   ├── _spacing.scss      <span class="com">#   .m-*, .p-*, .mt-*, .px-*, ...</span>
+│   └── _helpers.scss      <span class="com">#   .u-text-*, .u-d-*, .u-float-*, .u-sr-only</span>
+│
+├── themes/                <span class="com"># 7. Theme overrides</span>
+│   ├── _light-theme.scss  <span class="com">#   Light theme defaults (scaffold)</span>
+│   └── _dark-theme.scss   <span class="com">#   .theme--dark class</span>
+│
+└── main.scss              <span class="com"># Single entry file — composes every layer</span></pre>
+</div>
+
+<h2>The Single Entry File: <code>main.scss</code></h2>
+<p>
+    <code>main.scss</code> is the only file that knows about every other file. It is what the build
+    script compiles.
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// 1. Abstracts &amp; Tools</span>
+@use <span class="str">'abstract/_variables'</span>;
+@use <span class="str">'abstract/_mixins'</span>;
+@use <span class="str">'abstract/_functions'</span>;
+@use <span class="str">'abstract/_placeholders'</span>;
+
+<span class="com">// 2. Vendors (if any)</span>
+<span class="com">// @use 'vendors/_normalize';</span>
+
+<span class="com">// 3. Base styles</span>
+@use <span class="str">'base/_resets'</span>;
+@use <span class="str">'base/_typography'</span>;
+
+<span class="com">// 4. Layout</span>
+@use <span class="str">'layout/_grid'</span>;
+@use <span class="str">'layout/_header'</span>;
+
+<span class="com">// 5. Components</span>
+@use <span class="str">'components/_button'</span>;
+@use <span class="str">'components/_card'</span>;
+@use <span class="str">'components/_modal'</span>;
+
+<span class="com">// 6. Utilities</span>
+@use <span class="str">'utilities/_spacing'</span>;
+@use <span class="str">'utilities/_helpers'</span>;
+
+<span class="com">// 7. Themes</span>
+@use <span class="str">'themes/_light-theme'</span>;
+@use <span class="str">'themes/_dark-theme'</span>;</pre>
+</div>
+<div class="docs-callout docs-callout--warning">
+    <span class="docs-callout__icon">⚠️</span>
+    <p>
+        <strong>Order matters.</strong> Sass <code>@use</code> resolves dependencies at the top of
+        the file, but the <em>output order</em> in the compiled CSS still follows the textual order.
+        The cascade depends on the source order — putting themes last means theme rules can override
+        component defaults.
+    </p>
+</div>
+
+<h2>Loading Order Rules</h2>
+<p>The order in <code>main.scss</code> is intentional:</p>
+<table class="docs-table">
+    <thead>
+        <tr><th>#</th><th>Layer</th><th>Why it goes here</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>1</td><td><strong>Abstract</strong></td><td>Defines variables, mixins, and placeholders used everywhere else. Has no CSS output by itself.</td></tr>
+        <tr><td>2</td><td><strong>Vendors</strong></td><td>Third-party resets (e.g., Normalize.css) must come first so the rest of the framework can override them.</td></tr>
+        <tr><td>3</td><td><strong>Base</strong></td><td>Element-level defaults (typography, resets) need to come before components.</td></tr>
+        <tr><td>4</td><td><strong>Layout</strong></td><td>Structural primitives (grid, header) provide containers that components sit inside.</td></tr>
+        <tr><td>5</td><td><strong>Components</strong></td><td>Component styles only need to win against the base, never against utilities or themes.</td></tr>
+        <tr><td>6</td><td><strong>Utilities</strong></td><td>Single-purpose helpers that should sit above components so they can override at the leaf.</td></tr>
+        <tr><td>7</td><td><strong>Themes</strong></td><td>Theme overrides are scoped to selectors like <code>.theme--dark</code> and come last so they always win.</td></tr>
+    </tbody>
+</table>
+
+<h2>Naming Conventions</h2>
+<p>Trueno CSS uses <strong>BEM (Block–Element–Modifier)</strong> for components and a <strong>prefix convention</strong> for utilities.</p>
+
+<h3>Components — BEM</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.card</span> { }                 <span class="com">// Block</span>
+<span class="tok">.card__header</span> { }         <span class="com">// Element</span>
+<span class="tok">.card__body</span> { }           <span class="com">// Element</span>
+<span class="tok">.btn</span> { }                  <span class="com">// Block</span>
+<span class="tok">.btn--primary</span> { }         <span class="com">// Modifier</span>
+<span class="tok">.btn--outline-primary</span> { } <span class="com">// Modifier</span>
+<span class="tok">.btn--sm</span> { }              <span class="com">// Modifier (size)</span></pre>
+</div>
+<ul>
+    <li><strong>Block</strong> — the standalone component (<code>.card</code>).</li>
+    <li><strong>Element</strong> — a child of the block, separated by <code>__</code> (<code>.card__header</code>).</li>
+    <li><strong>Modifier</strong> — a variant of the block, separated by <code>--</code> (<code>.btn--primary</code>).</li>
+</ul>
+
+<h3>Utilities — <code>u-</code> prefix</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.u-text-center</span> { }
+<span class="tok">.u-d-flex</span> { }
+<span class="tok">.u-float-left</span> { }
+<span class="tok">.u-sr-only</span> { }</pre>
+</div>
+<p>
+    The <code>u-</code> prefix signals "this is a utility — it has <code>!important</code> and a
+    single responsibility."
+</p>
+
+<h3>Grid — <code>col-</code> and <code>col-{breakpoint}-{n}</code></h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.col</span> { }          <span class="com">// Auto-flex column</span>
+<span class="tok">.col-6</span> { }        <span class="com">// 6 of 12 columns</span>
+<span class="tok">.col-md-4</span> { }     <span class="com">// 4 of 12 columns at md and up</span>
+<span class="tok">.col-lg-3</span> { }     <span class="com">// 3 of 12 columns at lg and up</span></pre>
+</div>
+
+<h2>Dependency Graph</h2>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>graph</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>abstract/*  (no dependencies)
+   ↑
+vendors/*  (depends on abstract)
+   ↑
+base/*  (depends on abstract)
+   ↑
+layout/*  (depends on abstract, base)
+   ↑
+components/*  (depends on abstract, base, layout)
+   ↑
+utilities/*  (depends on abstract)
+   ↑
+themes/*  (depends on everything — overrides at the leaf)</pre>
+</div>
+<p>
+    Each layer may <code>@use</code> the layers above it in the diagram. The reverse is not allowed —
+    for example, <code>abstract/_variables.scss</code> should never <code>@use</code> a component file.
+</p>
+
+<h2>Extending the Framework</h2>
+
+<h3>Add a new component</h3>
+<ol>
+    <li>Create <code>src/components/_your-component.scss</code>.</li>
+    <li>Follow BEM naming and <code>@use</code> only the abstract layer.</li>
+    <li>Add <code>@use 'components/_your-component';</code> to <code>main.scss</code>.</li>
+    <li>Document the new component in <a href="components.html">docs/components</a>.</li>
+</ol>
+
+<h3>Add a new utility</h3>
+<ol>
+    <li>Create or extend a file in <code>src/utilities/</code>.</li>
+    <li>Prefix the class with <code>u-</code>.</li>
+    <li>Use the <code>!important</code> flag — utilities must always win.</li>
+    <li>Document the new utility in <a href="utilities.html">docs/utilities</a>.</li>
+</ol>
+
+<h3>Add a new theme</h3>
+<ol>
+    <li>Create <code>src/themes/_your-theme.scss</code>.</li>
+    <li>Scope every selector to a top-level class (e.g., <code>.theme--yourname</code>).</li>
+    <li>Add <code>@use 'themes/_your-theme';</code> to <code>main.scss</code> (last).</li>
+    <li>Document the theme in <a href="themes.html">docs/themes</a>.</li>
+</ol>
+
+<h2>File-by-File Reference</h2>
+<p>For deeper detail on every file in the framework, see:</p>
+<ul>
+    <li><a href="abstract.html">Abstract Layer</a></li>
+    <li><a href="base.html">Base Styles</a></li>
+    <li><a href="layout.html">Layout</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li><a href="utilities.html">Utilities</a></li>
+    <li><a href="themes.html">Themes</a></li>
+    <li><a href="vendors.html">Vendors</a></li>
+</ul>
+
+                    <nav class="docs-pager" aria-label="Continue reading">
+                        <a href="getting-started.html">
+                            <span class="dir">Previous</span>
+                            <span class="name">← Getting Started</span>
+                        </a>
+                        <a href="abstract.html" class="docs-pager--right">
+                            <span class="dir">Next up</span>
+                            <span class="name">Abstract Layer →</span>
+                        </a>
+                    </nav>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <footer class="docs-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5 mb-lg">
+                    <p class="docs-footer__logo">⚡ Trueno CSS</p>
+                    <p class="docs-footer__text">
+                        A modern, responsive, and highly customizable CSS framework — built with Sass,
+                        following best practices. MIT licensed.
+                    </p>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Docs</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="architecture.html">Architecture</a></li>
+                        <li><a href="components.html">Components</a></li>
+                        <li><a href="utilities.html">Utilities</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Resources</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="../examples/index.html">Main site</a></li>
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/releases" rel="noopener">Releases</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-lg">
+                    <p class="docs-footer__heading">Community</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/issues" rel="noopener">Report a bug</a></li>
+                        <li><a href="contributing.html">Contributing</a></li>
+                        <li><a href="https://github.com/tobassum786" rel="noopener">The team</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="docs-footer__bottom u-text-center">
+                © 2026 Trueno CSS · Built with
+                <a href="../examples/index.html" rel="noopener">Trueno CSS</a> by Tobassum Munir
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

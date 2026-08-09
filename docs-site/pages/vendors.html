@@ -1,0 +1,112 @@
+<h1>Vendors</h1>
+<p class="docs-subtitle">
+    The <strong>vendors</strong> folder is the home for third-party stylesheets — Normalize.css, resets
+    from other libraries, or anything else that should be loaded before the framework's own base styles.
+    Source: <code>src/vendors/</code>
+</p>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>tree</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>vendors/
+└── _normalize.scss</pre>
+</div>
+
+<h2>Purpose</h2>
+<p>
+    Vendors must come <strong>first</strong> in the compiled CSS, before any of the framework's own
+    base, layout, or component styles. Loading order is controlled by <code>main.scss</code>:
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// 1. Abstracts &amp; Tools</span>
+@use <span class="str">'abstract/_variables'</span>;
+@use <span class="str">'abstract/_mixins'</span>;
+@use <span class="str">'abstract/_functions'</span>;
+@use <span class="str">'abstract/_placeholders'</span>;
+
+<span class="com">// 2. Vendors (if any)</span>
+<span class="com">// @use 'vendors/_normalize';</span></pre>
+</div>
+<div class="docs-callout docs-callout--info">
+    <span class="docs-callout__icon">ℹ️</span>
+    <p>
+        The <code>@use 'vendors/_normalize';</code> line is currently commented out — Trueno CSS ships
+        its own minimal reset in <code>base/_resets.scss</code> and does not require Normalize.css.
+    </p>
+</div>
+
+<h2>Included File — <code>_normalize.scss</code></h2>
+<p>
+    <code>_normalize.scss</code> is a placeholder. By default it only contains a comment explaining how
+    to enable Normalize.css:
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// You can include Normalize.css here.
+// Download it and place it in this folder, or import it from node_modules.
+// Example: @import "~normalize.css/normalize.css";
+// For now, this file is just a placeholder.
+// A minimal reset is handled in _resets.scss.</span></pre>
+</div>
+
+<h2>Adding a Third-Party Stylesheet</h2>
+<p>There are three common patterns.</p>
+
+<h3>Option A — Place the file in the <code>vendors</code> folder</h3>
+<ol>
+    <li>Download the stylesheet (e.g., <code>normalize.css</code>).</li>
+    <li>Place it in <code>src/vendors/</code>. Rename it to start with an underscore (e.g., <code>_normalize.scss</code>) so Sass treats it as a partial.</li>
+    <li>Uncomment the line in <code>main.scss</code>:</li>
+</ol>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@use <span class="str">'vendors/_normalize'</span>;</pre>
+</div>
+
+<h3>Option B — Import from <code>node_modules</code></h3>
+<p>If the stylesheet is already a dependency in your <code>package.json</code>, you can import it directly:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// src/vendors/_normalize.scss</span>
+@use <span class="str">'normalize.css/normalize.css'</span>;</pre>
+</div>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// src/main.scss</span>
+@use <span class="str">'vendors/_normalize'</span>;</pre>
+</div>
+
+<h3>Option C — Reference a CDN in your HTML</h3>
+<p>If you do not need to compile a vendor stylesheet, link it from your HTML <strong>before</strong> the framework:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">head</span>&gt;
+  &lt;<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"https://cdn.jsdelivr.net/npm/normalize.css/normalize.css"</span>&gt;
+  &lt;<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"trueno-css-framework.min.css"</span>&gt;
+&lt;/<span class="tag">head</span>&gt;</pre>
+</div>
+
+<h2>Best Practices for Vendors</h2>
+<ol>
+    <li><strong>Keep them isolated.</strong> Vendor styles should never reference framework variables or mixins — if you find yourself reaching for one, copy the relevant rule into a base/component file instead.</li>
+    <li><strong>Update deliberately.</strong> When a vendor releases a new major version, review the diff before bumping. Some resets introduce opinions that conflict with Trueno CSS.</li>
+    <li><strong>Document what you've added.</strong> Drop a one-line comment in <code>main.scss</code> describing which version of which library is being loaded.</li>
+    <li><strong>Avoid duplicating resets.</strong> Trueno CSS already ships a minimal reset. If you also include Normalize.css, you may get duplicate work and subtle visual differences. Pick one.</li>
+</ol>
+
+<h2>When You Don't Need a Vendor File</h2>
+<p>
+    Most projects do not need anything in <code>src/vendors/</code>. Trueno CSS's built-in reset
+    (<code>base/_resets.scss</code>) handles:
+</p>
+<ul>
+    <li>Box-sizing</li>
+    <li>Margin and padding reset</li>
+    <li>Image defaults</li>
+    <li>Form element inheritance</li>
+    <li>Link colors</li>
+</ul>
+<p>
+    If your project does not need a more aggressive normalize, leave the folder empty and let the
+    framework do the work.
+</p>

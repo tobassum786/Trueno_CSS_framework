@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trueno CSS themes — light and dark theme scoped overrides.">
+    <title>Themes — Trueno CSS Docs</title>
+
+    <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body>
+
+    <header class="docs-header" id="siteHeader">
+        <div class="container">
+            <div class="docs-header__logo">
+                <a href="index.html">
+                    <span class="logo-mark" aria-hidden="true">⚡</span>
+                    <span>Trueno CSS</span>
+                </a>
+            </div>
+
+            <nav class="docs-nav" aria-label="Primary navigation">
+                <ul class="docs-nav__list" id="navList">
+                    <li class="docs-nav__item"><a href="index.html" class="docs-nav__link--active">Docs</a></li>
+                    <li class="docs-nav__item"><a href="../examples/index.html">Home</a></li>
+                    <li class="docs-nav__item"><a href="https://github.com/tobassum786/Trueno_CSS_framework">GitHub</a></li>
+                </ul>
+
+                <div class="docs-nav__cta">
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                        <span id="themeIcon" aria-hidden="true">🌙</span>
+                    </button>
+                    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navList">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M4 7h16M4 12h16M4 17h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="docs-hero" aria-labelledby="page-title">
+        <div class="container">
+            <span class="docs-hero__badge">🌙 Themes</span>
+            <h1 class="docs-hero__title" id="page-title">Themes</h1>
+            <p class="docs-hero__lead">Themes are scoped override files, loaded last in main.scss so theme rules win the cascade against components and utilities.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="docs-body">
+
+            <aside class="docs-sidebar" id="docsSidebar">
+                <button class="docs-sidebar-toggle" id="sidebarToggle" type="button">☰ Table of contents</button>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🚀 Getting Started</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="getting-started.html">Getting Started</a></li>
+                        <li><a class="sidebar-block__link" href="architecture.html">Architecture</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🎨 Design System</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="abstract.html">Abstract Layer</a></li>
+                        <li><a class="sidebar-block__link" href="customization.html">Customization &amp; Tokens</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🧱 Framework Layers</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="base.html">Base Styles</a></li>
+                        <li><a class="sidebar-block__link" href="layout.html">Layout</a></li>
+                        <li><a class="sidebar-block__link" href="components.html">Components</a></li>
+                        <li><a class="sidebar-block__link" href="utilities.html">Utilities</a></li>
+                        <li><a class="sidebar-block__link sidebar-active" href="themes.html">Themes</a></li>
+                        <li><a class="sidebar-block__link" href="vendors.html">Vendors</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🤝 Community</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="contributing.html">Contributing</a></li>
+                        <li><a class="sidebar-block__link" href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="docs-content">
+                <article class="docs-page">
+                    <h1>Themes</h1>
+<p class="docs-subtitle">
+    Themes are scoped override files. They live in the <strong>themes</strong> layer of the 7-1
+    architecture and are loaded <strong>last</strong> in <code>main.scss</code>, so theme rules win
+    the cascade against components and utilities. Source: <code>src/themes/</code>
+</p>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>tree</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>themes/
+├── _light-theme.scss
+└── _dark-theme.scss</pre>
+</div>
+
+<p>The current framework ships two themes:</p>
+<table class="docs-table">
+    <thead>
+        <tr><th>Theme</th><th>File</th><th>How it's activated</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Light</td><td><code>_light-theme.scss</code></td><td>Default — applies automatically.</td></tr>
+        <tr><td>Dark</td><td><code>_dark-theme.scss</code></td><td>Activate by adding the <code>.theme--dark</code> class to a parent element (typically <code>&lt;body&gt;</code> or <code>&lt;html&gt;</code>).</td></tr>
+    </tbody>
+</table>
+
+<h2>1. Light Theme — <code>_light-theme.scss</code></h2>
+<p>
+    The light theme is the framework default. The variables in <code>abstract/_variables.scss</code>
+    already encode the light palette (white background, dark text, light grays, etc.).
+</p>
+<p>
+    <code>_light-theme.scss</code> is a <strong>scaffold</strong> for any future light-mode-only
+    overrides. By default it only contains commented examples that demonstrate the pattern:
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// Default light theme variables (can override _variables.scss if desired,
+// or define theme-specific variables)</span>
+<span class="com">// $theme-background: #ffffff;</span>
+<span class="com">// $theme-text: #333333;</span></pre>
+</div>
+<p>
+    If you want to introduce theme-specific tokens (e.g., <code>--theme-background</code>,
+    <code>--theme-text</code>), this is the place.
+</p>
+
+<h3>Adding a new light-theme token</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// src/themes/_light-theme.scss</span>
+:root {
+  --theme-background: <span class="str">#ffffff</span>;
+  --theme-text: <span class="str">#1a1a1a</span>;
+  --theme-link: <span class="str">#007bff</span>;
+}</pre>
+</div>
+<p>Then consume the tokens in components:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.card</span> {
+  background-color: var(--theme-background);
+  color: var(--theme-text);
+}</pre>
+</div>
+
+<h2>2. Dark Theme — <code>_dark-theme.scss</code></h2>
+<p>
+    The dark theme is scoped to the <code>.theme--dark</code> class. To enable it, add the class to a
+    parent element — typically <code>&lt;body&gt;</code>:
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">body</span> class=<span class="str">"theme--dark"</span>&gt;
+  <span class="com">&lt;!-- everything inside inherits the dark theme --&gt;</span>
+&lt;/<span class="tag">body</span>&gt;</pre>
+</div>
+<p style="color:var(--doc-slate);">
+    Try it right now — click the 🌙 moon toggle in the header of this page.
+</p>
+
+<h3>What it changes</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Target</th><th>Light default</th><th>Dark override</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>body</code> background</td><td>inherited</td><td><code>$color-dark</code> (#343a40)</td></tr>
+        <tr><td><code>body</code> text</td><td><code>$text-color-base</code></td><td><code>$color-light</code> (#f8f9fa)</td></tr>
+        <tr><td>Headings (<code>h1</code>–<code>h6</code>)</td><td><code>$text-color-base</code></td><td><code>$color-white</code></td></tr>
+        <tr><td>Links (<code>a</code>)</td><td><code>$color-primary</code></td><td><code>$color-info</code> (#17a2b8)</td></tr>
+        <tr><td><code>.main-header</code> background</td><td><code>$color-dark</code></td><td><code>color.adjust($color-dark, $lightness: 10%)</code></td></tr>
+        <tr><td><code>.main-header</code> border</td><td>—</td><td><code>color.adjust($color-dark, $lightness: 20%)</code></td></tr>
+        <tr><td><code>.card</code> background</td><td>white</td><td><code>$color-dark</code></td></tr>
+        <tr><td><code>.card</code> border</td><td><code>$border-color-base</code></td><td><code>color.adjust($color-dark, $lightness: 10%)</code></td></tr>
+        <tr><td><code>.card</code> shadow</td><td><code>rgba(0,0,0,0.05)</code></td><td><code>rgba(0,0,0,0.2)</code></td></tr>
+        <tr><td><code>.card__header</code>, <code>.card__footer</code></td><td>light</td><td><code>color.adjust($color-dark, $lightness: 5%)</code></td></tr>
+        <tr><td><code>.card__title</code></td><td>base</td><td>white</td></tr>
+        <tr><td><code>.card__text</code></td><td>light</td><td>light</td></tr>
+    </tbody>
+</table>
+
+<h3>Live example</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Card under the dark theme</p>
+    <div class="card">
+        <div class="card__body">
+            <h2 class="card__title">Card title</h2>
+            <p class="card__text">The card surface uses a dark color.</p>
+        </div>
+    </div>
+</div>
+
+<h3>Example</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;!DOCTYPE html&gt;
+&lt;<span class="tag">html</span> lang=<span class="str">"en"</span>&gt;
+&lt;<span class="tag">head</span>&gt;
+  &lt;<span class="tag">meta</span> charset=<span class="str">"UTF-8"</span>&gt;
+  &lt;<span class="tag">title</span>&gt;Dark theme demo&lt;/<span class="tag">title</span>&gt;
+  &lt;<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"trueno-css-framework.min.css"</span>&gt;
+&lt;/<span class="tag">head</span>&gt;
+&lt;<span class="tag">body</span> class=<span class="str">"theme--dark"</span>&gt;
+
+  &lt;<span class="tag">header</span> class=<span class="str">"main-header"</span>&gt;
+    &lt;<span class="tag">div</span> class=<span class="str">"container"</span>&gt;
+      &lt;<span class="tag">div</span> class=<span class="str">"main-header__logo"</span>&gt;
+        &lt;<span class="tag">a</span> href=<span class="str">"#"</span>&gt;⚡ Trueno&lt;/<span class="tag">a</span>&gt;
+      &lt;/<span class="tag">div</span>&gt;
+    &lt;/<span class="tag">div</span>&gt;
+  &lt;/<span class="tag">header</span>&gt;
+
+  &lt;<span class="tag">main</span> class=<span class="str">"container py-xl"</span>&gt;
+    &lt;<span class="tag">h1</span>&gt;Dark mode&lt;/<span class="tag">h1</span>&gt;
+    &lt;<span class="tag">p</span>&gt;The text and background colors are inverted using the dark theme.&lt;/<span class="tag">p</span>&gt;
+  &lt;/<span class="tag">main</span>&gt;
+
+&lt;/<span class="tag">body</span>&gt;
+&lt;/<span class="tag">html</span>&gt;</pre>
+</div>
+
+<h3>Code reference</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.theme--dark</span> {
+  background-color: $color-dark;
+  color: $color-light;
+
+  <span class="tok">h1, h2, h3, h4, h5, h6</span> {
+    color: $color-white;
+  }
+
+  <span class="tok">a</span> {
+    color: $color-info;
+  }
+
+  <span class="tok">.card</span> {
+    background-color: $color-dark;
+    border-color: color.adjust($color-dark, $lightness: 10%);
+    box-shadow: 0 2px 4px rgba($color-black, 0.2);
+  }
+
+  <span class="tok">.card__header, .card__footer</span> {
+    background-color: color.adjust($color-dark, $lightness: 5%);
+    border-color: color.adjust($color-dark, $lightness: 10%);
+    color: $color-light;
+  }
+
+  <span class="tok">.card__title</span> { color: $color-white; }
+  <span class="tok">.card__text</span>  { color: $color-light; }
+}</pre>
+</div>
+
+<h2>3. Adding a New Theme</h2>
+<p>Themes are just Sass partials that scope their overrides to a top-level class.</p>
+
+<h3>Step 1 — Create the partial</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// src/themes/_high-contrast-theme.scss</span>
+<span class="tok">.theme--high-contrast</span> {
+  background-color: <span class="str">#000000</span>;
+  color: <span class="str">#ffffff</span>;
+
+  <span class="tok">a</span> {
+    color: <span class="str">#ffff00</span>;
+    text-decoration: underline;
+  }
+
+  <span class="tok">.btn</span> {
+    border: 2px solid <span class="str">#ffffff</span>;
+  }
+
+  <span class="tok">.card</span> {
+    border-color: <span class="str">#ffffff</span>;
+  }
+}</pre>
+</div>
+
+<h3>Step 2 — Register the partial in <code>main.scss</code></h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@use <span class="str">'themes/_light-theme'</span>;
+@use <span class="str">'themes/_dark-theme'</span>;
+@use <span class="str">'themes/_high-contrast-theme'</span>;  <span class="com">&lt;-- new theme --&gt;</span></pre>
+</div>
+
+<h3>Step 3 — Use it in markup</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">body</span> class=<span class="str">"theme--high-contrast"</span>&gt;
+  <span class="com">&lt;!-- page content --&gt;</span>
+&lt;/<span class="tag">body</span>&gt;</pre>
+</div>
+
+<h3>Best practices for new themes</h3>
+<ol>
+    <li><strong>Always scope to a top-level class.</strong> Themes should never leak into other parts of the page.</li>
+    <li><strong>Add the partial last.</strong> The cascade depends on themes being last in <code>main.scss</code>.</li>
+    <li><strong>Override variables when possible, not selectors.</strong> A <code>body.theme--dark { color: ... }</code> is less maintainable than introducing a <code>--theme-text</code> custom property.</li>
+    <li><strong>Reuse the existing color tokens.</strong> Reach for <code>$color-dark</code>, <code>$color-light</code>, <code>$color-info</code>, etc., rather than introducing new colors.</li>
+</ol>
+
+<h2>4. Theme Switching with JavaScript</h2>
+<p>Trueno CSS does not ship a theme switcher. Toggle the <code>.theme--dark</code> class with vanilla JavaScript:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>js</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>const root = document.documentElement;
+
+document.getElementById('themeToggle').addEventListener('click', () =&gt; {
+  root.classList.toggle('theme--dark');
+  localStorage.setItem(
+    'theme',
+    root.classList.contains('theme--dark') ? 'dark' : 'light'
+  );
+});
+
+<span class="com">// Restore the saved theme on load</span>
+if (localStorage.getItem('theme') === 'dark') {
+  root.classList.add('theme--dark');
+}</pre>
+</div>
+<div class="docs-callout docs-callout--tip">
+    <span class="docs-callout__icon">💡</span>
+    <p>
+        For more advanced theme systems (e.g., <code>prefers-color-scheme</code> auto-switch, multiple
+        themes), prefer driving the class change with JavaScript and persist the choice to
+        <code>localStorage</code> or a cookie.
+    </p>
+</div>
+
+<h2>5. CSS Custom Properties — A More Flexible Pattern</h2>
+<p>
+    The current dark theme uses Sass variables scoped to a class. A more powerful pattern is to expose
+    your theme tokens as <strong>CSS custom properties</strong> so the same value can be used inside
+    and outside of theme classes.
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.theme--dark</span> {
+  --theme-background: <span class="str">#343a40</span>;
+  --theme-text: <span class="str">#f8f9fa</span>;
+  --theme-link: <span class="str">#17a2b8</span>;
+}</pre>
+</div>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// in any component</span>
+<span class="tok">.card</span> {
+  background-color: var(--theme-background, $color-white);
+  color: var(--theme-text, $text-color-base);
+}</pre>
+</div>
+<p>
+    This pattern lets you swap themes at runtime without recompiling Sass, and it composes well with
+    system preferences (<code>@media (prefers-color-scheme: dark)</code>).
+</p>
+<p>
+    The Trueno CSS dark theme ships with the <strong>class-scoped</strong> approach for simplicity, but
+    every component already uses Sass variables — adopting CSS custom properties is a drop-in change
+    whenever you need it.
+</p>
+
+                    <nav class="docs-pager" aria-label="Continue reading">
+                        <a href="utilities.html">
+                            <span class="dir">Previous</span>
+                            <span class="name">← Utilities</span>
+                        </a>
+                        <a href="vendors.html" class="docs-pager--right">
+                            <span class="dir">Next up</span>
+                            <span class="name">Vendors →</span>
+                        </a>
+                    </nav>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <footer class="docs-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5 mb-lg">
+                    <p class="docs-footer__logo">⚡ Trueno CSS</p>
+                    <p class="docs-footer__text">
+                        A modern, responsive, and highly customizable CSS framework — built with Sass,
+                        following best practices. MIT licensed.
+                    </p>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Docs</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="architecture.html">Architecture</a></li>
+                        <li><a href="components.html">Components</a></li>
+                        <li><a href="utilities.html">Utilities</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Resources</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="../examples/index.html">Main site</a></li>
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/releases" rel="noopener">Releases</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-lg">
+                    <p class="docs-footer__heading">Community</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/issues" rel="noopener">Report a bug</a></li>
+                        <li><a href="contributing.html">Contributing</a></li>
+                        <li><a href="https://github.com/tobassum786" rel="noopener">The team</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="docs-footer__bottom u-text-center">
+                © 2026 Trueno CSS · Built with
+                <a href="../examples/index.html" rel="noopener">Trueno CSS</a> by Tobassum Munir
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

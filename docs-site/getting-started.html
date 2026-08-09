@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Getting started with Trueno CSS — installation, build workflow, and basic usage.">
+    <title>Getting Started — Trueno CSS Docs</title>
+
+    <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body>
+
+    <header class="docs-header" id="siteHeader">
+        <div class="container">
+            <div class="docs-header__logo">
+                <a href="index.html">
+                    <span class="logo-mark" aria-hidden="true">⚡</span>
+                    <span>Trueno CSS</span>
+                </a>
+            </div>
+
+            <nav class="docs-nav" aria-label="Primary navigation">
+                <ul class="docs-nav__list" id="navList">
+                    <li class="docs-nav__item"><a href="index.html" class="docs-nav__link--active">Docs</a></li>
+                    <li class="docs-nav__item"><a href="../examples/index.html">Home</a></li>
+                    <li class="docs-nav__item"><a href="https://github.com/tobassum786/Trueno_CSS_framework">GitHub</a></li>
+                </ul>
+
+                <div class="docs-nav__cta">
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                        <span id="themeIcon" aria-hidden="true">🌙</span>
+                    </button>
+                    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navList">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M4 7h16M4 12h16M4 17h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="docs-hero" aria-labelledby="page-title">
+        <div class="container">
+            <span class="docs-hero__badge">🚀 Getting Started</span>
+            <h1 class="docs-hero__title" id="page-title">Getting Started</h1>
+            <p class="docs-hero__lead">
+                This guide walks you through installing Trueno CSS, building the framework from source,
+                and integrating it into your project.
+            </p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="docs-body">
+
+            <aside class="docs-sidebar" id="docsSidebar">
+                <button class="docs-sidebar-toggle" id="sidebarToggle" type="button">☰ Table of contents</button>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🚀 Getting Started</p>
+                    <ul>
+                        <li><a class="sidebar-block__link sidebar-active" href="getting-started.html">Getting Started</a></li>
+                        <li><a class="sidebar-block__link" href="architecture.html">Architecture</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🎨 Design System</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="abstract.html">Abstract Layer</a></li>
+                        <li><a class="sidebar-block__link" href="customization.html">Customization &amp; Tokens</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🧱 Framework Layers</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="base.html">Base Styles</a></li>
+                        <li><a class="sidebar-block__link" href="layout.html">Layout</a></li>
+                        <li><a class="sidebar-block__link" href="components.html">Components</a></li>
+                        <li><a class="sidebar-block__link" href="utilities.html">Utilities</a></li>
+                        <li><a class="sidebar-block__link" href="themes.html">Themes</a></li>
+                        <li><a class="sidebar-block__link" href="vendors.html">Vendors</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🤝 Community</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="contributing.html">Contributing</a></li>
+                        <li><a class="sidebar-block__link" href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="docs-content">
+                <article class="docs-page">
+
+                    <h1>Getting Started</h1>
+                    <p class="docs-subtitle">
+                        Install Trueno CSS, build the framework from source, and drop it into your project —
+                        from zero to styled in minutes.
+                    </p>
+
+                    <h2>Prerequisites</h2>
+                    <p>
+                        Trueno CSS is built with <strong>Sass</strong>, so you need a working Node.js
+                        environment to compile the source.
+                    </p>
+                    <table class="docs-table">
+                        <thead>
+                            <tr><th>Tool</th><th>Minimum Version</th><th>Notes</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Node.js</td><td>14.x or newer</td><td>Required for npm scripts</td></tr>
+                            <tr><td>npm</td><td>6.x or newer</td><td>Ships with Node.js</td></tr>
+                            <tr><td>Sass</td><td>1.77.0+</td><td>Installed automatically as a devDependency</td></tr>
+                        </tbody>
+                    </table>
+                    <p>No JavaScript runtime is required — Trueno CSS compiles to pure CSS.</p>
+
+                    <h2>1. Installation</h2>
+                    <p>
+                        Clone the repository (recommended for contributing or customizing the source):
+                    </p>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre>git clone https://github.com/tobassum786/Trueno_CSS_framework.git
+cd Trueno_CSS_framework</pre>
+                    </div>
+                    <p>Install the dependencies:</p>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre>npm install</pre>
+                    </div>
+                    <p>
+                        This installs <strong>sass</strong> (the compiler) and the small set of watcher
+                        dependencies declared in <code>package.json</code>.
+                    </p>
+
+                    <h2>2. Build the Framework</h2>
+                    <p>The build pipeline is fully driven by <code>package.json</code> scripts.</p>
+                    <table class="docs-table">
+                        <thead>
+                            <tr><th>Script</th><th>Command</th><th>Description</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>npm run clean</code></td><td><code>rm -rf dist/*</code></td><td>Wipe the previous build</td></tr>
+                            <tr><td><code>npm run sass:compile</code></td><td><code>sass src/main.scss:dist/trueno-css-framework.css --style expanded --no-source-map</code></td><td>Generate the expanded CSS</td></tr>
+                            <tr><td><code>npm run sass:minify</code></td><td><code>sass src/main.scss:dist/trueno-css-framework.min.css --style compressed --no-source-map</code></td><td>Generate the minified CSS</td></tr>
+                            <tr><td><code>npm run build</code></td><td><code>npm run clean &amp;&amp; npm run sass:compile &amp;&amp; npm run sass:minify</code></td><td>Run the full production build</td></tr>
+                            <tr><td><code>npm run dev</code></td><td><code>sass --watch src/main.scss:dist/trueno-css-framework.css --style expanded --no-source-map</code></td><td>Recompile on every save</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Production build</h3>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre>npm run build</pre>
+                    </div>
+                    <p>After running, the <code>dist/</code> folder will contain:</p>
+                    <ul>
+                        <li><code>trueno-css-framework.css</code> — expanded, human-readable CSS for development.</li>
+                        <li><code>trueno-css-framework.min.css</code> — minified CSS for production.</li>
+                    </ul>
+
+                    <h3>Watch mode (development)</h3>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre>npm run dev</pre>
+                    </div>
+                    <p>
+                        Sass watches <code>src/main.scss</code> and every partial it imports. On every save,
+                        the expanded CSS is regenerated automatically.
+                    </p>
+
+                    <h2>3. Use the Compiled CSS</h2>
+                    <p>Link the stylesheet in your HTML:</p>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre>&lt;!DOCTYPE html&gt;
+&lt;<span class="tag">html</span> lang=<span class="str">"en"</span>&gt;
+&lt;<span class="tag">head</span>&gt;
+    &lt;<span class="tag">meta</span> charset=<span class="str">"UTF-8"</span>&gt;
+    &lt;<span class="tag">meta</span> name=<span class="str">"viewport"</span> content=<span class="str">"width=device-width, initial-scale=1.0"</span>&gt;
+    &lt;<span class="tag">title</span>&gt;My Trueno Project&lt;/<span class="tag">title</span>&gt;
+    &lt;<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"path/to/trueno-css-framework.min.css"</span>&gt;
+&lt;/<span class="tag">head</span>&gt;
+&lt;<span class="tag">body</span>&gt;
+    &lt;<span class="tag">div</span> class=<span class="str">"container"</span>&gt;
+        &lt;<span class="tag">h1</span> class=<span class="str">"u-text-center"</span>&gt;Hello, Trueno!&lt;/<span class="tag">h1</span>&gt;
+        &lt;<span class="tag">button</span> class=<span class="str">"btn btn--primary"</span>&gt;Get Started&lt;/<span class="tag">button</span>&gt;
+    &lt;/<span class="tag">div</span>&gt;
+&lt;/<span class="tag">body</span>&gt;
+&lt;/<span class="tag">html</span>&gt;</pre>
+                    </div>
+
+                    <div class="docs-callout docs-callout--warning">
+                        <span class="docs-callout__icon">⚠️</span>
+                        <p>The compiled CSS file has no JavaScript dependencies. Trueno CSS is CSS-only.</p>
+                    </div>
+
+                    <h2>4. Use the Sass Source Directly</h2>
+                    <p>
+                        For full control, <code>@use</code> the framework's Sass source from your own
+                        stylesheet:
+                    </p>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre><span class="com">// your-app.scss</span>
+@use <span class="str">'trueno/src/main'</span>;</pre>
+                    </div>
+                    <p>Or import only the partials you need:</p>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre><span class="com">// your-app.scss</span>
+@use <span class="str">'trueno/src/abstract/variables'</span> as *;
+@use <span class="str">'trueno/src/abstract/mixins'</span> as *;
+@use <span class="str">'trueno/src/base/typography'</span>;
+@use <span class="str">'trueno/src/components/button'</span>;</pre>
+                    </div>
+                    <div class="docs-callout docs-callout--tip">
+                        <span class="docs-callout__icon">💡</span>
+                        <p>
+                            When consuming partials individually, remember to load <code>vendors</code>,
+                            <code>base</code>, <code>layout</code>, and <code>themes</code> first —
+                            components and utilities depend on the variables and mixins from
+                            <code>abstract/</code>.
+                        </p>
+                    </div>
+
+                    <h2 id="basic-example">5. Basic Example</h2>
+                    <p>A complete starter page using the major Trueno CSS primitives:</p>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre>&lt;!DOCTYPE html&gt;
+&lt;<span class="tag">html</span> lang=<span class="str">"en"</span>&gt;
+&lt;<span class="tag">head</span>&gt;
+    &lt;<span class="tag">meta</span> charset=<span class="str">"UTF-8"</span>&gt;
+    &lt;<span class="tag">meta</span> name=<span class="str">"viewport"</span> content=<span class="str">"width=device-width, initial-scale=1.0"</span>&gt;
+    &lt;<span class="tag">title</span>&gt;Trueno CSS — Demo&lt;/<span class="tag">title</span>&gt;
+    &lt;<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"trueno-css-framework.min.css"</span>&gt;
+&lt;/<span class="tag">head</span>&gt;
+&lt;<span class="tag">body</span>&gt;
+
+    &lt;<span class="tag">header</span> class=<span class="str">"main-header"</span>&gt;
+        &lt;<span class="tag">div</span> class=<span class="str">"container"</span>&gt;
+            &lt;<span class="tag">div</span> class=<span class="str">"main-header__logo"</span>&gt;
+                &lt;<span class="tag">a</span> href=<span class="str">"#"</span>&gt;⚡ Trueno&lt;/<span class="tag">a</span>&gt;
+            &lt;/<span class="tag">div</span>&gt;
+            &lt;<span class="tag">nav</span> class=<span class="str">"main-nav"</span>&gt;
+                &lt;<span class="tag">ul</span> class=<span class="str">"main-nav__list"</span>&gt;
+                    &lt;<span class="tag">li</span> class=<span class="str">"main-nav__item"</span>&gt;&lt;<span class="tag">a</span> href=<span class="str">"#"</span>&gt;Home&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+                    &lt;<span class="tag">li</span> class=<span class="str">"main-nav__item"</span>&gt;&lt;<span class="tag">a</span> href=<span class="str">"#"</span>&gt;Docs&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+                    &lt;<span class="tag">li</span> class=<span class="str">"main-nav__item"</span>&gt;&lt;<span class="tag">a</span> href=<span class="str">"#"</span>&gt;About&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+                &lt;/<span class="tag">ul</span>&gt;
+            &lt;/<span class="tag">nav</span>&gt;
+        &lt;/<span class="tag">div</span>&gt;
+    &lt;/<span class="tag">header</span>&gt;
+
+    &lt;<span class="tag">main</span> class=<span class="str">"container py-xl"</span>&gt;
+        &lt;<span class="tag">h1</span> class=<span class="str">"u-text-center"</span>&gt;Welcome to Trueno CSS&lt;/<span class="tag">h1</span>&gt;
+        &lt;<span class="tag">div</span> class=<span class="str">"row mt-lg"</span>&gt;
+            &lt;<span class="tag">div</span> class=<span class="str">"col-12 col-md-6 mb-md"</span>&gt;
+                &lt;<span class="tag">div</span> class=<span class="str">"card"</span>&gt;
+                    &lt;<span class="tag">div</span> class=<span class="str">"card__body"</span>&gt;
+                        &lt;<span class="tag">h2</span> class=<span class="str">"card__title"</span>&gt;Modular&lt;/<span class="tag">h2</span>&gt;
+                        &lt;<span class="tag">button</span> class=<span class="str">"btn btn--primary"</span>&gt;Learn more&lt;/<span class="tag">button</span>&gt;
+                    &lt;/<span class="tag">div</span>&gt;
+                &lt;/<span class="tag">div</span>&gt;
+            &lt;/<span class="tag">div</span>&gt;
+        &lt;/<span class="tag">div</span>&gt;
+    &lt;/<span class="tag">main</span>&gt;
+
+&lt;/<span class="tag">body</span>&gt;
+&lt;/<span class="tag">html</span>&gt;</pre>
+                    </div>
+
+                    <h2>6. Browser Support</h2>
+                    <p>Trueno CSS targets the two latest versions of every major browser:</p>
+                    <table class="docs-table">
+                        <thead>
+                            <tr><th>Browser</th><th>Desktop</th><th>Mobile</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Chrome</td><td>✅</td><td>✅</td></tr>
+                            <tr><td>Firefox</td><td>✅</td><td>✅</td></tr>
+                            <tr><td>Safari</td><td>✅</td><td>✅</td></tr>
+                            <tr><td>Edge</td><td>✅</td><td>—</td></tr>
+                            <tr><td>iOS Safari</td><td>—</td><td>✅</td></tr>
+                            <tr><td>Android Chrome</td><td>—</td><td>✅</td></tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        The framework uses modern CSS (CSS Grid, Flexbox, custom properties) — Internet
+                        Explorer is <strong>not</strong> supported.
+                    </p>
+
+                    <h2>7. Project Layout (Top Level)</h2>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>tree</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre>Trueno_CSS_framework/
+├── dist/                  <span class="com"># Compiled output</span>
+├── docs/                  <span class="com"># This documentation</span>
+├── examples/              <span class="com"># Example projects</span>
+├── src/                   <span class="com"># Sass source (7-1 architecture)</span>
+│   ├── abstract/
+│   ├── base/
+│   ├── components/
+│   ├── layout/
+│   ├── themes/
+│   ├── utilities/
+│   ├── vendors/
+│   └── main.scss
+├── package.json
+├── README.md
+└── Home.png / Logo.png    <span class="com"># Brand assets</span></pre>
+                    </div>
+                    <p>
+                        For a deep dive into the source layout, see
+                        <a href="architecture.html">Architecture</a>.
+                    </p>
+
+                    <h2>8. Next Steps</h2>
+                    <ul>
+                        <li>Read <a href="architecture.html">Architecture</a> to understand the 7-1 folder structure.</li>
+                        <li>Explore the <a href="abstract.html">Abstract layer</a> to learn the design tokens.</li>
+                        <li>Browse <a href="components.html">Components</a>, <a href="layout.html">Layout</a>, and <a href="utilities.html">Utilities</a> for the consumable surface.</li>
+                        <li>Customize the framework through <a href="customization.html">Customization &amp; Design Tokens</a>.</li>
+                    </ul>
+
+                    <nav class="docs-pager" aria-label="Continue reading">
+                        <a href="index.html">
+                            <span class="dir">Previous</span>
+                            <span class="name">← Documentation Index</span>
+                        </a>
+                        <a href="architecture.html" class="docs-pager--right">
+                            <span class="dir">Next up</span>
+                            <span class="name">Architecture →</span>
+                        </a>
+                    </nav>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <footer class="docs-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5 mb-lg">
+                    <p class="docs-footer__logo">⚡ Trueno CSS</p>
+                    <p class="docs-footer__text">
+                        A modern, responsive, and highly customizable CSS framework — built with Sass,
+                        following best practices. MIT licensed.
+                    </p>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Docs</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="architecture.html">Architecture</a></li>
+                        <li><a href="components.html">Components</a></li>
+                        <li><a href="utilities.html">Utilities</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Resources</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="../examples/index.html">Main site</a></li>
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/releases" rel="noopener">Releases</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-lg">
+                    <p class="docs-footer__heading">Community</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/issues" rel="noopener">Report a bug</a></li>
+                        <li><a href="contributing.html">Contributing</a></li>
+                        <li><a href="https://github.com/tobassum786" rel="noopener">The team</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="docs-footer__bottom u-text-center">
+                © 2026 Trueno CSS · Built with
+                <a href="../examples/index.html" rel="noopener">Trueno CSS</a> by Tobassum Munir
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

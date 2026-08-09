@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trueno CSS layout layer — the 12-column flexbox grid and the default site header.">
+    <title>Layout — Trueno CSS Docs</title>
+
+    <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body>
+
+    <header class="docs-header" id="siteHeader">
+        <div class="container">
+            <div class="docs-header__logo">
+                <a href="index.html">
+                    <span class="logo-mark" aria-hidden="true">⚡</span>
+                    <span>Trueno CSS</span>
+                </a>
+            </div>
+
+            <nav class="docs-nav" aria-label="Primary navigation">
+                <ul class="docs-nav__list" id="navList">
+                    <li class="docs-nav__item"><a href="index.html" class="docs-nav__link--active">Docs</a></li>
+                    <li class="docs-nav__item"><a href="../examples/index.html">Home</a></li>
+                    <li class="docs-nav__item"><a href="https://github.com/tobassum786/Trueno_CSS_framework">GitHub</a></li>
+                </ul>
+
+                <div class="docs-nav__cta">
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                        <span id="themeIcon" aria-hidden="true">🌙</span>
+                    </button>
+                    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navList">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M4 7h16M4 12h16M4 17h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="docs-hero" aria-labelledby="page-title">
+        <div class="container">
+            <span class="docs-hero__badge">📐 Layout</span>
+            <h1 class="docs-hero__title" id="page-title">Layout</h1>
+            <p class="docs-hero__lead">The layout layer provides page-level structural primitives: a flexible 12-column grid, a fixed-width container, and the default site header.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="docs-body">
+
+            <aside class="docs-sidebar" id="docsSidebar">
+                <button class="docs-sidebar-toggle" id="sidebarToggle" type="button">☰ Table of contents</button>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🚀 Getting Started</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="getting-started.html">Getting Started</a></li>
+                        <li><a class="sidebar-block__link" href="architecture.html">Architecture</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🎨 Design System</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="abstract.html">Abstract Layer</a></li>
+                        <li><a class="sidebar-block__link" href="customization.html">Customization &amp; Tokens</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🧱 Framework Layers</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="base.html">Base Styles</a></li>
+                        <li><a class="sidebar-block__link sidebar-active" href="layout.html">Layout</a></li>
+                        <li><a class="sidebar-block__link" href="components.html">Components</a></li>
+                        <li><a class="sidebar-block__link" href="utilities.html">Utilities</a></li>
+                        <li><a class="sidebar-block__link" href="themes.html">Themes</a></li>
+                        <li><a class="sidebar-block__link" href="vendors.html">Vendors</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🤝 Community</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="contributing.html">Contributing</a></li>
+                        <li><a class="sidebar-block__link" href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="docs-content">
+                <article class="docs-page">
+                    <h1>Layout</h1>
+<p class="docs-subtitle">
+    The <strong>layout layer</strong> provides page-level structural primitives: a flexible 12-column
+    grid, a fixed-width container, and the default site header. Source: <code>src/layout/</code>
+</p>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>tree</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>layout/
+├── _grid.scss
+└── _header.scss</pre>
+</div>
+
+<h2>1. <code>_grid.scss</code></h2>
+<p>
+    A 12-column responsive grid built with <strong>Flexbox</strong>. The grid is mobile-first — every
+    column class is full-width by default and you opt-in to spans at larger breakpoints.
+</p>
+
+<h3>Container</h3>
+<p><code>.container</code> is a centered, max-width wrapper.</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>css</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.container</span> {
+  max-width: 1200px; <span class="com">/* $breakpoint-xl */</span>
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;  <span class="com">/* $spacing-md */</span>
+  padding-right: 1rem; <span class="com">/* $spacing-md */</span>
+}</pre>
+</div>
+<p>Usage:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">div</span> class=<span class="str">"container"</span>&gt;
+  <span class="com">&lt;!-- page content --&gt;</span>
+&lt;/<span class="tag">div</span>&gt;</pre>
+</div>
+
+<h3>Rows and columns</h3>
+<ul>
+    <li><code>.row</code> is a horizontal flex container that wraps. It uses negative margins to align with column padding.</li>
+    <li><code>.col</code> is an auto-sizing column (<code>flex-grow: 1</code>).</li>
+    <li><code>.col-{n}</code> is a fixed column that takes <code>n</code> of 12 tracks.</li>
+    <li><code>.col-{breakpoint}-{n}</code> applies the span <strong>at that breakpoint and up</strong>.</li>
+</ul>
+
+<h3>Generated column classes</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Breakpoint</th><th>Min-width</th><th>Generated classes</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>(none)</td><td>0px</td><td><code>.col-1</code> through <code>.col-12</code></td></tr>
+        <tr><td><code>sm</code></td><td>576px</td><td><code>.col-sm-1</code> through <code>.col-sm-12</code></td></tr>
+        <tr><td><code>md</code></td><td>768px</td><td><code>.col-md-1</code> through <code>.col-md-12</code></td></tr>
+        <tr><td><code>lg</code></td><td>992px</td><td><code>.col-lg-1</code> through <code>.col-lg-12</code></td></tr>
+        <tr><td><code>xl</code></td><td>1200px</td><td><code>.col-xl-1</code> through <code>.col-xl-12</code></td></tr>
+    </tbody>
+</table>
+<p>
+    Each column uses <code>flex: 0 0 calc(100% / 12 * n)</code> and the same <code>max-width</code>,
+    so columns sit on a single line until the row wraps.
+</p>
+
+<h3>Live example</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Grid · rows and columns</p>
+    <div class="row">
+        <div class="col-12 col-md-4 mb-sm"><div class="grid-chip c-blue">.col-12 .col-md-4</div></div>
+        <div class="col-12 col-md-4 mb-sm"><div class="grid-chip c-indigo">.col-12 .col-md-4</div></div>
+        <div class="col-12 col-md-4 mb-sm"><div class="grid-chip c-violet">.col-12 .col-md-4</div></div>
+    </div>
+    <p class="docs-demo__label">Auto-layout columns</p>
+    <div class="row">
+        <div class="col mr-sm"><div class="grid-chip c-green">.col</div></div>
+        <div class="col-6 mr-sm"><div class="grid-chip c-amber">.col-6</div></div>
+        <div class="col"><div class="grid-chip c-rose">.col</div></div>
+    </div>
+</div>
+
+<h3>Example markup</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">div</span> class=<span class="str">"container"</span>&gt;
+  &lt;<span class="tag">div</span> class=<span class="str">"row"</span>&gt;
+    &lt;<span class="tag">div</span> class=<span class="str">"col-12 col-md-6 col-lg-4"</span>&gt;
+      <span class="com">&lt;!-- Full width on small, half on md, one-third on lg --&gt;</span>
+    &lt;/<span class="tag">div</span>&gt;
+    &lt;<span class="tag">div</span> class=<span class="str">"col-12 col-md-6 col-lg-8"</span>&gt;
+      <span class="com">&lt;!-- Full width on small, half on md, two-thirds on lg --&gt;</span>
+    &lt;/<span class="tag">div</span>&gt;
+  &lt;/<span class="tag">div</span>&gt;
+&lt;/<span class="tag">div</span>&gt;</pre>
+</div>
+
+<h3>Gutters</h3>
+<p>
+    The default horizontal gutter is <code>$spacing-sm</code> (0.5rem / 8px) on each side of every
+    column. The row's negative margin compensates for the first and last column, so content lines up
+    with the container edges.
+</p>
+<p>To change gutters, override the padding in your own stylesheet:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>css</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.row</span> { margin-left: -1rem; margin-right: -1rem; }
+<span class="tok">.row</span> &gt; [class*="col-"] { padding-left: 1rem; padding-right: 1rem; }</pre>
+</div>
+
+<h3>Nesting</h3>
+<p>You can nest a <code>.row</code> inside any column to create complex layouts:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">div</span> class=<span class="str">"row"</span>&gt;
+  &lt;<span class="tag">div</span> class=<span class="str">"col-md-6"</span>&gt;
+    &lt;<span class="tag">div</span> class=<span class="str">"row"</span>&gt;
+      &lt;<span class="tag">div</span> class=<span class="str">"col-6"</span>&gt;Nested 1&lt;/<span class="tag">div</span>&gt;
+      &lt;<span class="tag">div</span> class=<span class="str">"col-6"</span>&gt;Nested 2&lt;/<span class="tag">div</span>&gt;
+    &lt;/<span class="tag">div</span>&gt;
+  &lt;/<span class="tag">div</span>&gt;
+  &lt;<span class="tag">div</span> class=<span class="str">"col-md-6"</span>&gt;
+    Main column
+  &lt;/<span class="tag">div</span>&gt;
+&lt;/<span class="tag">div</span>&gt;</pre>
+</div>
+
+<h3>Code reference</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.container</span> {
+  max-width: $breakpoint-xl;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
+}
+
+<span class="tok">.row</span> {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$spacing-sm;
+  margin-right: -$spacing-sm;
+}
+
+<span class="tok">.col</span> {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  padding-left: $spacing-sm;
+  padding-right: $spacing-sm;
+}
+
+@for $i from 1 through 12 {
+  <span class="tok">.col-#{$i}</span> {
+    flex: 0 0 calc(100% / 12 * #{$i});
+    max-width: calc(100% / 12 * #{$i});
+  }
+}
+
+@include media-sm { @for $i from 1 through 12 { <span class="tok">.col-sm-#{$i}</span> { ... } } }
+@include media-md { @for $i from 1 through 12 { <span class="tok">.col-md-#{$i}</span> { ... } } }
+@include media-lg { @for $i from 1 through 12 { <span class="tok">.col-lg-#{$i}</span> { ... } } }
+@include media-xl { @for $i from 1 through 12 { <span class="tok">.col-xl-#{$i}</span> { ... } } }</pre>
+</div>
+
+<h2>2. <code>_header.scss</code></h2>
+<p>
+    The default site header pattern. Use it as-is for a quick branded top bar, or extend the classes
+    for a more complex navigation.
+</p>
+
+<h3>Block structure</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>structure</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>.main-header
+├── .main-header__logo
+│   └── a
+└── nav.main-nav
+    └── .main-nav__list
+        └── .main-nav__item
+            └── a</pre>
+</div>
+
+<h3>Class reference</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Class</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>.main-header</code></td><td>Dark background, white text, vertical padding, bottom border.</td></tr>
+        <tr><td><code>.main-header .container</code></td><td>Flex container that aligns logo and nav with <code>space-between</code>.</td></tr>
+        <tr><td><code>.main-header__logo</code></td><td>Heading font, large size, bold.</td></tr>
+        <tr><td><code>.main-header__logo a</code></td><td>White link, no underline, primary color on hover.</td></tr>
+        <tr><td><code>.main-nav__list</code></td><td>Flex list (no default <code>&lt;ul&gt;</code> styling, thanks to <code>%list-reset</code>).</td></tr>
+        <tr><td><code>.main-nav__item</code></td><td>Spacing between items via <code>margin-left</code>.</td></tr>
+        <tr><td><code>.main-nav__item a</code></td><td>Light gray link, primary color on hover.</td></tr>
+    </tbody>
+</table>
+
+<h3>Live example</h3>
+<div class="docs-demo">
+    <div class="main-header" style="border-radius:12px; padding:0;">
+        <div class="container" style="padding:16px;">
+            <div class="main-header__logo"><a href="#" style="color:#fff;">⚡ Trueno</a></div>
+            <nav class="main-nav">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item"><a href="#" style="color:#cbd5e1;">Home</a></li>
+                    <li class="main-nav__item"><a href="#" style="color:#cbd5e1;">Docs</a></li>
+                    <li class="main-nav__item"><a href="#" style="color:#cbd5e1;">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<h3>Example markup</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">header</span> class=<span class="str">"main-header"</span>&gt;
+  &lt;<span class="tag">div</span> class=<span class="str">"container"</span>&gt;
+    &lt;<span class="tag">div</span> class=<span class="str">"main-header__logo"</span>&gt;
+      &lt;<span class="tag">a</span> href=<span class="str">"/"</span>&gt;⚡ Trueno&lt;/<span class="tag">a</span>&gt;
+    &lt;/<span class="tag">div</span>&gt;
+    &lt;<span class="tag">nav</span> class=<span class="str">"main-nav"</span>&gt;
+      &lt;<span class="tag">ul</span> class=<span class="str">"main-nav__list"</span>&gt;
+        &lt;<span class="tag">li</span> class=<span class="str">"main-nav__item"</span>&gt;&lt;<span class="tag">a</span> href=<span class="str">"/"</span>&gt;Home&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+        &lt;<span class="tag">li</span> class=<span class="str">"main-nav__item"</span>&gt;&lt;<span class="tag">a</span> href=<span class="str">"/docs"</span>&gt;Docs&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+        &lt;<span class="tag">li</span> class=<span class="str">"main-nav__item"</span>&gt;&lt;<span class="tag">a</span> href=<span class="str">"/about"</span>&gt;About&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+      &lt;/<span class="tag">ul</span>&gt;
+    &lt;/<span class="tag">nav</span>&gt;
+  &lt;/<span class="tag">div</span>&gt;
+&lt;/<span class="tag">header</span>&gt;</pre>
+</div>
+
+<h3>Code reference</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.main-header</span> {
+  background-color: $color-dark;
+  color: $color-white;
+  padding: $spacing-md 0;
+  border-bottom: $border-width-base solid color.adjust($color-dark, $lightness: 10%);
+
+  <span class="tok">.container</span> {
+    @include flex-align(center);
+    justify-content: space-between;
+  }
+}
+
+<span class="tok">.main-header__logo</span> {
+  font-family: $font-family-heading;
+  font-size: $h3-font-size;
+  font-weight: bold;
+
+  <span class="tok">a</span> {
+    color: $color-white;
+    text-decoration: none;
+
+    &amp;:hover {
+      color: $color-primary;
+      text-decoration: none;
+    }
+  }
+}
+
+<span class="tok">.main-nav__list</span> {
+  @include flex-align(center);
+}
+
+<span class="tok">.main-nav__item</span> {
+  margin-left: $spacing-lg;
+
+  <span class="tok">a</span> {
+    color: $color-light;
+    font-size: $font-size-base;
+    padding: $spacing-xs 0;
+
+    &amp;:hover {
+      color: $color-primary;
+      text-decoration: none;
+    }
+  }
+}</pre>
+</div>
+
+<h3>Theming</h3>
+<p>
+    The dark theme (<code>themes/_dark-theme.scss</code>) provides <code>.theme--dark .main-header</code>
+    overrides that lighten the background and tweak link colors. See <a href="themes.html">Themes</a> for details.
+</p>
+
+<h2>Layout Best Practices</h2>
+<ol>
+    <li><strong>Always use <code>.container</code> for page content.</strong> A naked <code>.row</code> will span the full viewport width.</li>
+    <li><strong>Combine column classes for responsive layouts.</strong> <code>.col-12 col-md-6 col-lg-4</code> is the canonical "stack on mobile, half on tablet, third on desktop" pattern.</li>
+    <li><strong>Do not add <code>display: flex</code> to <code>.row</code> in your own CSS.</strong> The grid already provides it — overriding it will break the negative-margin gutter trick.</li>
+    <li><strong>Use <code>.main-header</code> as a starting point.</strong> It is designed to be extended: add a search box, dropdowns, or a mobile menu as children.</li>
+</ol>
+
+                    <nav class="docs-pager" aria-label="Continue reading">
+                        <a href="base.html">
+                            <span class="dir">Previous</span>
+                            <span class="name">← Base Styles</span>
+                        </a>
+                        <a href="components.html" class="docs-pager--right">
+                            <span class="dir">Next up</span>
+                            <span class="name">Components →</span>
+                        </a>
+                    </nav>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <footer class="docs-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5 mb-lg">
+                    <p class="docs-footer__logo">⚡ Trueno CSS</p>
+                    <p class="docs-footer__text">
+                        A modern, responsive, and highly customizable CSS framework — built with Sass,
+                        following best practices. MIT licensed.
+                    </p>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Docs</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="architecture.html">Architecture</a></li>
+                        <li><a href="components.html">Components</a></li>
+                        <li><a href="utilities.html">Utilities</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Resources</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="../examples/index.html">Main site</a></li>
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/releases" rel="noopener">Releases</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-lg">
+                    <p class="docs-footer__heading">Community</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/issues" rel="noopener">Report a bug</a></li>
+                        <li><a href="contributing.html">Contributing</a></li>
+                        <li><a href="https://github.com/tobassum786" rel="noopener">The team</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="docs-footer__bottom u-text-center">
+                © 2026 Trueno CSS · Built with
+                <a href="../examples/index.html" rel="noopener">Trueno CSS</a> by Tobassum Munir
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

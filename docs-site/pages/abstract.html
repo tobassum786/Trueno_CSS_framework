@@ -1,0 +1,357 @@
+<h1>Abstract Layer</h1>
+<p class="docs-subtitle">
+    The Sass-only toolkit of the framework. It produces <strong>no CSS output on its own</strong> —
+    only variables, mixins, functions, and placeholders that every other layer consumes.
+    Source: <code>src/abstract/</code>
+</p>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>tree</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>abstract/
+├── _variables.scss
+├── _mixins.scss
+├── _functions.scss
+└── _placeholders.scss</pre>
+</div>
+
+<h2>1. <code>_variables.scss</code></h2>
+<p>
+    All design tokens for the framework live here. This file is the single source of truth for color,
+    typography, spacing, borders, breakpoints, and z-index scales.
+</p>
+
+<h3>Color tokens</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>$color-primary:   <span class="str">#007bff</span>;
+$color-secondary: <span class="str">#6c757d</span>;
+$color-success:   <span class="str">#28a745</span>;
+$color-danger:    <span class="str">#dc3545</span>;
+$color-warning:   <span class="str">#ffc107</span>;
+$color-info:      <span class="str">#17a2b8</span>;
+$color-light:     <span class="str">#f8f9fa</span>;
+$color-dark:      <span class="str">#343a40</span>;
+$color-white:     <span class="str">#ffffff</span>;
+$color-black:     <span class="str">#000000</span>;</pre>
+</div>
+
+<h3>Text colors</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>$text-color-base:  <span class="str">#333333</span>;
+$text-color-light:  <span class="str">#555555</span>;
+$text-color-muted:  <span class="str">#6c757d</span>;</pre>
+</div>
+
+<h3>Typography</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Variable</th><th>Default</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>$font-family-base</code></td><td><code>'Helvetica Neue', Helvetica, Arial, sans-serif</code></td><td>Body font stack</td></tr>
+        <tr><td><code>$font-family-heading</code></td><td><code>'Roboto', sans-serif</code></td><td>Headings</td></tr>
+        <tr><td><code>$font-size-base</code></td><td><code>1rem</code> (16px)</td><td>Base body size</td></tr>
+        <tr><td><code>$line-height-base</code></td><td><code>1.5</code></td><td>Body line height</td></tr>
+        <tr><td><code>$h1-font-size</code></td><td><code>2.5rem</code></td><td>h1</td></tr>
+        <tr><td><code>$h2-font-size</code></td><td><code>2rem</code></td><td>h2</td></tr>
+        <tr><td><code>$h3-font-size</code></td><td><code>1.75rem</code></td><td>h3</td></tr>
+        <tr><td><code>$h4-font-size</code></td><td><code>1.5rem</code></td><td>h4</td></tr>
+        <tr><td><code>$h5-font-size</code></td><td><code>1.25rem</code></td><td>h5</td></tr>
+        <tr><td><code>$h6-font-size</code></td><td><code>1rem</code></td><td>h6</td></tr>
+    </tbody>
+</table>
+
+<h3>Spacing scale</h3>
+<p>A single 4px unit multiplied by integer values keeps the spacing scale consistent and predictable.</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>$spacing-unit:  0.125rem; <span class="com">// 2px</span>
+$spacing-xxs:   0.125rem; <span class="com">// 2px</span>
+$spacing-xs:    0.25rem;  <span class="com">// 4px</span>
+$spacing-sm:    0.5rem;   <span class="com">// 8px</span>
+$spacing-md:    1rem;     <span class="com">// 16px</span>
+$spacing-lg:    1.5rem;   <span class="com">// 24px</span>
+$spacing-xl:    2rem;     <span class="com">// 32px</span>
+$spacing-xxl:   3rem;     <span class="com">// 48px</span></pre>
+</div>
+
+<h3>Borders</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>$border-color-base:  <span class="str">#dee2e6</span>;
+$border-radius-sm:    0.25rem;
+$border-radius-base:  0.5rem;
+$border-width-base:   1px;</pre>
+</div>
+
+<h3>Breakpoints (mobile-first)</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;</pre>
+</div>
+
+<h3>Z-index scale</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>$z-index-dropdown:        1000;
+$z-index-sticky:          1020;
+$z-index-fixed:           1030;
+$z-index-modal-backdrop:  1040;
+$z-index-modal:           1050;
+$z-index-tooltip:         1070;</pre>
+</div>
+
+<h3>Usage</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@use <span class="str">'../abstract/variables'</span> as *;
+
+<span class="tok">.my-component</span> {
+  color: $color-primary;
+  padding: $spacing-md;
+  border-radius: $border-radius-base;
+  z-index: $z-index-dropdown;
+}</pre>
+</div>
+
+<h3>Overriding variables</h3>
+<p>
+    Create a custom Sass file with the variables you want to override, then <code>@use</code> it
+    <strong>before</strong> the framework's variables:
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// your-overrides.scss</span>
+$color-primary: <span class="str">#6c5ce7</span>;
+$spacing-md: 1.5rem;</pre>
+    </div>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// your-app.scss</span>
+@use <span class="str">'your-overrides'</span> as *;
+@use <span class="str">'trueno/src/main'</span>;</pre>
+</div>
+<div class="docs-callout docs-callout--warning">
+    <span class="docs-callout__icon">⚠️</span>
+    <p>
+        With Sass modules, all <code>@use</code> calls are evaluated in the order they appear.
+        Variables defined in your override file will be available to the rest of the build.
+    </p>
+</div>
+
+<h2>2. <code>_mixins.scss</code></h2>
+<p>Reusable Sass mixins for layout, media queries, and component patterns.</p>
+
+<h3>Flexbox helpers</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@include flex-center;        <span class="com">// display:flex; justify-content:center; align-items:center;</span>
+@include flex-align($align); <span class="com">// display:flex; align-items:$align;</span>
+@include flex-justify($j);   <span class="com">// display:flex; justify-content:$j;</span></pre>
+</div>
+<p>Example:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.toolbar</span> {
+  @include flex-align(center);
+  justify-content: space-between;
+}</pre>
+</div>
+
+<h3>Media query mixins</h3>
+<p>All media query mixins are <strong>mobile-first</strong> (<code>min-width</code>).</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@include media-sm { <span class="com">/* 576px and up */</span> }
+@include media-md { <span class="com">/* 768px and up */</span> }
+@include media-lg { <span class="com">/* 992px and up */</span> }
+@include media-xl { <span class="com">/* 1200px and up */</span> }</pre>
+</div>
+<p>Example:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.title</span> {
+  font-size: 1.25rem;
+
+  @include media-md {
+    font-size: 1.5rem;
+  }
+
+  @include media-lg {
+    font-size: 2rem;
+  }
+}</pre>
+</div>
+
+<h3><code>button-base</code></h3>
+<p>The internal mixin that every <code>.btn</code> variant extends.</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@include button-base;</pre>
+</div>
+<p>Provides: inline-flex display, vertical &amp; horizontal padding, line-height, border styling, transition, focus ring, and disabled state.</p>
+
+<h3><code>visually-hidden</code></h3>
+<p>Hides an element visually while keeping it accessible to screen readers.</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@include visually-hidden;</pre>
+</div>
+<p>Equivalent to the <code>%visually-hidden</code> placeholder — see below.</p>
+
+<h3>Usage</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@use <span class="str">'../abstract/mixins'</span> as *;
+
+<span class="tok">.hero</span> {
+  @include flex-center;
+  height: 80vh;
+
+  @include media-md {
+    height: 60vh;
+  }
+}</pre>
+</div>
+
+<h2>3. <code>_functions.scss</code></h2>
+<p>Sass functions for common transformations.</p>
+
+<h3><code>rem($pixels)</code></h3>
+<p>Convert a pixel value to a <code>rem</code> value, using the base 16px assumption.</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@function rem($pixels) {
+  @return math.div($pixels, 16px) * 1rem;
+}</pre>
+</div>
+<p>Example:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.large-text</span> {
+  font-size: rem(24px); <span class="com">// 1.5rem</span>
+}</pre>
+</div>
+
+<h3><code>get-color($color-name)</code></h3>
+<p>
+    Look up a color by name from a <code>$colors</code> map. The function throws a clear error if
+    the name does not exist.
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@function get-color($color-name) {
+  @if map-has-key($colors, $color-name) {
+    @return map-get($colors, $color-name);
+  } @else {
+    @error <span class="str">"Color '#{$color-name}' not found in $colors map."</span>;
+  }
+}</pre>
+</div>
+<div class="docs-callout docs-callout--info">
+    <span class="docs-callout__icon">ℹ️</span>
+    <p>
+        The current variables file uses direct variables (<code>$color-primary</code>, etc.) rather
+        than a <code>$colors</code> map. The function is provided so you can adopt a map-based
+        palette by simply defining <code>$colors</code>.
+    </p>
+</div>
+<p>Usage:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@use '../abstract/functions' as *;
+
+<span class="tok">.label</span> {
+  font-size: rem(14px);
+  color: get-color(primary);
+}</pre>
+</div>
+
+<h2>4. <code>_placeholders.scss</code></h2>
+<p>
+    Silent selectors (Sass placeholders) for shared visual patterns. Use <code>@extend</code> to
+    share a declaration block without duplicating CSS.
+</p>
+
+<h3><code>%visually-hidden</code></h3>
+<p>Hides an element visually while preserving accessibility.</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>%visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}</pre>
+</div>
+<p>Used by <code>.u-sr-only</code> and <code>.u-invisible</code> in <code>utilities/_helpers.scss</code>.</p>
+
+<h3><code>%list-reset</code></h3>
+<p>Strips default list styles.</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>%list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}</pre>
+</div>
+<p>Used by <code>&lt;ul&gt;</code> and <code>&lt;ol&gt;</code> in <code>base/_resets.scss</code>.</p>
+
+<h3><code>%clearfix</code></h3>
+<p>The classic clearfix pseudo-element trick for floated layouts.</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>%clearfix {
+  &amp;::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}</pre>
+</div>
+<p>Used by <code>.u-clearfix</code> in <code>utilities/_helpers.scss</code>.</p>
+
+<h3>Usage</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@use '../abstract/placeholders' as *;
+
+<span class="tok">.skip-link</span> {
+  @extend %visually-hidden;
+
+  &amp;:focus {
+    position: static !important;
+    width: auto;
+    <span class="com">// ...</span>
+  }
+}</pre>
+</div>
+
+<h2>Layer Summary</h2>
+<table class="docs-table">
+    <thead>
+        <tr><th>File</th><th>Purpose</th><th>Produces CSS?</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>_variables.scss</code></td><td>Design tokens (color, type, spacing, breakpoints)</td><td>No</td></tr>
+        <tr><td><code>_mixins.scss</code></td><td>Reusable Sass mixins (flex, media queries, button)</td><td>Indirectly (via <code>@content</code>)</td></tr>
+        <tr><td><code>_functions.scss</code></td><td><code>rem()</code> and <code>get-color()</code></td><td>No</td></tr>
+        <tr><td><code>_placeholders.scss</code></td><td><code>%visually-hidden</code>, <code>%list-reset</code>, <code>%clearfix</code></td><td>Indirectly (via <code>@extend</code>)</td></tr>
+    </tbody>
+</table>
+<p>
+    For a deep dive into how these tokens are <em>applied</em>, see the per-layer docs:
+    <a href="base.html">Base</a>, <a href="layout.html">Layout</a>,
+    <a href="components.html">Components</a>, <a href="utilities.html">Utilities</a>,
+    and <a href="themes.html">Themes</a>.
+</p>

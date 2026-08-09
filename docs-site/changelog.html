@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="All notable changes to the Trueno CSS Framework — version history, releases, and roadmap.">
+    <title>Changelog — Trueno CSS Docs</title>
+
+    <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body>
+
+    <header class="docs-header" id="siteHeader">
+        <div class="container">
+            <div class="docs-header__logo">
+                <a href="index.html">
+                    <span class="logo-mark" aria-hidden="true">⚡</span>
+                    <span>Trueno CSS</span>
+                </a>
+            </div>
+
+            <nav class="docs-nav" aria-label="Primary navigation">
+                <ul class="docs-nav__list" id="navList">
+                    <li class="docs-nav__item"><a href="index.html" class="docs-nav__link--active">Docs</a></li>
+                    <li class="docs-nav__item"><a href="../examples/index.html">Home</a></li>
+                    <li class="docs-nav__item"><a href="https://github.com/tobassum786/Trueno_CSS_framework">GitHub</a></li>
+                </ul>
+
+                <div class="docs-nav__cta">
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                        <span id="themeIcon" aria-hidden="true">🌙</span>
+                    </button>
+                    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navList">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M4 7h16M4 12h16M4 17h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="docs-hero" aria-labelledby="page-title">
+        <div class="container">
+            <span class="docs-hero__badge">📝 Changelog</span>
+            <h1 class="docs-hero__title" id="page-title">Changelog</h1>
+            <p class="docs-hero__lead">All notable changes to Trueno CSS Framework, following Keep a Changelog and Semantic Versioning.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="docs-body">
+
+            <aside class="docs-sidebar" id="docsSidebar">
+                <button class="docs-sidebar-toggle" id="sidebarToggle" type="button">☰ Table of contents</button>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🚀 Getting Started</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="getting-started.html">Getting Started</a></li>
+                        <li><a class="sidebar-block__link" href="architecture.html">Architecture</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🎨 Design System</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="abstract.html">Abstract Layer</a></li>
+                        <li><a class="sidebar-block__link" href="customization.html">Customization &amp; Tokens</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🧱 Framework Layers</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="base.html">Base Styles</a></li>
+                        <li><a class="sidebar-block__link" href="layout.html">Layout</a></li>
+                        <li><a class="sidebar-block__link" href="components.html">Components</a></li>
+                        <li><a class="sidebar-block__link" href="utilities.html">Utilities</a></li>
+                        <li><a class="sidebar-block__link" href="themes.html">Themes</a></li>
+                        <li><a class="sidebar-block__link" href="vendors.html">Vendors</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🤝 Community</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="contributing.html">Contributing</a></li>
+                        <li><a class="sidebar-block__link sidebar-active" href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="docs-content">
+                <article class="docs-page">
+                    <h1>Changelog</h1>
+<p class="docs-subtitle">
+    All notable changes to <strong>Trueno CSS Framework</strong> are documented here. The format follows
+    <a href="https://keepachangelog.com/en/1.1.0/" rel="noopener">Keep a Changelog</a>, and the project
+    adheres to <a href="https://semver.org/" rel="noopener">Semantic Versioning</a>.
+</p>
+
+<div class="changelog-version">
+    <h2>Unreleased</h2>
+    <span class="badge">Unreleased</span>
+</div>
+
+<h3>Added</h3>
+<ul>
+    <li>
+        Comprehensive per-layer documentation in <code>docs/</code>:
+        <ul>
+            <li><code>getting-started.md</code> — install, build, dev workflow</li>
+            <li><code>architecture.md</code> — 7-1 folder structure and naming conventions</li>
+            <li><code>abstract.md</code> — variables, mixins, functions, placeholders</li>
+            <li><code>base.md</code> — resets and typography</li>
+            <li><code>layout.md</code> — grid system and header</li>
+            <li><code>components.md</code> — buttons, cards, modals</li>
+            <li><code>utilities.md</code> — spacing and helpers</li>
+            <li><code>themes.md</code> — light and dark theme usage</li>
+            <li><code>customization.md</code> — design tokens, overrides, tree-shaking</li>
+            <li><code>vendors.md</code> — third-party stylesheet integration</li>
+            <li><code>contributing.md</code> — contribution guide and code standards</li>
+            <li><code>changelog.md</code> — this file</li>
+        </ul>
+    </li>
+    <li>New docs index at <code>docs/README.md</code> with reading order and quick links.</li>
+</ul>
+
+<h3>Changed</h3>
+<ul>
+    <li>Renamed <code>src/abstract/_veriables.scss</code> to <code>src/abstract/_variables.scss</code> (typo fix).</li>
+    <li>Expanded and clarified comments across all partials.</li>
+</ul>
+
+<h3>Fixed</h3>
+<ul>
+    <li><code>base/_typography.scss</code> link section now correctly notes that link styles are handled in <code>_resets.scss</code>.</li>
+    <li>Modal <code>.is-open</code> state now correctly lifts z-index to <code>$z-index-modal</code>.</li>
+</ul>
+
+<div class="changelog-version">
+    <h2>1.0.0 — Initial Release</h2>
+    <span class="badge badge--released">Released</span>
+</div>
+
+<h3>Added</h3>
+<ul>
+    <li><strong>Abstract layer</strong> — color, typography, spacing, border, breakpoint, and z-index design tokens; flexbox and media query mixins; <code>rem()</code> and <code>get-color()</code> functions; <code>visually-hidden</code>, <code>list-reset</code>, and <code>clearfix</code> placeholders.</li>
+    <li><strong>Base layer</strong> — minimal CSS reset and typography defaults for body, headings, paragraphs, and links.</li>
+    <li><strong>Layout layer</strong> — 12-column flexbox grid (<code>.container</code>, <code>.row</code>, <code>.col</code>, <code>.col-{n}</code>, <code>.col-{breakpoint}-{n}</code>) and a default <code>.main-header</code> site header pattern.</li>
+    <li>
+        <strong>Components</strong>
+        <ul>
+            <li><code>.btn</code> button system — base, primary, secondary, outline-primary, and small/large size modifiers</li>
+            <li><code>.card</code> with <code>.card__header</code>, <code>.card__body</code>, <code>.card__footer</code>, <code>.card__title</code>, <code>.card__text</code></li>
+            <li><code>.modal</code> with <code>.modal__dialog</code>, <code>.modal__header</code>, <code>.modal__title</code>, <code>.modal__close-btn</code>, <code>.modal__body</code>, <code>.modal__footer</code>, animated open state</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Utilities</strong>
+        <ul>
+            <li>Spacing scale: <code>.m-*</code>, <code>.p-*</code>, <code>.mt-*</code>, <code>.mb-*</code>, <code>.ml-*</code>, <code>.mr-*</code>, <code>.mx-*</code>, <code>.my-*</code> with <code>0</code>, <code>xxs</code>, <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>, <code>auto</code> sizes</li>
+            <li>Helpers: <code>.u-text-left/-center/-right</code>, <code>.u-d-block/-inline-block/-flex/-none</code>, <code>.u-hidden</code>, <code>.u-invisible</code>, <code>.u-sr-only</code>, <code>.u-clearfix</code>, <code>.u-float-left/-right/-none</code></li>
+        </ul>
+    </li>
+    <li>
+        <strong>Themes</strong>
+        <ul>
+            <li>Light theme (default)</li>
+            <li>Dark theme (<code>.theme--dark</code> class) with overrides for body, headings, links, header, and cards</li>
+        </ul>
+    </li>
+    <li><strong>Vendors</strong> — placeholder for Normalize.css.</li>
+    <li><strong>Build pipeline</strong> — <code>npm run build</code> for production (expanded + minified), <code>npm run dev</code> for watch mode.</li>
+    <li><strong>Examples</strong> — starter projects in <code>examples/</code>.</li>
+    <li><strong>Brand assets</strong> — <code>Logo.png</code>, <code>Logo-alt.png</code>, <code>favicon.png</code>, <code>Home.png</code>.</li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+    <li>Framework is CSS-only — no JavaScript runtime required.</li>
+    <li>Targets the two latest versions of every major desktop and mobile browser.</li>
+    <li>Follows the 7-1 architecture pattern; entry point is <code>src/main.scss</code>.</li>
+</ul>
+
+<h2>Versioning Policy</h2>
+<table class="docs-table">
+    <thead>
+        <tr><th>Bump</th><th>When</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Major</strong> (1.x → 2.x)</td><td>Breaking changes — renamed or removed classes, restructured files, dropped browser support.</td></tr>
+        <tr><td><strong>Minor</strong> (1.0 → 1.1)</td><td>New backwards-compatible features — new components, utilities, mixins, or theme tokens.</td></tr>
+        <tr><td><strong>Patch</strong> (1.0.0 → 1.0.1)</td><td>Bug fixes and small improvements that do not change the public API.</td></tr>
+    </tbody>
+</table>
+
+<h2>Roadmap</h2>
+<p>The following items are under consideration for future releases:</p>
+<ul>
+    <li><strong>Form components</strong> — input, textarea, select, checkbox, radio, validation states.</li>
+    <li><strong>Navigation components</strong> — navbar, breadcrumbs, tabs, pagination.</li>
+    <li><strong>Feedback components</strong> — alerts, toasts, tooltips, popovers.</li>
+    <li><strong>More utilities</strong> — color helpers (<code>.text-primary</code>, <code>.bg-light</code>), display helpers, sizing, position.</li>
+    <li><strong>CSS custom properties</strong> — first-class <code>:root</code> variables for runtime theming.</li>
+    <li><strong>Additional themes</strong> — high-contrast, sepia, brand-specific starter themes.</li>
+    <li><strong>Unit tests / visual regression</strong> — automated checks for the compiled output.</li>
+    <li><strong>CDN distribution</strong> — pre-built bundles via jsDelivr / unpkg.</li>
+</ul>
+<p>
+    Have a feature request? Open an issue on
+    <a href="https://github.com/tobassum786/Trueno_CSS_framework/issues" rel="noopener">GitHub</a>.
+</p>
+
+                    <nav class="docs-pager" aria-label="Continue reading">
+                        <a href="contributing.html">
+                            <span class="dir">Previous</span>
+                            <span class="name">← Contributing</span>
+                        </a>
+                        <a href="index.html" class="docs-pager--right">
+                            <span class="dir">Next up</span>
+                            <span class="name">Documentation Index →</span>
+                        </a>
+                    </nav>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <footer class="docs-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5 mb-lg">
+                    <p class="docs-footer__logo">⚡ Trueno CSS</p>
+                    <p class="docs-footer__text">
+                        A modern, responsive, and highly customizable CSS framework — built with Sass,
+                        following best practices. MIT licensed.
+                    </p>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Docs</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="architecture.html">Architecture</a></li>
+                        <li><a href="components.html">Components</a></li>
+                        <li><a href="utilities.html">Utilities</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Resources</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="../examples/index.html">Main site</a></li>
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/releases" rel="noopener">Releases</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-lg">
+                    <p class="docs-footer__heading">Community</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/issues" rel="noopener">Report a bug</a></li>
+                        <li><a href="contributing.html">Contributing</a></li>
+                        <li><a href="https://github.com/tobassum786" rel="noopener">The team</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="docs-footer__bottom u-text-center">
+                © 2026 Trueno CSS · Built with
+                <a href="../examples/index.html" rel="noopener">Trueno CSS</a> by Tobassum Munir
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

@@ -729,6 +729,17 @@ code {
     color: #fff;
 }
 
+.theme--dark .cta-band .btn--primary {
+    background: var(--demo-accent);
+    border-color: var(--demo-accent);
+    color: #fff;
+}
+
+.theme--dark .cta-band .btn--primary:hover {
+    background: #0056d2;
+    border-color: #0056d2;
+}
+
 .theme--dark .btn--outline-primary:hover {
     background: rgba(255, 255, 255, .12);
     color: #fff;

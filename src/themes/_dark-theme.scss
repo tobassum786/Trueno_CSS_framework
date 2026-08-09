@@ -24,6 +24,12 @@
     color: $color-info;
   }
 
+  .btn--primary,
+  .btn--secondary,
+  .btn--hero {
+    color: $color-white;
+  }
+
   .main-header {
     background-color: color.adjust($color-dark, $lightness: 10%);
     border-color: color.adjust($color-dark, $lightness: 20%);

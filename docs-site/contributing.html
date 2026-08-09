@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contribution guide for Trueno CSS — code standards, dev setup, and the PR process.">
+    <title>Contributing — Trueno CSS Docs</title>
+
+    <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body>
+
+    <header class="docs-header" id="siteHeader">
+        <div class="container">
+            <div class="docs-header__logo">
+                <a href="index.html">
+                    <span class="logo-mark" aria-hidden="true">⚡</span>
+                    <span>Trueno CSS</span>
+                </a>
+            </div>
+
+            <nav class="docs-nav" aria-label="Primary navigation">
+                <ul class="docs-nav__list" id="navList">
+                    <li class="docs-nav__item"><a href="index.html" class="docs-nav__link--active">Docs</a></li>
+                    <li class="docs-nav__item"><a href="../examples/index.html">Home</a></li>
+                    <li class="docs-nav__item"><a href="https://github.com/tobassum786/Trueno_CSS_framework">GitHub</a></li>
+                </ul>
+
+                <div class="docs-nav__cta">
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                        <span id="themeIcon" aria-hidden="true">🌙</span>
+                    </button>
+                    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navList">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M4 7h16M4 12h16M4 17h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="docs-hero" aria-labelledby="page-title">
+        <div class="container">
+            <span class="docs-hero__badge">🤝 Contributing</span>
+            <h1 class="docs-hero__title" id="page-title">Contributing</h1>
+            <p class="docs-hero__lead">Thank you for your interest in improving Trueno CSS! Whether you are reporting a bug, suggesting a feature, or submitting a PR, your help is appreciated.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="docs-body">
+
+            <aside class="docs-sidebar" id="docsSidebar">
+                <button class="docs-sidebar-toggle" id="sidebarToggle" type="button">☰ Table of contents</button>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🚀 Getting Started</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="getting-started.html">Getting Started</a></li>
+                        <li><a class="sidebar-block__link" href="architecture.html">Architecture</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🎨 Design System</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="abstract.html">Abstract Layer</a></li>
+                        <li><a class="sidebar-block__link" href="customization.html">Customization &amp; Tokens</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🧱 Framework Layers</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="base.html">Base Styles</a></li>
+                        <li><a class="sidebar-block__link" href="layout.html">Layout</a></li>
+                        <li><a class="sidebar-block__link" href="components.html">Components</a></li>
+                        <li><a class="sidebar-block__link" href="utilities.html">Utilities</a></li>
+                        <li><a class="sidebar-block__link" href="themes.html">Themes</a></li>
+                        <li><a class="sidebar-block__link" href="vendors.html">Vendors</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🤝 Community</p>
+                    <ul>
+                        <li><a class="sidebar-block__link sidebar-active" href="contributing.html">Contributing</a></li>
+                        <li><a class="sidebar-block__link" href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="docs-content">
+                <article class="docs-page">
+                    <h1>Contributing</h1>
+<p class="docs-subtitle">
+    Thank you for your interest in improving <strong>Trueno CSS</strong>! Whether you're reporting a
+    bug, suggesting a feature, or submitting a pull request, your help is appreciated. This guide covers
+    the workflow, code standards, and development setup for contributing to the framework.
+</p>
+
+<h2>Code of Conduct</h2>
+<p>
+    By participating in this project, you agree to be respectful and constructive. Be kind to other
+    contributors — especially those who are new to the project or to open source in general.
+</p>
+
+<h2>How to Contribute</h2>
+
+<h3>1. Reporting Bugs</h3>
+<p>Open an issue on <a href="https://github.com/tobassum786/Trueno_CSS_framework/issues" rel="noopener">GitHub</a> with:</p>
+<ul>
+    <li>A clear, descriptive title.</li>
+    <li>Steps to reproduce the issue.</li>
+    <li>The expected behavior and the actual behavior.</li>
+    <li>A minimal code sample or live demo (CodePen, JSFiddle, etc.).</li>
+    <li>Screenshots or GIFs when relevant.</li>
+    <li>Your environment (browser, OS, framework version).</li>
+</ul>
+
+<h3>2. Suggesting Features</h3>
+<p>Open an issue with:</p>
+<ul>
+    <li>A clear description of the feature.</li>
+    <li>The problem it solves and who benefits.</li>
+    <li>A proposed API (class names, mixin signatures, etc.).</li>
+    <li>Alternatives you've considered and why they're not sufficient.</li>
+</ul>
+
+<h3>3. Improving Documentation</h3>
+<p>
+    Documentation PRs are very welcome. If you spot a typo, an unclear example, or a missing page,
+    send a fix!
+</p>
+
+<h3>4. Submitting Pull Requests</h3>
+<ol>
+    <li><strong>Fork</strong> the repository.</li>
+    <li>
+        <strong>Create a branch</strong> from <code>main</code>:
+        <div class="docs-code" style="margin:12px 0 16px;">
+            <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+            <pre>git checkout -b feature/your-feature-name
+<span class="com"># or</span>
+git checkout -b fix/your-bug-name</pre>
+        </div>
+    </li>
+    <li><strong>Make your changes.</strong> Follow the <a href="#code-standards">Code Standards</a> below.</li>
+    <li>
+        <strong>Test</strong> the build locally:
+        <div class="docs-code" style="margin:12px 0 16px;">
+            <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+            <pre>npm run build</pre>
+        </div>
+    </li>
+    <li><strong>Update documentation</strong> if your change affects public behavior.</li>
+    <li>
+        <strong>Commit</strong> with a descriptive message:
+        <div class="docs-code" style="margin:12px 0 16px;">
+            <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+            <pre>git commit -m "feat: add .btn--ghost modifier"
+git commit -m "fix: correct card__footer padding in dark theme"</pre>
+        </div>
+    </li>
+    <li><strong>Push</strong> your branch and open a Pull Request against <code>main</code>.</li>
+</ol>
+
+<h2>Development Setup</h2>
+
+<h3>Prerequisites</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Tool</th><th>Version</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Node.js</td><td>14+</td></tr>
+        <tr><td>npm</td><td>6+</td></tr>
+        <tr><td>Git</td><td>latest</td></tr>
+    </tbody>
+</table>
+
+<h3>Clone and install</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>git clone https://github.com/tobassum786/Trueno_CSS_framework.git
+cd Trueno_CSS_framework
+npm install</pre>
+</div>
+
+<h3>Run the build</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>npm run build</pre>
+</div>
+<p>This cleans the <code>dist/</code> folder and produces both expanded and minified CSS.</p>
+
+<h3>Watch mode</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>npm run dev</pre>
+</div>
+<p>Sass watches <code>src/main.scss</code> and recompiles on every save.</p>
+
+<h3>Verify your changes</h3>
+<p>Before opening a PR, make sure:</p>
+<ul>
+    <li><input type="checkbox" disabled> <code>npm run build</code> runs without errors.</li>
+    <li><input type="checkbox" disabled> The expanded and minified CSS files are generated.</li>
+    <li><input type="checkbox" disabled> You haven't introduced any new SCSS errors or warnings.</li>
+    <li><input type="checkbox" disabled> Documentation is updated if you added or changed a public class, mixin, function, or token.</li>
+</ul>
+
+<h2 id="code-standards">Code Standards</h2>
+
+<h3>Sass Style</h3>
+<ul>
+    <li>Use <strong>Sass modules</strong> (<code>@use</code>, <code>@forward</code>, <code>as *</code>) — never <code>@import</code>.</li>
+    <li>Order <code>@use</code> statements at the top of every file.</li>
+    <li>Indent with <strong>2 spaces</strong>. No tabs.</li>
+    <li>Use <strong>kebab-case</strong> for file names (e.g., <code>_button-base.scss</code>).</li>
+    <li>Use <strong>BEM</strong> for component class names (<code>.card__title</code>, <code>.btn--primary</code>).</li>
+    <li>Prefix utility classes with <code>u-</code> (<code>.u-text-center</code>).</li>
+    <li>Use <code>!important</code> <strong>only</strong> inside utility files.</li>
+    <li>Prefer Sass variables, mixins, and functions over hard-coded values.</li>
+</ul>
+
+<h3>Naming Conventions</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Pattern</th><th>Example</th><th>Used for</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Block</td><td><code>.card</code></td><td>The component itself</td></tr>
+        <tr><td>Element</td><td><code>.card__title</code></td><td>A child of a block</td></tr>
+        <tr><td>Modifier</td><td><code>.btn--primary</code></td><td>A variant of a block</td></tr>
+        <tr><td>Utility</td><td><code>.u-d-flex</code></td><td>Single-purpose helpers</td></tr>
+        <tr><td>State</td><td><code>.is-open</code></td><td>State classes (e.g., modal open)</td></tr>
+        <tr><td>Theme</td><td><code>.theme--dark</code></td><td>Theme scope class</td></tr>
+    </tbody>
+</table>
+
+<h3>Commit Messages</h3>
+<p>Use <a href="https://www.conventionalcommits.org/" rel="noopener">Conventional Commits</a>:</p>
+<table class="docs-table">
+    <thead>
+        <tr><th>Prefix</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>feat:</code></td><td>A new feature</td></tr>
+        <tr><td><code>fix:</code></td><td>A bug fix</td></tr>
+        <tr><td><code>docs:</code></td><td>Documentation only</td></tr>
+        <tr><td><code>style:</code></td><td>Formatting, missing semicolons, etc. — no code change</td></tr>
+        <tr><td><code>refactor:</code></td><td>Code change that neither fixes a bug nor adds a feature</td></tr>
+        <tr><td><code>test:</code></td><td>Adding or correcting tests</td></tr>
+        <tr><td><code>chore:</code></td><td>Build process, tooling, dependencies</td></tr>
+    </tbody>
+</table>
+<p>Examples:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>git commit -m "feat: add new .card--featured modifier"
+git commit -m "fix: prevent text overflow in .modal__title"
+git commit -m "docs: clarify dark theme activation in themes.md"</pre>
+</div>
+
+<h3>File Organization</h3>
+<p>When adding a new component:</p>
+<ol>
+    <li>Create a partial in <code>src/components/_your-component.scss</code>.</li>
+    <li>Follow the existing BEM and <code>@use</code> conventions.</li>
+    <li>Register the partial in <code>src/main.scss</code>.</li>
+    <li>Add documentation under <a href="components.html">components docs</a>.</li>
+</ol>
+<p>When adding a new utility:</p>
+<ol>
+    <li>Add it to the appropriate file in <code>src/utilities/</code> (or create a new one if it's a different concern).</li>
+    <li>Prefix every class with <code>u-</code>.</li>
+    <li>Use <code>!important</code>.</li>
+    <li>Document the utility in <a href="utilities.html">utilities docs</a>.</li>
+</ol>
+
+<h2>Project Structure</h2>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>tree</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>Trueno_CSS_framework/
+├── dist/                  <span class="com"># Compiled CSS output (generated)</span>
+├── docs/                  <span class="com"># Documentation</span>
+├── examples/              <span class="com"># Example projects</span>
+├── src/                   <span class="com"># Sass source</span>
+│   ├── abstract/          <span class="com"># Sass toolkit</span>
+│   ├── base/              <span class="com"># Element defaults</span>
+│   ├── components/        <span class="com"># UI components</span>
+│   ├── layout/            <span class="com"># Layout primitives</span>
+│   ├── themes/            <span class="com"># Theme overrides</span>
+│   ├── utilities/         <span class="com"># Helper classes</span>
+│   ├── vendors/           <span class="com"># Third-party styles</span>
+│   └── main.scss          <span class="com"># Single entry file</span>
+├── package.json
+└── README.md</pre>
+</div>
+<p>See <a href="architecture.html">Architecture</a> for a deeper walkthrough.</p>
+
+<h2>Release Process</h2>
+<p>Releases are managed by the maintainers. The process is:</p>
+<ol>
+    <li>Update <code>CHANGELOG.md</code> (see <a href="changelog.html">Changelog</a>).</li>
+    <li>Bump the version in <code>package.json</code> following <a href="https://semver.org/" rel="noopener">Semantic Versioning</a>.</li>
+    <li>Run a full build: <code>npm run build</code>.</li>
+    <li>Tag the release: <code>git tag vX.Y.Z</code>.</li>
+    <li>Push the tag: <code>git push --tags</code>.</li>
+    <li>Publish to npm (when applicable) and create a GitHub release.</li>
+</ol>
+
+<h3>Versioning</h3>
+<p>Trueno CSS follows <strong>semver</strong>:</p>
+<ul>
+    <li><strong>Major</strong> (<code>1.0.0</code> → <code>2.0.0</code>) — breaking changes (renamed classes, removed features, restructured files).</li>
+    <li><strong>Minor</strong> (<code>1.0.0</code> → <code>1.1.0</code>) — new features that are backwards compatible.</li>
+    <li><strong>Patch</strong> (<code>1.0.0</code> → <code>1.0.1</code>) — bug fixes and small improvements.</li>
+</ul>
+
+<h2>Review Process</h2>
+<p>Pull requests are reviewed by the maintainers. The review focuses on:</p>
+<ul>
+    <li><strong>Correctness</strong> — does it do what it claims?</li>
+    <li><strong>Consistency</strong> — does it follow the existing patterns?</li>
+    <li><strong>Performance</strong> — does it keep the compiled CSS small?</li>
+    <li><strong>Accessibility</strong> — does it preserve or improve the user experience for assistive tech?</li>
+    <li><strong>Documentation</strong> — is the change documented?</li>
+</ul>
+<p>
+    Expect feedback — it's a normal part of the process. Address comments by pushing new commits to
+    the same branch.
+</p>
+
+<h2>Getting Help</h2>
+<ul>
+    <li><strong>Questions / discussion:</strong> open a GitHub issue with the <code>question</code> label.</li>
+    <li><strong>Bugs / feature requests:</strong> open a GitHub issue.</li>
+    <li><strong>Security issues:</strong> please email the maintainers directly rather than opening a public issue.</li>
+</ul>
+
+<h2>License</h2>
+<p>
+    By contributing, you agree that your contributions will be licensed under the <strong>MIT
+    License</strong> — the same license as the rest of the project.
+</p>
+
+                    <nav class="docs-pager" aria-label="Continue reading">
+                        <a href="vendors.html">
+                            <span class="dir">Previous</span>
+                            <span class="name">← Vendors</span>
+                        </a>
+                        <a href="changelog.html" class="docs-pager--right">
+                            <span class="dir">Next up</span>
+                            <span class="name">Changelog →</span>
+                        </a>
+                    </nav>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <footer class="docs-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5 mb-lg">
+                    <p class="docs-footer__logo">⚡ Trueno CSS</p>
+                    <p class="docs-footer__text">
+                        A modern, responsive, and highly customizable CSS framework — built with Sass,
+                        following best practices. MIT licensed.
+                    </p>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Docs</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="architecture.html">Architecture</a></li>
+                        <li><a href="components.html">Components</a></li>
+                        <li><a href="utilities.html">Utilities</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Resources</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="../examples/index.html">Main site</a></li>
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/releases" rel="noopener">Releases</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-lg">
+                    <p class="docs-footer__heading">Community</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/issues" rel="noopener">Report a bug</a></li>
+                        <li><a href="contributing.html">Contributing</a></li>
+                        <li><a href="https://github.com/tobassum786" rel="noopener">The team</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="docs-footer__bottom u-text-center">
+                © 2026 Trueno CSS · Built with
+                <a href="../examples/index.html" rel="noopener">Trueno CSS</a> by Tobassum Munir
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>
