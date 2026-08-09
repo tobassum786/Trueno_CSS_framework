@@ -14,6 +14,7 @@
   flex-wrap: wrap;
   margin-left: -$spacing-sm; // Compensate for column padding
   margin-right: -$spacing-sm;
+  gap: -$spacing-md;
 }
 
 .col {
