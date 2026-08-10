@@ -76,24 +76,6 @@
                             <a href="#install" class="btn btn--primary btn--lg">Get started free</a>
                             <a href="#components" class="btn btn--outline-primary btn--lg">See the showcase</a>
                         </div>
-                        <div class="hero__stats">
-                            <div class="hero__stat">
-                                <div class="num">12</div>
-                                <div class="label">Responsive grid</div>
-                            </div>
-                            <div class="hero__stat">
-                                <div class="num">4</div>
-                                <div class="label">Breakpoints</div>
-                            </div>
-                            <div class="hero__stat">
-                                <div class="num">0</div>
-                                <div class="label">Dependencies</div>
-                            </div>
-                            <div class="hero__stat">
-                                <div class="num">100%</div>
-                                <div class="label">A11y focused</div>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-12 col-md-5">
                         <div class="terminal" aria-hidden="true">
@@ -294,6 +276,50 @@ $ <span class="tok">npm install</span> trueno-css-framework
                                 Responsive, readable, and set in relative units so users can scale text
                                 however they like.
                             </p>
+                        </div>
+                    </div>
+
+                    <!-- Alerts & badges -->
+                    <div class="col-12 col-md-6 mb-lg">
+                        <div class="showcase">
+                            <p class="showcase-label">Alerts · alert + alert--variant</p>
+                            <div class="alert alert--success"><div class="alert__body">Deploy succeeded.</div></div>
+                            <div class="alert alert--warning"><div class="alert__body">Rate limit at 80%.</div></div>
+                            <div class="alert alert--danger"><div class="alert__body"><p class="alert__title">Build failed</p><p>One test was not green.</p></div><button class="alert__close" type="button" aria-label="Close">×</button></div>
+
+                            <p class="showcase-label">Badges · badge + modifiers</p>
+                            <div class="swatch-row">
+                                <span class="badge badge--primary">Primary</span>
+                                <span class="badge badge--success">5 new</span>
+                                <span class="badge badge--danger">Error</span>
+                                <span class="badge badge--warning badge--pill">Pending</span>
+                                <span class="badge badge--soft-info badge--pill">Beta</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination & breadcrumbs -->
+                    <div class="col-12 col-md-6 mb-lg">
+                        <div class="showcase">
+                            <p class="showcase-label">Breadcrumbs · breadcrumb + BEM</p>
+                            <nav aria-label="Breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb__item"><a class="breadcrumb__link" href="#components">Home</a></li>
+                                    <li class="breadcrumb__item"><a class="breadcrumb__link" href="#components">Showcase</a></li>
+                                    <li class="breadcrumb__item breadcrumb__item--active" aria-current="page">Components</li>
+                                </ol>
+                            </nav>
+
+                            <p class="showcase-label">Pagination · pagination + modifiers</p>
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li aria-disabled="true"><span class="pagination__link is-disabled">‹</span></li>
+                                    <li><a class="pagination__link" href="#components">1</a></li>
+                                    <li><a class="pagination__link is-active" href="#components" aria-current="page">2</a></li>
+                                    <li><a class="pagination__link" href="#components">3</a></li>
+                                    <li><a class="pagination__link" href="#components">›</a></li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
