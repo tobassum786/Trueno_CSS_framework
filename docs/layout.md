@@ -14,7 +14,9 @@ layout/
 
 ## 1. `_grid.scss`
 
-A 12-column responsive grid built with **Flexbox**. The grid is mobile-first — every column class is full-width by default and you opt-in to spans at larger breakpoints.
+A modern, responsive layout system built around two interchangeable engines: a **Flexbox** `.row`/`.col` grid for mixed layouts and simple splits, plus a native **CSS Grid** `.grid` system for exact track counts and card lanes. Both are mobile-first — span classes apply full-width by default and opt-in to tracks at larger breakpoints.
+
+Gutters are driven by CSS custom properties (`--gutter-x` / `--gutter-y` / `--grid-gutter`). The Flexbox grid sizes its gutters with padding + negative margins so the 12-track percentages always total exactly 100% and never wrap; the CSS Grid system uses native `gap`, which Grid resolves automatically against its tracks.
 
 ### Container
 
@@ -40,8 +42,9 @@ Usage:
 
 ### Rows and columns
 
-- `.row` is a horizontal flex container that wraps. It uses negative margins to align with column padding.
-- `.col` is an auto-sizing column (flex-grow: 1).
+- `.row` is a horizontal flex container that wraps. Columns are spaced with `gap`, not padding.
+- `.col` automatically grows to fill available space (`flex-grow: 1`).
+- `.col-auto` sizes a column to its content instead of stretching.
 - `.col-{n}` is a fixed column that takes `n` of 12 tracks.
 - `.col-{breakpoint}-{n}` applies the span **at that breakpoint and up**.
 
@@ -86,18 +89,46 @@ Use `.col` to let columns share remaining space:
 
 ### Gutters
 
-The default horizontal gutter is `$spacing-sm` (0.5rem / 8px) on each side of every column. The row's negative margin compensates for the first and last column, so content lines up with the container edges.
-
-To change gutters, override the padding in your own stylesheet:
+Every `.row` exposes `--gutter-x` (default `$spacing-md`, 16px) and `--gutter-y` (default 0). Columns carry the gutter as padding, and the row's negative margins cancel it at the edges, so fixed-width columns always fit the 12-track math exactly. Tweak them with the built-in helpers or set the custom properties directly:
 
 ```css
-.row { margin-left: -1rem; margin-right: -1rem; }
-.row > [class*="col-"] { padding-left: 1rem; padding-right: 1rem; }
+.row { --gutter-x: 2rem; --gutter-y: 1rem; }
+```
+
+| Class | Sets | Values |
+| --- | --- | --- |
+| `.g-{size}` | both axes | `0` · `xs` (4px) · `sm` (8px) · `md` (16px) · `lg` (24px) · `xl` (32px) |
+| `.gx-{size}` | horizontal only | same scale |
+| `.gy-{size}` | vertical only | same scale |
+
+### Offsets and reordering
+
+Push columns across tracks with `.offset-{n}` (and `.offset-md-*` / `.offset-lg-*`), or reorder them with `.order-first`, `.order-last`, `.order-1` through `.order-4`.
+
+### Modern CSS Grid
+
+For card lanes and exact track counts, use the native CSS Grid engine:
+
+- A bare `.grid` builds an **auto-filling card layout** — tracks are at least `--grid-min` (default `14rem`) wide and wrap automatically.
+- `.grid-cols-{2..6}` (plus `-{bp}-` variants) pins the exact number of tracks.
+- `.grid-span-{n}` stretches a cell across `n` tracks.
+
+```html
+<div class="grid">
+  <div>Card</div>
+  <div>Card</div>
+  <div>Card</div>
+</div>
+
+<div class="grid grid-cols-md-3">
+  <div class="grid-span-2">Wide cell</div>
+  <div>1 track</div>
+</div>
 ```
 
 ### Nesting
 
-You can nest a `.row` inside any column to create complex layouts:
+You can nest a `.row` inside any column, or a `.grid` inside any grid cell, to create complex layouts:
 
 ```html
 <div class="row">
@@ -118,31 +149,42 @@ You can nest a `.row` inside any column to create complex layouts:
 ```scss
 .container {
   max-width: $breakpoint-xl;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: $spacing-md;
-  padding-right: $spacing-md;
+  margin-inline: auto;
+  padding-inline: $spacing-md;
 }
 
 .row {
+  --gutter-x: #{$spacing-md};
+  --gutter-y: 0;
+
   display: flex;
   flex-wrap: wrap;
-  margin-left: -$spacing-sm;
-  margin-right: -$spacing-sm;
+  margin-top: calc(var(--gutter-y) * -1);
+  margin-left: calc(var(--gutter-x) * -0.5);
+  margin-right: calc(var(--gutter-x) * -0.5);
+
+  > [class*="col"] {
+    padding-left: calc(var(--gutter-x) * 0.5);
+    padding-right: calc(var(--gutter-x) * 0.5);
+    margin-top: var(--gutter-y);
+    min-width: 0;
+  }
 }
 
 .col {
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
-  padding-left: $spacing-sm;
-  padding-right: $spacing-sm;
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
 }
 
 @for $i from 1 through 12 {
   .col-#{$i} {
-    flex: 0 0 calc(100% / 12 * #{$i});
-    max-width: calc(100% / 12 * #{$i});
+    flex: 0 0 calc(100% * #{$i} / 12);
+    max-width: calc(100% * #{$i} / 12);
   }
 }
 
@@ -262,5 +304,6 @@ The dark theme (`themes/_dark-theme.scss`) provides `.theme--dark .main-header` 
 
 1. **Always use `.container` for page content.** A naked `.row` will span the full viewport width.
 2. **Combine column classes for responsive layouts.** `.col-12 col-md-6 col-lg-4` is the canonical "stack on mobile, half on tablet, third on desktop" pattern.
-3. **Do not add `display: flex` to `.row` in your own CSS.** The grid already provides it — overriding it will break the negative-margin gutter trick.
-4. **Use `.main-header` as a starting point.** It is designed to be extended: add a search box, dropdowns, or a mobile menu as children.
+3. **Let the gutter variables do the spacing.** Don't add margins/padding to columns for gutters — use `.g-*`, `.gx-*`, `.gy-*`, or set `--gutter-x`/`--gutter-y` on the row.
+4. **Pick the right engine.** Use `.row`/`.col` for simple splits and mixed-content rows; switch to `.grid` + `.grid-cols-*` when you need exact track counts, dense card lanes, or auto-fill wrapping.
+5. **Use `.main-header` as a starting point.** It is designed to be extended: add a search box, dropdowns, or a mobile menu as children.

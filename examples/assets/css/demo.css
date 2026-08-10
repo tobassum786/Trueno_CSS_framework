@@ -220,6 +220,7 @@ code {
         linear-gradient(160deg, var(--demo-dark), var(--demo-dark-2) 55%, #0d2a52);
 }
 
+
 .hero::before {
     content: '';
     position: absolute;
@@ -373,7 +374,16 @@ code {
 
 /* ---- Feature cards ---- */
 .feature-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.feature-card .card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
 }
 
 .feature-card:hover {

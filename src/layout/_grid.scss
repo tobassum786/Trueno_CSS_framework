@@ -1,7 +1,19 @@
 @use '../abstract/variables' as *;
 @use '../abstract/mixins' as *;
 
+// ----------------------------------------------------------------------------
+// Trueno CSS Grid — modern Flexbox + CSS Grid primitives
+//
+// Layouts are built from two interchangeable systems:
+//   1. Flexbox (.row / .col) — best for mixed-length rows and simple splits
+//   2. CSS Grid (.grid)       — best for exact track counts and card lanes
+// Gutters are driven by CSS custom properties. The Flexbox grid uses padding +
+// negative margins so its 12-track percentages total exactly 100% and never
+// wrap; the CSS Grid system uses native `gap`, which Grid resolves correctly.
+// ----------------------------------------------------------------------------
+
 .container {
+  width: 100%;
   max-width: $breakpoint-xl;
   margin-left: auto;
   margin-right: auto;
@@ -9,62 +21,178 @@
   padding-right: $spacing-md;
 }
 
+// ----------------------------------------------------------------------------
+// Flexbox grid
+// ----------------------------------------------------------------------------
 .row {
+  --gutter-x: #{$spacing-md};
+  --gutter-y: 0;
+
   display: flex;
   flex-wrap: wrap;
-  margin-left: -$spacing-sm; // Compensate for column padding
-  margin-right: -$spacing-sm;
-  gap: -$spacing-md;
-}
+  margin-top: calc(var(--gutter-y) * -1);
+  margin-left: calc(var(--gutter-x) * -0.5);
+  margin-right: calc(var(--gutter-x) * -0.5);
 
-.col {
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
-  padding-left: $spacing-sm;
-  padding-right: $spacing-sm;
-}
-
-// Simple responsive columns (e.g., col-md-6 means 50% width on medium screens and up)
-@for $i from 1 through 12 {
-  .col-#{$i} {
-    flex: 0 0 calc(100% / 12 * #{$i});
-    max-width: calc(100% / 12 * #{$i});
+  > [class*="col"] {
+    padding-left: calc(var(--gutter-x) * 0.5);
+    padding-right: calc(var(--gutter-x) * 0.5);
+    margin-top: var(--gutter-y);
+    min-width: 0;
   }
 }
 
+.row--no-wrap {
+  flex-wrap: nowrap;
+}
+
+// Columns -------------------------------------------------------------
+.col {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+// Fixed columns (computed from a 12-track grid)
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 calc(100% * #{$i} / 12);
+    max-width: calc(100% * #{$i} / 12);
+    width: 100%;
+  }
+}
+
+// Responsive spans (apply at breakpoint and up)
 @include media-sm {
   @for $i from 1 through 12 {
-    .col-sm-#{$i} {
-      flex: 0 0 calc(100% / 12 * #{$i});
-      max-width: calc(100% / 12 * #{$i});
-    }
+    .col-sm-#{$i} { flex: 0 0 calc(100% * #{$i} / 12); max-width: calc(100% * #{$i} / 12); width: 100%; }
   }
 }
 
 @include media-md {
   @for $i from 1 through 12 {
-    .col-md-#{$i} {
-      flex: 0 0 calc(100% / 12 * #{$i});
-      max-width: calc(100% / 12 * #{$i});
-    }
+    .col-md-#{$i} { flex: 0 0 calc(100% * #{$i} / 12); max-width: calc(100% * #{$i} / 12); width: 100%; }
   }
 }
 
 @include media-lg {
   @for $i from 1 through 12 {
-    .col-lg-#{$i} {
-      flex: 0 0 calc(100% / 12 * #{$i});
-      max-width: calc(100% / 12 * #{$i});
-    }
+    .col-lg-#{$i} { flex: 0 0 calc(100% * #{$i} / 12); max-width: calc(100% * #{$i} / 12); width: 100%; }
   }
 }
 
 @include media-xl {
   @for $i from 1 through 12 {
-    .col-xl-#{$i} {
-      flex: 0 0 calc(100% / 12 * #{$i});
-      max-width: calc(100% / 12 * #{$i});
-    }
+    .col-xl-#{$i} { flex: 0 0 calc(100% * #{$i} / 12); max-width: calc(100% * #{$i} / 12); width: 100%; }
   }
 }
+
+// ---------------------------------------------------------------------------
+// Gutters (used alongside .row)
+// ---------------------------------------------------------------------------
+// g-x → horizontal, g-y → vertical, g → both (no breakpoint modifiers)
+.g-0 { --gutter-x: 0; --gutter-y: 0; }
+.g-xs { --gutter-x: #{$spacing-xs}; --gutter-y: #{$spacing-xs}; }
+.g-sm { --gutter-x: #{$spacing-sm}; --gutter-y: #{$spacing-sm}; }
+.g-lg { --gutter-x: #{$spacing-lg}; --gutter-y: #{$spacing-lg}; }
+.g-xl { --gutter-x: #{$spacing-xl}; --gutter-y: #{$spacing-xl}; }
+
+.gx-0 { --gutter-x: 0; }
+.gx-xs { --gutter-x: #{$spacing-xs}; }
+.gx-sm { --gutter-x: #{$spacing-sm}; }
+.gx-lg { --gutter-x: #{$spacing-lg}; }
+.gx-xl { --gutter-x: #{$spacing-xl}; }
+
+.gy-0 { --gutter-y: 0; }
+.gy-xs { --gutter-y: #{$spacing-xs}; }
+.gy-sm { --gutter-y: #{$spacing-sm}; }
+.gy-lg { --gutter-y: #{$spacing-lg}; }
+.gy-xl { --gutter-y: #{$spacing-xl}; }
+
+// ---------------------------------------------------------------------------
+// Alignment & distribution
+// ---------------------------------------------------------------------------
+.row-align-start { align-items: flex-start; }
+.row-align-center { align-items: center; }
+.row-align-end { align-items: flex-end; }
+.row-align-stretch { align-items: stretch; }
+
+.row-justify-start { justify-content: flex-start; }
+.row-justify-center { justify-content: center; }
+.row-justify-end { justify-content: flex-end; }
+.row-justify-between { justify-content: space-between; }
+.row-justify-around { justify-content: space-around; }
+.row-justify-evenly { justify-content: space-evenly; }
+
+// Offsets (push a column across tracks)
+@for $i from 1 through 11 {
+  .offset-#{$i} { margin-left: calc(100% / 12 * #{$i}); }
+}
+@include media-md {
+  @for $i from 1 through 11 {
+    .offset-md-#{$i} { margin-left: calc(100% / 12 * #{$i}); }
+  }
+}
+@include media-lg {
+  @for $i from 1 through 11 {
+    .offset-lg-#{$i} { margin-left: calc(100% / 12 * #{$i}); }
+  }
+}
+
+// Order
+.order-first { order: -1; }
+.order-last { order: 12; }
+.order-1 { order: 1; }
+.order-2 { order: 2; }
+.order-3 { order: 3; }
+.order-4 { order: 4; }
+
+// ---------------------------------------------------------------------------
+// Modern CSS Grid system
+// ---------------------------------------------------------------------------
+.grid {
+  --grid-gutter: #{$spacing-md};
+
+  display: grid;
+  column-gap: var(--grid-gutter);
+  row-gap: var(--grid-gutter);
+
+  // Auto-fit card layout: tracks sized by content, wrapping naturally
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--grid-min, 14rem)), 1fr));
+}
+
+// Explicit track counts
+@for $i from 2 through 6 {
+  .grid-cols-#{$i} { grid-template-columns: repeat(#{$i}, 1fr); }
+}
+.grid-cols-1 { grid-template-columns: 1fr; }
+
+@include media-sm {
+  @for $i from 2 through 6 {
+    .grid-cols-sm-#{$i} { grid-template-columns: repeat(#{$i}, 1fr); }
+  }
+}
+@include media-md {
+  @for $i from 2 through 6 {
+    .grid-cols-md-#{$i} { grid-template-columns: repeat(#{$i}, 1fr); }
+  }
+}
+@include media-lg {
+  @for $i from 2 through 6 {
+    .grid-cols-lg-#{$i} { grid-template-columns: repeat(#{$i}, 1fr); }
+  }
+}
+
+// Span helpers for explicit grids
+@for $i from 2 through 6 {
+  .grid-span-#{$i} { grid-column: span #{$i}; }
+}
+
+// Grid alignment
+.grid-align-center { align-items: center; }
+.grid-align-start { align-items: start; }
+.grid-align-end { align-items: end; }

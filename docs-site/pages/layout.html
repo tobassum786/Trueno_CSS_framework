@@ -13,8 +13,16 @@
 
 <h2>1. <code>_grid.scss</code></h2>
 <p>
-    A 12-column responsive grid built with <strong>Flexbox</strong>. The grid is mobile-first — every
-    column class is full-width by default and you opt-in to spans at larger breakpoints.
+    A modern, responsive layout system built around two interchangeable engines: the Flexbox
+    <code>.row</code> / <code>.col</code> grid for mixed layouts and simple splits, plus a native CSS
+    Grid <code>.grid</code> system for exact track counts and card lanes. Both are mobile-first —
+    span classes apply full-width by default and opt-in to tracks at larger breakpoints.
+</p>
+<p>
+    Gutters are driven by CSS custom properties (<code>--gutter-x</code> / <code>--gutter-y</code> /
+    <code>--grid-gutter</code>). The Flexbox grid sizes its gutters with padding + negative margins so
+    its 12-track percentages always total exactly 100% and never wrap; the CSS Grid system uses native
+    <code>gap</code>, which Grid resolves automatically against its tracks.
 </p>
 
 <h3>Container</h3>
@@ -39,8 +47,9 @@
 
 <h3>Rows and columns</h3>
 <ul>
-    <li><code>.row</code> is a horizontal flex container that wraps. It uses negative margins to align with column padding.</li>
-    <li><code>.col</code> is an auto-sizing column (<code>flex-grow: 1</code>).</li>
+    <li><code>.row</code> is a horizontal flex container that wraps. Columns are spaced by gutter padding; the row's negative margins cancel it at the edges.</li>
+    <li><code>.col</code> automatically grows to fill available space (<code>flex-grow: 1</code>).</li>
+    <li><code>.col-auto</code> sizes a column to its content instead of stretching.</li>
     <li><code>.col-{n}</code> is a fixed column that takes <code>n</code> of 12 tracks.</li>
     <li><code>.col-{breakpoint}-{n}</code> applies the span <strong>at that breakpoint and up</strong>.</li>
 </ul>
@@ -60,22 +69,59 @@
 </table>
 <p>
     Each column uses <code>flex: 0 0 calc(100% / 12 * n)</code> and the same <code>max-width</code>,
-    so columns sit on a single line until the row wraps.
+    so columns sit on a single line until the row wraps. The default gutter is <code>1rem</code> (16px)
+    on both axes.
 </p>
 
 <h3>Live example</h3>
 <div class="docs-demo">
     <p class="docs-demo__label">Grid · rows and columns</p>
     <div class="row">
-        <div class="col-12 col-md-4 mb-sm"><div class="grid-chip c-blue">.col-12 .col-md-4</div></div>
-        <div class="col-12 col-md-4 mb-sm"><div class="grid-chip c-indigo">.col-12 .col-md-4</div></div>
-        <div class="col-12 col-md-4 mb-sm"><div class="grid-chip c-violet">.col-12 .col-md-4</div></div>
+        <div class="col-12 col-md-4"><div class="grid-chip c-blue">.col-12 .col-md-4</div></div>
+        <div class="col-12 col-md-4"><div class="grid-chip c-indigo">.col-12 .col-md-4</div></div>
+        <div class="col-12 col-md-4"><div class="grid-chip c-violet">.col-12 .col-md-4</div></div>
     </div>
     <p class="docs-demo__label">Auto-layout columns</p>
     <div class="row">
-        <div class="col mr-sm"><div class="grid-chip c-green">.col</div></div>
-        <div class="col-6 mr-sm"><div class="grid-chip c-amber">.col-6</div></div>
+        <div class="col"><div class="grid-chip c-green">.col</div></div>
+        <div class="col-6"><div class="grid-chip c-amber">.col-6</div></div>
         <div class="col"><div class="grid-chip c-rose">.col</div></div>
+    </div>
+    <p class="docs-demo__label">Alignment · <code>.row-justify-between .row-align-center</code></p>
+    <div class="row row-justify-between row-align-center">
+        <div class="col-auto"><div class="grid-chip c-blue">.col-auto</div></div>
+        <div class="col-auto"><div class="grid-chip c-cyan">.col-auto</div></div>
+        <div class="col-auto"><div class="grid-chip c-violet">.col-auto</div></div>
+    </div>
+</div>
+
+<h3>Modern CSS Grid</h3>
+<p>
+    For card lanes and exact track counts, use the native CSS Grid engine. A bare <code>.grid</code>
+    builds an auto-filling card layout — tracks are at least <code>--grid-min</code> (default <code>14rem</code>)
+    wide and wrap automatically. Pin the count with <code>.grid-cols-{n}</code> (and
+    <code>-{bp}-</code> variants), and stretch a cell across tracks with <code>.grid-span-{n}</code>.
+</p>
+<div class="docs-demo">
+    <p class="docs-demo__label">Grid · auto-fit cards</p>
+    <div class="grid">
+        <div class="grid-chip c-blue">auto</div>
+        <div class="grid-chip c-indigo">auto</div>
+        <div class="grid-chip c-violet">auto</div>
+        <div class="grid-chip c-cyan">auto</div>
+        <div class="grid-chip c-green">auto</div>
+        <div class="grid-chip c-amber">auto</div>
+    </div>
+    <p class="docs-demo__label">Grid · fixed tracks (<code>.grid-cols-md-3</code>)</p>
+    <div class="grid grid-cols-md-3">
+        <div class="grid-chip c-blue">1 of 3</div>
+        <div class="grid-chip c-indigo">2 of 3</div>
+        <div class="grid-chip c-violet">3 of 3</div>
+    </div>
+    <p class="docs-demo__label">Grid · spanning (<code>.grid-span-2</code>)</p>
+    <div class="grid grid-cols-md-3">
+        <div class="grid-span-2"><div class="grid-chip c-green">.grid-span-2</div></div>
+        <div><div class="grid-chip c-amber">1 track</div></div>
     </div>
 </div>
 
@@ -96,16 +142,31 @@
 
 <h3>Gutters</h3>
 <p>
-    The default horizontal gutter is <code>$spacing-sm</code> (0.5rem / 8px) on each side of every
-    column. The row's negative margin compensates for the first and last column, so content lines up
-    with the container edges.
+    Every <code>.row</code> exposes <code>--gutter-x</code> (default <code>$spacing-md</code>, 16px) and
+    <code>--gutter-y</code> (default 0). Columns carry the gutter as padding and the row's negative
+    margins cancel it at the edges, so fixed-width columns always fit the 12-track math exactly. Tweak
+    them with the built-in helpers or set the custom properties directly:
 </p>
-<p>To change gutters, override the padding in your own stylesheet:</p>
 <div class="docs-code">
     <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>css</span><button class="docs-code__copy" type="button">Copy</button></div>
-    <pre><span class="tok">.row</span> { margin-left: -1rem; margin-right: -1rem; }
-<span class="tok">.row</span> &gt; [class*="col-"] { padding-left: 1rem; padding-right: 1rem; }</pre>
+    <pre><span class="tok">.row</span> { --gutter-x: 2rem; --gutter-y: 1rem; }</pre>
 </div>
+<table class="docs-table">
+    <thead>
+        <tr><th>Class</th><th>Sets</th><th>Values</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>.g-{size}</code></td><td>both axes</td><td rowspan="3"><code>0</code> · <code>xs</code> (4px) · <code>sm</code> (8px) · <code>md</code> (16px) · <code>lg</code> (24px) · <code>xl</code> (32px)</td></tr>
+        <tr><td><code>.gx-{size}</code></td><td>horizontal only</td></tr>
+        <tr><td><code>.gy-{size}</code></td><td>vertical only</td></tr>
+    </tbody>
+</table>
+<h3>Offsets and reordering</h3>
+<p>
+    Push columns across tracks with <code>.offset-{n}</code> (and <code>.offset-md-*</code> /
+    <code>.offset-lg-*</code>), or reorder them with <code>.order-first</code>,
+    <code>.order-last</code>, <code>.order-1</code> through <code>.order-4</code>.
+</p>
 
 <h3>Nesting</h3>
 <p>You can nest a <code>.row</code> inside any column to create complex layouts:</p>
@@ -129,38 +190,63 @@
     <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
     <pre><span class="tok">.container</span> {
   max-width: $breakpoint-xl;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: $spacing-md;
-  padding-right: $spacing-md;
+  margin-inline: auto;
+  padding-inline: $spacing-md;
 }
 
 <span class="tok">.row</span> {
+  --gutter-x: <span class="tok">#{$spacing-md}</span>;
+  --gutter-y: 0;
+
   display: flex;
   flex-wrap: wrap;
-  margin-left: -$spacing-sm;
-  margin-right: -$spacing-sm;
+  margin-top: calc(var(--gutter-y) * -1);
+  margin-left: calc(var(--gutter-x) * -0.5);
+  margin-right: calc(var(--gutter-x) * -0.5);
+
+  &gt; [class*="col"] {
+    padding-left: calc(var(--gutter-x) * 0.5);
+    padding-right: calc(var(--gutter-x) * 0.5);
+    margin-top: var(--gutter-y);
+    min-width: 0;
+  }
 }
 
 <span class="tok">.col</span> {
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
-  padding-left: $spacing-sm;
-  padding-right: $spacing-sm;
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+<span class="tok">.col-auto</span> {
+  flex: 0 0 auto;
+  width: auto;
 }
 
 @for $i from 1 through 12 {
   <span class="tok">.col-#{$i}</span> {
-    flex: 0 0 calc(100% / 12 * #{$i});
-    max-width: calc(100% / 12 * #{$i});
+    flex: 0 0 calc(100% * #{$i} / 12);
+    max-width: calc(100% * #{$i} / 12);
   }
 }
 
 @include media-sm { @for $i from 1 through 12 { <span class="tok">.col-sm-#{$i}</span> { ... } } }
 @include media-md { @for $i from 1 through 12 { <span class="tok">.col-md-#{$i}</span> { ... } } }
 @include media-lg { @for $i from 1 through 12 { <span class="tok">.col-lg-#{$i}</span> { ... } } }
-@include media-xl { @for $i from 1 through 12 { <span class="tok">.col-xl-#{$i}</span> { ... } } }</pre>
+@include media-xl { @for $i from 1 through 12 { <span class="tok">.col-xl-#{$i}</span> { ... } } }
+
+<span class="com">// Modern CSS Grid engine -------------------------------------------------</span>
+<span class="tok">.grid</span> {
+  --grid-gutter: <span class="tok">#{$spacing-md}</span>;
+
+  display: grid;
+  column-gap: var(--grid-gutter);
+  row-gap: var(--grid-gutter);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--grid-min, 14rem)), 1fr));
+}
+
+<span class="tok">.grid-cols-3</span> { grid-template-columns: repeat(3, 1fr); }
+<span class="tok">.grid-cols-md-3</span> { ... }   <span class="com">// and sm / lg variants</span>
+<span class="tok">.grid-span-2</span>  { grid-column: span 2; }</pre>
 </div>
 
 <h2>2. <code>_header.scss</code></h2>
@@ -293,6 +379,7 @@
 <ol>
     <li><strong>Always use <code>.container</code> for page content.</strong> A naked <code>.row</code> will span the full viewport width.</li>
     <li><strong>Combine column classes for responsive layouts.</strong> <code>.col-12 col-md-6 col-lg-4</code> is the canonical "stack on mobile, half on tablet, third on desktop" pattern.</li>
-    <li><strong>Do not add <code>display: flex</code> to <code>.row</code> in your own CSS.</strong> The grid already provides it — overriding it will break the negative-margin gutter trick.</li>
+    <li><strong>Let the gutter variables do the spacing.</strong> Don't add margins/padding to columns for gutters — use <code>.g-*</code>, <code>.gx-*</code>, <code>.gy-*</code>, or set <code>--gutter-x</code>/<code>--gutter-y</code> on the row.</li>
+    <li><strong>Pick the right engine.</strong> Use <code>.row</code>/<code>.col</code> for simple splits and mixed-content rows; switch to <code>.grid</code> + <code>.grid-cols-*</code> when you need exact track counts, dense card lanes, or auto-fill wrapping.</li>
     <li><strong>Use <code>.main-header</code> as a starting point.</strong> It is designed to be extended: add a search box, dropdowns, or a mobile menu as children.</li>
 </ol>
