@@ -1,0 +1,77 @@
+@use 'sass:color';
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+
+.alert {
+  @include flex-align(flex-start);
+  justify-content: space-between;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  border: $border-width-base solid transparent;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-base;
+
+  // Stacked alerts get vertical rhythm
+  + .alert {
+    margin-top: $spacing-sm;
+  }
+}
+
+.alert__title {
+  margin: 0 0 $spacing-xs;
+  font-size: $h6-font-size;
+  font-weight: bold;
+}
+
+.alert__body {
+  flex: 1 1 auto;
+}
+
+.alert__close {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: $h4-font-size;
+  line-height: 1;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// Color variants — light background, colored border/text, darken on hover
+@mixin alert-variant($base-color) {
+  background-color: color.adjust($base-color, $lightness: 42%);
+  border-color: color.adjust($base-color, $lightness: 25%);
+  color: color.adjust($base-color, $lightness: -28%);
+}
+
+.alert--primary {
+  @include alert-variant($color-primary);
+}
+
+.alert--secondary {
+  @include alert-variant($color-secondary);
+}
+
+.alert--success {
+  @include alert-variant($color-success);
+}
+
+.alert--danger {
+  @include alert-variant($color-danger);
+}
+
+.alert--warning {
+  @include alert-variant($color-warning);
+}
+
+.alert--info {
+  @include alert-variant($color-info);
+}

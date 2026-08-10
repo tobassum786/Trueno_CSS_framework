@@ -19,7 +19,7 @@ This documentation covers every layer of the framework, from the abstract design
 ### 🧱 Framework Layers
 - [Base Styles](./base.md) — Resets and typography
 - [Layout](./layout.md) — Grid system and header
-- [Components](./components.md) — Buttons, cards, and modals
+- [Components](./components.md) — Buttons, cards, modals, navbars, alerts, badges, pagination, and breadcrumbs
 - [Utilities](./utilities.md) — Spacing and helper classes
 - [Themes](./themes.md) — Light and dark themes
 - [Vendors](./vendors.md) — Third-party stylesheet integration
@@ -38,7 +38,7 @@ Trueno CSS is a lightweight, modular CSS framework written in **Sass**. It provi
 - **Mobile-First Design** — Every breakpoint is min-width based
 - **Theming Support** — Light and dark themes out of the box
 - **Utility-First Utilities** — Spacing, display, text alignment, and more
-- **Pre-Built Components** — Buttons, cards, and modals
+- **Pre-Built Components** — Buttons, cards, modals, navbars, alerts, badges, pagination, and breadcrumbs
 - **Accessible by Default** — Semantic patterns and ARIA-friendly markup
 - **Zero Runtime Dependencies** — Pure CSS output, no JavaScript required
 
@@ -52,7 +52,7 @@ Trueno CSS is a lightweight, modular CSS framework written in **Sass**. It provi
 | Vendors | `src/vendors/` | Third-party styles (e.g., Normalize.css) |
 | Base | `src/base/` | Resets, typography, element defaults |
 | Layout | `src/layout/` | Grid, header, and structural primitives |
-| Components | `src/components/` | Buttons, cards, modals |
+| Components | `src/components/` | Buttons, cards, modals, navbars, badges |
 | Utilities | `src/utilities/` | Spacing, helpers, display, text |
 | Themes | `src/themes/` | Light and dark theme overrides |
 

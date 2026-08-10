@@ -68,4 +68,64 @@
   .card__text {
     color: $color-light;
   }
+
+  .navbar {
+    background-color: $color-dark;
+    border-bottom-color: color.adjust($color-dark, $lightness: 20%);
+
+    .navbar__brand {
+      color: $color-white;
+      &:hover {
+        color: $color-info;
+      }
+    }
+
+    .navbar__link {
+      color: $color-light;
+      &:hover,
+      &.is-active,
+      &[aria-current='page'] {
+        color: $color-info;
+      }
+    }
+
+    .navbar__toggle {
+      color: $color-light;
+      border-color: color.adjust($color-dark, $lightness: 20%);
+
+      &:hover {
+        color: $color-info;
+      }
+    }
+  }
+
+  .badge--dark {
+    background-color: color.adjust($color-dark, $lightness: 15%);
+  }
+
+  .pagination__link {
+    background-color: $color-dark;
+    border-color: color.adjust($color-dark, $lightness: 25%);
+    color: $color-info;
+
+    &:hover {
+      background-color: color.adjust($color-dark, $lightness: 10%);
+    }
+  }
+
+  .breadcrumb {
+    background-color: color.adjust($color-dark, $lightness: 10%);
+  }
+
+  .breadcrumb__link {
+    color: $color-info;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  .breadcrumb__item--active {
+    color: $color-light;
+  }
 }

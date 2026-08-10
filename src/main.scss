@@ -19,6 +19,11 @@
 @use 'components/_button';
 @use 'components/_card';
 @use 'components/_modal';
+@use 'components/_navbar';
+@use 'components/_alert';
+@use 'components/_badge';
+@use 'components/_pagination';
+@use 'components/_breadcrumb';
 
 // 6. Utilities
 @use 'utilities/_spacing';

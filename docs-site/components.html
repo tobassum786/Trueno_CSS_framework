@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Trueno CSS components — buttons, cards, and modals, styled with BEM naming.">
+    <meta name="description" content="Trueno CSS components — buttons, cards, modals, navbars, alerts, badges, pagination, and breadcrumbs, styled with BEM naming.">
     <title>Components — Trueno CSS Docs</title>
 
     <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
@@ -109,7 +109,12 @@
     <pre>components/
 ├── _button.scss
 ├── _card.scss
-└── _modal.scss</pre>
+├── _modal.scss
+├── _navbar.scss
+├── _alert.scss
+├── _badge.scss
+├── _pagination.scss
+└── _breadcrumb.scss</pre>
 </div>
 
 <h2>1. Button</h2>
@@ -621,6 +626,373 @@ document.addEventListener('keydown', (e) =&gt; {
 }</pre>
 </div>
 
+<h2>4. Navbar</h2>
+<p>Source: <code>src/components/_navbar.scss</code></p>
+<p>
+    The navbar is a flexible, responsive header block. It composes a brand, a collapsible area, and an
+    optional mobile toggle. Below <code>md</code> the collapse is hidden until you add
+    <code>.is-open</code>; from <code>md</code> up it is always visible and the toggle disappears.
+</p>
+
+<h3>Block / Element structure</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Class</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>.navbar</code></td><td>Outer container — flex, white background, bottom border.</td></tr>
+        <tr><td><code>.navbar__brand</code></td><td>Logo / brand link.</td></tr>
+        <tr><td><code>.navbar__nav</code></td><td><code>ul</code> of navigation links.</td></tr>
+        <tr><td><code>.navbar__item</code></td><td><code>li</code> wrapper for each link.</td></tr>
+        <tr><td><code>.navbar__link</code></td><td>Nav link; <code>.is-active</code> or <code>aria-current="page"</code> marks the current page.</td></tr>
+        <tr><td><code>.navbar__collapse</code></td><td>Container for nav + controls; collapsed on mobile.</td></tr>
+        <tr><td><code>.navbar__toggle</code></td><td>Mobile hamburger button (hidden at <code>md +</code>).</td></tr>
+        <tr><td><code>.navbar--primary</code> / <code>.navbar--dark</code></td><td>Color variants.</td></tr>
+    </tbody>
+</table>
+
+<h3>Live demo</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Default navbar</p>
+    <nav class="navbar" aria-label="Navbar demo">
+        <a class="navbar__brand" href="#" onclick="return false;">⚡ Trueno CSS</a>
+        <div class="navbar__collapse" id="docsNavbarCollapse">
+            <ul class="navbar__nav">
+                <li class="navbar__item"><a class="navbar__link is-active" href="#" onclick="return false;">Home</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#" onclick="return false;">About</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#" onclick="return false;">Docs</a></li>
+            </ul>
+        </div>
+        <button class="navbar__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="docsNavbarCollapse" data-docs-nav-toggle>☰</button>
+    </nav>
+    <p class="docs-demo__label">Primary variant</p>
+    <nav class="navbar navbar--primary" aria-label="Navbar demo">
+        <a class="navbar__brand" href="#" onclick="return false;">⚡ Trueno CSS</a>
+        <ul class="navbar__nav">
+            <li class="navbar__item"><a class="navbar__link is-active" href="#" onclick="return false;">Home</a></li>
+            <li class="navbar__item"><a class="navbar__link" href="#" onclick="return false;">About</a></li>
+        </ul>
+    </nav>
+</div>
+
+<h3>Basic markup</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">nav</span> class=<span class="str">"navbar"</span> aria-label=<span class="str">"Primary navigation"</span>&gt;
+  &lt;<span class="tag">a</span> class=<span class="str">"navbar__brand"</span> href=<span class="str">"/"</span>&gt;Trueno CSS&lt;/<span class="tag">a</span>&gt;
+  &lt;<span class="tag">div</span> class=<span class="str">"navbar__collapse"</span>&gt;
+    &lt;<span class="tag">ul</span> class=<span class="str">"navbar__nav"</span>&gt;
+      &lt;<span class="tag">li</span> class=<span class="str">"navbar__item"</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"navbar__link is-active"</span> href=<span class="str">"/"</span>&gt;Home&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+      &lt;<span class="tag">li</span> class=<span class="str">"navbar__item"</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"navbar__link"</span> href=<span class="str">"/about"</span>&gt;About&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+    &lt;/<span class="tag">ul</span>&gt;
+  &lt;/<span class="tag">div</span>&gt;
+  &lt;<span class="tag">button</span> class=<span class="str">"navbar__toggle"</span> type=<span class="str">"button"</span> aria-label=<span class="str">"Toggle navigation"</span>&gt;☰&lt;/<span class="tag">button</span>&gt;
+&lt;/<span class="tag">nav</span>&gt;</pre>
+</div>
+
+<h3>Collapse behavior</h3>
+<p>
+    The <code>.navbar__collapse</code> and <code>.navbar__toggle</code> work together. Below
+    <code>md</code>, the collapse is hidden. Toggle <code>.is-open</code> (on the <code>.navbar</code> or
+    the collapse itself) to reveal it, and keep <code>aria-expanded</code> in sync:
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>js</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">const</span> navbar = document.querySelector(<span class="str">'.navbar'</span>);
+<span class="tok">const</span> toggle = navbar.querySelector(<span class="str">'.navbar__toggle'</span>);
+<span class="tok">const</span> collapse = navbar.querySelector(<span class="str">'.navbar__collapse'</span>);
+
+toggle?.addEventListener(<span class="str">'click'</span>, () =&gt; {
+  <span class="tok">const</span> isOpen = navbar.classList.toggle(<span class="str">'is-open'</span>);
+  collapse.classList.toggle(<span class="str">'is-open'</span>, isOpen);
+  toggle.setAttribute(<span class="str">'aria-expanded'</span>, String(isOpen));
+});</pre>
+</div>
+
+<h3>Accessibility</h3>
+<ul>
+    <li>Use the native <code>nav</code> element with an <code>aria-label</code>.</li>
+    <li>Mark the current page with <code>aria-current="page"</code>.</li>
+    <li>Keep <code>aria-expanded</code> and <code>aria-controls</code> in sync when toggling the collapse.</li>
+</ul>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.navbar__collapse</span> {
+  flex-basis: 100%;
+  display: none;
+
+  &amp;.is-open,
+  <span class="tok">.navbar.is-open &amp;</span> {
+    display: block;
+  }
+
+  @include media-md {
+    display: flex !important;
+    justify-content: space-between;
+  }
+}
+
+<span class="tok">.navbar__toggle</span> {
+  @include flex-center;
+  width: $control-height;
+  height: $control-height;
+  border: $border-width-base solid $border-color-base;
+  border-radius: $border-radius-sm;
+  color: $text-color-base;
+
+  @include media-md {
+    display: none;
+  }
+}</pre>
+</div>
+
+<h2>5. Alert</h2>
+<p>Source: <code>src/components/_alert.scss</code></p>
+<p>
+    Alerts surface short, important feedback. Each variant computes a light background, colored border,
+    and readable text from its <code>$color-*</code> token, so alerts re-theme automatically.
+</p>
+
+<h3>Block / Element structure</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Class</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>.alert</code></td><td>Alert container — padding, border, radius.</td></tr>
+        <tr><td><code>.alert__title</code></td><td>Optional bold heading.</td></tr>
+        <tr><td><code>.alert__body</code></td><td>Main message text.</td></tr>
+        <tr><td><code>.alert__close</code></td><td>Optional dismiss button (×).</td></tr>
+        <tr><td><code>.alert--primary</code> … <code>.alert--info</code></td><td>Color variants.</td></tr>
+    </tbody>
+</table>
+
+<h3>Live demo</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Variants</p>
+    <div class="alert alert--primary"><div class="alert__body">This is a primary alert — an important announcement.</div></div>
+    <div class="alert alert--success"><div class="alert__body">Operation completed successfully.</div></div>
+    <div class="alert alert--danger"><div class="alert__body"><p class="alert__title">Something went wrong</p><p>Please check your input and try again.</p></div><button class="alert__close" type="button" aria-label="Close">×</button></div>
+    <div class="alert alert--warning"><div class="alert__body">Heads up — this action cannot be undone.</div></div>
+    <div class="alert alert--info"><div class="alert__body">A new version of Trueno CSS is available.</div></div>
+</div>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">div</span> class=<span class="str">"alert alert--success"</span> role=<span class="str">"alert"</span>&gt;
+  &lt;<span class="tag">div</span> class=<span class="str">"alert__body"</span>&gt;Operation completed successfully.&lt;/<span class="tag">div</span>&gt;
+&lt;/<span class="tag">div</span>&gt;
+
+&lt;<span class="tag">div</span> class=<span class="str">"alert alert--danger"</span> role=<span class="str">"alert"</span>&gt;
+  &lt;<span class="tag">div</span> class=<span class="str">"alert__body"</span>&gt;
+    &lt;<span class="tag">p</span> class=<span class="str">"alert__title"</span>&gt;Something went wrong&lt;/<span class="tag">p</span>&gt;
+    &lt;<span class="tag">p</span>&gt;Please check your input.&lt;/<span class="tag">p</span>&gt;
+  &lt;/<span class="tag">div</span>&gt;
+  &lt;<span class="tag">button</span> class=<span class="str">"alert__close"</span> type=<span class="str">"button"</span> aria-label=<span class="str">"Close"</span>&gt;×&lt;/<span class="tag">button</span>&gt;
+&lt;/<span class="tag">div</span>&gt;</pre>
+</div>
+
+<h3>Dismiss behavior</h3>
+<p>The close button style is supplied; the behavior is yours:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>js</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>document.querySelectorAll(<span class="str">'.alert__close'</span>).forEach((btn) =&gt; {
+  btn.addEventListener(<span class="str">'click'</span>, () =&gt; btn.closest(<span class="str">'.alert'</span>)?.remove());
+});</pre>
+</div>
+<p>
+    Consecutive alerts automatically gain <code>margin-top: $spacing-sm</code>, so stacked alerts stay
+    legible.
+</p>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@mixin alert-variant($base-color) {
+  background-color: color.adjust($base-color, $lightness: 42%);
+  border-color: color.adjust($base-color, $lightness: 25%);
+  color: color.adjust($base-color, $lightness: -28%);
+}
+
+<span class="tok">.alert--success</span> {
+  @include alert-variant($color-success);
+}</pre>
+</div>
+
+<h2>6. Badge</h2>
+<p>Source: <code>src/components/_badge.scss</code></p>
+<p>
+    Badges are compact labels for counts, tags, statuses, or metadata. Two families exist: solid
+    (filled) and soft (light background, colored text). Add <code>.badge--pill</code> for fully rounded
+    pills. A badge with a <code>href</code> becomes interactive and gains a hover state.
+</p>
+
+<h3>Live demo</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Solid</p>
+    <div class="swatch-row">
+        <span class="badge badge--primary">Primary</span>
+        <span class="badge badge--secondary">Secondary</span>
+        <span class="badge badge--success">5 new</span>
+        <span class="badge badge--danger">Error</span>
+        <span class="badge badge--warning">Pending</span>
+        <span class="badge badge--info">Info</span>
+        <span class="badge badge--dark">Dark</span>
+    </div>
+    <p class="docs-demo__label">Soft &amp; pill</p>
+    <div class="swatch-row">
+        <span class="badge badge--soft-primary">Primary</span>
+        <span class="badge badge--soft-danger">Error</span>
+        <a href="#" onclick="return false;" class="badge badge--soft-success badge--pill">Verified</a>
+        <span class="badge badge--warning badge--pill">Beta</span>
+    </div>
+</div>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">span</span> class=<span class="str">"badge badge--success"</span>&gt;5 new&lt;/<span class="tag">span</span>&gt;
+&lt;<span class="tag">span</span> class=<span class="str">"badge badge--soft-info"</span>&gt;Beta&lt;/<span class="tag">span</span>&gt;
+&lt;<span class="tag">a</span> href=<span class="str">"/notifications"</span> class=<span class="str">"badge badge--primary badge--pill"</span>&gt;3 unread&lt;/<span class="tag">a</span>&gt;</pre>
+</div>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>@mixin badge-solid($base-color) {
+  background-color: $base-color;
+  color: $color-white;
+
+  &amp;[href]:hover {
+    background-color: color.adjust($base-color, $lightness: -10%);
+  }
+}
+
+<span class="tok">.badge--success</span> {
+  @include badge-solid($color-success);
+}
+
+<span class="tok">.badge--pill</span> {
+  border-radius: $border-radius-pill;
+}</pre>
+</div>
+
+<h2>7. Pagination</h2>
+<p>Source: <code>src/components/_pagination.scss</code></p>
+<p>
+    Pagination pages large result sets. Render each control with <code>.pagination__link</code> inside a
+    <code>ul.pagination</code>. Alignment and size are block modifiers; a control can be active or
+    disabled.
+</p>
+
+<h3>Live demo</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Default &amp; sizes</p>
+    <nav aria-label="Pagination demo">
+        <ul class="pagination">
+            <li aria-disabled="true"><span class="pagination__link is-disabled">‹</span></li>
+            <li><a class="pagination__link" href="#" onclick="return false;">1</a></li>
+            <li><a class="pagination__link is-active" href="#" onclick="return false;" aria-current="page">2</a></li>
+            <li><a class="pagination__link" href="#" onclick="return false;">3</a></li>
+            <li><a class="pagination__link" href="#" onclick="return false;">‡</a></li>
+            <li><a class="pagination__link" href="#" onclick="return false;">›</a></li>
+        </ul>
+    </nav>
+    <ul class="pagination pagination--sm">
+        <li><a class="pagination__link" href="#" onclick="return false;">1</a></li>
+        <li><a class="pagination__link is-active" href="#" onclick="return false;" aria-current="page">2</a></li>
+        <li><a class="pagination__link" href="#" onclick="return false;">›</a></li>
+    </ul>
+    <ul class="pagination pagination--lg">
+        <li><a class="pagination__link" href="#" onclick="return false;">1</a></li>
+        <li><a class="pagination__link is-active" href="#" onclick="return false;" aria-current="page">2</a></li>
+        <li><a class="pagination__link" href="#" onclick="return false;">›</a></li>
+    </ul>
+</div>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">nav</span> aria-label=<span class="str">"Page navigation"</span>&gt;
+  &lt;<span class="tag">ul</span> class=<span class="str">"pagination pagination--centered"</span>&gt;
+    &lt;<span class="tag">li</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"pagination__link"</span> href=<span class="str">"?page=1"</span>&gt;‹&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+    &lt;<span class="tag">li</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"pagination__link is-active"</span> href=<span class="str">"?page=2"</span> aria-current=<span class="str">"page"</span>&gt;2&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+    &lt;<span class="tag">li</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"pagination__link"</span> href=<span class="str">"?page=3"</span>&gt;›&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+  &lt;/<span class="tag">ul</span>&gt;
+&lt;/<span class="tag">nav</span>&gt;</pre>
+</div>
+
+<h3>States</h3>
+<ul>
+    <li><code>.is-active</code> or <code>aria-current="page"</code> — filled primary, current page.</li>
+    <li><code>.is-disabled</code> or <code>aria-disabled="true"</code> — muted and non-interactive.</li>
+</ul>
+<p>For a disabled control, wrap the label in a <code>span</code> (not a link) to avoid focusables:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">li</span> aria-disabled=<span class="str">"true"</span>&gt;&lt;<span class="tag">span</span> class=<span class="str">"pagination__link is-disabled"</span>&gt;Previous&lt;/<span class="tag">span</span>&gt;&lt;/<span class="tag">li</span>&gt;</pre>
+</div>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.pagination__link</span> {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: $control-height;
+  min-height: $control-height;
+  border: $border-width-base solid $border-color-base;
+  border-radius: $border-radius-sm;
+  color: $color-primary;
+
+  &amp;.is-active,
+  &amp;[aria-current='page'] {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: $color-white;
+  }
+}</pre>
+</div>
+
+<h2>8. Breadcrumb</h2>
+<p>Source: <code>src/components/_breadcrumb.scss</code></p>
+<p>
+    Breadcrumbs communicate hierarchy. The last item — the current page — is muted and non-interactive;
+    prior items are links with a <code>/</code> separator inserted automatically.
+</p>
+
+<h3>Live demo</h3>
+<div class="docs-demo">
+    <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="#" onclick="return false;">Home</a></li>
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="#" onclick="return false;">Docs</a></li>
+            <li class="breadcrumb__item breadcrumb__item--active" aria-current="page">Components</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">nav</span> aria-label=<span class="str">"Breadcrumb"</span>&gt;
+  &lt;<span class="tag">ol</span> class=<span class="str">"breadcrumb"</span>&gt;
+    &lt;<span class="tag">li</span> class=<span class="str">"breadcrumb__item"</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"breadcrumb__link"</span> href=<span class="str">"/"</span>&gt;Home&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+    &lt;<span class="tag">li</span> class=<span class="str">"breadcrumb__item"</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"breadcrumb__link"</span> href=<span class="str">"/docs"</span>&gt;Docs&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+    &lt;<span class="tag">li</span> class=<span class="str">"breadcrumb__item breadcrumb__item--active"</span> aria-current=<span class="str">"page"</span>&gt;Components&lt;/<span class="tag">li</span>&gt;
+  &lt;/<span class="tag">ol</span>&gt;
+&lt;/<span class="tag">nav</span>&gt;</pre>
+</div>
+<p>The separator is purely decorative; <code>aria-current="page"</code> names the final crumb for assistive tech.</p>
+
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.breadcrumb__item</span> + <span class="tok">.breadcrumb__item</span>::before {
+  content: '/';
+  color: $text-color-muted;
+}
+
+<span class="tok">.breadcrumb__item--active</span> {
+  color: $text-color-muted;
+}</pre>
+</div>
+
 <h2>Component Best Practices</h2>
 <ol>
     <li><strong>Compose, don't duplicate.</strong> Cards contain headings, paragraphs, and buttons — never redefine the styles of <code>h2</code> or <code>.btn</code> inside <code>.card</code>.</li>
@@ -667,6 +1039,21 @@ document.addEventListener('keydown', (e) =&gt; {
     modal.querySelectorAll('[data-modal-close-docs]').forEach(function (b) { b.addEventListener('click', close); });
     modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('is-open')) close(); });
+})();
+
+(function () {
+    var toggles = document.querySelectorAll('[data-docs-nav-toggle]');
+    toggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function () {
+            var collapse = document.getElementById(toggle.getAttribute('aria-controls'));
+            var navbar = toggle.closest('.navbar');
+            if (navbar) navbar.classList.toggle('is-open');
+            if (collapse) {
+                var open = collapse.classList.toggle('is-open');
+                toggle.setAttribute('aria-expanded', String(open));
+            }
+        });
+    });
 })();
 </script>
 

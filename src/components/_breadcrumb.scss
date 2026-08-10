@@ -1,0 +1,41 @@
+@use 'sass:color';
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+
+.breadcrumb {
+  @include flex-align(center);
+  flex-wrap: wrap;
+  gap: $spacing-xxs;
+  margin: 0 0 $spacing-md;
+  padding: $spacing-sm $spacing-md;
+  background-color: $color-light;
+  border-radius: $border-radius-sm;
+  list-style: none;
+}
+
+.breadcrumb__item {
+  @include flex-align(center);
+  gap: $spacing-xxs;
+  font-size: $font-size-sm;
+
+  // Separator between items
+  + .breadcrumb__item::before {
+    content: '/';
+    color: $text-color-muted;
+  }
+}
+
+.breadcrumb__link {
+  color: $color-primary;
+  text-decoration: none;
+
+  &:hover {
+    color: color.adjust($color-primary, $lightness: -12%);
+    text-decoration: underline;
+  }
+}
+
+// Current page — the last item, typically not a link
+.breadcrumb__item--active {
+  color: $text-color-muted;
+}

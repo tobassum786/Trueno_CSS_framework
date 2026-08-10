@@ -8,7 +8,12 @@ Source: `src/components/`
 components/
 ├── _button.scss
 ├── _card.scss
-└── _modal.scss
+├── _modal.scss
+├── _navbar.scss
+├── _alert.scss
+├── _badge.scss
+├── _pagination.scss
+└── _breadcrumb.scss
 ```
 
 ---
@@ -461,6 +466,382 @@ Recommended attributes and behaviors:
   gap: $spacing-sm;
   padding: $spacing-md;
   border-top: $border-width-base solid $border-color-base;
+}
+```
+
+---
+
+## 4. Navbar
+
+Source: `src/components/_navbar.scss`
+
+The navbar is a flexible, responsive header block. It composes three parts: a brand, a collapsible area, and an optional mobile toggle. The collapse container is hidden below the `md` breakpoint and revealed by adding `.is-open` to either the `.navbar` or the `.navbar__collapse`. From `md` up the collapse is always visible and the toggle is hidden.
+
+### Block / Element structure
+
+| Class | Purpose |
+| --- | --- |
+| `.navbar` | Outer container — flex, white background, bottom border. |
+| `.navbar__brand` | Logo / brand link. |
+| `.navbar__nav` | `ul` of navigation links. |
+| `.navbar__item` | `li` wrapper for each link. |
+| `.navbar__link` | Individual nav link; `.is-active` / `aria-current="page"` marks the current page. |
+| `.navbar__collapse` | Container for nav + controls; collapsed on mobile via `.is-open`. |
+| `.navbar__toggle` | Mobile hamburger button (hidden at `md +`). |
+| `.navbar--primary` | Primary-colored navbar with white text. |
+| `.navbar--dark` | Dark navbar with light text. |
+
+### Basic markup
+
+```html
+<nav class="navbar" aria-label="Primary navigation">
+  <a class="navbar__brand" href="/">Trueno CSS</a>
+  <div class="navbar__collapse">
+    <ul class="navbar__nav">
+      <li class="navbar__item"><a class="navbar__link is-active" href="/">Home</a></li>
+      <li class="navbar__item"><a class="navbar__link" href="/about">About</a></li>
+      <li class="navbar__item"><a class="navbar__link" href="/docs">Docs</a></li>
+    </ul>
+  </div>
+  <button class="navbar__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarCollapse">☰</button>
+</nav>
+```
+
+### Collapse behavior
+
+The `.navbar__collapse` and the `.navbar__toggle` work together:
+
+- Below `md`, the collapse is hidden. Add `.is-open` (to `.navbar` or `.navbar__collapse`) to show it and set `aria-expanded="true"` on the toggle.
+- At `md` and above, the collapse is always displayed and `.navbar__toggle` is hidden.
+
+```js
+const navbar = document.querySelector('.navbar');
+const toggle = navbar.querySelector('.navbar__toggle');
+const collapse = navbar.querySelector('.navbar__collapse');
+
+toggle?.addEventListener('click', () => {
+  const isOpen = navbar.classList.toggle('is-open');
+  collapse.classList.toggle('is-open', isOpen);
+  toggle.setAttribute('aria-expanded', String(isOpen));
+});
+```
+
+### Color variants
+
+```html
+<nav class="navbar navbar--primary" aria-label="Primary navigation">
+  <a class="navbar__brand" href="/">Brand</a>
+  <div class="navbar__collapse">
+    <ul class="navbar__nav">
+      <li class="navbar__item"><a class="navbar__link is-active" href="/">Home</a></li>
+    </ul>
+  </div>
+</nav>
+```
+
+Replace `.navbar--primary` with `.navbar--dark` for the dark variant. Both tint the brand, links, and toggle; active links and hover states use the `$color-primary`.
+
+### Accessibility
+
+- Use the native `nav` element with an `aria-label`.
+- Mark the current page with `aria-current="page"` (Trueno styles both `[aria-current="page"]` and `.is-active`).
+- Keep `aria-expanded` and `aria-controls` in sync when toggling the collapse.
+
+### Code reference
+
+```scss
+.navbar {
+  @include flex-align(center);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-md;
+  background-color: $color-white;
+  border-bottom: $border-width-base solid $border-color-base;
+}
+
+.navbar__collapse {
+  flex-basis: 100%;
+  display: none;
+
+  &.is-open,
+  .navbar.is-open & {
+    display: block;
+  }
+
+  @include media-md {
+    display: flex !important;
+    justify-content: space-between;
+  }
+}
+
+.navbar__toggle {
+  @include flex-center;
+  width: $control-height;
+  height: $control-height;
+  border: $border-width-base solid $border-color-base;
+  border-radius: $border-radius-sm;
+  color: $text-color-base;
+
+  @include media-md {
+    display: none;
+  }
+}
+```
+
+---
+
+## 5. Alert
+
+Source: `src/components/_alert.scss`
+
+Alerts surface short, important feedback — success, errors, warnings, or info. Each variant uses a clearly computed light background, colored border, and readable text. All derived from `$color-*` tokens with `color.adjust()`, so they re-theme automatically.
+
+### Block / Element structure
+
+| Class | Purpose |
+| --- | --- |
+| `.alert` | Alert container — padding, border, radius. |
+| `.alert__title` | Optional bold heading inside the alert. |
+| `.alert__body` | Main message text. |
+| `.alert__close` | Optional dismiss button. |
+| `.alert--primary` / `.alert--secondary` / `.alert--success` / `.alert--danger` / `.alert--warning` / `.alert--info` | Color variants. |
+
+### Basic alert
+
+```html
+<div class="alert alert--success" role="alert">
+  <div class="alert__body">Operation completed successfully.</div>
+</div>
+```
+
+### With title and close button
+
+```html
+<div class="alert alert--danger" role="alert">
+  <div class="alert__body">
+    <p class="alert__title">Something went wrong</p>
+    <p>Please check your input and try again.</p>
+  </div>
+  <button class="alert__close" type="button" aria-label="Close">×</button>
+</div>
+```
+
+### Dismiss behavior
+
+The close button style is supplied; the behavior is yours:
+
+```js
+document.querySelectorAll('.alert__close').forEach((btn) => {
+  btn.addEventListener('click', () => btn.closest('.alert')?.remove());
+});
+```
+
+### Stacking
+
+Consecutive alerts automatically gain `margin-top: $spacing-sm`:
+
+```html
+<div class="alert alert--warning" role="alert">Short notice.</div>
+<div class="alert alert--danger" role="alert">Another notice.</div>
+```
+
+### Code reference
+
+```scss
+@mixin alert-variant($base-color) {
+  background-color: color.adjust($base-color, $lightness: 42%);
+  border-color: color.adjust($base-color, $lightness: 25%);
+  color: color.adjust($base-color, $lightness: -28%);
+}
+
+.alert--success {
+  @include alert-variant($color-success);
+}
+```
+
+---
+
+## 6. Badge
+
+Source: `src/components/_badge.scss`
+
+Badges are small, compact labels for counts, tags, statuses, or metadata. Two families exist: solid (filled) and soft (light background, colored text). Optionally make a badge a pill with `.badge--pill`. Putting a `href` on a badge makes it interactive and adds a hover state.
+
+### Classes
+
+| Class | Purpose |
+| --- | --- |
+| `.badge` | Base inline label. |
+| `.badge--primary` … `.badge--info`, `.badge--dark` | Solid color badges (white text). |
+| `.badge--soft-primary` … `.badge--soft-info` | Soft badges — light background, colored text. |
+| `.badge--pill` | Fully rounded (pill) shape. |
+
+### Examples
+
+```html
+<span class="badge badge--primary">Primary</span>
+<span class="badge badge--success">5 new</span>
+<span class="badge badge--danger">Error</span>
+<span class="badge badge--warning">Pending</span>
+<span class="badge badge--soft-info">Beta</span>
+<span class="badge badge--soft-success badge--pill">Verified</span>
+```
+
+### With a button or link
+
+```html
+<a href="/notifications" class="badge badge--primary badge--pill">3 unread</a>
+<button class="badge badge--danger">Clear all</button>
+```
+
+### Code reference
+
+```scss
+@mixin badge-solid($base-color) {
+  background-color: $base-color;
+  color: $color-white;
+
+  &[href]:hover {
+    background-color: color.adjust($base-color, $lightness: -10%);
+  }
+}
+
+.badge--success {
+  @include badge-solid($color-success);
+}
+
+.badge--soft-info {
+  @include badge-soft($color-info);
+}
+
+.badge--pill {
+  border-radius: $border-radius-pill;
+}
+```
+
+---
+
+## 7. Pagination
+
+Source: `src/components/_pagination.scss`
+
+Pagination pages large result sets. It is a `ul.nav`-style list rendered with `.pagination__link` items. Alignment and sizing are modifiers on the `.pagination` block; an item can be active or disabled.
+
+### Classes
+
+| Class | Purpose |
+| --- | --- |
+| `.pagination` | Unordered list of page links. |
+| `.pagination__link` | A single page control (also used for prev/next). |
+| `.pagination--centered` / `.pagination--right` | Alignment of the whole list. |
+| `.pagination--sm` / `.pagination--lg` | Size variants (also `pagination__link--sm` / `--lg`). |
+| `.is-active` / `[aria-current="page"]` | Current page — filled primary. |
+| `.is-disabled` / `[aria-disabled="true"]` | Disabled state. |
+
+### Basic example
+
+```html
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li><a class="pagination__link" href="?page=1" aria-label="Previous">‹</a></li>
+    <li><a class="pagination__link is-active" href="?page=1" aria-current="page">1</a></li>
+    <li><a class="pagination__link" href="?page=2">2</a></li>
+    <li><a class="pagination__link" href="?page=3">3</a></li>
+    <li><a class="pagination__link" href="?page=3" aria-label="Next">›</a></li>
+  </ul>
+</nav>
+```
+
+### Sizes and alignment
+
+```html
+<ul class="pagination pagination--centered">
+  <li><a class="pagination__link" href="?page=1">1</a></li>
+  <li><a class="pagination__link is-active" aria-current="page" href="?page=2">2</a></li>
+</ul>
+
+<ul class="pagination pagination--sm pagination--right">
+  <li><a class="pagination__link" href="?page=1">1</a></li>
+</ul>
+```
+
+### Disabled control
+
+Use `aria-disabled="true"` on the `<li>` (or the link). The style lives on `.pagination__link`:
+
+```html
+<li aria-disabled="true"><span class="pagination__link is-disabled">Previous</span></li>
+```
+
+### Code reference
+
+```scss
+.pagination__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: $control-height;
+  min-height: $control-height;
+  border: $border-width-base solid $border-color-base;
+  border-radius: $border-radius-sm;
+  color: $color-primary;
+
+  &.is-active,
+  &[aria-current='page'] {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: $color-white;
+  }
+
+  &.is-disabled,
+  &[aria-disabled='true'] {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+}
+```
+
+---
+
+## 8. Breadcrumb
+
+Source: `src/components/_breadcrumb.scss`
+
+Breadcrumbs communicate hierarchy. The last item is the current page and is styled muted and non-interactive; preceding items are links with a `/` separator inserted between them.
+
+### Classes
+
+| Class | Purpose |
+| --- | --- |
+| `.breadcrumb` | `ol` / `ul` container — light background, rounded. |
+| `.breadcrumb__item` | Wrapper for each crumb. |
+| `.breadcrumb__link` | Non-current crumb link. |
+| `.breadcrumb__item--active` | Current page crumb (muted, not a link). |
+
+### Example
+
+```html
+<nav aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb__item"><a class="breadcrumb__link" href="/">Home</a></li>
+    <li class="breadcrumb__item"><a class="breadcrumb__link" href="/docs">Docs</a></li>
+    <li class="breadcrumb__item breadcrumb__item--active" aria-current="page">Components</li>
+  </ol>
+</nav>
+```
+
+The separator is purely decorative; the `aria-current="page"` attribute names the final crumb for assistive tech.
+
+### Code reference
+
+```scss
+.breadcrumb__item + .breadcrumb__item::before {
+  content: '/';
+  color: $text-color-muted;
+}
+
+.breadcrumb__item--active {
+  color: $text-color-muted;
 }
 ```
 

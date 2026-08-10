@@ -1,4 +1,6 @@
 
+@use 'functions' as *;
+
 // Colors
 $color-primary: #007bff;
 $color-secondary: #6c757d;
@@ -29,6 +31,9 @@ $h4-font-size: 1.5rem;
 $h5-font-size: 1.25rem;
 $h6-font-size: 1rem;
 
+$font-size-sm: rem(14px);
+$font-size-xs: rem(12px);
+
 // Spacing
 $spacing-unit: 0.25rem; // 4px
 $spacing-xxs: $spacing-unit * 0.5; // 2px
@@ -43,7 +48,13 @@ $spacing-xxl: $spacing-unit * 12; // 48px
 $border-color-base: #dee2e6;
 $border-radius-sm: 0.25rem;
 $border-radius-base: 0.5rem;
+$border-radius-pill: 50rem;
 $border-width-base: 1px;
+
+// Controls
+$control-height: 36px;
+$control-height-sm: 28px;
+$control-height-lg: 44px;
 
 // Breakpoints (Mobile First)
 $breakpoint-sm: 576px;

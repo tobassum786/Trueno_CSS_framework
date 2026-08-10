@@ -89,7 +89,7 @@ const PAGES = [
     {
         file: 'components.html',
         title: 'Components',
-        description: 'Trueno CSS components — buttons, cards, and modals, styled with BEM naming.',
+        description: 'Trueno CSS components — buttons, cards, modals, navbars, alerts, badges, pagination, and breadcrumbs, styled with BEM naming.',
         heroBadge: '🧩 Components',
         heroTitle: 'Components',
         heroLead: 'Components are reusable, self-contained UI patterns. Each one follows BEM naming, depends only on the abstract layer, and ships with sane defaults.',

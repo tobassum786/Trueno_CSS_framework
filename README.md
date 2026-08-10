@@ -561,6 +561,102 @@ myModalElement.addEventListener('shown.bs.modal', function () {
 
 *(Repeat for other components like Navbars, Alerts, Dropdowns, etc., following a similar structure with Description, Examples, Options/Classes, JS API, and Accessibility notes.)*
 
+### **5. Navbars (Requires JavaScript for the mobile collapse)**
+
+Responsive navigation headers with a brand, link list, and optional mobile toggle.
+
+* **Markup:** `.navbar` + `.navbar__brand`, `.navbar__nav`, `.navbar__item`, `.navbar__link`.
+* **Collapse:** `.navbar__collapse` is hidden below `md` and revealed by toggling `.is-open` (or via the toggle button).
+* **Variants:** `.navbar--primary`, `.navbar--dark`.
+* **State:** `.is-active` or `aria-current="page"` marks the current page.
+* **Accessibility:** Use the native `nav` element with `aria-label`; keep `aria-expanded` and `aria-controls` in sync.
+
+**Example:**
+
+```
+<nav class="navbar" aria-label="Primary navigation">
+  <a class="navbar__brand" href="/">Brand</a>
+  <div class="navbar__collapse">
+    <ul class="navbar__nav">
+      <li class="navbar__item"><a class="navbar__link is-active" href="/">Home</a></li>
+      <li class="navbar__item"><a class="navbar__link" href="/about">About</a></li>
+    </ul>
+  </div>
+  <button class="navbar__toggle" type="button" aria-label="Toggle navigation">☰</button>
+</nav>
+```
+
+### **6. Alerts**
+
+Contextual feedback messages.
+
+* **Markup:** `.alert` + optional `.alert__title`, `.alert__body`, `.alert__close`.
+* **Variants:** `.alert--primary`, `.alert--secondary`, `.alert--success`, `.alert--danger`, `.alert--warning`, `.alert--info`.
+* **Behavior:** Consecutive alerts stack with automatic spacing; dismissal is up to you (`alert__close` removes the closest `.alert`).
+* **Accessibility:** Include `role="alert"` for important, time-sensitive messages.
+
+**Example:**
+
+```
+<div class="alert alert--success" role="alert">
+  <div class="alert__body">Operation completed successfully.</div>
+</div>
+```
+
+### **7. Badges**
+
+Compact labels for counts, statuses, and metadata.
+
+* **Markup:** `.badge`; combine with a solid (`.badge--primary`, `.badge--success`, …) or soft (`.badge--soft-primary`, …) color modifier.
+* **Shape:** `.badge--pill` for fully rounded pills.
+* **Interactivity:** Badges with `href` render as interactive links with a hover state.
+
+**Example:**
+
+```
+<span class="badge badge--success">5 new</span>
+<span class="badge badge--soft-info badge--pill">Beta</span>
+```
+
+### **8. Pagination**
+
+Page through large datasets.
+
+* **Markup:** `ul.pagination` with `li > .pagination__link` controls.
+* **Alignment:** `.pagination--centered`, `.pagination--right`.
+* **Sizes:** `.pagination--sm`, `.pagination--lg`.
+* **State:** `.is-active` / `aria-current="page"` for the current page; `.is-disabled` / `aria-disabled="true"` for disabled controls.
+
+**Example:**
+
+```
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li><a class="pagination__link is-active" href="?page=2" aria-current="page">2</a></li>
+    <li><a class="pagination__link" href="?page=3">3</a></li>
+  </ul>
+</nav>
+```
+
+### **9. Breadcrumbs**
+
+Hierarchy navigation.
+
+* **Markup:** `ol.breadcrumb` with `.breadcrumb__item`, `.breadcrumb__link`, and `.breadcrumb__item--active`.
+* **Separator:** A `/` divider is inserted automatically between items.
+* **Accessibility:** Mark the current crumb with `aria-current="page"`.
+
+**Example:**
+
+```
+<nav aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb__item"><a class="breadcrumb__link" href="/">Home</a></li>
+    <li class="breadcrumb__item breadcrumb__item--active" aria-current="page">Components</li>
+  </ol>
+</nav>
+```
+
 ---
 
 ## **VI. Utilities**

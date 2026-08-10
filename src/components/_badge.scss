@@ -1,0 +1,98 @@
+@use 'sass:color';
+@use '../abstract/variables' as *;
+
+.badge {
+  display: inline-block;
+  padding: $spacing-xxs $spacing-sm;
+  font-size: $font-size-xs;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: $border-radius-sm;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+  // Make badges clickable but still pill-adjacent
+  &[href] {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+// Solid color variants
+@mixin badge-solid($base-color) {
+  background-color: $base-color;
+  color: $color-white;
+
+  &[href]:hover {
+    background-color: color.adjust($base-color, $lightness: -10%);
+  }
+}
+
+.badge--primary {
+  @include badge-solid($color-primary);
+}
+
+.badge--secondary {
+  @include badge-solid($color-secondary);
+}
+
+.badge--success {
+  @include badge-solid($color-success);
+}
+
+.badge--danger {
+  @include badge-solid($color-danger);
+}
+
+.badge--warning {
+  @include badge-solid($color-warning);
+}
+
+.badge--info {
+  @include badge-solid($color-info);
+}
+
+.badge--dark {
+  @include badge-solid($color-dark);
+}
+
+// Subtle outline variants
+@mixin badge-soft($base-color) {
+  background-color: color.adjust($base-color, $lightness: 40%);
+  color: color.adjust($base-color, $lightness: -25%);
+
+  &[href]:hover {
+    background-color: color.adjust($base-color, $lightness: 30%);
+  }
+}
+
+.badge--soft-primary {
+  @include badge-soft($color-primary);
+}
+
+.badge--soft-secondary {
+  @include badge-soft($color-secondary);
+}
+
+.badge--soft-success {
+  @include badge-soft($color-success);
+}
+
+.badge--soft-danger {
+  @include badge-soft($color-danger);
+}
+
+.badge--soft-warning {
+  @include badge-soft($color-warning);
+}
+
+.badge--soft-info {
+  @include badge-soft($color-info);
+}
+
+// Shapes
+.badge--pill {
+  border-radius: $border-radius-pill;
+}
