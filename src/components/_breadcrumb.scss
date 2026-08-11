@@ -1,0 +1,107 @@
+@use 'sass:color';
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/functions' as *;
+
+// ============================================================
+// Breadcrumbs
+// Secondary navigation showing the current page's position in a
+// hierarchy. Separator is customizable per list.
+//
+//   <nav aria-label="Breadcrumb">
+//     <ol class="breadcrumb">
+//       <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">Home</a></li>
+//       <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">Library</a></li>
+//       <li class="breadcrumb__item breadcrumb__item--active" aria-current="page">Data</li>
+//     </ol>
+//   </nav>
+// ============================================================
+
+.breadcrumb {
+  @include flex-align(center);
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+  list-style: none;
+  margin: 0;
+  padding: $spacing-sm $spacing-md;
+  font-size: rem(14px);
+  color: $text-color-muted;
+}
+
+// Default separator: "/"
+.breadcrumb__item {
+  @include flex-align(center);
+  text-transform: capitalize;
+
+  a.breadcrumb__link,
+  .breadcrumb__link {
+    color: $color-primary;
+    text-decoration: none;
+
+    &:hover {
+      color: color.adjust($color-primary, $lightness: -10%);
+      text-decoration: underline;
+    }
+  }
+
+  & + .breadcrumb__item::before {
+    content: '/';
+    margin-right: $spacing-xs;
+    color: $border-color-base;
+    pointer-events: none;
+  }
+}
+
+// Active / current page (no link)
+.breadcrumb__item--active {
+  color: $text-color-base;
+  font-weight: 600;
+}
+
+// Disabled items (for future pages in a progress breadcrumb)
+.breadcrumb__item--disabled .breadcrumb__link {
+  color: $text-color-muted;
+  cursor: not-allowed;
+  text-decoration: none;
+
+  &:hover {
+    color: $text-color-muted;
+    text-decoration: none;
+  }
+}
+
+// Chevron separator variant
+.breadcrumb--chevron .breadcrumb__item + .breadcrumb__item::before {
+  content: '›';
+  font-size: rem(16px);
+  line-height: 1;
+}
+
+// Bullet separator variant
+.breadcrumb--bullet .breadcrumb__item + .breadcrumb__item::before {
+  content: '•';
+  color: $color-primary;
+}
+
+// Custom separator via CSS custom property:
+// <ol class="breadcrumb" style="--breadcrumb-separator: '→'">
+.breadcrumb--custom .breadcrumb__item + .breadcrumb__item::before {
+  content: var(--breadcrumb-separator, '/');
+}
+
+// Sizes
+.breadcrumb--sm {
+  font-size: rem(12px);
+  padding: $spacing-xs $spacing-sm;
+}
+
+.breadcrumb--lg {
+  font-size: $font-size-base;
+  padding: $spacing-md $spacing-lg;
+}
+
+// No background / no padding (lightweight)
+.breadcrumb--plain {
+  background: none;
+  padding: 0;
+}

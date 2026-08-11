@@ -1,25 +1,50 @@
 // Convert px to rem for responsive typography and spacing
+@use 'sass:map';
 @use 'sass:math';
+@use 'colors' as *;
 
 @function rem($pixels) {
   @return math.div($pixels, 16px) * 1rem;
 }
 
-// Get color by name
-@function get-color($color-name) {
-  @if map-has-key($colors, $color-name) {
-    @return map-get($colors, $color-name);
+// Get a single step from a color plate
+//   plate(blue, 500)   → #3b82f6
+//   plate(gray, 950)   → #030712
+@function plate($plate-name, $step) {
+  $plate-key: "#{$plate-name}";
+
+  @if not map.has-key($color-plates, $plate-key) {
+    @error "Color plate '#{$plate-name}' not found. Available plates: #{map.keys($color-plates)}.";
+  }
+
+  $plate-steps: map.get($color-plates, $plate-key);
+
+  @if not map.has-key($plate-steps, $step) {
+    @error "Step #{$step} not found on the '#{$plate-name}' plate. Available steps: #{map.keys($plate-steps)}.";
+  }
+
+  @return map.get($plate-steps, $step);
+}
+
+// Step 0 (near-white) and step 1000 (near-black) anchors for a plate.
+// Useful for gradient stops: plate-range(blue, 0, 1000) etc.
+@function plate-anchor($plate-name, $anchor: 0) {
+  @if $anchor == 0 {
+    @return #ffffff;
+  } @else if $anchor == 1000 {
+    @return #000000;
   } @else {
-    @error "Color '#{$color-name}' not found in $colors map.";
+    @error "Plate anchors are only 0 or 1000. Got: #{$anchor}.";
   }
 }
 
-// Example usage (if using a map for colors, or direct variable access)
-// For now, we are using direct variables, so this function is illustrative.
-// If you want to use a map:
-// $colors: (
-//   primary: #007bff,
-//   secondary: #6c757d,
-//   ...
-// );
-// .element { color: get-color(primary); }
+// Get a semantic color (single source of truth = $colors map)
+//   get-color(primary)   → plate value of the primary color
+//   get-color(primary-soft) → soft tint used for primary backgrounds
+@function get-color($color-name) {
+  @if map.has-key($colors, $color-name) {
+    @return map.get($colors, $color-name);
+  } @else {
+    @error "Color '#{$color-name}' not found in $colors map. Available colors: #{map.keys($colors)}.";
+  }
+}

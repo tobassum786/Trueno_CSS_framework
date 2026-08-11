@@ -1,20 +1,131 @@
 
-// Colors
-$color-primary: #007bff;
-$color-secondary: #6c757d;
-$color-success: #28a745;
-$color-danger: #dc3545;
-$color-warning: #ffc107;
-$color-info: #17a2b8;
-$color-light: #f8f9fa;
-$color-dark: #343a40;
+// ============================================================
+// Semantic colors — each token is derived from a color plate
+// (see _colors.scss). Edit a plate to re-tint every component
+// that uses a token; never hard-code a hex here.
+// ============================================================
+@use 'functions' as *;
+
+// Brand & status hues mapped to their plate names
+$color-primary: plate(blue, 500);
+$color-primary-soft: plate(blue, 100);
+$color-primary-soft-hover: plate(blue, 200);
+$color-primary-soft-text: plate(blue, 700);
+$color-primary-hover: plate(blue, 600);
+$color-primary-active: plate(blue, 700);
+$color-primary-border: plate(blue, 300);
+$color-primary-contrast: #ffffff;
+
+$color-secondary: plate(gray, 600);
+$color-secondary-soft: plate(gray, 100);
+$color-secondary-soft-hover: plate(gray, 200);
+$color-secondary-soft-text: plate(gray, 800);
+$color-secondary-hover: plate(gray, 700);
+$color-secondary-active: plate(gray, 800);
+$color-secondary-border: plate(gray, 300);
+$color-secondary-contrast: #ffffff;
+
+$color-success: plate(green, 600);
+$color-success-soft: plate(green, 100);
+$color-success-soft-hover: plate(green, 200);
+$color-success-soft-text: plate(green, 700);
+$color-success-hover: plate(green, 700);
+$color-success-active: plate(green, 800);
+$color-success-border: plate(green, 300);
+$color-success-contrast: #ffffff;
+
+$color-danger: plate(red, 500);
+$color-danger-soft: plate(red, 100);
+$color-danger-soft-hover: plate(red, 200);
+$color-danger-soft-text: plate(red, 700);
+$color-danger-hover: plate(red, 600);
+$color-danger-active: plate(red, 700);
+$color-danger-border: plate(red, 300);
+$color-danger-contrast: #ffffff;
+
+$color-warning: plate(amber, 500);
+$color-warning-soft: plate(amber, 100);
+$color-warning-soft-hover: plate(amber, 200);
+$color-warning-soft-text: plate(amber, 800);
+$color-warning-hover: plate(amber, 600);
+$color-warning-active: plate(amber, 700);
+$color-warning-border: plate(amber, 300);
+$color-warning-contrast: #111827;
+
+$color-info: plate(cyan, 500);
+$color-info-soft: plate(cyan, 100);
+$color-info-soft-hover: plate(cyan, 200);
+$color-info-soft-text: plate(cyan, 700);
+$color-info-hover: plate(cyan, 600);
+$color-info-active: plate(cyan, 700);
+$color-info-border: plate(cyan, 300);
+$color-info-contrast: #ffffff;
+
+$color-light: plate(gray, 50);
+$color-light-soft: plate(gray, 100);
+$color-light-soft-text: plate(gray, 800);
+$color-light-hover: plate(gray, 200);
+$color-light-contrast: plate(gray, 900);
+
+$color-dark: plate(gray, 800);
+$color-dark-soft: plate(gray, 200);
+$color-dark-soft-text: plate(gray, 900);
+$color-dark-hover: plate(gray, 700);
+$color-dark-contrast: #ffffff;
+
 $color-white: #ffffff;
 $color-black: #000000;
 
-// Text Colors
-$text-color-base: #333333;
-$text-color-light: #555555;
-$text-color-muted: #6c757d;
+// Semantic map (single source of truth consumed by get-color()).
+// Component partials iterate this map for soft/solid/outline variants.
+$colors: (
+  primary: $color-primary,
+  primary-soft: $color-primary-soft,
+  primary-soft-text: $color-primary-soft-text,
+  primary-soft-hover: $color-primary-soft-hover,
+  primary-hover: $color-primary-hover,
+  primary-active: $color-primary-active,
+  primary-border: $color-primary-border,
+  primary-contrast: $color-primary-contrast,
+  secondary: $color-secondary,
+  secondary-soft: $color-secondary-soft,
+  secondary-soft-text: $color-secondary-soft-text,
+  secondary-hover: $color-secondary-hover,
+  secondary-border: $color-secondary-border,
+  success: $color-success,
+  success-soft: $color-success-soft,
+  success-soft-text: $color-success-soft-text,
+  success-hover: $color-success-hover,
+  success-border: $color-success-border,
+  danger: $color-danger,
+  danger-soft: $color-danger-soft,
+  danger-soft-text: $color-danger-soft-text,
+  danger-hover: $color-danger-hover,
+  danger-border: $color-danger-border,
+  warning: $color-warning,
+  warning-soft: $color-warning-soft,
+  warning-soft-text: $color-warning-soft-text,
+  warning-hover: $color-warning-hover,
+  warning-border: $color-warning-border,
+  info: $color-info,
+  info-soft: $color-info-soft,
+  info-soft-text: $color-info-soft-text,
+  info-hover: $color-info-hover,
+  info-border: $color-info-border,
+  light: $color-light,
+  light-soft: $color-light-soft,
+  light-soft-text: $color-light-soft-text,
+  dark: $color-dark,
+  dark-soft: $color-dark-soft,
+  dark-soft-text: $color-dark-soft-text,
+  white: $color-white,
+  black: $color-black,
+);
+
+// Text Colors (from the gray plate)
+$text-color-base: plate(gray, 900);
+$text-color-light: plate(gray, 700);
+$text-color-muted: plate(gray, 500);
 
 // Typography
 $font-family-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;

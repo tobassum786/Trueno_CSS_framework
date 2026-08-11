@@ -1,0 +1,188 @@
+@use 'sass:map';
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/functions' as *;
+
+// ============================================================
+// Alerts
+// Contextual feedback messages. Variants map a semantic name to
+// its plate-derived tokens so new themes are reflected everywhere.
+//
+//   <div class="alert alert--success" role="alert">
+//     <p class="alert__title">Well done!</p>
+//     <p>You successfully read this message.</p>
+//     <button class="alert__close" type="button" aria-label="Close">×</button>
+//   </div>
+// ============================================================
+
+// Each semantic color exposes the plate token contract:
+// base / hover / soft / soft-hover / soft-text / border / contrast.
+$alert-colors: (
+  primary: (
+    base: $color-primary,
+    soft: $color-primary-soft,
+    soft-text: $color-primary-soft-text,
+    border: $color-primary-border,
+    contrast: $color-primary-contrast,
+  ),
+  secondary: (
+    base: $color-secondary,
+    soft: $color-secondary-soft,
+    soft-text: $color-secondary-soft-text,
+    border: $color-secondary-border,
+    contrast: $color-secondary-contrast,
+  ),
+  success: (
+    base: $color-success,
+    soft: $color-success-soft,
+    soft-text: $color-success-soft-text,
+    border: $color-success-border,
+    contrast: $color-success-contrast,
+  ),
+  danger: (
+    base: $color-danger,
+    soft: $color-danger-soft,
+    soft-text: $color-danger-soft-text,
+    border: $color-danger-border,
+    contrast: $color-danger-contrast,
+  ),
+  warning: (
+    base: $color-warning,
+    soft: $color-warning-soft,
+    soft-text: $color-warning-soft-text,
+    border: $color-warning-border,
+    contrast: $color-warning-contrast,
+  ),
+  info: (
+    base: $color-info,
+    soft: $color-info-soft,
+    soft-text: $color-info-soft-text,
+    border: $color-info-border,
+    contrast: $color-info-contrast,
+  ),
+  light: (
+    base: $color-light,
+    soft: $color-light-soft,
+    soft-text: $color-light-soft-text,
+    border: $color-light-soft,
+    contrast: $color-light-contrast,
+  ),
+  dark: (
+    base: $color-dark,
+    soft: $color-dark-soft,
+    soft-text: $color-dark-soft-text,
+    border: $color-dark-soft,
+    contrast: $color-dark-contrast,
+  ),
+);
+
+.alert {
+  position: relative;
+  padding: $spacing-md $spacing-lg;
+  margin-bottom: $spacing-md;
+  border: $border-width-base solid transparent;
+  border-radius: $border-radius-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color-base;
+
+  // Soft background variant (default): tinted fill, strong text
+  @each $name, $tokens in $alert-colors {
+    &--#{$name} {
+      background-color: map.get($tokens, soft);
+      border-color: map.get($tokens, border);
+      color: map.get($tokens, soft-text);
+    }
+  }
+
+  // Solid background variant: full color fill, contrast text
+  @each $name, $tokens in $alert-colors {
+    &--solid-#{$name} {
+      background-color: map.get($tokens, base);
+      border-color: map.get($tokens, base);
+      color: map.get($tokens, contrast);
+
+      .alert__close {
+        color: rgba($color-white, 0.8);
+
+        &:hover {
+          color: $color-white;
+        }
+      }
+    }
+  }
+
+  // Outline variant: transparent fill, colored text + border
+  @each $name, $tokens in $alert-colors {
+    &--outline-#{$name} {
+      background-color: transparent;
+      border-color: map.get($tokens, base);
+      color: map.get($tokens, soft-text);
+    }
+  }
+}
+
+// Title inside the alert
+.alert__title {
+  font-family: $font-family-heading;
+  font-size: $h5-font-size;
+  font-weight: bold;
+  margin: 0 0 $spacing-xs;
+  color: inherit;
+}
+
+.alert p {
+  margin-bottom: $spacing-xs;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Dismissible alerts reserve space for the close button
+.alert--dismissible {
+  padding-right: $spacing-xxl;
+}
+
+.alert__close {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  padding: $spacing-xs;
+  font-size: $h4-font-size;
+  line-height: 1;
+  color: $text-color-muted;
+  background: transparent;
+  border: none;
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    color: $text-color-base;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba($color-primary, 0.25);
+  }
+}
+
+// Right-aligned icon variant (pair icon + text vertically)
+.alert__icon {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.alert--sm {
+  padding: $spacing-xs $spacing-md;
+  font-size: rem(14px);
+}
+
+.alert--lg {
+  padding: $spacing-lg $spacing-xl;
+  font-size: rem(18px);
+}

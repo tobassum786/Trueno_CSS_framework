@@ -315,6 +315,36 @@ code, kbd, samp, pre {
     border-left-color: var(--doc-accent);
 }
 
+.sidebar-subnav {
+    margin: 4px 0 4px 14px;
+    border-left: 1px solid var(--doc-border, rgba(0, 0, 0, .12));
+    padding-left: 4px;
+}
+
+.sidebar-subnav:empty {
+    display: none;
+}
+
+.sidebar-subnav__link {
+    display: block;
+    padding: 5px 12px;
+    border-radius: 6px;
+    color: var(--doc-slate);
+    font-size: .84rem;
+    text-decoration: none;
+    transition: background .15s ease, color .15s ease;
+}
+
+.sidebar-subnav__link:hover {
+    background: var(--doc-bg-soft);
+    color: var(--doc-ink);
+}
+
+.sidebar-subnav__link.is-active {
+    color: var(--doc-accent);
+    font-weight: 600;
+}
+
 .docs-content {
     min-width: 0;
 }
@@ -341,6 +371,7 @@ code, kbd, samp, pre {
     font-weight: 700;
     margin: 40px 0 12px;
     padding-top: 8px;
+    scroll-margin-top: 120px;
 }
 
 .docs-page h3 {
@@ -1115,3 +1146,250 @@ code, kbd, samp, pre {
 }
 
 .theme--dark .glance-row .layer { color: #fff; }
+
+/* ============================================================
+   Color Plates explorer (colors.html)
+   ============================================================ */
+
+.plate-explorer {
+    margin: 22px 0 10px;
+}
+
+.plate-explorer__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.plate-explorer__hint {
+    font-size: .78rem;
+    color: var(--doc-slate);
+}
+
+.seg {
+    display: inline-flex;
+    background: var(--doc-bg-soft);
+    border: 1px solid var(--doc-border);
+    border-radius: 10px;
+    padding: 3px;
+    gap: 3px;
+}
+
+.seg__btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--doc-slate);
+    font: inherit;
+    font-size: .78rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background .18s ease, color .18s ease;
+}
+
+.seg__btn:hover {
+    color: var(--doc-ink);
+}
+
+.seg__btn.is-active {
+    background: #fff;
+    color: var(--doc-accent);
+    box-shadow: 0 1px 4px rgba(17, 24, 39, .12);
+}
+
+.theme--dark .seg__btn.is-active {
+    background: rgba(255, 255, 255, .1);
+}
+
+/* ---- Live preview banner ---- */
+.plate-preview {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--doc-bg-soft);
+    border: 1px solid var(--doc-border);
+    border-radius: var(--doc-radius);
+    padding: 14px 18px;
+    margin-bottom: 22px;
+}
+
+.plate-preview__swatch {
+    width: 72px;
+    height: 52px;
+    border-radius: 10px;
+    border: 1px solid rgba(127, 127, 127, .25);
+    background-color: var(--tr-blue-500);
+    transition: background-color .25s ease;
+    flex-shrink: 0;
+}
+
+.plate-preview__meta {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    min-width: 0;
+}
+
+.plate-preview__step {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--doc-ink);
+}
+
+.plate-preview__token {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .85rem;
+    color: var(--doc-accent);
+    overflow-wrap: anywhere;
+}
+
+.plate-preview__hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .8rem;
+    color: var(--doc-slate);
+}
+
+.theme--dark .plate-preview {
+    background: var(--doc-dark-3);
+    border-color: var(--doc-border);
+}
+
+.theme--dark .plate-preview__step { color: #fff; }
+
+/* ---- Plate groups ---- */
+.plate {
+    margin-bottom: 28px;
+}
+
+.plate__header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.plate__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: capitalize;
+    color: var(--doc-ink);
+}
+
+.plate__prefix {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .72rem;
+    color: var(--doc-slate);
+    background: var(--doc-bg-soft);
+    border: 1px solid var(--doc-border);
+    border-radius: 6px;
+    padding: 2px 8px;
+}
+
+.plate__steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+    gap: 8px;
+}
+
+/* ---- Swatches ---- */
+.plate__swatch {
+    position: relative;
+    appearance: none;
+    border: 1px solid rgba(127, 127, 127, .22);
+    border-radius: 10px;
+    padding: 0;
+    background: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    font: inherit;
+    text-align: left;
+    min-width: 0;
+}
+
+.plate__swatch:hover,
+.plate__swatch:focus-visible {
+    outline: none;
+    transform: translateY(-2px);
+    border-color: rgba(127, 127, 127, .5);
+    box-shadow: 0 8px 20px rgba(17, 24, 39, .16);
+    z-index: 1;
+}
+
+.plate__swatch:active {
+    transform: translateY(0) scale(.97);
+}
+
+.plate__swatch-fill {
+    display: block;
+    height: 48px;
+    background-color: var(--sw);
+}
+
+.plate__swatch-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 6px 8px;
+}
+
+.plate__swatch-step {
+    font-size: .72rem;
+    font-weight: 700;
+    color: var(--doc-ink);
+}
+
+.plate__swatch-hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .62rem;
+    color: var(--doc-slate);
+}
+
+/* Token overlay revealed on hover / focus */
+.plate__swatch-token {
+    position: absolute;
+    inset: 0 0 auto 0;
+    padding: 6px 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .6rem;
+    font-weight: 600;
+    color: var(--doc-ink);
+    background: rgba(255, 255, 255, .88);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity .15s ease, transform .15s ease;
+    pointer-events: none;
+    overflow-wrap: anywhere;
+}
+
+.plate__swatch:hover .plate__swatch-token,
+.plate__swatch:focus-visible .plate__swatch-token {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.plate__swatch.is-copied .plate__swatch-token {
+    opacity: 1;
+    transform: translateY(0);
+    background: rgba(34, 197, 94, .92);
+    color: #fff;
+}
+
+.theme--dark .plate__swatch {
+    background: var(--doc-dark);
+}
+
+.theme--dark .plate__swatch:hover,
+.theme--dark .plate__swatch:focus-visible {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .5);
+}
+
+.theme--dark .plate__swatch-step { color: #fff; }
+.theme--dark .plate__prefix { background: var(--doc-dark); }
+.theme--dark .plate__swatch-token { background: rgba(15, 23, 42, .9); color: #e2e8f0; }

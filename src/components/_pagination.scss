@@ -1,0 +1,150 @@
+@use 'sass:color';
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/functions' as *;
+
+// ============================================================
+// Pagination
+// Horizontal page navigation. Variants control size and shape.
+//
+//   <nav aria-label="Page navigation">
+//     <ul class="pagination">
+//       <li class="pagination__item"><a class="pagination__link" href="#">Previous</a></li>
+//       <li class="pagination__item pagination__item--active"><a class="pagination__link" href="#">1</a></li>
+//       <li class="pagination__item"><a class="pagination__link" href="#">2</a></li>
+//       <li class="pagination__item pagination__item--disabled"><a class="pagination__link" href="#">Next</a></li>
+//     </ul>
+//   </nav>
+// ============================================================
+
+.pagination {
+  @include flex-align(center);
+  gap: $spacing-xs;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination__item {
+  min-width: rem(36px);
+  text-align: center;
+}
+
+.pagination__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: rem(36px);
+  height: rem(36px);
+  padding: 0 $spacing-sm;
+  font-size: $font-size-base;
+  color: $color-primary;
+  background-color: $color-white;
+  border: $border-width-base solid $border-color-base;
+  border-radius: $border-radius-sm;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    color: $color-white;
+    background-color: $color-primary;
+    border-color: $color-primary;
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba($color-primary, 0.25);
+  }
+}
+
+// Active page
+.pagination__item--active .pagination__link {
+  color: $color-white;
+  background-color: $color-primary;
+  border-color: $color-primary;
+  font-weight: bold;
+}
+
+// Disabled page
+.pagination__item--disabled .pagination__link {
+  color: $text-color-muted;
+  background-color: $color-light;
+  border-color: $border-color-base;
+  cursor: not-allowed;
+  opacity: 0.65;
+
+  &:hover {
+    color: $text-color-muted;
+    background-color: $color-light;
+    border-color: $border-color-base;
+  }
+}
+
+// Nav arrows ("Previous" / "Next") with glyph
+.pagination__link--prev::before,
+.pagination__link--next::after {
+  font-size: rem(12px);
+}
+
+.pagination__link--prev::before {
+  content: '‹';
+  margin-right: $spacing-xs;
+}
+
+.pagination__link--next::after {
+  content: '›';
+  margin-left: $spacing-xs;
+}
+
+// Sizes
+.pagination--sm .pagination__item,
+.pagination--sm .pagination__link {
+  min-width: rem(28px);
+  height: rem(28px);
+  font-size: rem(14px);
+}
+
+.pagination--sm .pagination__link {
+  padding: 0 $spacing-xs;
+}
+
+.pagination--lg .pagination__item,
+.pagination--lg .pagination__link {
+  min-width: rem(44px);
+  height: rem(44px);
+  font-size: rem(18px);
+}
+
+.pagination--lg .pagination__link {
+  padding: 0 $spacing-md;
+}
+
+// Fully rounded links
+.pagination--rounded .pagination__link {
+  border-radius: 999px;
+}
+
+// Alternate "centered" / right aligned variants
+.pagination--center {
+  justify-content: center;
+}
+
+.pagination--right {
+  justify-content: flex-end;
+}
+
+// Secondary color for active state
+.pagination--secondary .pagination__link {
+  color: $color-secondary;
+
+  &:hover {
+    background-color: $color-secondary;
+    border-color: $color-secondary;
+  }
+}
+
+.pagination--secondary .pagination__item--active .pagination__link {
+  background-color: $color-secondary;
+  border-color: $color-secondary;
+}

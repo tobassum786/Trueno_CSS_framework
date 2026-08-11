@@ -16,21 +16,26 @@ The complete set of tokens defined in `src/abstract/_variables.scss`.
 
 ### Colors
 
-| Token | Value | Purpose |
-| --- | --- | --- |
-| `$color-primary` | `#007bff` | Primary actions, links by default |
-| `$color-secondary` | `#6c757d` | Secondary actions |
-| `$color-success` | `#28a745` | Success states |
-| `$color-danger` | `#dc3545` | Errors and destructive actions |
-| `$color-warning` | `#ffc107` | Warnings |
-| `$color-info` | `#17a2b8` | Informational accents |
-| `$color-light` | `#f8f9fa` | Light surface |
-| `$color-dark` | `#343a40` | Dark surface |
-| `$color-white` | `#ffffff` | Pure white |
-| `$color-black` | `#000000` | Pure black |
-| `$text-color-base` | `#333333` | Default body text |
-| `$text-color-light` | `#555555` | Secondary text |
-| `$text-color-muted` | `#6c757d` | Muted text |
+Every semantic color is derived from a [color plate](./colors.md) — a tonal scale defined once in `src/abstract/_colors.scss`. Change a plate and every component re-tints consistently.
+
+| Token | Value | Plate source | Purpose |
+| --- | --- | --- | --- |
+| `$color-primary` | `#3b82f6` | `blue 500` | Primary actions, links by default |
+| `$color-primary-hover` | `#2563eb` | `blue 600` | Primary hover |
+| `$color-primary-soft` | `#dbe6fe` | `blue 100` | Primary tinted backgrounds |
+| `$color-primary-soft-text` | `#1d4ed8` | `blue 700` | Text on primary tints |
+| `$color-secondary` | `#4b5563` | `gray 600` | Secondary actions |
+| `$color-success` | `#16a34a` | `green 600` | Success states |
+| `$color-danger` | `#ef4444` | `red 500` | Errors and destructive actions |
+| `$color-warning` | `#f59e0b` | `amber 500` | Warnings |
+| `$color-info` | `#06b6d4` | `cyan 500` | Informational accents |
+| `$color-light` | `#f9fafb` | `gray 50` | Light surface |
+| `$color-dark` | `#1f2937` | `gray 800` | Dark surface |
+| `$color-white` | `#ffffff` | — | Pure white |
+| `$color-black` | `#000000` | — | Pure black |
+| `$text-color-base` | `#111827` | `gray 900` | Default body text |
+| `$text-color-light` | `#374151` | `gray 700` | Secondary text |
+| `$text-color-muted` | `#6b7280` | `gray 500` | Muted text |
 
 ### Typography
 

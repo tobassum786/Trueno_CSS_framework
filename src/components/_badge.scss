@@ -1,0 +1,156 @@
+@use 'sass:map';
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/functions' as *;
+
+// ============================================================
+// Badges
+// Small inline labels for counts, status, or categories. Every
+// color token gets solid / soft / outline / pill variants.
+//
+//   <span class="badge badge--primary">New</span>
+//   <span class="badge badge--success badge--pill">42</span>
+// ============================================================
+
+// Each semantic color exposes the plate token contract:
+// base / soft / soft-text / contrast.
+$badge-colors: (
+  primary: (
+    base: $color-primary,
+    soft: $color-primary-soft,
+    soft-text: $color-primary-soft-text,
+    contrast: $color-primary-contrast,
+  ),
+  secondary: (
+    base: $color-secondary,
+    soft: $color-secondary-soft,
+    soft-text: $color-secondary-soft-text,
+    contrast: $color-secondary-contrast,
+  ),
+  success: (
+    base: $color-success,
+    soft: $color-success-soft,
+    soft-text: $color-success-soft-text,
+    contrast: $color-success-contrast,
+  ),
+  danger: (
+    base: $color-danger,
+    soft: $color-danger-soft,
+    soft-text: $color-danger-soft-text,
+    contrast: $color-danger-contrast,
+  ),
+  warning: (
+    base: $color-warning,
+    soft: $color-warning-soft,
+    soft-text: $color-warning-soft-text,
+    contrast: $color-warning-contrast,
+  ),
+  info: (
+    base: $color-info,
+    soft: $color-info-soft,
+    soft-text: $color-info-soft-text,
+    contrast: $color-info-contrast,
+  ),
+  light: (
+    base: $color-light,
+    soft: $color-light-soft,
+    soft-text: $color-light-soft-text,
+    contrast: $color-light-contrast,
+  ),
+  dark: (
+    base: $color-dark,
+    soft: $color-dark-soft,
+    soft-text: $color-dark-soft-text,
+    contrast: $color-dark-contrast,
+  ),
+);
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xxs $spacing-sm;
+  font-size: rem(12px);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: $border-radius-sm;
+  border: $border-width-base solid transparent;
+  color: $color-white;
+  background-color: $color-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+// Match the button close style so badges inside cards/alerts blend in
+.badge a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+// Solid background variants
+@each $name, $tokens in $badge-colors {
+  .badge--#{$name} {
+    background-color: map.get($tokens, base);
+    color: map.get($tokens, contrast);
+  }
+}
+
+// Soft background variants (tinted, no border)
+@each $name, $tokens in $badge-colors {
+  .badge--soft-#{$name} {
+    background-color: map.get($tokens, soft);
+    color: map.get($tokens, soft-text);
+  }
+}
+
+// Outline variants (transparent fill, colored border + text)
+@each $name, $tokens in $badge-colors {
+  .badge--outline-#{$name} {
+    background-color: transparent;
+    border-color: map.get($tokens, base);
+    color: map.get($tokens, soft-text);
+  }
+}
+
+// Pill shape (fully rounded)
+.badge--pill {
+  border-radius: 999px;
+}
+
+// Sizes
+.badge--sm {
+  padding: 1px $spacing-xs;
+  font-size: rem(10px);
+}
+
+.badge--lg {
+  padding: $spacing-xs $spacing-md;
+  font-size: rem(14px);
+}
+
+// Dot-style badge used for notifications
+.badge--dot {
+  width: rem(8px);
+  height: rem(8px);
+  padding: 0;
+  border-radius: 50%;
+  background-color: $color-danger;
+
+  &::before {
+    content: '';
+  }
+}
+
+// Numeric/count badge with a subtle shadow (floats on cards etc.)
+.badge--count {
+  padding: $spacing-xxs 0.45rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba($color-black, 0.2);
+}

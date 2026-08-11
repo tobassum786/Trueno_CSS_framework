@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Trueno CSS components — buttons, cards, and modals, styled with BEM naming.">
+    <meta name="description" content="Trueno CSS components — buttons, cards, modals, navbars, alerts, badges, pagination, breadcrumbs, and forms, styled with BEM naming.">
     <title>Components — Trueno CSS Docs</title>
 
     <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
@@ -70,6 +70,7 @@
                     <p class="sidebar-block__title">🎨 Design System</p>
                     <ul>
                         <li><a class="sidebar-block__link" href="abstract.html">Abstract Layer</a></li>
+                        <li><a class="sidebar-block__link" href="colors.html">Color Plates</a></li>
                         <li><a class="sidebar-block__link" href="customization.html">Customization &amp; Tokens</a></li>
                     </ul>
                 </div>
@@ -79,7 +80,19 @@
                     <ul>
                         <li><a class="sidebar-block__link" href="base.html">Base Styles</a></li>
                         <li><a class="sidebar-block__link" href="layout.html">Layout</a></li>
-                        <li><a class="sidebar-block__link sidebar-active" href="components.html">Components</a></li>
+                        <li><a class="sidebar-block__link sidebar-active" href="components.html">Components</a>
+<ul class="sidebar-subnav" id="sidebarSubnav">
+<li><a class="sidebar-subnav__link" href="components.html#button">Button</a></li>
+<li><a class="sidebar-subnav__link" href="components.html#card">Card</a></li>
+<li><a class="sidebar-subnav__link" href="components.html#modal">Modal</a></li>
+<li><a class="sidebar-subnav__link" href="components.html#navbar">Navbar</a></li>
+<li><a class="sidebar-subnav__link" href="components.html#alert">Alert</a></li>
+<li><a class="sidebar-subnav__link" href="components.html#badge">Badge</a></li>
+<li><a class="sidebar-subnav__link" href="components.html#pagination">Pagination</a></li>
+<li><a class="sidebar-subnav__link" href="components.html#breadcrumb">Breadcrumb</a></li>
+<li><a class="sidebar-subnav__link" href="components.html#forms">Forms</a></li>
+</ul>
+                        </li>
                         <li><a class="sidebar-block__link" href="utilities.html">Utilities</a></li>
                         <li><a class="sidebar-block__link" href="themes.html">Themes</a></li>
                         <li><a class="sidebar-block__link" href="vendors.html">Vendors</a></li>
@@ -109,10 +122,16 @@
     <pre>components/
 ├── _button.scss
 ├── _card.scss
-└── _modal.scss</pre>
+├── _modal.scss
+├── _navbar.scss
+├── _alert.scss
+├── _badge.scss
+├── _pagination.scss
+├── _breadcrumb.scss
+└── _form.scss</pre>
 </div>
 
-<h2>1. Button</h2>
+<h2 id="button">1. Button</h2>
 <p>Source: <code>src/components/_button.scss</code></p>
 <p>
     The button system is built on a shared <code>button-base</code> mixin (from
@@ -303,7 +322,7 @@
 }</pre>
 </div>
 
-<h2>2. Card</h2>
+<h2 id="card">2. Card</h2>
 <p>Source: <code>src/components/_card.scss</code></p>
 <p>
     Cards are flexible content containers with optional header, body, and footer sections. The default
@@ -449,7 +468,7 @@
     has <code>.theme--dark</code>. See <a href="themes.html">Themes</a>.
 </p>
 
-<h2>3. Modal</h2>
+<h2 id="modal">3. Modal</h2>
 <p>Source: <code>src/components/_modal.scss</code></p>
 <p>
     Modals are overlay dialogs. Trueno CSS ships the <strong>styles</strong> for a fully responsive
@@ -621,7 +640,720 @@ document.addEventListener('keydown', (e) =&gt; {
 }</pre>
 </div>
 
-<h2>Component Best Practices</h2>
+<h2 id="navbar">4. Navbar</h2>
+<p>Source: <code>src/components/_navbar.scss</code></p>
+<p>
+    The navbar is a flexible, responsive navigation bar. It ships with style variants
+    (<code>--dark</code>, <code>--light</code>, <code>--primary</code>,
+    <code>--gradient</code>, <code>--transparent</code>, <code>--sticky</code>), a mobile
+    hamburger collapse, and optional dropdown menus.
+</p>
+
+<h3>Block / Element structure</h3>
+<table class="docs-table">
+    <thead>
+        <tr><th>Class</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>.navbar</code></td><td>Outer bar — flex row, brand + collapse.</td></tr>
+        <tr><td><code>.navbar__brand</code></td><td>Logo / site name.</td></tr>
+        <tr><td><code>.navbar__toggle</code></td><td>Hamburger button (hidden at <code>md +</code>).</td></tr>
+        <tr><td><code>.navbar__collapse</code></td><td>Wraps the nav; hidden below <code>md</code> until <code>.is-open</code>.</td></tr>
+        <tr><td><code>.navbar__nav</code></td><td>Horizontal link list.</td></tr>
+        <tr><td><code>.navbar__item</code></td><td>A single nav entry.</td></tr>
+        <tr><td><code>.navbar__link</code></td><td>Link inside an item.</td></tr>
+        <tr><td><code>.navbar__has-dropdown</code></td><td>Item that owns a dropdown.</td></tr>
+        <tr><td><code>.navbar__dropdown</code></td><td>Sub-menu. Opens on hover / focus.</td></tr>
+        <tr><td><code>.navbar__dropdown-link</code></td><td>Link inside a dropdown.</td></tr>
+    </tbody>
+</table>
+
+<h3>Live demo — variants</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Dark (default)</p>
+    <nav class="navbar navbar--dark">
+        <a class="navbar__brand" href="#">Trueno</a>
+        <button class="navbar__toggle" type="button" aria-label="Toggle navigation">☰</button>
+        <div class="navbar__collapse">
+            <ul class="navbar__nav">
+                <li class="navbar__item navbar__item--active"><a class="navbar__link" href="#">Home</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#">Docs</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    <p class="docs-demo__label">Light</p>
+    <nav class="navbar navbar--light">
+        <a class="navbar__brand" href="#">Trueno</a>
+        <button class="navbar__toggle" type="button" aria-label="Toggle navigation">☰</button>
+        <div class="navbar__collapse">
+            <ul class="navbar__nav">
+                <li class="navbar__item navbar__item--active"><a class="navbar__link" href="#">Home</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#">Docs</a></li>
+            </ul>
+        </div>
+    </nav>
+    <p class="docs-demo__label">Primary</p>
+    <nav class="navbar navbar--primary">
+        <a class="navbar__brand" href="#">Trueno</a>
+        <button class="navbar__toggle" type="button" aria-label="Toggle navigation">☰</button>
+        <div class="navbar__collapse">
+            <ul class="navbar__nav">
+                <li class="navbar__item navbar__item--active"><a class="navbar__link" href="#">Home</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#">Docs</a></li>
+            </ul>
+        </div>
+    </nav>
+    <p class="docs-demo__label">Gradient</p>
+    <nav class="navbar navbar--gradient">
+        <a class="navbar__brand" href="#">Trueno</a>
+        <button class="navbar__toggle" type="button" aria-label="Toggle navigation">☰</button>
+        <div class="navbar__collapse">
+            <ul class="navbar__nav">
+                <li class="navbar__item navbar__item--active"><a class="navbar__link" href="#">Home</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#">Docs</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<h3>Live demo — dropdown</h3>
+<div class="docs-demo">
+    <nav class="navbar navbar--light">
+        <a class="navbar__brand" href="#">Trueno</a>
+        <button class="navbar__toggle" type="button" aria-label="Toggle navigation">☰</button>
+        <div class="navbar__collapse">
+            <ul class="navbar__nav">
+                <li class="navbar__item"><a class="navbar__link" href="#">Home</a></li>
+                <li class="navbar__item navbar__has-dropdown">
+                    <a class="navbar__link" href="#">Services ▾</a>
+                    <ul class="navbar__dropdown">
+                        <li><a class="navbar__dropdown-link" href="#">Web design</a></li>
+                        <li><a class="navbar__dropdown-link" href="#">Development</a></li>
+                        <li><a class="navbar__dropdown-link" href="#">Consulting</a></li>
+                    </ul>
+                </li>
+                <li class="navbar__item"><a class="navbar__link" href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<h3>Markup</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">nav</span> class=<span class="str">"navbar navbar--light"</span>&gt;
+  &lt;<span class="tag">a</span> class=<span class="str">"navbar__brand"</span> href=<span class="str">"#"</span>&gt;Brand&lt;/<span class="tag">a</span>&gt;
+  &lt;<span class="tag">button</span> class=<span class="str">"navbar__toggle"</span> type=<span class="str">"button"</span> aria-label=<span class="str">"Toggle navigation"</span>&gt;☰&lt;/<span class="tag">button</span>&gt;
+  &lt;<span class="tag">div</span> class=<span class="str">"navbar__collapse"</span>&gt;
+    &lt;<span class="tag">ul</span> class=<span class="str">"navbar__nav"</span>&gt;
+      &lt;<span class="tag">li</span> class=<span class="str">"navbar__item navbar__item--active"</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"navbar__link"</span> href=<span class="str">"#"</span>&gt;Home&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+      &lt;<span class="tag">li</span> class=<span class="str">"navbar__item"</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"navbar__link"</span> href=<span class="str">"#"</span>&gt;Docs&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+    &lt;/<span class="tag">ul</span>&gt;
+  &lt;/<span class="tag">div</span>&gt;
+&lt;/<span class="tag">nav</span>&gt;</pre>
+</div>
+
+<h3>Mobile collapse</h3>
+<p>
+    Below <code>md</code> the <code>.navbar__collapse</code> is hidden and the hamburger
+    (<code>.navbar__toggle</code>) is shown. Toggle it with a small script:
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>js</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>const toggle = document.querySelector('.navbar__toggle');
+
+toggle.addEventListener('click', () =&gt; {
+  const navbar = toggle.closest('.navbar');
+  const collapse = navbar.querySelector('.navbar__collapse');
+  const isOpen = navbar.classList.toggle('is-open');
+  collapse.classList.toggle('is-open', isOpen);
+  toggle.setAttribute('aria-expanded', String(isOpen));
+});</pre>
+</div>
+
+<h3>Sticky &amp; transparency</h3>
+<p>
+    Add <code>.navbar--sticky</code> to keep the bar at the top when scrolling, or
+    <code>.navbar--transparent</code> for an overlay-style bar with no background.
+</p>
+
+<h3>Accessibility</h3>
+<ul>
+    <li>Wrap the bar in <code>&lt;nav&gt;</code> and (when unique) add <code>aria-label="..."</code>.</li>
+    <li>The toggle needs <code>aria-expanded</code> updated by JS and <code>aria-controls</code> pointing at the collapse id.</li>
+    <li>Dropdowns open on <code>:hover</code> and <code>:focus-within</code>, so they work with keyboards too.</li>
+</ul>
+
+<h3>Code reference</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.navbar</span> {
+  @include flex-align(center);
+  justify-content: space-between;
+  gap: $spacing-md;
+  padding: $spacing-sm $spacing-lg;
+  background-color: $color-dark;
+  color: $color-light;
+}
+
+<span class="tok">.navbar--primary</span> {
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+<span class="tok">.navbar--sticky</span> {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+}
+
+<span class="tok">.navbar__toggle</span> {
+  display: inline-flex;
+  margin-left: auto;
+  padding: $spacing-xs $spacing-sm;
+  color: inherit;
+  background-color: transparent;
+  border: $border-width-base solid rgba($color-white, 0.2);
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+
+  @include media-md {
+    display: none;
+  }
+}
+
+<span class="tok">.navbar__collapse</span> {
+  @include media-sm {
+    display: none;
+  }
+
+  @include media-md {
+    display: flex !important;
+  }
+
+  &amp;.is-open {
+    display: block;
+  }
+}
+
+<span class="tok">.navbar__dropdown</span> {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: rem(200px);
+  background-color: $color-white;
+  border: $border-width-base solid $border-color-base;
+  border-radius: $border-radius-base;
+  box-shadow: 0 8px 24px rgba($color-black, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(rem(8px));
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: $z-index-dropdown;
+}
+
+<span class="tok">.navbar__item:hover .navbar__dropdown</span>,
+<span class="tok">.navbar__item:focus-within .navbar__dropdown</span> {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}</pre>
+</div>
+
+<h2 id="alert">5. Alert</h2>
+<p>Source: <code>src/components/_alert.scss</code></p>
+<p>
+    Alerts are context-aware feedback boxes. Every semantic name has a tinted default, a
+    <code>--solid-*</code>, and an <code>--outline-*</code> variant, plus optional close button
+    and sizes.
+</p>
+
+<h3>Live demo</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Tinted (default)</p>
+    <div class="alert alert--primary" role="alert">A simple primary alert — check it out!</div>
+    <div class="alert alert--success" role="alert">A simple success alert — well done!</div>
+    <div class="alert alert--danger" role="alert">A simple danger alert — check something broke.</div>
+    <div class="alert alert--warning" role="alert">A simple warning alert — proceed with caution.</div>
+    <div class="alert alert--info" role="alert">A simple info alert — an update to note.</div>
+</div>
+<div class="docs-demo">
+    <p class="docs-demo__label">Solid</p>
+    <div class="alert alert--solid-primary" role="alert">Primary — solid fill.</div>
+    <div class="alert alert--solid-danger" role="alert">Danger — solid fill.</div>
+    <p class="docs-demo__label">Outline</p>
+    <div class="alert alert--outline-primary" role="alert">Primary — outline.</div>
+    <div class="alert alert--outline-warning" role="alert">Warning — outline.</div>
+</div>
+<div class="docs-demo">
+    <p class="docs-demo__label">With title + close button</p>
+    <div class="alert alert--success alert--dismissible" role="alert">
+        <button class="alert__close" type="button" aria-label="Close">×</button>
+        <p class="alert__title">Well done!</p>
+        <p>You successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works.</p>
+    </div>
+</div>
+
+<h3>Markup</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">div</span> class=<span class="str">"alert alert--success alert--dismissible"</span> role=<span class="str">"alert"</span>&gt;
+  &lt;<span class="tag">button</span> class=<span class="str">"alert__close"</span> type=<span class="str">"button"</span> aria-label=<span class="str">"Close"</span>&gt;×&lt;/<span class="tag">button</span>&gt;
+  &lt;<span class="tag">p</span> class=<span class="str">"alert__title"</span>&gt;Well done!&lt;/<span class="tag">p</span>&gt;
+  &lt;<span class="tag">p</span>&gt;You successfully read this alert message.&lt;/<span class="tag">p</span>&gt;
+&lt;/<span class="tag">div</span>&gt;</pre>
+</div>
+
+<h3>Dismissing</h3>
+<p>
+    The close button only provides the affordance — wire up dismissal yourself. A minimal approach:
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>js</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>document.querySelectorAll('.alert__close').forEach((btn) =&gt; {
+  btn.addEventListener('click', () =&gt; btn.closest('.alert').remove());
+});</pre>
+</div>
+
+<h3>Code reference</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">$alert-colors</span>: (
+  primary: $color-primary,
+  secondary: $color-secondary,
+  success: $color-success,
+  danger: $color-danger,
+  warning: $color-warning,
+  info: $color-info,
+  light: $color-light,
+  dark: $color-dark,
+);
+
+<span class="tok">.alert</span> {
+  position: relative;
+  padding: $spacing-md $spacing-lg;
+  margin-bottom: $spacing-md;
+  border: $border-width-base solid transparent;
+  border-radius: $border-radius-base;
+  font-size: $font-size-base;
+  color: $text-color-base;
+
+  @each $name, $value in $alert-colors {
+    &amp;--#{$name} {
+      background-color: color.adjust($value, $lightness: 30%);
+      border-color: color.adjust($value, $lightness: 20%);
+      color: color.adjust($value, $lightness: -25%);
+    }
+  }
+}
+
+<span class="tok">.alert__title</span> {
+  font-size: $h5-font-size;
+  font-weight: bold;
+  margin: 0 0 $spacing-xs;
+  color: inherit;
+}
+
+<span class="tok">.alert__close</span> {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  padding: $spacing-xs;
+  font-size: $h4-font-size;
+  line-height: 1;
+  color: $text-color-muted;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}</pre>
+</div>
+
+<h2 id="badge">6. Badge</h2>
+<p>Source: <code>src/components/_badge.scss</code></p>
+<p>
+    Badges are small coroutine labels. Each color token has solid, soft (tinted), and outline
+    variants, plus pill, size, dot, and count helpers.
+</p>
+
+<h3>Live demo</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Solid</p>
+    <div class="swatch-row">
+        <span class="badge badge--primary">Primary</span>
+        <span class="badge badge--secondary">Secondary</span>
+        <span class="badge badge--success">Success</span>
+        <span class="badge badge--danger">Danger</span>
+        <span class="badge badge--warning">Warning</span>
+        <span class="badge badge--info">Info</span>
+        <span class="badge badge--light">Light</span>
+        <span class="badge badge--dark">Dark</span>
+    </div>
+    <p class="docs-demo__label">Soft</p>
+    <div class="swatch-row">
+        <span class="badge badge--soft-primary">Primary</span>
+        <span class="badge badge--soft-success">Success</span>
+        <span class="badge badge--soft-danger">Danger</span>
+        <span class="badge badge--soft-warning">Warning</span>
+        <span class="badge badge--soft-info">Info</span>
+    </div>
+    <p class="docs-demo__label">Outline + pill</p>
+    <div class="swatch-row">
+        <span class="badge badge--outline-primary">Primary</span>
+        <span class="badge badge--outline-danger">Danger</span>
+        <span class="badge badge--primary badge--pill">Pill</span>
+        <span class="badge badge--success badge--pill">42</span>
+    </div>
+    <p class="docs-demo__label">Sizes + count/dot</p>
+    <div class="swatch-row">
+        <span class="badge badge--primary badge--sm">Small</span>
+        <span class="badge badge--primary">Default</span>
+        <span class="badge badge--primary badge--lg">Large</span>
+        <span class="badge badge--danger badge--count">3</span>
+        <span class="badge badge--dot" aria-label="New notifications"></span>
+    </div>
+</div>
+
+<h3>Markup</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">span</span> class=<span class="str">"badge badge--primary"</span>&gt;New&lt;/<span class="tag">span</span>&gt;
+&lt;<span class="tag">span</span> class=<span class="str">"badge badge--success badge--pill"</span>&gt;42&lt;/<span class="tag">span</span>&gt;
+&lt;<span class="tag">span</span> class=<span class="str">"badge badge--outline-info"</span>&gt;Info&lt;/<span class="tag">span</span>&gt;</pre>
+</div>
+<div class="docs-callout docs-callout--tip">
+    <span class="docs-callout__icon">💡</span>
+    <div><p>Combine with a <code>.btn</code> for a notification style: <code>&lt;button class="btn btn--primary"&gt;Inbox &lt;span class="badge badge--light badge--pill"&gt;4&lt;/span&gt;&lt;/button&gt;</code>.</p></div>
+</div>
+
+<h3>Code reference</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.badge</span> {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xxs $spacing-sm;
+  font-size: rem(12px);
+  font-weight: 600;
+  line-height: 1;
+  border-radius: $border-radius-sm;
+  color: $color-white;
+  background-color: $color-secondary;
+}
+
+@each $name, $value in $badge-colors {
+  <span class="tok">.badge--#{$name}</span> {
+    background-color: $value;
+  }
+}
+
+<span class="tok">.badge--pill</span> {
+  border-radius: 999px;
+}</pre>
+</div>
+
+<h2 id="pagination">7. Pagination</h2>
+<p>Source: <code>src/components/_pagination.scss</code></p>
+<p>Horizontal page navigation with sizes, shapes, and alignment variants.</p>
+
+<h3>Live demo</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Default</p>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="pagination__item"><a class="pagination__link pagination__link--prev" href="#">Prev</a></li>
+            <li class="pagination__item"><a class="pagination__link" href="#">1</a></li>
+            <li class="pagination__item pagination__item--active"><a class="pagination__link" href="#">2</a></li>
+            <li class="pagination__item"><a class="pagination__link" href="#">3</a></li>
+            <li class="pagination__item"><a class="pagination__link" href="#">4</a></li>
+            <li class="pagination__item pagination__item--disabled"><a class="pagination__link pagination__link--next" href="#">Next</a></li>
+        </ul>
+    </nav>
+    <p class="docs-demo__label">Rounded + large, centered</p>
+    <ul class="pagination pagination--rounded pagination--lg pagination--center">
+        <li class="pagination__item"><a class="pagination__link pagination__link--prev" href="#">Prev</a></li>
+        <li class="pagination__item"><a class="pagination__link" href="#">1</a></li>
+        <li class="pagination__item pagination__item--active"><a class="pagination__link" href="#">2</a></li>
+        <li class="pagination__item"><a class="pagination__link" href="#">3</a></li>
+        <li class="pagination__item"><a class="pagination__link pagination__link--next" href="#">Next</a></li>
+    </ul>
+    <p class="docs-demo__label">Small + secondary</p>
+    <ul class="pagination pagination--sm pagination--secondary">
+        <li class="pagination__item"><a class="pagination__link pagination__link--prev" href="#">Prev</a></li>
+        <li class="pagination__item pagination__item--active"><a class="pagination__link" href="#">1</a></li>
+        <li class="pagination__item"><a class="pagination__link" href="#">2</a></li>
+        <li class="pagination__item"><a class="pagination__link pagination__link--next" href="#">Next</a></li>
+    </ul>
+</div>
+
+<h3>Markup</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">nav</span> aria-label=<span class="str">"Page navigation"</span>&gt;
+  &lt;<span class="tag">ul</span> class=<span class="str">"pagination pagination--rounded pagination--center"</span>&gt;
+    &lt;<span class="tag">li</span> class=<span class="str">"pagination__item"</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"pagination__link pagination__link--prev"</span> href=<span class="str">"#"</span>&gt;Prev&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+    &lt;<span class="tag">li</span> class=<span class="str">"pagination__item pagination__item--active"</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"pagination__link"</span> href=<span class="str">"#"</span>&gt;1&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+    &lt;<span class="tag">li</span> class=<span class="str">"pagination__item pagination__item--disabled"</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"pagination__link pagination__link--next"</span> href=<span class="str">"#"</span>&gt;Next&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+  &lt;/<span class="tag">ul</span>&gt;
+&lt;/<span class="tag">nav</span>&gt;</pre>
+</div>
+
+<h3>Variants</h3>
+<ul>
+    <li><code>.pagination--sm</code> / <code>.pagination--lg</code> — size.</li>
+    <li><code>.pagination--rounded</code> — pill-shaped links.</li>
+    <li><code>.pagination--center</code> / <code>.pagination--right</code> — alignment.</li>
+    <li><code>.pagination--secondary</code> — secondary-colored active state.</li>
+    <li><code>pagination__item--active</code> / <code>--disabled</code> — states.</li>
+    <li><code>pagination__link--prev</code> / <code>--next</code> — arrow glyphs.</li>
+</ul>
+
+<h2 id="breadcrumb">8. Breadcrumb</h2>
+<p>Source: <code>src/components/_breadcrumb.scss</code></p>
+<p>Secondary navigation showing the current page's position in a hierarchy, with switchable separators and sizes.</p>
+
+<h3>Live demo</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Default (slash)</p>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">Home</a></li>
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">Library</a></li>
+            <li class="breadcrumb__item breadcrumb__item--active" aria-current="page">Data</li>
+        </ol>
+    </nav>
+    <p class="docs-demo__label">Chevron</p>
+    <ol class="breadcrumb breadcrumb--chevron">
+        <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">Home</a></li>
+        <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">Components</a></li>
+        <li class="breadcrumb__item breadcrumb__item--active">Breadcrumb</li>
+    </ol>
+    <p class="docs-demo__label">Custom separator (→)</p>
+    <ol class="breadcrumb breadcrumb--custom" style="--breadcrumb-separator: '→'">
+        <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">Home</a></li>
+        <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">Products</a></li>
+        <li class="breadcrumb__item breadcrumb__item--active">Laptops</li>
+    </ol>
+</div>
+
+<h3>Markup</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">nav</span> aria-label=<span class="str">"Breadcrumb"</span>&gt;
+  &lt;<span class="tag">ol</span> class=<span class="str">"breadcrumb breadcrumb--chevron"</span>&gt;
+    &lt;<span class="tag">li</span> class=<span class="str">"breadcrumb__item"</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"breadcrumb__link"</span> href=<span class="str">"#"</span>&gt;Home&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+    &lt;<span class="tag">li</span> class=<span class="str">"breadcrumb__item"</span>&gt;&lt;<span class="tag">a</span> class=<span class="str">"breadcrumb__link"</span> href=<span class="str">"#"</span>&gt;Library&lt;/<span class="tag">a</span>&gt;&lt;/<span class="tag">li</span>&gt;
+    &lt;<span class="tag">li</span> class=<span class="str">"breadcrumb__item breadcrumb__item--active"</span> aria-current=<span class="str">"page"</span>&gt;Data&lt;/<span class="tag">li</span>&gt;
+  &lt;/<span class="tag">ol</span>&gt;
+&lt;/<span class="tag">nav</span>&gt;</pre>
+</div>
+
+<h3>Variants</h3>
+<ul>
+    <li><code>.breadcrumb--chevron</code> — <code>›</code> separator.</li>
+    <li><code>.breadcrumb--bullet</code> — <code>•</code> separator.</li>
+    <li><code>.breadcrumb--custom</code> — uses <code>--breadcrumb-separator</code> CSS variable.</li>
+    <li><code>.breadcrumb--sm</code> / <code>.breadcrumb--lg</code> — sizes.</li>
+    <li><code>.breadcrumb--plain</code> — no background/padding.</li>
+    <li><code>.breadcrumb__item--disabled</code> — inert "future" item.</li>
+</ul>
+
+<h3>Accessibility</h3>
+<ul>
+    <li>Mark the current page with <code>aria-current="page"</code> on the active item.</li>
+    <li>Wrap in <code>&lt;nav aria-label="Breadcrumb"&gt;</code> to scope the landmark.</li>
+    <li>Separators are inserted with CSS <code>::before</code> and carry no text meaning for screen readers.</li>
+</ul>
+
+<h2 id="forms">9. Forms</h2>
+<p>Source: <code>src/components/_form.scss</code></p>
+<p>
+    A complete form system: controls, layouts, checks &amp; radios, switches, input groups, and
+    validation states. Use <code>.form-control</code> on <code>&lt;input&gt;</code>,
+    <code>&lt;select&gt;</code>, and <code>&lt;textarea&gt;</code> for consistent styling.
+</p>
+
+<h3>Live demo — stacked form</h3>
+<div class="docs-demo">
+    <form class="u-d-block">
+        <div class="form-group">
+            <label for="demoName">Email address</label>
+            <input class="form-control" type="email" id="demoName" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+            <label for="demoPassword">Password</label>
+            <input class="form-control" type="password" id="demoPassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="demoSelect">Select</label>
+            <select class="form-control" id="demoSelect">
+                <option>Choose an option…</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="demoTextarea">Message</label>
+            <textarea class="form-control" id="demoTextarea" rows="3" placeholder="Write something…"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Fieldset</label>
+            <fieldset class="fieldset">
+                <legend>Preferences</legend>
+                <div class="form-check">
+                    <input type="checkbox" id="demoCheck1">
+                    <label for="demoCheck1">Check me out</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" id="demoCheck2" checked>
+                    <label for="demoCheck2">Already checked</label>
+                </div>
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <label>Switch</label>
+            <label class="switch">
+                <input type="checkbox" checked>
+                <span class="switch__track"></span>
+                <span>Enable notifications</span>
+            </label>
+        </div>
+        <button class="btn btn--primary" type="submit">Submit</button>
+    </form>
+</div>
+
+<h3>Live demo — form row + grid + inline</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Form row (label + control)</p>
+    <div class="form-group">
+        <label for="demoFname">First name</label>
+        <input class="form-control" id="demoFname" placeholder="Jane">
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="demoCity">City</label>
+            <input class="form-control" id="demoCity" placeholder="City">
+        </div>
+        <div class="form-group">
+            <label for="demoZip">ZIP / Postal</label>
+            <input class="form-control" id="demoZip" placeholder="12345">
+        </div>
+    </div>
+    <p class="docs-demo__label">Inline form</p>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="demoEmail" class="u-sr-only">Email</label>
+            <input class="form-control" type="email" id="demoEmail" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="demoPass" class="u-sr-only">Password</label>
+            <input class="form-control" type="password" id="demoPass" placeholder="Password">
+        </div>
+        <button class="btn btn--primary" type="submit">Sign in</button>
+    </form>
+    <p class="docs-demo__label">Input group</p>
+    <div class="input-group input-group--prepend">
+        <span class="input-group__addon">https://</span>
+        <input class="form-control" placeholder="flavor.example.com">
+    </div>
+</div>
+
+<h3>Live demo — validation</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Valid / invalid</p>
+    <div class="form-group">
+        <label for="demoValid">Looks good</label>
+        <input class="form-control is-valid" id="demoValid" value="trueno@example.com">
+        <div class="form-feedback form-feedback--valid">Looks good!</div>
+    </div>
+    <div class="form-group">
+        <label for="demoInvalid">Please provide a valid city</label>
+        <input class="form-control is-invalid" id="demoInvalid" value="Los Ang">
+        <div class="form-feedback form-feedback--invalid">Please provide a valid city.</div>
+    </div>
+</div>
+
+<h3>Markup</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">form</span> class=<span class="str">"form-row"</span>&gt;
+  &lt;<span class="tag">div</span> class=<span class="str">"form-group"</span>&gt;
+    &lt;<span class="tag">label</span> for=<span class="str">"name"</span>&gt;Name&lt;/<span class="tag">label</span>&gt;
+    &lt;<span class="tag">input</span> class=<span class="str">"form-control"</span> id=<span class="str">"name"</span> placeholder=<span class="str">"Jane"</span>&gt;
+  &lt;/<span class="tag">div</span>&gt;
+  &lt;<span class="tag">div</span> class=<span class="str">"form-group"</span>&gt;
+    &lt;<span class="tag">label</span> for=<span class="str">"email"</span>&gt;Email&lt;/<span class="tag">label</span>&gt;
+    <span class="com">&lt;!-- is-valid / is-invalid drive the state --&gt;</span>
+    &lt;<span class="tag">input</span> class=<span class="str">"form-control is-invalid"</span> id=<span class="str">"email"</span>&gt;
+    &lt;<span class="tag">div</span> class=<span class="str">"form-feedback form-feedback--invalid"</span>&gt;Enter a valid email.&lt;/<span class="tag">div</span>&gt;
+  &lt;/<span class="tag">div</span>&gt;
+&lt;/<span class="tag">form</span>&gt;</pre>
+</div>
+
+<h3>Switch code reference</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">.switch</span> {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  <span class="tok">.switch__track</span> {
+    position: relative;
+    width: rem(44px);
+    height: rem(24px);
+    background-color: $border-color-base;
+    border-radius: 999px;
+    transition: background-color 0.2s ease;
+
+    &amp;::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: rem(20px);
+      height: rem(20px);
+      background-color: $color-white;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba($color-black, 0.3);
+      transition: transform 0.2s ease;
+    }
+  }
+
+  input:checked + .switch__track {
+    background-color: $color-primary;
+
+    &amp;::after {
+      transform: translateX(rem(20px));
+    }
+  }
+
+  input:focus-visible + .switch__track {
+    box-shadow: 0 0 0 0.2rem rgba($color-primary, 0.25);
+  }
+}</pre>
+</div>
+
+<h3>Form conventions</h3>
+<ul>
+    <li>Always pair a <code>&lt;label for="..."&gt;</code> with its control — it is the field's accessible name.</li>
+    <li>Use native controls: <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;textarea&gt;</code>.</li>
+    <li><code>.form-check</code> handles checkboxes and radios; use <code>.form-check--inline</code> to lay them on one line.</li>
+    <li>Switches use a hidden native checkbox — they remain keyboard/AT accessible out of the box.</li>
+    <li>Validation is purely visual; real validation belongs to the server and/or your own JS.</li>
+</ul>
+
+<h2 id="best-practices">Component Best Practices</h2>
 <ol>
     <li><strong>Compose, don't duplicate.</strong> Cards contain headings, paragraphs, and buttons — never redefine the styles of <code>h2</code> or <code>.btn</code> inside <code>.card</code>.</li>
     <li><strong>Use semantic HTML.</strong> Buttons should be <code>&lt;button&gt;</code> (or <code>&lt;a&gt;</code> for navigation), not <code>&lt;div&gt;</code>.</li>

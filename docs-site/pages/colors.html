@@ -1,0 +1,30 @@
+<h1>Color Plates</h1>
+<p class="docs-subtitle">
+    Every hue in Trueno CSS is a <strong>color plate</strong> — a tonal scale of steps defined once in
+    <code>src/abstract/_colors.scss</code> and compiled into the CSS custom properties below. Hover a
+    swatch to reveal its token, click to copy it, and watch the preview update live. Source:
+    <a href="colors.html">docs/colors.md</a>
+</p>
+
+<div class="plate-explorer" id="plateExplorer">
+
+    <div class="plate-explorer__toolbar">
+        <div class="seg" role="group" aria-label="Copy format">
+            <button class="seg__btn is-active" type="button" data-copy="hex">Copy hex</button>
+            <button class="seg__btn" type="button" data-copy="token">Copy token</button>
+        </div>
+        <span class="plate-explorer__hint">Click a swatch to copy · hover to see the token</span>
+    </div>
+
+    <div class="plate-preview" aria-live="polite">
+        <div class="plate-preview__swatch" id="platePreview" aria-hidden="true"></div>
+        <div class="plate-preview__meta">
+            <span class="plate-preview__step" id="previewStep">500</span>
+            <strong class="plate-preview__token" id="previewToken">--tr-blue-500</strong>
+            <span class="plate-preview__hex" id="previewHex">#3b82f6</span>
+        </div>
+    </div>
+
+    {{COLOR_PLATES}}
+
+</div>

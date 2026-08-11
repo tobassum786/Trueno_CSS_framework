@@ -1,5 +1,6 @@
 // 1. Abstracts & Tools
-@use 'abstract/_variables';
+@use 'abstract/_colors'; // Color plates (design tokens)
+@use 'abstract/_variables'; // Semantic tokens derived from the plates
 @use 'abstract/_mixins';
 @use 'abstract/_functions';
 @use 'abstract/_placeholders';
@@ -19,6 +20,12 @@
 @use 'components/_button';
 @use 'components/_card';
 @use 'components/_modal';
+@use 'components/_navbar';
+@use 'components/_alert';
+@use 'components/_badge';
+@use 'components/_pagination';
+@use 'components/_breadcrumb';
+@use 'components/_form';
 
 // 6. Utilities
 @use 'utilities/_spacing';

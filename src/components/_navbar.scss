@@ -1,0 +1,293 @@
+@use 'sass:color';
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/functions' as *;
+
+// ============================================================
+// Navbar
+// Flexible navigation bar with color/size variants, a mobile
+// collapse (hamburger), and optional dropdown menus.
+//
+//   <nav class="navbar navbar--dark">
+//     <a class="navbar__brand" href="#">Brand</a>
+//     <button class="navbar__toggle" type="button" aria-label="Toggle navigation">☰</button>
+//     <div class="navbar__collapse">
+//       <ul class="navbar__nav">
+//         <li class="navbar__item navbar__item--active"><a class="navbar__link" href="#">Home</a></li>
+//         <li class="navbar__item"><a class="navbar__link" href="#">Docs</a></li>
+//       </ul>
+//     </div>
+//   </nav>
+// ============================================================
+
+.navbar {
+  @include flex-align(center);
+  justify-content: space-between;
+  gap: $spacing-md;
+  padding: $spacing-sm $spacing-lg;
+  background-color: $color-dark;
+  color: $color-light;
+  position: relative;
+
+  .container,
+  .navbar__container {
+    @include flex-align(center);
+    justify-content: space-between;
+    gap: $spacing-md;
+    width: 100%;
+  }
+}
+
+// Style variants
+.navbar--dark {
+  background-color: $color-dark;
+  color: $color-light;
+
+  .navbar__link { color: $color-light; }
+}
+
+.navbar--light {
+  background-color: $color-light;
+  color: $text-color-base;
+  border-bottom: $border-width-base solid $border-color-base;
+
+  .navbar__link { color: $text-color-base; }
+}
+
+.navbar--primary {
+  background-color: $color-primary;
+  color: $color-white;
+
+  .navbar__link { color: color.adjust($color-white, $lightness: -12%); }
+}
+
+.navbar--gradient {
+  background: linear-gradient(90deg, $color-primary, color.adjust($color-info, $lightness: -10%));
+  color: $color-white;
+
+  .navbar__link { color: rgba($color-white, 0.9); }
+}
+
+.navbar--transparent {
+  background-color: transparent;
+  color: $text-color-base;
+
+  .navbar__link { color: $text-color-base; }
+}
+
+.navbar--sticky {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+}
+
+// Brand / logo
+.navbar__brand {
+  font-family: $font-family-heading;
+  font-size: $h4-font-size;
+  font-weight: bold;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 0.85;
+  }
+
+  img {
+    height: rem(32px);
+    vertical-align: middle;
+    margin-right: $spacing-xs;
+  }
+}
+
+// Mobile hamburger toggle (hidden on md + up)
+.navbar__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  padding: $spacing-xs $spacing-sm;
+  font-size: $h5-font-size;
+  line-height: 1;
+  color: inherit;
+  background-color: transparent;
+  border: $border-width-base solid rgba($color-white, 0.2);
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($color-white, 0.1);
+  }
+
+  @include media-md {
+    display: none;
+  }
+}
+
+.navbar--light,
+.navbar--transparent {
+  .navbar__toggle {
+    border-color: $border-color-base;
+
+    &:hover {
+      background-color: rgba($color-black, 0.05);
+    }
+  }
+}
+
+// Collapsible section holding the nav (hidden below md)
+.navbar__collapse {
+  @include media-sm {
+    display: none;
+    flex-basis: 100%;
+  }
+
+  @include media-md {
+    display: flex !important;
+    flex-basis: auto;
+  }
+
+  &.is-open {
+    display: block;
+  }
+}
+
+.navbar .navbar__collapse {
+  @include flex-align(center);
+}
+
+// Plain horizontal list
+.navbar__nav {
+  @include flex-align(center);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: $spacing-lg;
+  flex-wrap: wrap;
+}
+
+.navbar__item {
+  position: relative;
+}
+
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs 0;
+  font-size: $font-size-base;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-primary;
+    text-decoration: none;
+  }
+}
+
+.navbar__item--active .navbar__link,
+.navbar__link--active {
+  font-weight: bold;
+
+  &::after {
+    content: '';
+    display: block;
+    height: 2px;
+    margin-top: 2px;
+    border-radius: 2px;
+    background-color: $color-primary;
+  }
+}
+
+// ------------------------------------------------------------
+// Dropdown menu (requires .navbar__collapse to be visible)
+// <li class="navbar__item navbar__has-dropdown">
+//   <a class="navbar__link" href="#">Services ▾</a>
+//   <ul class="navbar__dropdown">
+//     <li><a class="navbar__dropdown-link" href="#">Sub item</a></li>
+//   </ul>
+// </li>
+// ------------------------------------------------------------
+.navbar__has-dropdown {
+  position: relative;
+}
+
+.navbar__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: rem(200px);
+  margin-top: $spacing-xs;
+  padding: $spacing-xs;
+  background-color: $color-white;
+  border: $border-width-base solid $border-color-base;
+  border-radius: $border-radius-base;
+  box-shadow: 0 8px 24px rgba($color-black, 0.15);
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(rem(8px));
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: $z-index-dropdown;
+
+  li + li {
+    margin-top: 2px;
+  }
+}
+
+.navbar__dropdown-link {
+  display: block;
+  padding: $spacing-sm $spacing-md;
+  font-size: rem(14px);
+  color: $text-color-base;
+  border-radius: $border-radius-sm;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-primary;
+    background-color: $color-light;
+    text-decoration: none;
+  }
+}
+
+.navbar__item:hover .navbar__dropdown,
+.navbar__item:focus-within .navbar__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+// ------------------------------------------------------------
+// Responsive: below md the collapse stacks and the nav becomes
+// a vertical list; dropdowns become static (non-absolute).
+// ------------------------------------------------------------
+@include media-sm {
+  .navbar .navbar__collapse.is-open {
+    .navbar__nav {
+      flex-direction: column;
+      align-items: stretch;
+      gap: $spacing-xs;
+      padding: $spacing-md 0;
+    }
+
+    .navbar__dropdown {
+      position: static;
+      box-shadow: none;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      border: none;
+      border-left: 2px solid $color-primary;
+      border-radius: 0;
+      margin: $spacing-xs 0 0 $spacing-sm;
+    }
+
+    .navbar__item--active .navbar__link::after,
+    .navbar__link--active::after {
+      display: none;
+    }
+  }
+}

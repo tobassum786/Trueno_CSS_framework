@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore every Trueno CSS color plate — copy hex values or CSS tokens from the live interactive palette.">
+    <title>Color Plates — Trueno CSS Docs</title>
+
+    <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body>
+
+    <header class="docs-header" id="siteHeader">
+        <div class="container">
+            <div class="docs-header__logo">
+                <a href="index.html">
+                    <span class="logo-mark" aria-hidden="true">⚡</span>
+                    <span>Trueno CSS</span>
+                </a>
+            </div>
+
+            <nav class="docs-nav" aria-label="Primary navigation">
+                <ul class="docs-nav__list" id="navList">
+                    <li class="docs-nav__item"><a href="index.html" class="docs-nav__link--active">Docs</a></li>
+                    <li class="docs-nav__item"><a href="../examples/index.html">Home</a></li>
+                    <li class="docs-nav__item"><a href="https://github.com/tobassum786/Trueno_CSS_framework">GitHub</a></li>
+                </ul>
+
+                <div class="docs-nav__cta">
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                        <span id="themeIcon" aria-hidden="true">🌙</span>
+                    </button>
+                    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navList">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M4 7h16M4 12h16M4 17h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="docs-hero" aria-labelledby="page-title">
+        <div class="container">
+            <span class="docs-hero__badge">🎨 Color Plates</span>
+            <h1 class="docs-hero__title" id="page-title">Color Plates</h1>
+            <p class="docs-hero__lead">Every hue in Trueno CSS is a tonal plate of 10 steps. Browse the live palette, hover a swatch to see its token, and click to copy.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="docs-body">
+
+            <aside class="docs-sidebar" id="docsSidebar">
+                <button class="docs-sidebar-toggle" id="sidebarToggle" type="button">☰ Table of contents</button>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🚀 Getting Started</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="getting-started.html">Getting Started</a></li>
+                        <li><a class="sidebar-block__link" href="architecture.html">Architecture</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🎨 Design System</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="abstract.html">Abstract Layer</a></li>
+                        <li><a class="sidebar-block__link sidebar-active" href="colors.html">Color Plates</a></li>
+                        <li><a class="sidebar-block__link" href="customization.html">Customization &amp; Tokens</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🧱 Framework Layers</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="base.html">Base Styles</a></li>
+                        <li><a class="sidebar-block__link" href="layout.html">Layout</a></li>
+                        <li><a class="sidebar-block__link" href="components.html">Components</a>
+
+                        </li>
+                        <li><a class="sidebar-block__link" href="utilities.html">Utilities</a></li>
+                        <li><a class="sidebar-block__link" href="themes.html">Themes</a></li>
+                        <li><a class="sidebar-block__link" href="vendors.html">Vendors</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-block__title">🤝 Community</p>
+                    <ul>
+                        <li><a class="sidebar-block__link" href="contributing.html">Contributing</a></li>
+                        <li><a class="sidebar-block__link" href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="docs-content">
+                <article class="docs-page">
+                    <h1>Color Plates</h1>
+<p class="docs-subtitle">
+    Every hue in Trueno CSS is a <strong>color plate</strong> — a tonal scale of steps defined once in
+    <code>src/abstract/_colors.scss</code> and compiled into the CSS custom properties below. Hover a
+    swatch to reveal its token, click to copy it, and watch the preview update live. Source:
+    <a href="colors.html">docs/colors.md</a>
+</p>
+
+<div class="plate-explorer" id="plateExplorer">
+
+    <div class="plate-explorer__toolbar">
+        <div class="seg" role="group" aria-label="Copy format">
+            <button class="seg__btn is-active" type="button" data-copy="hex">Copy hex</button>
+            <button class="seg__btn" type="button" data-copy="token">Copy token</button>
+        </div>
+        <span class="plate-explorer__hint">Click a swatch to copy · hover to see the token</span>
+    </div>
+
+    <div class="plate-preview" aria-live="polite">
+        <div class="plate-preview__swatch" id="platePreview" aria-hidden="true"></div>
+        <div class="plate-preview__meta">
+            <span class="plate-preview__step" id="previewStep">500</span>
+            <strong class="plate-preview__token" id="previewToken">--tr-blue-500</strong>
+            <span class="plate-preview__hex" id="previewHex">#3b82f6</span>
+        </div>
+    </div>
+
+                <section class="plate" data-plate="blue">
+                <header class="plate__header">
+                    <h3 class="plate__title">blue</h3>
+                    <code class="plate__prefix">--tr-blue-*</code>
+                </header>
+                <div class="plate__steps">
+                <button class="plate__swatch" type="button"
+                        data-hex="#eff4ff" data-token="--tr-blue-50" data-step="50"
+                        style="--sw: #eff4ff"
+                        aria-label="Copy --tr-blue-50 (#eff4ff)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">50</span>
+                        <span class="plate__swatch-hex">#eff4ff</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-blue-50</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#dbe6fe" data-token="--tr-blue-100" data-step="100"
+                        style="--sw: #dbe6fe"
+                        aria-label="Copy --tr-blue-100 (#dbe6fe)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">100</span>
+                        <span class="plate__swatch-hex">#dbe6fe</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-blue-100</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#bfd4fe" data-token="--tr-blue-200" data-step="200"
+                        style="--sw: #bfd4fe"
+                        aria-label="Copy --tr-blue-200 (#bfd4fe)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">200</span>
+                        <span class="plate__swatch-hex">#bfd4fe</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-blue-200</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#93b8fd" data-token="--tr-blue-300" data-step="300"
+                        style="--sw: #93b8fd"
+                        aria-label="Copy --tr-blue-300 (#93b8fd)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">300</span>
+                        <span class="plate__swatch-hex">#93b8fd</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-blue-300</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#6092fb" data-token="--tr-blue-400" data-step="400"
+                        style="--sw: #6092fb"
+                        aria-label="Copy --tr-blue-400 (#6092fb)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">400</span>
+                        <span class="plate__swatch-hex">#6092fb</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-blue-400</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#3b82f6" data-token="--tr-blue-500" data-step="500"
+                        style="--sw: #3b82f6"
+                        aria-label="Copy --tr-blue-500 (#3b82f6)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">500</span>
+                        <span class="plate__swatch-hex">#3b82f6</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-blue-500</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#2563eb" data-token="--tr-blue-600" data-step="600"
+                        style="--sw: #2563eb"
+                        aria-label="Copy --tr-blue-600 (#2563eb)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">600</span>
+                        <span class="plate__swatch-hex">#2563eb</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-blue-600</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#1d4ed8" data-token="--tr-blue-700" data-step="700"
+                        style="--sw: #1d4ed8"
+                        aria-label="Copy --tr-blue-700 (#1d4ed8)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">700</span>
+                        <span class="plate__swatch-hex">#1d4ed8</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-blue-700</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#1e40af" data-token="--tr-blue-800" data-step="800"
+                        style="--sw: #1e40af"
+                        aria-label="Copy --tr-blue-800 (#1e40af)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">800</span>
+                        <span class="plate__swatch-hex">#1e40af</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-blue-800</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#1e3a8a" data-token="--tr-blue-900" data-step="900"
+                        style="--sw: #1e3a8a"
+                        aria-label="Copy --tr-blue-900 (#1e3a8a)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">900</span>
+                        <span class="plate__swatch-hex">#1e3a8a</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-blue-900</span>
+                </button>
+                </div>
+            </section>
+
+            <section class="plate" data-plate="indigo">
+                <header class="plate__header">
+                    <h3 class="plate__title">indigo</h3>
+                    <code class="plate__prefix">--tr-indigo-*</code>
+                </header>
+                <div class="plate__steps">
+                <button class="plate__swatch" type="button"
+                        data-hex="#eef2ff" data-token="--tr-indigo-50" data-step="50"
+                        style="--sw: #eef2ff"
+                        aria-label="Copy --tr-indigo-50 (#eef2ff)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">50</span>
+                        <span class="plate__swatch-hex">#eef2ff</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-indigo-50</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#e0e7ff" data-token="--tr-indigo-100" data-step="100"
+                        style="--sw: #e0e7ff"
+                        aria-label="Copy --tr-indigo-100 (#e0e7ff)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">100</span>
+                        <span class="plate__swatch-hex">#e0e7ff</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-indigo-100</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#c7d2fe" data-token="--tr-indigo-200" data-step="200"
+                        style="--sw: #c7d2fe"
+                        aria-label="Copy --tr-indigo-200 (#c7d2fe)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">200</span>
+                        <span class="plate__swatch-hex">#c7d2fe</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-indigo-200</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#a5b4fc" data-token="--tr-indigo-300" data-step="300"
+                        style="--sw: #a5b4fc"
+                        aria-label="Copy --tr-indigo-300 (#a5b4fc)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">300</span>
+                        <span class="plate__swatch-hex">#a5b4fc</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-indigo-300</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#818cf8" data-token="--tr-indigo-400" data-step="400"
+                        style="--sw: #818cf8"
+                        aria-label="Copy --tr-indigo-400 (#818cf8)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">400</span>
+                        <span class="plate__swatch-hex">#818cf8</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-indigo-400</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#6366f1" data-token="--tr-indigo-500" data-step="500"
+                        style="--sw: #6366f1"
+                        aria-label="Copy --tr-indigo-500 (#6366f1)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">500</span>
+                        <span class="plate__swatch-hex">#6366f1</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-indigo-500</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#4f46e5" data-token="--tr-indigo-600" data-step="600"
+                        style="--sw: #4f46e5"
+                        aria-label="Copy --tr-indigo-600 (#4f46e5)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">600</span>
+                        <span class="plate__swatch-hex">#4f46e5</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-indigo-600</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#4338ca" data-token="--tr-indigo-700" data-step="700"
+                        style="--sw: #4338ca"
+                        aria-label="Copy --tr-indigo-700 (#4338ca)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">700</span>
+                        <span class="plate__swatch-hex">#4338ca</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-indigo-700</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#3730a3" data-token="--tr-indigo-800" data-step="800"
+                        style="--sw: #3730a3"
+                        aria-label="Copy --tr-indigo-800 (#3730a3)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">800</span>
+                        <span class="plate__swatch-hex">#3730a3</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-indigo-800</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#312e81" data-token="--tr-indigo-900" data-step="900"
+                        style="--sw: #312e81"
+                        aria-label="Copy --tr-indigo-900 (#312e81)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">900</span>
+                        <span class="plate__swatch-hex">#312e81</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-indigo-900</span>
+                </button>
+                </div>
+            </section>
+
+            <section class="plate" data-plate="violet">
+                <header class="plate__header">
+                    <h3 class="plate__title">violet</h3>
+                    <code class="plate__prefix">--tr-violet-*</code>
+                </header>
+                <div class="plate__steps">
+                <button class="plate__swatch" type="button"
+                        data-hex="#f5f3ff" data-token="--tr-violet-50" data-step="50"
+                        style="--sw: #f5f3ff"
+                        aria-label="Copy --tr-violet-50 (#f5f3ff)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">50</span>
+                        <span class="plate__swatch-hex">#f5f3ff</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-violet-50</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#ede9fe" data-token="--tr-violet-100" data-step="100"
+                        style="--sw: #ede9fe"
+                        aria-label="Copy --tr-violet-100 (#ede9fe)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">100</span>
+                        <span class="plate__swatch-hex">#ede9fe</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-violet-100</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#ddd6fe" data-token="--tr-violet-200" data-step="200"
+                        style="--sw: #ddd6fe"
+                        aria-label="Copy --tr-violet-200 (#ddd6fe)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">200</span>
+                        <span class="plate__swatch-hex">#ddd6fe</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-violet-200</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#c4b5fd" data-token="--tr-violet-300" data-step="300"
+                        style="--sw: #c4b5fd"
+                        aria-label="Copy --tr-violet-300 (#c4b5fd)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">300</span>
+                        <span class="plate__swatch-hex">#c4b5fd</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-violet-300</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#a78bfa" data-token="--tr-violet-400" data-step="400"
+                        style="--sw: #a78bfa"
+                        aria-label="Copy --tr-violet-400 (#a78bfa)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">400</span>
+                        <span class="plate__swatch-hex">#a78bfa</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-violet-400</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#8b5cf6" data-token="--tr-violet-500" data-step="500"
+                        style="--sw: #8b5cf6"
+                        aria-label="Copy --tr-violet-500 (#8b5cf6)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">500</span>
+                        <span class="plate__swatch-hex">#8b5cf6</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-violet-500</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#7c3aed" data-token="--tr-violet-600" data-step="600"
+                        style="--sw: #7c3aed"
+                        aria-label="Copy --tr-violet-600 (#7c3aed)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">600</span>
+                        <span class="plate__swatch-hex">#7c3aed</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-violet-600</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#6d28d9" data-token="--tr-violet-700" data-step="700"
+                        style="--sw: #6d28d9"
+                        aria-label="Copy --tr-violet-700 (#6d28d9)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">700</span>
+                        <span class="plate__swatch-hex">#6d28d9</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-violet-700</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#5b21b6" data-token="--tr-violet-800" data-step="800"
+                        style="--sw: #5b21b6"
+                        aria-label="Copy --tr-violet-800 (#5b21b6)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">800</span>
+                        <span class="plate__swatch-hex">#5b21b6</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-violet-800</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#4c1d95" data-token="--tr-violet-900" data-step="900"
+                        style="--sw: #4c1d95"
+                        aria-label="Copy --tr-violet-900 (#4c1d95)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">900</span>
+                        <span class="plate__swatch-hex">#4c1d95</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-violet-900</span>
+                </button>
+                </div>
+            </section>
+
+            <section class="plate" data-plate="gray">
+                <header class="plate__header">
+                    <h3 class="plate__title">gray</h3>
+                    <code class="plate__prefix">--tr-gray-*</code>
+                </header>
+                <div class="plate__steps">
+                <button class="plate__swatch" type="button"
+                        data-hex="#f9fafb" data-token="--tr-gray-50" data-step="50"
+                        style="--sw: #f9fafb"
+                        aria-label="Copy --tr-gray-50 (#f9fafb)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">50</span>
+                        <span class="plate__swatch-hex">#f9fafb</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-gray-50</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#f3f4f6" data-token="--tr-gray-100" data-step="100"
+                        style="--sw: #f3f4f6"
+                        aria-label="Copy --tr-gray-100 (#f3f4f6)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">100</span>
+                        <span class="plate__swatch-hex">#f3f4f6</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-gray-100</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#e5e7eb" data-token="--tr-gray-200" data-step="200"
+                        style="--sw: #e5e7eb"
+                        aria-label="Copy --tr-gray-200 (#e5e7eb)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">200</span>
+                        <span class="plate__swatch-hex">#e5e7eb</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-gray-200</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#d1d5db" data-token="--tr-gray-300" data-step="300"
+                        style="--sw: #d1d5db"
+                        aria-label="Copy --tr-gray-300 (#d1d5db)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">300</span>
+                        <span class="plate__swatch-hex">#d1d5db</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-gray-300</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#9ca3af" data-token="--tr-gray-400" data-step="400"
+                        style="--sw: #9ca3af"
+                        aria-label="Copy --tr-gray-400 (#9ca3af)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">400</span>
+                        <span class="plate__swatch-hex">#9ca3af</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-gray-400</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#6b7280" data-token="--tr-gray-500" data-step="500"
+                        style="--sw: #6b7280"
+                        aria-label="Copy --tr-gray-500 (#6b7280)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">500</span>
+                        <span class="plate__swatch-hex">#6b7280</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-gray-500</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#4b5563" data-token="--tr-gray-600" data-step="600"
+                        style="--sw: #4b5563"
+                        aria-label="Copy --tr-gray-600 (#4b5563)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">600</span>
+                        <span class="plate__swatch-hex">#4b5563</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-gray-600</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#374151" data-token="--tr-gray-700" data-step="700"
+                        style="--sw: #374151"
+                        aria-label="Copy --tr-gray-700 (#374151)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">700</span>
+                        <span class="plate__swatch-hex">#374151</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-gray-700</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#1f2937" data-token="--tr-gray-800" data-step="800"
+                        style="--sw: #1f2937"
+                        aria-label="Copy --tr-gray-800 (#1f2937)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">800</span>
+                        <span class="plate__swatch-hex">#1f2937</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-gray-800</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#111827" data-token="--tr-gray-900" data-step="900"
+                        style="--sw: #111827"
+                        aria-label="Copy --tr-gray-900 (#111827)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">900</span>
+                        <span class="plate__swatch-hex">#111827</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-gray-900</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#030712" data-token="--tr-gray-950" data-step="950"
+                        style="--sw: #030712"
+                        aria-label="Copy --tr-gray-950 (#030712)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">950</span>
+                        <span class="plate__swatch-hex">#030712</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-gray-950</span>
+                </button>
+                </div>
+            </section>
+
+            <section class="plate" data-plate="slate">
+                <header class="plate__header">
+                    <h3 class="plate__title">slate</h3>
+                    <code class="plate__prefix">--tr-slate-*</code>
+                </header>
+                <div class="plate__steps">
+                <button class="plate__swatch" type="button"
+                        data-hex="#f8fafc" data-token="--tr-slate-50" data-step="50"
+                        style="--sw: #f8fafc"
+                        aria-label="Copy --tr-slate-50 (#f8fafc)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">50</span>
+                        <span class="plate__swatch-hex">#f8fafc</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-slate-50</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#f1f5f9" data-token="--tr-slate-100" data-step="100"
+                        style="--sw: #f1f5f9"
+                        aria-label="Copy --tr-slate-100 (#f1f5f9)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">100</span>
+                        <span class="plate__swatch-hex">#f1f5f9</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-slate-100</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#e2e8f0" data-token="--tr-slate-200" data-step="200"
+                        style="--sw: #e2e8f0"
+                        aria-label="Copy --tr-slate-200 (#e2e8f0)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">200</span>
+                        <span class="plate__swatch-hex">#e2e8f0</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-slate-200</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#cbd5e1" data-token="--tr-slate-300" data-step="300"
+                        style="--sw: #cbd5e1"
+                        aria-label="Copy --tr-slate-300 (#cbd5e1)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">300</span>
+                        <span class="plate__swatch-hex">#cbd5e1</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-slate-300</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#94a3b8" data-token="--tr-slate-400" data-step="400"
+                        style="--sw: #94a3b8"
+                        aria-label="Copy --tr-slate-400 (#94a3b8)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">400</span>
+                        <span class="plate__swatch-hex">#94a3b8</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-slate-400</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#64748b" data-token="--tr-slate-500" data-step="500"
+                        style="--sw: #64748b"
+                        aria-label="Copy --tr-slate-500 (#64748b)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">500</span>
+                        <span class="plate__swatch-hex">#64748b</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-slate-500</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#475569" data-token="--tr-slate-600" data-step="600"
+                        style="--sw: #475569"
+                        aria-label="Copy --tr-slate-600 (#475569)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">600</span>
+                        <span class="plate__swatch-hex">#475569</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-slate-600</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#334155" data-token="--tr-slate-700" data-step="700"
+                        style="--sw: #334155"
+                        aria-label="Copy --tr-slate-700 (#334155)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">700</span>
+                        <span class="plate__swatch-hex">#334155</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-slate-700</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#1e293b" data-token="--tr-slate-800" data-step="800"
+                        style="--sw: #1e293b"
+                        aria-label="Copy --tr-slate-800 (#1e293b)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">800</span>
+                        <span class="plate__swatch-hex">#1e293b</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-slate-800</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#0f172a" data-token="--tr-slate-900" data-step="900"
+                        style="--sw: #0f172a"
+                        aria-label="Copy --tr-slate-900 (#0f172a)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">900</span>
+                        <span class="plate__swatch-hex">#0f172a</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-slate-900</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#020617" data-token="--tr-slate-950" data-step="950"
+                        style="--sw: #020617"
+                        aria-label="Copy --tr-slate-950 (#020617)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">950</span>
+                        <span class="plate__swatch-hex">#020617</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-slate-950</span>
+                </button>
+                </div>
+            </section>
+
+            <section class="plate" data-plate="green">
+                <header class="plate__header">
+                    <h3 class="plate__title">green</h3>
+                    <code class="plate__prefix">--tr-green-*</code>
+                </header>
+                <div class="plate__steps">
+                <button class="plate__swatch" type="button"
+                        data-hex="#f0fdf4" data-token="--tr-green-50" data-step="50"
+                        style="--sw: #f0fdf4"
+                        aria-label="Copy --tr-green-50 (#f0fdf4)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">50</span>
+                        <span class="plate__swatch-hex">#f0fdf4</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-green-50</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#dcfce7" data-token="--tr-green-100" data-step="100"
+                        style="--sw: #dcfce7"
+                        aria-label="Copy --tr-green-100 (#dcfce7)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">100</span>
+                        <span class="plate__swatch-hex">#dcfce7</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-green-100</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#bbf7d0" data-token="--tr-green-200" data-step="200"
+                        style="--sw: #bbf7d0"
+                        aria-label="Copy --tr-green-200 (#bbf7d0)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">200</span>
+                        <span class="plate__swatch-hex">#bbf7d0</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-green-200</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#86efac" data-token="--tr-green-300" data-step="300"
+                        style="--sw: #86efac"
+                        aria-label="Copy --tr-green-300 (#86efac)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">300</span>
+                        <span class="plate__swatch-hex">#86efac</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-green-300</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#4ade80" data-token="--tr-green-400" data-step="400"
+                        style="--sw: #4ade80"
+                        aria-label="Copy --tr-green-400 (#4ade80)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">400</span>
+                        <span class="plate__swatch-hex">#4ade80</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-green-400</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#22c55e" data-token="--tr-green-500" data-step="500"
+                        style="--sw: #22c55e"
+                        aria-label="Copy --tr-green-500 (#22c55e)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">500</span>
+                        <span class="plate__swatch-hex">#22c55e</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-green-500</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#16a34a" data-token="--tr-green-600" data-step="600"
+                        style="--sw: #16a34a"
+                        aria-label="Copy --tr-green-600 (#16a34a)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">600</span>
+                        <span class="plate__swatch-hex">#16a34a</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-green-600</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#15803d" data-token="--tr-green-700" data-step="700"
+                        style="--sw: #15803d"
+                        aria-label="Copy --tr-green-700 (#15803d)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">700</span>
+                        <span class="plate__swatch-hex">#15803d</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-green-700</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#166534" data-token="--tr-green-800" data-step="800"
+                        style="--sw: #166534"
+                        aria-label="Copy --tr-green-800 (#166534)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">800</span>
+                        <span class="plate__swatch-hex">#166534</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-green-800</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#14532d" data-token="--tr-green-900" data-step="900"
+                        style="--sw: #14532d"
+                        aria-label="Copy --tr-green-900 (#14532d)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">900</span>
+                        <span class="plate__swatch-hex">#14532d</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-green-900</span>
+                </button>
+                </div>
+            </section>
+
+            <section class="plate" data-plate="red">
+                <header class="plate__header">
+                    <h3 class="plate__title">red</h3>
+                    <code class="plate__prefix">--tr-red-*</code>
+                </header>
+                <div class="plate__steps">
+                <button class="plate__swatch" type="button"
+                        data-hex="#fef2f2" data-token="--tr-red-50" data-step="50"
+                        style="--sw: #fef2f2"
+                        aria-label="Copy --tr-red-50 (#fef2f2)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">50</span>
+                        <span class="plate__swatch-hex">#fef2f2</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-red-50</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#fee2e2" data-token="--tr-red-100" data-step="100"
+                        style="--sw: #fee2e2"
+                        aria-label="Copy --tr-red-100 (#fee2e2)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">100</span>
+                        <span class="plate__swatch-hex">#fee2e2</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-red-100</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#fecaca" data-token="--tr-red-200" data-step="200"
+                        style="--sw: #fecaca"
+                        aria-label="Copy --tr-red-200 (#fecaca)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">200</span>
+                        <span class="plate__swatch-hex">#fecaca</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-red-200</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#fca5a5" data-token="--tr-red-300" data-step="300"
+                        style="--sw: #fca5a5"
+                        aria-label="Copy --tr-red-300 (#fca5a5)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">300</span>
+                        <span class="plate__swatch-hex">#fca5a5</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-red-300</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#f87171" data-token="--tr-red-400" data-step="400"
+                        style="--sw: #f87171"
+                        aria-label="Copy --tr-red-400 (#f87171)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">400</span>
+                        <span class="plate__swatch-hex">#f87171</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-red-400</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#ef4444" data-token="--tr-red-500" data-step="500"
+                        style="--sw: #ef4444"
+                        aria-label="Copy --tr-red-500 (#ef4444)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">500</span>
+                        <span class="plate__swatch-hex">#ef4444</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-red-500</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#dc2626" data-token="--tr-red-600" data-step="600"
+                        style="--sw: #dc2626"
+                        aria-label="Copy --tr-red-600 (#dc2626)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">600</span>
+                        <span class="plate__swatch-hex">#dc2626</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-red-600</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#b91c1c" data-token="--tr-red-700" data-step="700"
+                        style="--sw: #b91c1c"
+                        aria-label="Copy --tr-red-700 (#b91c1c)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">700</span>
+                        <span class="plate__swatch-hex">#b91c1c</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-red-700</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#991b1b" data-token="--tr-red-800" data-step="800"
+                        style="--sw: #991b1b"
+                        aria-label="Copy --tr-red-800 (#991b1b)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">800</span>
+                        <span class="plate__swatch-hex">#991b1b</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-red-800</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#7f1d1d" data-token="--tr-red-900" data-step="900"
+                        style="--sw: #7f1d1d"
+                        aria-label="Copy --tr-red-900 (#7f1d1d)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">900</span>
+                        <span class="plate__swatch-hex">#7f1d1d</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-red-900</span>
+                </button>
+                </div>
+            </section>
+
+            <section class="plate" data-plate="amber">
+                <header class="plate__header">
+                    <h3 class="plate__title">amber</h3>
+                    <code class="plate__prefix">--tr-amber-*</code>
+                </header>
+                <div class="plate__steps">
+                <button class="plate__swatch" type="button"
+                        data-hex="#fffbeb" data-token="--tr-amber-50" data-step="50"
+                        style="--sw: #fffbeb"
+                        aria-label="Copy --tr-amber-50 (#fffbeb)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">50</span>
+                        <span class="plate__swatch-hex">#fffbeb</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-amber-50</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#fef3c7" data-token="--tr-amber-100" data-step="100"
+                        style="--sw: #fef3c7"
+                        aria-label="Copy --tr-amber-100 (#fef3c7)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">100</span>
+                        <span class="plate__swatch-hex">#fef3c7</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-amber-100</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#fde68a" data-token="--tr-amber-200" data-step="200"
+                        style="--sw: #fde68a"
+                        aria-label="Copy --tr-amber-200 (#fde68a)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">200</span>
+                        <span class="plate__swatch-hex">#fde68a</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-amber-200</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#fcd34d" data-token="--tr-amber-300" data-step="300"
+                        style="--sw: #fcd34d"
+                        aria-label="Copy --tr-amber-300 (#fcd34d)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">300</span>
+                        <span class="plate__swatch-hex">#fcd34d</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-amber-300</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#fbbf24" data-token="--tr-amber-400" data-step="400"
+                        style="--sw: #fbbf24"
+                        aria-label="Copy --tr-amber-400 (#fbbf24)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">400</span>
+                        <span class="plate__swatch-hex">#fbbf24</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-amber-400</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#f59e0b" data-token="--tr-amber-500" data-step="500"
+                        style="--sw: #f59e0b"
+                        aria-label="Copy --tr-amber-500 (#f59e0b)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">500</span>
+                        <span class="plate__swatch-hex">#f59e0b</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-amber-500</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#d97706" data-token="--tr-amber-600" data-step="600"
+                        style="--sw: #d97706"
+                        aria-label="Copy --tr-amber-600 (#d97706)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">600</span>
+                        <span class="plate__swatch-hex">#d97706</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-amber-600</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#b45309" data-token="--tr-amber-700" data-step="700"
+                        style="--sw: #b45309"
+                        aria-label="Copy --tr-amber-700 (#b45309)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">700</span>
+                        <span class="plate__swatch-hex">#b45309</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-amber-700</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#92400e" data-token="--tr-amber-800" data-step="800"
+                        style="--sw: #92400e"
+                        aria-label="Copy --tr-amber-800 (#92400e)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">800</span>
+                        <span class="plate__swatch-hex">#92400e</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-amber-800</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#78350f" data-token="--tr-amber-900" data-step="900"
+                        style="--sw: #78350f"
+                        aria-label="Copy --tr-amber-900 (#78350f)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">900</span>
+                        <span class="plate__swatch-hex">#78350f</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-amber-900</span>
+                </button>
+                </div>
+            </section>
+
+            <section class="plate" data-plate="cyan">
+                <header class="plate__header">
+                    <h3 class="plate__title">cyan</h3>
+                    <code class="plate__prefix">--tr-cyan-*</code>
+                </header>
+                <div class="plate__steps">
+                <button class="plate__swatch" type="button"
+                        data-hex="#ecfeff" data-token="--tr-cyan-50" data-step="50"
+                        style="--sw: #ecfeff"
+                        aria-label="Copy --tr-cyan-50 (#ecfeff)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">50</span>
+                        <span class="plate__swatch-hex">#ecfeff</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-cyan-50</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#cffafe" data-token="--tr-cyan-100" data-step="100"
+                        style="--sw: #cffafe"
+                        aria-label="Copy --tr-cyan-100 (#cffafe)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">100</span>
+                        <span class="plate__swatch-hex">#cffafe</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-cyan-100</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#a5f3fc" data-token="--tr-cyan-200" data-step="200"
+                        style="--sw: #a5f3fc"
+                        aria-label="Copy --tr-cyan-200 (#a5f3fc)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">200</span>
+                        <span class="plate__swatch-hex">#a5f3fc</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-cyan-200</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#67e8f9" data-token="--tr-cyan-300" data-step="300"
+                        style="--sw: #67e8f9"
+                        aria-label="Copy --tr-cyan-300 (#67e8f9)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">300</span>
+                        <span class="plate__swatch-hex">#67e8f9</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-cyan-300</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#22d3ee" data-token="--tr-cyan-400" data-step="400"
+                        style="--sw: #22d3ee"
+                        aria-label="Copy --tr-cyan-400 (#22d3ee)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">400</span>
+                        <span class="plate__swatch-hex">#22d3ee</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-cyan-400</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#06b6d4" data-token="--tr-cyan-500" data-step="500"
+                        style="--sw: #06b6d4"
+                        aria-label="Copy --tr-cyan-500 (#06b6d4)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">500</span>
+                        <span class="plate__swatch-hex">#06b6d4</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-cyan-500</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#0891b2" data-token="--tr-cyan-600" data-step="600"
+                        style="--sw: #0891b2"
+                        aria-label="Copy --tr-cyan-600 (#0891b2)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">600</span>
+                        <span class="plate__swatch-hex">#0891b2</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-cyan-600</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#0e7490" data-token="--tr-cyan-700" data-step="700"
+                        style="--sw: #0e7490"
+                        aria-label="Copy --tr-cyan-700 (#0e7490)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">700</span>
+                        <span class="plate__swatch-hex">#0e7490</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-cyan-700</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#155e75" data-token="--tr-cyan-800" data-step="800"
+                        style="--sw: #155e75"
+                        aria-label="Copy --tr-cyan-800 (#155e75)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">800</span>
+                        <span class="plate__swatch-hex">#155e75</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-cyan-800</span>
+                </button>
+                <button class="plate__swatch" type="button"
+                        data-hex="#164e63" data-token="--tr-cyan-900" data-step="900"
+                        style="--sw: #164e63"
+                        aria-label="Copy --tr-cyan-900 (#164e63)">
+                    <span class="plate__swatch-fill" aria-hidden="true"></span>
+                    <span class="plate__swatch-meta">
+                        <span class="plate__swatch-step">900</span>
+                        <span class="plate__swatch-hex">#164e63</span>
+                    </span>
+                    <span class="plate__swatch-token">--tr-cyan-900</span>
+                </button>
+                </div>
+            </section>
+
+</div>
+
+
+                    <nav class="docs-pager" aria-label="Continue reading">
+                        <a href="abstract.html">
+                            <span class="dir">Previous</span>
+                            <span class="name">← Abstract Layer</span>
+                        </a>
+                        <a href="customization.html" class="docs-pager--right">
+                            <span class="dir">Next up</span>
+                            <span class="name">Customization & Tokens →</span>
+                        </a>
+                    </nav>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <footer class="docs-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5 mb-lg">
+                    <p class="docs-footer__logo">⚡ Trueno CSS</p>
+                    <p class="docs-footer__text">
+                        A modern, responsive, and highly customizable CSS framework — built with Sass,
+                        following best practices. MIT licensed.
+                    </p>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Docs</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="architecture.html">Architecture</a></li>
+                        <li><a href="components.html">Components</a></li>
+                        <li><a href="utilities.html">Utilities</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-lg">
+                    <p class="docs-footer__heading">Resources</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="../examples/index.html">Main site</a></li>
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/releases" rel="noopener">Releases</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-lg">
+                    <p class="docs-footer__heading">Community</p>
+                    <ul class="docs-footer__list">
+                        <li><a href="https://github.com/tobassum786/Trueno_CSS_framework/issues" rel="noopener">Report a bug</a></li>
+                        <li><a href="contributing.html">Contributing</a></li>
+                        <li><a href="https://github.com/tobassum786" rel="noopener">The team</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="docs-footer__bottom u-text-center">
+                © 2026 Trueno CSS · Built with
+                <a href="../examples/index.html" rel="noopener">Trueno CSS</a> by Tobassum Munir
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

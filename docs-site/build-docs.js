@@ -19,6 +19,7 @@ const SIDEBAR_TOKEN_BY_KEY = {
     getting_started: 'SIDEBAR_GETTING_STARTED',
     architecture: 'SIDEBAR_ARCHITECTURE',
     abstract: 'SIDEBAR_ABSTRACT',
+    colors: 'SIDEBAR_COLORS',
     customization: 'SIDEBAR_CUSTOMIZATION',
     base: 'SIDEBAR_BASE',
     layout: 'SIDEBAR_LAYOUT',
@@ -29,6 +30,105 @@ const SIDEBAR_TOKEN_BY_KEY = {
     contributing: 'SIDEBAR_CONTRIBUTING',
     changelog: 'SIDEBAR_CHANGELOG',
 };
+
+/* ============================================================
+   Color plates explorer
+   Reads the compiled framework CSS and rebuilds the interactive
+   plate grid from the `--tr-*` custom properties it finds. The
+   explorer therefore always matches the compiled output — edit
+   a plate in Sass, rebuild, and the page updates itself.
+   ============================================================ */
+const DIST_CSS = path.join(ROOT, '..', 'dist', 'trueno-css-framework.css');
+
+function generateColorPlates() {
+    if (!fs.existsSync(DIST_CSS)) {
+        return '<p class="docs-callout docs-callout--info">Build the framework first '
+            + '(<code>npm run build</code>) to generate the interactive plate explorer.</p>';
+    }
+
+    const css = fs.readFileSync(DIST_CSS, 'utf8');
+    const re = /--tr-([a-z]+)-(\d+):\s*(#[0-9a-fA-F]{3,8})/g;
+    const plates = [];
+    const index = new Map();
+    const seen = new Set();
+
+    let m;
+    while ((m = re.exec(css)) !== null) {
+        const name = m[1];
+        const step = Number(m[2]);
+        // 0 and 1000 are per-hue gradient anchors (white/black) — skip
+        if (step === 0 || step === 1000) continue;
+        if (!index.has(name)) {
+            index.set(name, plates.length);
+            plates.push({ name, steps: [] });
+            seen.add(name);
+        }
+        const plate = plates[index.get(name)];
+        if (!plate.steps.find((s) => s.step === step)) {
+            plate.steps.push({ step, hex: m[3].toLowerCase() });
+        }
+    }
+
+    for (const plate of plates) {
+        plate.steps.sort((a, b) => a.step - b.step);
+    }
+
+    if (plates.length === 0) {
+        return '<p class="docs-callout docs-callout--info">No <code>--tr-*</code> tokens found '
+            + 'in the compiled CSS.</p>';
+    }
+
+    return plates.map((plate) => {
+        const swatches = plate.steps.map((s) => {
+            const token = `--tr-${plate.name}-${s.step}`;
+            return [
+                `                <button class="plate__swatch" type="button"`,
+                `                        data-hex="${s.hex}" data-token="${token}" data-step="${s.step}"`,
+                `                        style="--sw: ${s.hex}"`,
+                `                        aria-label="Copy ${token} (${s.hex})">`,
+                `                    <span class="plate__swatch-fill" aria-hidden="true"></span>`,
+                `                    <span class="plate__swatch-meta">`,
+                `                        <span class="plate__swatch-step">${s.step}</span>`,
+                `                        <span class="plate__swatch-hex">${s.hex}</span>`,
+                `                    </span>`,
+                `                    <span class="plate__swatch-token">${token}</span>`,
+                `                </button>`,
+            ].join('\n');
+        }).join('\n');
+
+        return [
+            `            <section class="plate" data-plate="${plate.name}">`,
+            `                <header class="plate__header">`,
+            `                    <h3 class="plate__title">${plate.name}</h3>`,
+            `                    <code class="plate__prefix">--tr-${plate.name}-*</code>`,
+            `                </header>`,
+            `                <div class="plate__steps">`,
+            swatches,
+            `                </div>`,
+            `            </section>`,
+        ].join('\n');
+    }).join('\n\n');
+}
+
+const COMPONENTS_SUBNAV = [
+    ['#button', 'Button'],
+    ['#card', 'Card'],
+    ['#modal', 'Modal'],
+    ['#navbar', 'Navbar'],
+    ['#alert', 'Alert'],
+    ['#badge', 'Badge'],
+    ['#pagination', 'Pagination'],
+    ['#breadcrumb', 'Breadcrumb'],
+    ['#forms', 'Forms'],
+].map(([href, label]) =>
+    `<li><a class="sidebar-subnav__link" href="components.html${href}">${label}</a></li>`
+).join('\n');
+
+const COMPONENTS_SUBNAV_BLOCK = [
+    '<ul class="sidebar-subnav" id="sidebarSubnav">',
+    COMPONENTS_SUBNAV,
+    '</ul>',
+].join('\n');
 
 const PAGES = [
     {
@@ -62,6 +162,17 @@ const PAGES = [
         heroLead: 'The abstract layer is the Sass-only toolkit of the framework. It produces no CSS output on its own — variables, mixins, functions, and placeholders.',
         active: 'abstract',
         prev: ['architecture.html', 'Architecture'],
+        next: ['colors.html', 'Color Plates'],
+    },
+    {
+        file: 'colors.html',
+        title: 'Color Plates',
+        description: 'Explore every Trueno CSS color plate — copy hex values or CSS tokens from the live interactive palette.',
+        heroBadge: '🎨 Color Plates',
+        heroTitle: 'Color Plates',
+        heroLead: 'Every hue in Trueno CSS is a tonal plate of 10 steps. Browse the live palette, hover a swatch to see its token, and click to copy.',
+        active: 'colors',
+        prev: ['abstract.html', 'Abstract Layer'],
         next: ['customization.html', 'Customization & Tokens'],
     },
     {
@@ -72,7 +183,7 @@ const PAGES = [
         heroTitle: 'Base Styles',
         heroLead: 'The base layer applies element-level styles: resets that normalize cross-browser behavior, and typography defaults for headings, paragraphs, and links.',
         active: 'base',
-        prev: ['customization.html', 'Customization & Tokens'],
+        prev: ['colors.html', 'Color Plates'],
         next: ['layout.html', 'Layout'],
     },
     {
@@ -89,7 +200,7 @@ const PAGES = [
     {
         file: 'components.html',
         title: 'Components',
-        description: 'Trueno CSS components — buttons, cards, and modals, styled with BEM naming.',
+        description: 'Trueno CSS components — buttons, cards, modals, navbars, alerts, badges, pagination, breadcrumbs, and forms, styled with BEM naming.',
         heroBadge: '🧩 Components',
         heroTitle: 'Components',
         heroLead: 'Components are reusable, self-contained UI patterns. Each one follows BEM naming, depends only on the abstract layer, and ships with sane defaults.',
@@ -138,7 +249,7 @@ const PAGES = [
         heroTitle: 'Customization &amp; Design Tokens',
         heroLead: 'Trueno CSS is designed to be customized at three levels: Sass variables, class-scope overrides, and CSS custom properties.',
         active: 'customization',
-        prev: ['abstract.html', 'Abstract Layer'],
+        prev: ['colors.html', 'Color Plates'],
         next: ['base.html', 'Base Styles'],
     },
     {
@@ -191,6 +302,13 @@ function renderPage(page) {
     for (const [key, token] of Object.entries(SIDEBAR_TOKEN_BY_KEY)) {
         const marker = key === page.active ? ' sidebar-active' : '';
         html = html.split('{{' + token + '}}').join(marker);
+    }
+
+    const subnav = page.active === 'components' ? COMPONENTS_SUBNAV_BLOCK : '';
+    html = html.split('{{COMPONENTS_SUBNAV}}').join(subnav);
+
+    if (page.active === 'colors') {
+        html = html.split('{{COLOR_PLATES}}').join(generateColorPlates());
     }
 
     fs.writeFileSync(out, html);

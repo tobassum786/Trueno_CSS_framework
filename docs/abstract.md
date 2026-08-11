@@ -20,15 +20,17 @@ All design tokens for the framework live here. The file is the single source of 
 
 ### Color tokens
 
+Semantic colors are derived from the [color plates](./colors.md) in `_colors.scss` — edit a plate there, never a hex here:
+
 ```scss
-$color-primary:   #007bff;
-$color-secondary: #6c757d;
-$color-success:   #28a745;
-$color-danger:    #dc3545;
-$color-warning:   #ffc107;
-$color-info:      #17a2b8;
-$color-light:     #f8f9fa;
-$color-dark:      #343a40;
+$color-primary:   #3b82f6; // plate(blue, 500)
+$color-secondary: #4b5563; // plate(gray, 600)
+$color-success:   #16a34a; // plate(green, 600)
+$color-danger:    #ef4444; // plate(red, 500)
+$color-warning:   #f59e0b; // plate(amber, 500)
+$color-info:      #06b6d4; // plate(cyan, 500)
+$color-light:     #f9fafb; // plate(gray, 50)
+$color-dark:      #1f2937; // plate(gray, 800)
 $color-white:     #ffffff;
 $color-black:     #000000;
 ```
@@ -36,9 +38,9 @@ $color-black:     #000000;
 ### Text colors
 
 ```scss
-$text-color-base:   #333333;
-$text-color-light:  #555555;
-$text-color-muted:  #6c757d;
+$text-color-base:   #111827; // plate(gray, 900)
+$text-color-light:  #374151; // plate(gray, 700)
+$text-color-muted:  #6b7280; // plate(gray, 500)
 ```
 
 ### Typography
