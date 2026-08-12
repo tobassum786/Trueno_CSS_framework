@@ -21,6 +21,7 @@ const SIDEBAR_TOKEN_BY_KEY = {
     abstract: 'SIDEBAR_ABSTRACT',
     colors: 'SIDEBAR_COLORS',
     customization: 'SIDEBAR_CUSTOMIZATION',
+    animations: 'SIDEBAR_ANIMATIONS',
     base: 'SIDEBAR_BASE',
     layout: 'SIDEBAR_LAYOUT',
     components: 'SIDEBAR_COMPONENTS',
@@ -130,6 +131,21 @@ const COMPONENTS_SUBNAV_BLOCK = [
     '</ul>',
 ].join('\n');
 
+const UTILITIES_SUBNAV = [
+    ['#spacing', 'Spacing'],
+    ['#gap', 'Gap showcase'],
+    ['#helpers', 'Helpers'],
+    ['#best-practices', 'Best practices'],
+].map(([href, label]) =>
+    `<li><a class="sidebar-subnav__link" href="${href}">${label}</a></li>`
+).join('\n');
+
+const UTILITIES_SUBNAV_BLOCK = [
+    '<ul class="sidebar-subnav" id="sidebarSubnav">',
+    UTILITIES_SUBNAV,
+    '</ul>',
+].join('\n');
+
 const PAGES = [
     {
         file: 'getting-started.html',
@@ -165,15 +181,26 @@ const PAGES = [
         next: ['colors.html', 'Color Plates'],
     },
     {
-        file: 'colors.html',
-        title: 'Color Plates',
-        description: 'Explore every Trueno CSS color plate — copy hex values or CSS tokens from the live interactive palette.',
-        heroBadge: '🎨 Color Plates',
-        heroTitle: 'Color Plates',
-        heroLead: 'Every hue in Trueno CSS is a tonal plate of 10 steps. Browse the live palette, hover a swatch to see its token, and click to copy.',
-        active: 'colors',
-        prev: ['abstract.html', 'Abstract Layer'],
-        next: ['customization.html', 'Customization & Tokens'],
+        file: 'customization.html',
+        title: 'Customization & Design Tokens',
+        description: 'Unlock and retheme every Trueno CSS design token — Sass variables, class-scope overrides, and CSS custom properties.',
+        heroBadge: '⚙️ Customization',
+        heroTitle: 'Customization &amp; Design Tokens',
+        heroLead: 'Trueno CSS is designed to be customized at three levels: Sass variables, class-scope overrides, and CSS custom properties.',
+        active: 'customization',
+        prev: ['colors.html', 'Color Plates'],
+        next: ['animations.html', 'Animations & Motion'],
+    },
+    {
+        file: 'animations.html',
+        title: 'Animations & Motion',
+        description: 'The Trueno CSS motion system — motion tokens, keyframe library, and animation/transition utilities with live demos.',
+        heroBadge: '🎬 Animations &amp; Motion',
+        heroTitle: 'Animations &amp; Transitions',
+        heroLead: 'A complete motion system: design tokens for duration and easing, a namespaced keyframe library, and utility classes — with a replayable, accessible live gallery.',
+        active: 'animations',
+        prev: ['customization.html', 'Customization & Tokens'],
+        next: ['base.html', 'Base Styles'],
     },
     {
         file: 'base.html',
@@ -183,7 +210,7 @@ const PAGES = [
         heroTitle: 'Base Styles',
         heroLead: 'The base layer applies element-level styles: resets that normalize cross-browser behavior, and typography defaults for headings, paragraphs, and links.',
         active: 'base',
-        prev: ['colors.html', 'Color Plates'],
+        prev: ['animations.html', 'Animations & Motion'],
         next: ['layout.html', 'Layout'],
     },
     {
@@ -304,8 +331,12 @@ function renderPage(page) {
         html = html.split('{{' + token + '}}').join(marker);
     }
 
-    const subnav = page.active === 'components' ? COMPONENTS_SUBNAV_BLOCK : '';
-    html = html.split('{{COMPONENTS_SUBNAV}}').join(subnav);
+    // Sub-nav: render the active page's block under its sidebar link,
+    // and strip the other page's placeholder (only one subnav per page).
+    html = html.split('{{COMPONENTS_SUBNAV}}')
+        .join(page.active === 'components' ? COMPONENTS_SUBNAV_BLOCK : '');
+    html = html.split('{{UTILITIES_SUBNAV}}')
+        .join(page.active === 'utilities' ? UTILITIES_SUBNAV_BLOCK : '');
 
     if (page.active === 'colors') {
         html = html.split('{{COLOR_PLATES}}').join(generateColorPlates());

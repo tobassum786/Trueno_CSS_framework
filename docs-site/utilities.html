@@ -6,6 +6,9 @@
     <meta name="description" content="Trueno CSS utilities — spacing scale and single-purpose helper classes.">
     <title>Utilities — Trueno CSS Docs</title>
 
+    <!-- CDN (jsDelivr) -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trueno-css-framework@latest/dist/trueno-css-framework.min.css"> -->
+    <!-- Local build -->
     <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,6 +75,7 @@
                         <li><a class="sidebar-block__link" href="abstract.html">Abstract Layer</a></li>
                         <li><a class="sidebar-block__link" href="colors.html">Color Plates</a></li>
                         <li><a class="sidebar-block__link" href="customization.html">Customization &amp; Tokens</a></li>
+                        <li><a class="sidebar-block__link" href="animations.html">Animations &amp; Motion</a></li>
                     </ul>
                 </div>
 
@@ -83,7 +87,14 @@
                         <li><a class="sidebar-block__link" href="components.html">Components</a>
 
                         </li>
-                        <li><a class="sidebar-block__link sidebar-active" href="utilities.html">Utilities</a></li>
+                        <li><a class="sidebar-block__link sidebar-active" href="utilities.html">Utilities</a>
+<ul class="sidebar-subnav" id="sidebarSubnav">
+<li><a class="sidebar-subnav__link" href="#spacing">Spacing</a></li>
+<li><a class="sidebar-subnav__link" href="#gap">Gap showcase</a></li>
+<li><a class="sidebar-subnav__link" href="#helpers">Helpers</a></li>
+<li><a class="sidebar-subnav__link" href="#best-practices">Best practices</a></li>
+</ul>
+                        </li>
                         <li><a class="sidebar-block__link" href="themes.html">Themes</a></li>
                         <li><a class="sidebar-block__link" href="vendors.html">Vendors</a></li>
                     </ul>
@@ -174,6 +185,70 @@
         <tr><td><code>auto</code></td><td><code>auto</code></td><td>margins only — used with <code>m</code>, <code>mx</code>, <code>my</code></td></tr>
     </tbody>
 </table>
+
+<h3>Size scale — visual ruler</h3>
+<div class="scale-ruler" aria-label="Visual spacing scale">
+    <div class="scale-ruler__row"><span class="scale-ruler__label">.m-0</span><div class="scale-ruler__bar" style="width:0;min-width:2px;"></div><span class="scale-ruler__val">0 · resets spacing</span></div>
+    <div class="scale-ruler__row"><span class="scale-ruler__label">.m-xxs</span><div class="scale-ruler__bar" style="width:5px;"></div><span class="scale-ruler__val">0.125rem · 2px</span></div>
+    <div class="scale-ruler__row"><span class="scale-ruler__label">.m-xs</span><div class="scale-ruler__bar" style="width:10px;"></div><span class="scale-ruler__val">0.25rem · 4px</span></div>
+    <div class="scale-ruler__row"><span class="scale-ruler__label">.m-sm</span><div class="scale-ruler__bar" style="width:20px;"></div><span class="scale-ruler__val">0.5rem · 8px</span></div>
+    <div class="scale-ruler__row"><span class="scale-ruler__label">.m-md</span><div class="scale-ruler__bar" style="width:40px;"></div><span class="scale-ruler__val">1rem · 16px</span></div>
+    <div class="scale-ruler__row"><span class="scale-ruler__label">.m-lg</span><div class="scale-ruler__bar" style="width:60px;"></div><span class="scale-ruler__val">1.5rem · 24px</span></div>
+    <div class="scale-ruler__row"><span class="scale-ruler__label">.m-xl</span><div class="scale-ruler__bar" style="width:80px;"></div><span class="scale-ruler__val">2rem · 32px</span></div>
+    <div class="scale-ruler__row"><span class="scale-ruler__label">.m-xxl</span><div class="scale-ruler__bar" style="width:120px;"></div><span class="scale-ruler__val">3rem · 48px</span></div>
+</div>
+<p class="util-desc mt-xs mb-0">Bar lengths are scaled 2.5× for readability — the labels show the real values.</p>
+
+<h3 id="gap">Live demo — gap between layout items</h3>
+<p>
+    Drag the slider to change the space between items. It drives the two real framework
+    primitives live: the CSS Grid gutter (<code>--grid-gutter</code>) and the Flexbox row gutters
+    (<code>--gutter-x</code> / <code>--gutter-y</code>). The same values are what the
+    <code>g-*</code> / <code>gx-*</code> / <code>gy-*</code> gutter classes and the
+    <code>gap</code> utility scale are built from.
+</p>
+<div class="docs-demo">
+    <div class="gap-controls">
+        <label class="gap-controls__label" for="gapSlider">Gap</label>
+        <input type="range" id="gapSlider" min="0" max="48" step="1" value="16" aria-describedby="gapReadout">
+        <span class="gap-controls__readout" id="gapReadout" aria-live="polite">
+            <strong id="gapReadoutPx">16px</strong>
+            <span id="gapReadoutRem">1rem</span>
+            <span id="gapReadoutToken">md</span>
+        </span>
+        <div class="gap-snaps" role="group" aria-label="Snap to spacing tokens">
+            <button class="gap-snap" type="button" data-gap="0">0</button>
+            <button class="gap-snap" type="button" data-gap="4">xs</button>
+            <button class="gap-snap" type="button" data-gap="8">sm</button>
+            <button class="gap-snap is-active" type="button" data-gap="16">md</button>
+            <button class="gap-snap" type="button" data-gap="24">lg</button>
+            <button class="gap-snap" type="button" data-gap="32">xl</button>
+            <button class="gap-snap" type="button" data-gap="48">xxl</button>
+        </div>
+    </div>
+
+    <div class="gap-showcase__panels">
+        <div class="gap-showcase__panel">
+            <p class="gap-showcase__panel-title">CSS Grid · <code>--grid-gutter</code></p>
+            <div class="grid grid-cols-3" id="gapGridDemo">
+                <div class="gap-tile">1</div>
+                <div class="gap-tile">2</div>
+                <div class="gap-tile">3</div>
+                <div class="gap-tile">4</div>
+                <div class="gap-tile">5</div>
+                <div class="gap-tile">6</div>
+            </div>
+        </div>
+        <div class="gap-showcase__panel">
+            <p class="gap-showcase__panel-title">Flexbox Row · <code>--gutter-x / --gutter-y</code></p>
+            <div class="row" id="gapRowDemo">
+                <div class="col-4"><div class="gap-tile gap-tile--alt">A</div></div>
+                <div class="col-4"><div class="gap-tile gap-tile--alt">B</div></div>
+                <div class="col-4"><div class="gap-tile gap-tile--alt">C</div></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <h3>Live demo — padding scale</h3>
 <div class="docs-demo">

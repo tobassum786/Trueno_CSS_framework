@@ -1,5 +1,6 @@
 @use '../abstract/variables' as *;
 @use '../abstract/mixins' as *;
+@use '../abstract/functions' as *;
 
 .modal {
   position: fixed;
@@ -12,7 +13,7 @@
   z-index: $z-index-modal-backdrop; // Use defined z-index
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity $duration-base $ease-base, visibility $duration-base $ease-base;
 
   &.is-open {
     opacity: 1;
@@ -27,11 +28,11 @@
   width: 90%;
   max-width: 500px;
   box-shadow: 0 5px 15px rgba($color-black, 0.3);
-  transform: translateY(-50px);
-  transition: transform 0.3s ease;
+  transform: translateY(rem(-24px)) scale(0.96);
+  transition: transform $duration-base $ease-out;
 
   .is-open & {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 

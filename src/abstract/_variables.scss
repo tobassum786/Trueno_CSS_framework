@@ -131,6 +131,8 @@ $text-color-muted: plate(gray, 500);
 $font-family-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-family-heading: 'Roboto', sans-serif;
 $font-size-base: 1rem; // 16px
+$font-size-sm: 0.875rem; // 14px
+$font-size-xs: 0.75rem; // 12px
 $line-height-base: 1.5;
 
 $h1-font-size: 2.5rem;
@@ -169,3 +171,43 @@ $z-index-fixed: 1030;
 $z-index-modal-backdrop: 1040;
 $z-index-modal: 1050;
 $z-index-tooltip: 1070;
+
+// ============================================================
+// Motion — durations and easings (see base/_animations.scss and
+// utilities/_motion.scss). Every transition/animation in the
+// framework reads these tokens; never hard-code a duration.
+// ============================================================
+
+// Durations (ms)
+$duration-instant: 0ms;
+$duration-fast: 150ms;
+$duration-base: 250ms;
+$duration-slow: 400ms;
+$duration-slower: 600ms;
+
+// Easings
+$ease-linear: linear;
+$ease-base: cubic-bezier(0.25, 0.1, 0.25, 1);
+$ease-in: cubic-bezier(0.42, 0, 1, 1);
+$ease-out: cubic-bezier(0, 0, 0.58, 1);
+$ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+$ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+$ease-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+// Motion tokens exposed as CSS custom properties so durations and
+// easings can be tuned at runtime (mirrors the color-plate tokens).
+:root {
+  --tr-duration-instant: #{$duration-instant};
+  --tr-duration-fast: #{$duration-fast};
+  --tr-duration-base: #{$duration-base};
+  --tr-duration-slow: #{$duration-slow};
+  --tr-duration-slower: #{$duration-slower};
+
+  --tr-ease-linear: #{$ease-linear};
+  --tr-ease-base: #{$ease-base};
+  --tr-ease-in: #{$ease-in};
+  --tr-ease-out: #{$ease-out};
+  --tr-ease-in-out: #{$ease-in-out};
+  --tr-ease-bounce: #{$ease-bounce};
+  --tr-ease-elastic: #{$ease-elastic};
+}

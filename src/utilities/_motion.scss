@@ -1,0 +1,296 @@
+// ============================================================
+// Trueno CSS — Motion utilities
+// ------------------------------------------------------------
+// Animation, transition, and hover-interaction utilities.
+//
+// Animations run from the keyframe library (base/_animations.scss)
+// and are tuned with CSS custom properties so you can override
+// timing per element or per parent without writing CSS:
+//
+//   --tr-duration      duration  (default $duration-base)
+//   --tr-delay         delay     (default 0s)
+//   --tr-easing        easing    (default $ease-base)
+//   --tr-iterations    iterations(default 1)
+//
+//   <div class="u-anim-fade-in-up" style="--tr-duration: .6s; --tr-delay: .2s">
+//
+// All utilities use `!important` so they win against component
+// styles, matching the rest of the utility layer.
+// ============================================================
+
+@use '../abstract/variables' as *;
+@use '../abstract/functions' as *;
+
+// ---- Animation utilities --------------------------------------
+.u-anim-fade-in           { animation: tr-fade-in            var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-fade-in-up        { animation: tr-fade-in-up         var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-fade-in-down      { animation: tr-fade-in-down       var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-fade-in-left      { animation: tr-fade-in-left       var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-fade-in-right     { animation: tr-fade-in-right      var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-zoom-in           { animation: tr-zoom-in            var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-zoom-out          { animation: tr-zoom-out           var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-slide-in-up       { animation: tr-slide-in-up        var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-out})        var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-slide-in-down     { animation: tr-slide-in-down      var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-out})        var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-slide-in-left     { animation: tr-slide-in-left      var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-out})        var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-slide-in-right    { animation: tr-slide-in-right     var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-out})        var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-bounce            { animation: tr-bounce             var(--tr-duration, #{$duration-slower}) var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-pulse             { animation: tr-pulse              var(--tr-duration, #{$duration-slower}) var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-pulse-ring        { animation: tr-pulse-ring         var(--tr-duration, #{$duration-slower}) var(--tr-easing, #{$ease-out})        var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-shake             { animation: tr-shake              var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-flash             { animation: tr-flash              var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-glow              { animation: tr-glow               var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-spin              { animation: tr-spin               var(--tr-duration, #{$duration-slower}) var(--tr-easing, linear)              var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-float             { animation: tr-float              var(--tr-duration, #{$duration-slower}) var(--tr-easing, #{$ease-in-out})     var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+
+// ---- Modern & Advanced Animation utilities --------------------------------------
+// Morphing & elastic
+.u-anim-morph-enter     { animation: tr-morph-enter     var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-bounce})  var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-elastic-in      { animation: tr-elastic-in      var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-elastic})  var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-elastic-out     { animation: tr-elastic-out     var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-in})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+
+// Skew & perspective
+.u-anim-skew-in         { animation: tr-skew-in         var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-skew-out        { animation: tr-skew-out        var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-in})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-flip-x          { animation: tr-perspective-flip-x var(--tr-duration, #{$duration-slow}) var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-flip-y          { animation: tr-perspective-flip-y var(--tr-duration, #{$duration-slow}) var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+
+// Staggered reveals
+.u-anim-stagger-up      { animation: tr-stagger-fade-up   var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-stagger-left    { animation: tr-stagger-fade-left var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-stagger-right   { animation: tr-stagger-fade-right var(--tr-duration, #{$duration-slow})  var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+
+// Text animations
+.u-anim-typewriter      { animation: tr-typewriter      var(--tr-duration, #{$duration-slower}) var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; overflow: hidden; white-space: nowrap; }
+.u-anim-text-reveal     { animation: tr-text-reveal     var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-text-wave       { animation: tr-text-wave       var(--tr-duration, #{$duration-slower}) var(--tr-easing, #{$ease-in-out})     var(--tr-delay, 0s) var(--tr-iterations, infinite) both !important; }
+
+// Background & fill animations
+.u-anim-fill-h          { animation: tr-fill-horizontal var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) forwards !important; }
+.u-anim-fill-v          { animation: tr-fill-vertical   var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) forwards !important; }
+.u-anim-fill-circular   { animation: tr-fill-circular   var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) forwards !important; }
+.u-anim-slide-bg        { animation: tr-slide-bg        var(--tr-duration, #{$duration-slower}) var(--tr-easing, linear)            var(--tr-delay, 0s) var(--tr-iterations, infinite) both !important; }
+.u-anim-gradient-shift  { animation: tr-gradient-shift  var(--tr-duration, #{$duration-slower}) var(--tr-easing, #{$ease-in-out})     var(--tr-delay, 0s) var(--tr-iterations, infinite) both !important; background-size: 200% 200%; }
+
+// Micro-interactions
+.u-anim-tap             { animation: tr-tap             var(--tr-duration, #{$duration-fast})   var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-heartbeat       { animation: tr-heartbeat       var(--tr-duration, #{$duration-slower}) var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, infinite) both !important; }
+.u-anim-wobble          { animation: tr-wobble          var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-jello           { animation: tr-jello           var(--tr-duration, #{$duration-slower}) var(--tr-easing, #{$ease-base})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+
+// Loading & progress
+.u-anim-shimmer         { animation: tr-shimmer         var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, infinite) both !important; background: linear-gradient(90deg, transparent, rgba($color-white, 0.4), transparent); background-size: 200% 100%; }
+.u-anim-spin-ring       { animation: tr-spin-ring       var(--tr-duration, #{$duration-slower}) var(--tr-easing, linear)            var(--tr-delay, 0s) var(--tr-iterations, infinite) both !important; }
+.u-anim-spin-reverse    { animation: tr-spin-reverse    var(--tr-duration, #{$duration-slower}) var(--tr-easing, linear)            var(--tr-delay, 0s) var(--tr-iterations, infinite) both !important; }
+.u-anim-dash            { animation: tr-dash            var(--tr-duration, #{$duration-slower}) var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) forwards !important; }
+
+// Entrance/Exit
+.u-anim-enter-pop       { animation: tr-enter-pop       var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-bounce})   var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-exit-pop        { animation: tr-exit-pop        var(--tr-duration, #{$duration-base})   var(--tr-easing, #{$ease-in})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-enter-sweep     { animation: tr-enter-sweep     var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-out})      var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+.u-anim-exit-sweep      { animation: tr-exit-sweep      var(--tr-duration, #{$duration-slow})   var(--tr-easing, #{$ease-in})       var(--tr-delay, 0s) var(--tr-iterations, 1) both !important; }
+
+// ---- Timing modifiers (override the custom properties) --------
+.u-anim-instant  { --tr-duration: #{$duration-instant} !important; }
+.u-anim-fast     { --tr-duration: #{$duration-fast} !important; }
+.u-anim-slow     { --tr-duration: #{$duration-slow} !important; }
+.u-anim-slower   { --tr-duration: #{$duration-slower} !important; }
+
+.u-anim-delay-sm { --tr-delay: #{$duration-fast} !important; }
+.u-anim-delay-md { --tr-delay: #{$duration-base} !important; }
+.u-anim-delay-lg { --tr-delay: #{$duration-slow} !important; }
+
+.u-anim-repeat   { --tr-iterations: infinite !important; }
+.u-anim-2        { --tr-iterations: 2 !important; }
+.u-anim-3        { --tr-iterations: 3 !important; }
+
+.u-anim-ease-bounce  { --tr-easing: #{$ease-bounce} !important; }
+.u-anim-ease-elastic { --tr-easing: #{$ease-elastic} !important; }
+
+.u-anim-reverse  { animation-direction: reverse !important; }
+
+// ---- Stagger delay utilities (for sequential reveals) --------
+.u-stagger-1  { --tr-delay: calc(#{$duration-fast} * 1) !important; }
+.u-stagger-2  { --tr-delay: calc(#{$duration-fast} * 2) !important; }
+.u-stagger-3  { --tr-delay: calc(#{$duration-fast} * 3) !important; }
+.u-stagger-4  { --tr-delay: calc(#{$duration-fast} * 4) !important; }
+.u-stagger-5  { --tr-delay: calc(#{$duration-fast} * 5) !important; }
+.u-stagger-6  { --tr-delay: calc(#{$duration-fast} * 6) !important; }
+.u-stagger-7  { --tr-delay: calc(#{$duration-fast} * 7) !important; }
+.u-stagger-8  { --tr-delay: calc(#{$duration-fast} * 8) !important; }
+.u-stagger-9  { --tr-delay: calc(#{$duration-fast} * 9) !important; }
+.u-stagger-10 { --tr-delay: calc(#{$duration-fast} * 10) !important; }
+
+// ============================================================
+// Transition utilities
+// ============================================================
+.u-transition {
+  transition-property: all;
+  transition-duration: var(--tr-duration, #{$duration-base});
+  transition-timing-function: var(--tr-easing, #{$ease-base});
+}
+
+.u-transition--fast    { transition-duration: #{$duration-fast} !important; }
+.u-transition--slow    { transition-duration: #{$duration-slow} !important; }
+.u-transition--slower  { transition-duration: #{$duration-slower} !important; }
+
+.u-transition--colors    { transition-property: background-color, border-color, color, box-shadow !important; }
+.u-transition--transform { transition-property: transform !important; }
+.u-transition--opacity   { transition-property: opacity, visibility !important; }
+.u-transition--shadow    { transition-property: box-shadow !important; }
+
+// ============================================================
+// Advanced transition utilities
+// ============================================================
+.u-transition--spring {
+  transition-timing-function: var(--tr-easing, #{$ease-bounce}) !important;
+}
+
+.u-transition--elastic {
+  transition-timing-function: var(--tr-easing, #{$ease-elastic}) !important;
+}
+
+.u-transition--expo {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+// ============================================================
+// Hover interactions — pair with any color/size modifier
+// ============================================================
+.u-hover-lift {
+  transition: transform var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}),
+              box-shadow var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}) !important;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(rem(-4px));
+    box-shadow: 0 rem(12px) rem(24px) rgba($color-black, 0.15) !important;
+  }
+}
+
+.u-hover-grow {
+  transition: transform var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}) !important;
+
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.05);
+  }
+}
+
+.u-hover-shadow {
+  transition: box-shadow var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}) !important;
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: 0 rem(12px) rem(28px) rgba($color-black, 0.16) !important;
+  }
+}
+
+.u-hover-brighten {
+  transition: filter var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}) !important;
+
+  &:hover,
+  &:focus-visible {
+    filter: brightness(1.1);
+  }
+}
+
+.u-hover-fade {
+  opacity: 0.82;
+  transition: opacity var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}) !important;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+  }
+}
+
+.u-hover-rotate {
+  transition: transform var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}) !important;
+
+  &:hover,
+  &:focus-visible {
+    transform: rotate(6deg);
+  }
+}
+
+.u-hover-skew {
+  transition: transform var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}) !important;
+
+  &:hover,
+  &:focus-visible {
+    transform: skewX(-8deg);
+  }
+}
+
+.u-hover-glow {
+  transition: box-shadow var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}) !important;
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: 0 0 rem(20px) rgba($color-primary, 0.5), 0 0 rem(40px) rgba($color-primary, 0.3) !important;
+  }
+}
+
+.u-hover-border {
+  transition: border-color var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}),
+              box-shadow var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}) !important;
+  border: $border-width-base solid transparent;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 rem(2px) rgba($color-primary, 0.2) !important;
+  }
+}
+
+.u-hover-underline {
+  position: relative;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: rem(2px);
+    background: currentColor;
+    transition: width var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out});
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    width: 100%;
+  }
+}
+
+// ============================================================
+// Scroll-reveal helper
+// ------------------------------------------------------------
+// Adds `.is-visible` when the element enters the viewport.
+// Wire it up with IntersectionObserver in your app:
+//
+//   document.querySelectorAll('.reveal').forEach(el => { ... add is-visible ... })
+//
+// The `.reveal` element stays hidden until then. `!important` is
+// avoided here so `.is-visible` can win with normal specificity.
+// ============================================================
+.reveal {
+  opacity: 0;
+  transform: translateY(rem(20px));
+  transition: opacity var(--tr-duration, #{$duration-slow}) var(--tr-easing, #{$ease-out}),
+              transform var(--tr-duration, #{$duration-slow}) var(--tr-easing, #{$ease-out});
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

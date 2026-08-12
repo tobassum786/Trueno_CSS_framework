@@ -1,5 +1,6 @@
 @use 'sass:color';
 @use '../abstract/variables' as *;
+@use '../abstract/functions' as *;
 @use '../abstract/mixins' as *;
 
 .main-header {
@@ -7,6 +8,17 @@
   color: $color-white;
   padding: $spacing-md 0;
   border-bottom: $border-width-base solid color.adjust($color-dark, $lightness: 10%);
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+  transition: box-shadow var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}),
+              background-color var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out});
+
+  &.is-scrolled {
+    box-shadow: 0 4px 20px rgba($color-black, 0.15);
+    background-color: rgba($color-dark, 0.95);
+    backdrop-filter: blur(8px);
+  }
 
   .container {
     @include flex-align(center);
@@ -18,15 +30,64 @@
   font-family: $font-family-heading;
   font-size: $h3-font-size;
   font-weight: bold;
+  flex-shrink: 0;
 
   a {
     color: $color-white;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    transition: color var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out}),
+                transform var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out});
 
     &:hover {
       color: $color-primary;
       text-decoration: none;
+      transform: translateX(rem(-2px));
     }
+
+    &:focus-visible {
+      outline: rem(2px) solid $color-primary;
+      outline-offset: rem(4px);
+      border-radius: rem(4px);
+    }
+  }
+}
+
+.main-header__home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  color: $color-light;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  text-decoration: none;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+  transition: color var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out}),
+              background-color var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out}),
+              transform var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out});
+
+  &:hover {
+    color: $color-primary;
+    background-color: rgba($color-primary, 0.1);
+    text-decoration: none;
+    transform: translateX(rem(-4px));
+  }
+
+  &:focus-visible {
+    outline: rem(2px) solid $color-primary;
+    outline-offset: rem(2px);
+  }
+
+  .home-icon {
+    display: inline-block;
+    transition: transform var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out});
+  }
+
+  &:hover .home-icon {
+    transform: translateX(rem(-2px));
   }
 }
 
@@ -41,10 +102,134 @@
     color: $color-light;
     font-size: $font-size-base;
     padding: $spacing-xs 0;
+    position: relative;
+    text-decoration: none;
+    transition: color var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out});
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: rem(2px);
+      background: $color-primary;
+      transition: width var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out});
+    }
 
     &:hover {
       color: $color-primary;
       text-decoration: none;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &:focus-visible {
+      outline: rem(2px) solid $color-primary;
+      outline-offset: rem(4px);
+      border-radius: rem(2px);
+    }
+  }
+}
+
+.nav-cta {
+  @include flex-align(center);
+  gap: $spacing-md;
+  flex-shrink: 0;
+
+  .theme-toggle,
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(40px);
+    height: rem(40px);
+    border: none;
+    background: rgba($color-white, 0.08);
+    border-radius: $border-radius-base;
+    color: $color-white;
+    cursor: pointer;
+    transition: background-color var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out}),
+                transform var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out}),
+                box-shadow var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out});
+
+    &:hover {
+      background: rgba($color-white, 0.15);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:focus-visible {
+      outline: rem(2px) solid $color-primary;
+      outline-offset: rem(2px);
+    }
+  }
+
+  .btn {
+    transition: transform var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out}),
+                box-shadow var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out});
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba($color-black, 0.2);
+    }
+  }
+}
+
+// Mobile nav animation
+.main-nav {
+  transition: opacity var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}),
+              transform var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out}),
+              visibility var(--tr-duration, #{$duration-base}) var(--tr-easing, #{$ease-out});
+
+  @media (max-width: #{$breakpoint-lg}) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: $color-dark;
+    border-bottom: $border-width-base solid color.adjust($color-dark, $lightness: 10%);
+    padding: $spacing-md 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba($color-black, 0.2);
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .main-nav__list {
+      flex-direction: column;
+      gap: $spacing-sm;
+      padding: 0 $spacing-md;
+    }
+
+    .main-nav__item {
+      margin-left: 0;
+      width: 100%;
+
+      a {
+        display: block;
+        padding: $spacing-sm $spacing-md;
+        border-radius: $border-radius-base;
+
+        &::after {
+          display: none;
+        }
+
+        &:hover {
+          background: rgba($color-white, 0.08);
+        }
+      }
     }
   }
 }

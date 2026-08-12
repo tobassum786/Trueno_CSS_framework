@@ -11,6 +11,7 @@
 // 3. Base styles
 @use 'base/_resets';
 @use 'base/_typography';
+@use 'base/_animations';
 
 // 4. Layout
 @use 'layout/_grid';
@@ -30,6 +31,7 @@
 // 6. Utilities
 @use 'utilities/_spacing';
 @use 'utilities/_helpers';
+@use 'utilities/_motion';
 
 // 7. Themes (if any)
 @use 'themes/_light-theme'; // Base/default theme

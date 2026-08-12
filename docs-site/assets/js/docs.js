@@ -199,4 +199,132 @@
 
         if (swatches.length) selectSwatch(swatches[0]);
     }
+
+    // ============================================================
+    // Spacing & gap showcase (utilities.html)
+    // ------------------------------------------------------------
+    // A range slider drives the grid/flex gutter custom properties
+    // live, with snap buttons for the framework spacing tokens.
+    // ============================================================
+    var gapSlider = document.getElementById('gapSlider');
+    if (gapSlider) {
+        var gridDemo = document.getElementById('gapGridDemo');
+        var rowDemo = document.getElementById('gapRowDemo');
+        var gapReadout = document.getElementById('gapReadoutPx');
+        var gapReadoutRem = document.getElementById('gapReadoutRem');
+        var gapReadoutToken = document.getElementById('gapReadoutToken');
+        var gapSnaps = document.querySelectorAll('.gap-snap');
+        var SPACING_TOKENS = [
+            [0, '0'],
+            [4, 'xs'],
+            [8, 'sm'],
+            [16, 'md'],
+            [24, 'lg'],
+            [32, 'xl'],
+            [48, 'xxl']
+        ];
+
+        function nearestToken(px) {
+            var best = SPACING_TOKENS[0];
+            for (var i = 0; i < SPACING_TOKENS.length; i++) {
+                if (Math.abs(SPACING_TOKENS[i][0] - px) < Math.abs(best[0] - px)) {
+                    best = SPACING_TOKENS[i];
+                }
+            }
+            return best[1];
+        }
+
+        function applyGap() {
+            var px = Number(gapSlider.value);
+            if (gridDemo) gridDemo.style.setProperty('--grid-gutter', px + 'px');
+            if (rowDemo) {
+                rowDemo.style.setProperty('--gutter-x', px + 'px');
+                rowDemo.style.setProperty('--gutter-y', px + 'px');
+            }
+            if (gapReadout) gapReadout.textContent = px + 'px';
+            if (gapReadoutRem) gapReadoutRem.textContent = parseFloat((px / 16).toFixed(3)) + 'rem';
+            if (gapReadoutToken) gapReadoutToken.textContent = nearestToken(px);
+            gapSnaps.forEach(function (btn) {
+                btn.classList.toggle('is-active', Number(btn.getAttribute('data-gap')) === px);
+            });
+        }
+
+        gapSlider.addEventListener('input', applyGap);
+
+        gapSnaps.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                gapSlider.value = btn.getAttribute('data-gap');
+                applyGap();
+            });
+        });
+
+        applyGap();
+    }
+
+    // ============================================================
+    // Animations & Motion page (animations.html)
+    // ------------------------------------------------------------
+    // Gallery replay, timing playground, and scroll reveal demo.
+    // ============================================================
+
+    // ---- Replay all gallery animations ----
+    var replayBtn = document.getElementById('replayAnimations');
+    if (replayBtn) {
+        var animBoxes = document.querySelectorAll('#animGrid .anim-box');
+        replayBtn.addEventListener('click', function () {
+            animBoxes.forEach(function (box) {
+                var cls = box.getAttribute('data-anim');
+                box.classList.remove('u-anim-' + cls);
+                void box.offsetWidth; // force reflow so the animation restarts
+                box.classList.add('u-anim-' + cls);
+            });
+        });
+    }
+
+    // ---- Timing playground ----
+    var animSlider = document.getElementById('animDurationSlider');
+    if (animSlider) {
+        var playBox = document.getElementById('animPlayBox');
+        var animReadout = document.getElementById('animDurationReadout');
+        var runBtn = document.getElementById('animRunBtn');
+
+        function applyDuration() {
+            var ms = Number(animSlider.value);
+            if (playBox) playBox.style.setProperty('--tr-duration', ms + 'ms');
+            if (animReadout) animReadout.textContent = parseFloat((ms / 1000).toFixed(3)) + 's';
+        }
+
+        function runPlayBox() {
+            if (!playBox) return;
+            playBox.classList.remove('u-anim-fade-in-up');
+            void playBox.offsetWidth;
+            playBox.classList.add('u-anim-fade-in-up');
+        }
+
+        animSlider.addEventListener('input', applyDuration);
+        if (runBtn) runBtn.addEventListener('click', runPlayBox);
+
+        applyDuration();
+        runPlayBox();
+    }
+
+    // ---- Scroll reveal demo ----
+    if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal:not(.is-visible)').forEach(function (el) {
+            revealObserver.observe(el);
+        });
+    } else {
+        document.querySelectorAll('.reveal').forEach(function (el) {
+            el.classList.add('is-visible');
+        });
+    }
 })();

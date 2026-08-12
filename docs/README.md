@@ -16,6 +16,7 @@ This documentation covers every layer of the framework, from the abstract design
 - [Color Plates](./colors.md) — The tonal color scales that drive every token and component
 - [Abstract Layer](./abstract.md) — Sass variables, mixins, functions, and placeholders
 - [Customization & Design Tokens](./customization.md) — CSS custom properties and theming
+- [Animations & Motion](./animations.md) — Motion tokens, keyframes, and animation utilities
 
 ### 🧱 Framework Layers
 - [Base Styles](./base.md) — Resets and typography

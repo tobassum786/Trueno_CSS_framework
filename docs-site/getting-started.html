@@ -6,6 +6,9 @@
     <meta name="description" content="Getting started with Trueno CSS — installation, build workflow, and basic usage.">
     <title>Getting Started — Trueno CSS Docs</title>
 
+    <!-- CDN (jsDelivr) -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trueno-css-framework@latest/dist/trueno-css-framework.min.css"> -->
+    <!-- Local build -->
     <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,6 +128,33 @@
                     <p>No JavaScript runtime is required — Trueno CSS compiles to pure CSS.</p>
 
                     <h2>1. Installation</h2>
+                    <p>
+                        Choose your preferred method:
+                    </p>
+
+                    <h3>Option A: CDN (fastest — no build step)</h3>
+                    <p>Add this to your HTML <code><head></code> for instant usage:</p>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre><<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"https://cdn.jsdelivr.net/npm/trueno-css-framework@latest/dist/trueno-css-framework.min.css"</span>></pre>
+                    </div>
+                    <p class="text-muted">
+                        <strong>Note:</strong> Replace <code>@latest</code> with a specific version (e.g., <code>@1.0.0</code>) for production to avoid breaking changes.
+                    </p>
+
+                    <h3>Option B: npm (recommended for production apps)</h3>
+                    <p>Install as a dependency in your project:</p>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre>npm install trueno-css-framework</pre>
+                    </div>
+                    <p>Then import the CSS in your entry point:</p>
+                    <div class="docs-code">
+                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>JS/TS</span><button class="docs-code__copy" type="button">Copy</button></div>
+                        <pre><span class="tok">import</span> <span class="str">'trueno-css-framework/dist/trueno-css-framework.min.css'</span>;</pre>
+                    </div>
+
+                    <h3>Option C: Clone & Build (for contributing or customizing)</h3>
                     <p>
                         Clone the repository (recommended for contributing or customizing the source):
                     </p>

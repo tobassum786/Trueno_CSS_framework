@@ -1,0 +1,151 @@
+<h1>Animations &amp; Transitions</h1>
+<p class="docs-subtitle">
+    Trueno CSS ships a complete motion system — <strong>design tokens</strong>, a
+    <strong>keyframe library</strong>, and <strong>utility classes</strong> — so animations stay
+    fast, accessible, and on-brand. Everything below runs the live framework build: what you see is
+    what you ship.
+</p>
+
+<div class="docs-callout docs-callout--info">
+    <span class="docs-callout__icon">♿</span>
+    <p>
+        Motion respects <code>prefers-reduced-motion</code>. Users who request reduced motion get
+        near-instant transitions automatically — no extra work on your side.
+    </p>
+</div>
+
+<h2 id="gallery">1. Animation gallery</h2>
+<p>
+    Every keyframe as a <code>.u-anim-*</code> utility. Each tile runs once on load; the looping
+    ones (spin, float, pulse) carry <code>.u-anim-repeat</code>.
+</p>
+<div class="docs-demo">
+    <div class="swatch-row" style="justify-content:space-between;">
+        <p class="docs-demo__label" style="margin-bottom:0;">Hover nothing — just watch, then replay</p>
+        <button class="btn btn--sm btn--secondary" type="button" id="replayAnimations">↻ Replay all</button>
+    </div>
+    <div class="anim-grid" id="animGrid">
+        <div class="anim-cell"><div class="anim-box u-anim-fade-in" data-anim="fade-in"></div><code>.u-anim-fade-in</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-fade-in-up" data-anim="fade-in-up"></div><code>.u-anim-fade-in-up</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-fade-in-down" data-anim="fade-in-down"></div><code>.u-anim-fade-in-down</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-fade-in-left" data-anim="fade-in-left"></div><code>.u-anim-fade-in-left</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-fade-in-right" data-anim="fade-in-right"></div><code>.u-anim-fade-in-right</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-zoom-in" data-anim="zoom-in"></div><code>.u-anim-zoom-in</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-zoom-out" data-anim="zoom-out"></div><code>.u-anim-zoom-out</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-slide-in-up" data-anim="slide-in-up"></div><code>.u-anim-slide-in-up</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-slide-in-down" data-anim="slide-in-down"></div><code>.u-anim-slide-in-down</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-slide-in-left" data-anim="slide-in-left"></div><code>.u-anim-slide-in-left</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-slide-in-right" data-anim="slide-in-right"></div><code>.u-anim-slide-in-right</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-bounce" data-anim="bounce"></div><code>.u-anim-bounce</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-pulse u-anim-repeat" data-anim="pulse"></div><code>.u-anim-pulse .u-anim-repeat</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-shake" data-anim="shake"></div><code>.u-anim-shake</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-flash" data-anim="flash"></div><code>.u-anim-flash</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-glow" data-anim="glow"></div><code>.u-anim-glow</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-spin u-anim-repeat" data-anim="spin"></div><code>.u-anim-spin .u-anim-repeat</code></div>
+        <div class="anim-cell"><div class="anim-box u-anim-float u-anim-repeat" data-anim="float"></div><code>.u-anim-float .u-anim-repeat</code></div>
+    </div>
+</div>
+
+<h3>Timing modifiers</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">&lt;!-- Duration, delay, easing, and iterations via custom properties --&gt;</span>
+&lt;<span class="tag">div</span> class=<span class="str">"u-anim-fade-in-up"</span>
+     style=<span class="str">"--tr-duration: .6s; --tr-delay: .2s; --tr-easing: var(--tr-ease-bounce)"</span>&gt;…&lt;/<span class="tag">div</span>&gt;
+
+<span class="com">&lt;!-- Or compose the shorthand modifiers --&gt;</span>
+&lt;<span class="tag">div</span> class=<span class="str">"u-anim-fade-in-up u-anim-slow u-anim-delay-md"</span>&gt;…&lt;/<span class="tag">div</span>&gt;
+
+<span class="com">&lt;!-- Live status dot --&gt;</span>
+&lt;<span class="tag">span</span> class=<span class="str">"badge badge--success u-anim-pulse u-anim-repeat"</span>&gt;LIVE&lt;/<span class="tag">span</span>&gt;</pre>
+</div>
+
+<h2 id="playground">2. Timing playground</h2>
+<p>
+    Drag the duration, then hit <strong>Run</strong>. The demo box uses the framework
+    <code>.u-anim-fade-in-up</code> utility and reads <code>--tr-duration</code> live — the same way
+    you would tune an animation in your own markup.
+</p>
+<div class="docs-demo">
+    <div class="gap-controls">
+        <label class="gap-controls__label" for="animDurationSlider">Duration</label>
+        <input type="range" id="animDurationSlider" min="100" max="1500" step="50" value="500">
+        <span class="gap-controls__readout">
+            <strong id="animDurationReadout">0.5s</strong>
+            <span>duration</span>
+        </span>
+        <button class="btn btn--primary btn--sm" type="button" id="animRunBtn">▶ Run</button>
+    </div>
+    <div class="anim-stage">
+        <div class="anim-box anim-box--big u-anim-fade-in-up" id="animPlayBox">fade-in-up</div>
+    </div>
+</div>
+
+<h2 id="hover">3. Hover transitions</h2>
+<p>
+    Drop-in micro-interactions for any component. Hover or focus each tile.
+</p>
+<div class="docs-demo">
+    <div class="swatch-row">
+        <div class="anim-box u-hover-lift"><code>.u-hover-lift</code></div>
+        <div class="anim-box u-hover-grow"><code>.u-hover-grow</code></div>
+        <div class="anim-box u-hover-shadow"><code>.u-hover-shadow</code></div>
+        <div class="anim-box u-hover-brighten"><code>.u-hover-brighten</code></div>
+        <div class="anim-box u-hover-fade"><code>.u-hover-fade</code></div>
+    </div>
+    <p class="docs-demo__label" style="margin-top:16px;">Cards have a built-in interactive modifier</p>
+    <div class="swatch-row">
+        <div class="card card--hoverable" style="width:min(100%, 220px);">
+            <div class="card__body">
+                <h3 class="card__title">.card--hoverable</h3>
+                <p class="card__text">Lifts, deepens the shadow, and picks up a primary border on hover.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">a</span> href=<span class="str">"#"</span> class=<span class="str">"card card--hoverable u-transition"</span>&gt;…&lt;/<span class="tag">a</span>&gt;
+
+&lt;<span class="tag">button</span> class=<span class="str">"btn btn--primary u-hover-grow"</span>&gt;Grow on hover&lt;/<span class="tag">button</span>&gt;</pre>
+</div>
+
+<h2 id="reveal">4. Scroll reveal</h2>
+<p>
+    The <code>.reveal</code> helper hides an element and slides it in when <code>.is-visible</code> is
+    added. Scroll down — the rows below reveal as they enter the viewport.
+</p>
+<div class="docs-demo">
+    <div class="reveal-stack">
+        <div class="reveal"><div class="anim-box anim-box--wide">Reveal 1 · <code>.reveal.is-visible</code></div></div>
+        <div class="reveal"><div class="anim-box anim-box--wide anim-box--alt">Reveal 2 · stagger with <code>--tr-delay</code></div></div>
+        <div class="reveal"><div class="anim-box anim-box--wide anim-box--rose">Reveal 3 · observe + unobserve</div></div>
+    </div>
+</div>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>js</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">const</span> observer = <span class="tag">new</span> <span class="tok">IntersectionObserver</span>((entries) =&gt; {
+  entries.forEach((<span class="tag">entry</span>) =&gt; {
+    <span class="tag">if</span> (entry.isIntersecting) {
+      entry.target.classList.add(<span class="str">'is-visible'</span>);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: <span class="str">0.15</span> });
+
+document.querySelectorAll(<span class="str">'.reveal'</span>).forEach((el) =&gt; observer.observe(el));</pre>
+</div>
+
+<h2 id="tokens">5. Motion tokens</h2>
+<table class="docs-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Best for</th></tr></thead>
+    <tbody>
+        <tr><td><code>--tr-duration-fast</code></td><td><code>150ms</code></td><td>Hover, focus, micro-interactions</td></tr>
+        <tr><td><code>--tr-duration-base</code></td><td><code>250ms</code></td><td>Color / opacity / border swaps</td></tr>
+        <tr><td><code>--tr-duration-slow</code></td><td><code>400ms</code></td><td>Modals, reveals, menus</td></tr>
+        <tr><td><code>--tr-duration-slower</code></td><td><code>600ms</code></td><td>Attention-grabbing / decorative</td></tr>
+        <tr><td><code>--tr-ease-out</code></td><td><code>cubic-bezier(0,0,.58,1)</code></td><td>Things entering the screen</td></tr>
+        <tr><td><code>--tr-ease-in-out</code></td><td><code>cubic-bezier(.42,0,.58,1)</code></td><td>Continuous motion (spins, floats)</td></tr>
+        <tr><td><code>--tr-ease-bounce</code></td><td><code>cubic-bezier(.34,1.56,.64,1)</code></td><td>Playful overshoot</td></tr>
+    </tbody>
+</table>
