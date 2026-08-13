@@ -287,7 +287,8 @@
                         <li><strong>Utility-First Utilities</strong> — spacing, display, text alignment, and more.</li>
                         <li><strong>Pre-Built Components</strong> — buttons, cards, and modals.</li>
                         <li><strong>Accessible by Default</strong> — semantic patterns and ARIA-friendly markup.</li>
-                        <li><strong>Zero Runtime Dependencies</strong> — pure CSS output, no JavaScript required.</li>
+                        <li><strong>Optional JavaScript</strong> — a ~5 KB vanilla JS bundle powers the interactive components; pure CSS otherwise.</li>
+                        <li><strong>Official React &amp; Vue Bindings</strong> — <code>trueno-css-react</code> and <code>trueno-css-vue</code> wrapper packages.</li>
                     </ul>
 
                     <h2>🏗️ Framework at a Glance</h2>
@@ -317,10 +318,11 @@ npm run build
 <span class="com"># 3. Watch for changes during development</span>
 npm run dev</pre>
                     </div>
-                    <p>Then include the compiled stylesheet in your HTML:</p>
+                    <p>Then include the compiled stylesheet (and the optional JS for interactive components) in your HTML:</p>
                     <div class="docs-code">
                         <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre>&lt;<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"dist/trueno-css-framework.min.css"</span>&gt;</pre>
+                        <pre>&lt;<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"dist/trueno-css-framework.min.css"</span>&gt;
+&lt;<span class="tag">script</span> src=<span class="str">"dist/trueno-css-framework.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;</pre>
                     </div>
 
                     <h2>📦 Build Outputs</h2>
@@ -330,8 +332,10 @@ npm run dev</pre>
                                 <tr><th>File</th><th>Description</th></tr>
                             </thead>
                             <tbody>
-                                <tr><td><code>dist/trueno-css-framework.css</code></td><td>Expanded (development) build</td></tr>
-                                <tr><td><code>dist/trueno-css-framework.min.css</code></td><td>Compressed (production) build</td></tr>
+                                <tr><td><code>dist/trueno-css-framework.css</code></td><td>Expanded (development) CSS build</td></tr>
+                                <tr><td><code>dist/trueno-css-framework.min.css</code></td><td>Compressed (production) CSS build</td></tr>
+                                <tr><td><code>dist/trueno-css-framework.js</code></td><td>Expanded (development) JavaScript build</td></tr>
+                                <tr><td><code>dist/trueno-css-framework.min.js</code></td><td>Compressed (production) JavaScript build</td></tr>
                             </tbody>
                         </table>
                     </div>

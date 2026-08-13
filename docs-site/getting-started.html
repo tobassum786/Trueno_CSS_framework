@@ -7,7 +7,8 @@
     <title>Getting Started — Trueno CSS Docs</title>
 
     <!-- CDN (jsDelivr) -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trueno-css-framework@latest/dist/trueno-css-framework.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.css"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.js"></script> -->
     <!-- Local build -->
     <link rel="stylesheet" href="../dist/trueno-css-framework.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,10 +52,7 @@
         <div class="container">
             <span class="docs-hero__badge">🚀 Getting Started</span>
             <h1 class="docs-hero__title" id="page-title">Getting Started</h1>
-            <p class="docs-hero__lead">
-                This guide walks you through installing Trueno CSS, building the framework from source,
-                and integrating it into your project.
-            </p>
+            <p class="docs-hero__lead">This guide walks you through installing Trueno CSS, building the framework from source, and integrating it into your project.</p>
         </div>
     </section>
 
@@ -76,7 +74,9 @@
                     <p class="sidebar-block__title">🎨 Design System</p>
                     <ul>
                         <li><a class="sidebar-block__link" href="abstract.html">Abstract Layer</a></li>
+                        <li><a class="sidebar-block__link" href="colors.html">Color Plates</a></li>
                         <li><a class="sidebar-block__link" href="customization.html">Customization &amp; Tokens</a></li>
+                        <li><a class="sidebar-block__link" href="animations.html">Animations &amp; Motion</a></li>
                     </ul>
                 </div>
 
@@ -85,8 +85,12 @@
                     <ul>
                         <li><a class="sidebar-block__link" href="base.html">Base Styles</a></li>
                         <li><a class="sidebar-block__link" href="layout.html">Layout</a></li>
-                        <li><a class="sidebar-block__link" href="components.html">Components</a></li>
-                        <li><a class="sidebar-block__link" href="utilities.html">Utilities</a></li>
+                        <li><a class="sidebar-block__link" href="components.html">Components</a>
+
+                        </li>
+                        <li><a class="sidebar-block__link" href="utilities.html">Utilities</a>
+
+                        </li>
                         <li><a class="sidebar-block__link" href="themes.html">Themes</a></li>
                         <li><a class="sidebar-block__link" href="vendors.html">Vendors</a></li>
                     </ul>
@@ -103,117 +107,166 @@
 
             <main class="docs-content">
                 <article class="docs-page">
-
                     <h1>Getting Started</h1>
-                    <p class="docs-subtitle">
-                        Install Trueno CSS, build the framework from source, and drop it into your project —
-                        from zero to styled in minutes.
-                    </p>
+<p class="docs-subtitle">
+    Install Trueno CSS, build the framework from source, and drop it into your project —
+    from zero to styled in minutes.
+</p>
 
-                    <h2>Prerequisites</h2>
-                    <p>
-                        Trueno CSS is built with <strong>Sass</strong>, so you need a working Node.js
-                        environment to compile the source.
-                    </p>
-                    <table class="docs-table">
-                        <thead>
-                            <tr><th>Tool</th><th>Minimum Version</th><th>Notes</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Node.js</td><td>14.x or newer</td><td>Required for npm scripts</td></tr>
-                            <tr><td>npm</td><td>6.x or newer</td><td>Ships with Node.js</td></tr>
-                            <tr><td>Sass</td><td>1.77.0+</td><td>Installed automatically as a devDependency</td></tr>
-                        </tbody>
-                    </table>
-                    <p>No JavaScript runtime is required — Trueno CSS compiles to pure CSS.</p>
+<h2>Prerequisites</h2>
+<p>
+    Trueno CSS is built with <strong>Sass</strong>, so you need a working Node.js
+    environment to compile the source.
+</p>
+<table class="docs-table">
+    <thead>
+        <tr><th>Tool</th><th>Minimum Version</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Node.js</td><td>14.x or newer</td><td>Required for npm scripts</td></tr>
+        <tr><td>npm</td><td>6.x or newer</td><td>Ships with Node.js</td></tr>
+        <tr><td>Sass</td><td>1.77.0+</td><td>Installed automatically as a devDependency</td></tr>
+    </tbody>
+</table>
+<p>
+    The core framework compiles to pure CSS. An optional, dependency-free JavaScript file
+    (<code>trueno-css-framework.min.js</code>) powers the interactive components — modals,
+    navbar toggles, dismissible alerts, dropdowns, and the theme switcher.
+</p>
 
-                    <h2>1. Installation</h2>
-                    <p>
-                        Choose your preferred method:
-                    </p>
+<h2>1. Installation</h2>
+<p>
+    Choose your preferred method:
+</p>
 
-                    <h3>Option A: CDN (fastest — no build step)</h3>
-                    <p>Add this to your HTML <code><head></code> for instant usage:</p>
-                    <div class="docs-code">
-                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre><<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"https://cdn.jsdelivr.net/npm/trueno-css-framework@latest/dist/trueno-css-framework.min.css"</span>></pre>
-                    </div>
-                    <p class="text-muted">
-                        <strong>Note:</strong> Replace <code>@latest</code> with a specific version (e.g., <code>@1.0.0</code>) for production to avoid breaking changes.
-                    </p>
+<h3>Option A: CDN (fastest — no build step)</h3>
+<p>
+    Add the stylesheet to your HTML <code><head></code> and the JavaScript just before the
+    closing <code></body></code> tag (only needed when using the interactive components):
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.css"</span>&gt;
+&lt;<span class="tag">script</span> src=<span class="str">"https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;</pre>
+</div>
+<p class="text-muted">
+    <strong>Note:</strong> Pin an exact version (e.g., <code>@1.0.0</code>) for production so
+    your app never changes under you. You can also use <code>@1</code> to track the latest
+    <code>1.x</code> release.
+</p>
+<p>Trueno CSS is available from every major CDN, mirrored from the npm package and GitHub repo:</p>
+<table class="docs-table">
+    <thead>
+        <tr><th>CDN</th><th>URL</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>jsDelivr (npm)</td><td><code>https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.css</code></td></tr>
+        <tr><td>jsDelivr (GitHub)</td><td><code>https://cdn.jsdelivr.net/gh/tobassum786/Trueno_CSS_framework@main/dist/trueno-css-framework.min.css</code></td></tr>
+        <tr><td>unpkg</td><td><code>https://unpkg.com/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.css</code></td></tr>
+    </tbody>
+</table>
+<p class="text-muted">
+    Append <code>dist/trueno-css-framework.min.js</code> (in place of the CSS path) to load
+    the interactive components from any of the providers above.
+</p>
 
-                    <h3>Option B: npm (recommended for production apps)</h3>
-                    <p>Install as a dependency in your project:</p>
-                    <div class="docs-code">
-                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre>npm install trueno-css-framework</pre>
-                    </div>
-                    <p>Then import the CSS in your entry point:</p>
-                    <div class="docs-code">
-                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>JS/TS</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre><span class="tok">import</span> <span class="str">'trueno-css-framework/dist/trueno-css-framework.min.css'</span>;</pre>
-                    </div>
+<h3>Option B: npm (recommended for production apps)</h3>
+<p>Install as a dependency in your project:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>npm install trueno-css-framework</pre>
+</div>
+<p>Then import the CSS (and optional JS) in your entry point:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>JS/TS</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">import</span> <span class="str">'trueno-css-framework/dist/trueno-css-framework.min.css'</span>;
+<span class="tok">import</span> <span class="str">'trueno-css-framework/dist/trueno-css-framework.min.js'</span>;</pre>
+</div>
 
-                    <h3>Option C: Clone & Build (for contributing or customizing)</h3>
-                    <p>
-                        Clone the repository (recommended for contributing or customizing the source):
-                    </p>
-                    <div class="docs-code">
-                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre>git clone https://github.com/tobassum786/Trueno_CSS_framework.git
+<h3>Option C: Clone & Build (for contributing or customizing)</h3>
+<p>
+    Clone the repository (recommended for contributing or customizing the source):
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>git clone https://github.com/tobassum786/Trueno_CSS_framework.git
 cd Trueno_CSS_framework</pre>
-                    </div>
-                    <p>Install the dependencies:</p>
-                    <div class="docs-code">
-                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre>npm install</pre>
-                    </div>
-                    <p>
-                        This installs <strong>sass</strong> (the compiler) and the small set of watcher
-                        dependencies declared in <code>package.json</code>.
-                    </p>
+</div>
+<p>Install the dependencies:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>npm install</pre>
+</div>
+<p>
+    This installs <strong>sass</strong> (the compiler), <strong>esbuild</strong> (the JS
+    bundler/minifier), and the small set of watcher dependencies declared in
+    <code>package.json</code>.
+</p>
 
-                    <h2>2. Build the Framework</h2>
-                    <p>The build pipeline is fully driven by <code>package.json</code> scripts.</p>
-                    <table class="docs-table">
-                        <thead>
-                            <tr><th>Script</th><th>Command</th><th>Description</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><code>npm run clean</code></td><td><code>rm -rf dist/*</code></td><td>Wipe the previous build</td></tr>
-                            <tr><td><code>npm run sass:compile</code></td><td><code>sass src/main.scss:dist/trueno-css-framework.css --style expanded --no-source-map</code></td><td>Generate the expanded CSS</td></tr>
-                            <tr><td><code>npm run sass:minify</code></td><td><code>sass src/main.scss:dist/trueno-css-framework.min.css --style compressed --no-source-map</code></td><td>Generate the minified CSS</td></tr>
-                            <tr><td><code>npm run build</code></td><td><code>npm run clean &amp;&amp; npm run sass:compile &amp;&amp; npm run sass:minify</code></td><td>Run the full production build</td></tr>
-                            <tr><td><code>npm run dev</code></td><td><code>sass --watch src/main.scss:dist/trueno-css-framework.css --style expanded --no-source-map</code></td><td>Recompile on every save</td></tr>
-                        </tbody>
-                    </table>
+<h3>Option D: React &amp; Vue bindings</h3>
+<p>Using a component framework? The official wrappers ship the same components with managed
+    state — no <code>data-</code> attributes or manual DOM needed:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>npm install trueno-css-react
+npm install trueno-css-vue</pre>
+</div>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>React</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">import</span> { TruenoModal, TruenoNavbar, TruenoButton } <span class="tok">from</span> <span class="str">'trueno-css-react'</span>;</pre>
+</div>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>Vue 3</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="tok">import</span> { TruenoPlugin } <span class="tok">from</span> <span class="str">'trueno-css-vue'</span>;
+app.<span class="tok">use</span>(TruenoPlugin);</pre>
+</div>
 
-                    <h3>Production build</h3>
-                    <div class="docs-code">
-                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre>npm run build</pre>
-                    </div>
-                    <p>After running, the <code>dist/</code> folder will contain:</p>
-                    <ul>
-                        <li><code>trueno-css-framework.css</code> — expanded, human-readable CSS for development.</li>
-                        <li><code>trueno-css-framework.min.css</code> — minified CSS for production.</li>
-                    </ul>
+<h2>2. Build the Framework</h2>
+<p>The build pipeline is fully driven by <code>package.json</code> scripts.</p>
+<table class="docs-table">
+    <thead>
+        <tr><th>Script</th><th>Command</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>npm run clean</code></td><td><code>rm -rf dist/*</code></td><td>Wipe the previous build</td></tr>
+        <tr><td><code>npm run sass:compile</code></td><td><code>sass src/main.scss:dist/trueno-css-framework.css --style expanded --no-source-map</code></td><td>Generate the expanded CSS</td></tr>
+        <tr><td><code>npm run sass:minify</code></td><td><code>sass src/main.scss:dist/trueno-css-framework.min.css --style compressed --no-source-map</code></td><td>Generate the minified CSS</td></tr>
+        <tr><td><code>npm run js:build</code></td><td><code>esbuild src/trueno.js --bundle --format=iife --target=es2017 --outfile=dist/trueno-css-framework.js</code></td><td>Generate the expanded JavaScript</td></tr>
+        <tr><td><code>npm run js:minify</code></td><td><code>esbuild src/trueno.js --bundle --format=iife --target=es2017 --minify --outfile=dist/trueno-css-framework.min.js</code></td><td>Generate the minified JavaScript</td></tr>
+        <tr><td><code>npm run build</code></td><td><code>npm run clean &amp;&amp; npm run sass:compile &amp;&amp; npm run sass:minify &amp;&amp; npm run js:build &amp;&amp; npm run js:minify</code></td><td>Run the full production build</td></tr>
+        <tr><td><code>npm run dev</code></td><td><code>concurrently … sass --watch … esbuild --watch …</code></td><td>Recompile CSS and JS on every save</td></tr>
+    </tbody>
+</table>
 
-                    <h3>Watch mode (development)</h3>
-                    <div class="docs-code">
-                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre>npm run dev</pre>
-                    </div>
-                    <p>
-                        Sass watches <code>src/main.scss</code> and every partial it imports. On every save,
-                        the expanded CSS is regenerated automatically.
-                    </p>
+<h3>Production build</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>npm run build</pre>
+</div>
+<p>After running, the <code>dist/</code> folder will contain:</p>
+<ul>
+    <li><code>trueno-css-framework.css</code> — expanded, human-readable CSS for development.</li>
+    <li><code>trueno-css-framework.min.css</code> — minified CSS for production.</li>
+    <li><code>trueno-css-framework.js</code> — expanded, readable JavaScript for development.</li>
+    <li><code>trueno-css-framework.min.js</code> — minified JavaScript for production.</li>
+</ul>
 
-                    <h2>3. Use the Compiled CSS</h2>
-                    <p>Link the stylesheet in your HTML:</p>
-                    <div class="docs-code">
-                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre>&lt;!DOCTYPE html&gt;
+<h3>Watch mode (development)</h3>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>bash</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>npm run dev</pre>
+</div>
+<p>
+    Sass watches <code>src/main.scss</code> and every partial it imports, while esbuild
+    watches <code>src/trueno.js</code>. On every save, the expanded CSS and JavaScript are
+    regenerated automatically.
+</p>
+
+<h2>3. Use the Compiled CSS</h2>
+<p>Link the stylesheet (and the JavaScript for interactive components) in your HTML:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;!DOCTYPE html&gt;
 &lt;<span class="tag">html</span> lang=<span class="str">"en"</span>&gt;
 &lt;<span class="tag">head</span>&gt;
     &lt;<span class="tag">meta</span> charset=<span class="str">"UTF-8"</span>&gt;
@@ -226,49 +279,54 @@ cd Trueno_CSS_framework</pre>
         &lt;<span class="tag">h1</span> class=<span class="str">"u-text-center"</span>&gt;Hello, Trueno!&lt;/<span class="tag">h1</span>&gt;
         &lt;<span class="tag">button</span> class=<span class="str">"btn btn--primary"</span>&gt;Get Started&lt;/<span class="tag">button</span>&gt;
     &lt;/<span class="tag">div</span>&gt;
+    &lt;<span class="tag">script</span> src=<span class="str">"path/to/trueno-css-framework.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
 &lt;/<span class="tag">body</span>&gt;
 &lt;/<span class="tag">html</span>&gt;</pre>
-                    </div>
+</div>
 
-                    <div class="docs-callout docs-callout--warning">
-                        <span class="docs-callout__icon">⚠️</span>
-                        <p>The compiled CSS file has no JavaScript dependencies. Trueno CSS is CSS-only.</p>
-                    </div>
+<div class="docs-callout docs-callout--warning">
+    <span class="docs-callout__icon">⚠️</span>
+    <p>
+        The CSS is fully dependency-free. The JavaScript is only required for the interactive
+        components (modals, navbar collapse, dismissible alerts, dropdowns, theme toggle) and
+        is entirely optional — skip it if you only need static styling.
+    </p>
+</div>
 
-                    <h2>4. Use the Sass Source Directly</h2>
-                    <p>
-                        For full control, <code>@use</code> the framework's Sass source from your own
-                        stylesheet:
-                    </p>
-                    <div class="docs-code">
-                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre><span class="com">// your-app.scss</span>
+<h2>4. Use the Sass Source Directly</h2>
+<p>
+    For full control, <code>@use</code> the framework's Sass source from your own
+    stylesheet:
+</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// your-app.scss</span>
 @use <span class="str">'trueno/src/main'</span>;</pre>
-                    </div>
-                    <p>Or import only the partials you need:</p>
-                    <div class="docs-code">
-                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre><span class="com">// your-app.scss</span>
+</div>
+<p>Or import only the partials you need:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>scss</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">// your-app.scss</span>
 @use <span class="str">'trueno/src/abstract/variables'</span> as *;
 @use <span class="str">'trueno/src/abstract/mixins'</span> as *;
 @use <span class="str">'trueno/src/base/typography'</span>;
 @use <span class="str">'trueno/src/components/button'</span>;</pre>
-                    </div>
-                    <div class="docs-callout docs-callout--tip">
-                        <span class="docs-callout__icon">💡</span>
-                        <p>
-                            When consuming partials individually, remember to load <code>vendors</code>,
-                            <code>base</code>, <code>layout</code>, and <code>themes</code> first —
-                            components and utilities depend on the variables and mixins from
-                            <code>abstract/</code>.
-                        </p>
-                    </div>
+</div>
+<div class="docs-callout docs-callout--tip">
+    <span class="docs-callout__icon">💡</span>
+    <p>
+        When consuming partials individually, remember to load <code>vendors</code>,
+        <code>base</code>, <code>layout</code>, and <code>themes</code> first —
+        components and utilities depend on the variables and mixins from
+        <code>abstract/</code>.
+    </p>
+</div>
 
-                    <h2 id="basic-example">5. Basic Example</h2>
-                    <p>A complete starter page using the major Trueno CSS primitives:</p>
-                    <div class="docs-code">
-                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre>&lt;!DOCTYPE html&gt;
+<h2 id="basic-example">5. Basic Example</h2>
+<p>A complete starter page using the major Trueno CSS primitives:</p>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;!DOCTYPE html&gt;
 &lt;<span class="tag">html</span> lang=<span class="str">"en"</span>&gt;
 &lt;<span class="tag">head</span>&gt;
     &lt;<span class="tag">meta</span> charset=<span class="str">"UTF-8"</span>&gt;
@@ -309,36 +367,36 @@ cd Trueno_CSS_framework</pre>
 
 &lt;/<span class="tag">body</span>&gt;
 &lt;/<span class="tag">html</span>&gt;</pre>
-                    </div>
+</div>
 
-                    <h2>6. Browser Support</h2>
-                    <p>Trueno CSS targets the two latest versions of every major browser:</p>
-                    <table class="docs-table">
-                        <thead>
-                            <tr><th>Browser</th><th>Desktop</th><th>Mobile</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Chrome</td><td>✅</td><td>✅</td></tr>
-                            <tr><td>Firefox</td><td>✅</td><td>✅</td></tr>
-                            <tr><td>Safari</td><td>✅</td><td>✅</td></tr>
-                            <tr><td>Edge</td><td>✅</td><td>—</td></tr>
-                            <tr><td>iOS Safari</td><td>—</td><td>✅</td></tr>
-                            <tr><td>Android Chrome</td><td>—</td><td>✅</td></tr>
-                        </tbody>
-                    </table>
-                    <p>
-                        The framework uses modern CSS (CSS Grid, Flexbox, custom properties) — Internet
-                        Explorer is <strong>not</strong> supported.
-                    </p>
+<h2>6. Browser Support</h2>
+<p>Trueno CSS targets the two latest versions of every major browser:</p>
+<table class="docs-table">
+    <thead>
+        <tr><th>Browser</th><th>Desktop</th><th>Mobile</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Chrome</td><td>✅</td><td>✅</td></tr>
+        <tr><td>Firefox</td><td>✅</td><td>✅</td></tr>
+        <tr><td>Safari</td><td>✅</td><td>✅</td></tr>
+        <tr><td>Edge</td><td>✅</td><td>—</td></tr>
+        <tr><td>iOS Safari</td><td>—</td><td>✅</td></tr>
+        <tr><td>Android Chrome</td><td>—</td><td>✅</td></tr>
+    </tbody>
+</table>
+<p>
+    The framework uses modern CSS (CSS Grid, Flexbox, custom properties) — Internet
+    Explorer is <strong>not</strong> supported.
+</p>
 
-                    <h2>7. Project Layout (Top Level)</h2>
-                    <div class="docs-code">
-                        <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>tree</span><button class="docs-code__copy" type="button">Copy</button></div>
-                        <pre>Trueno_CSS_framework/
-├── dist/                  <span class="com"># Compiled output</span>
+<h2>7. Project Layout (Top Level)</h2>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>tree</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>Trueno_CSS_framework/
+├── dist/                  <span class="com"># Compiled output (CSS + JS)</span>
 ├── docs/                  <span class="com"># This documentation</span>
 ├── examples/              <span class="com"># Example projects</span>
-├── src/                   <span class="com"># Sass source (7-1 architecture)</span>
+├── src/                   <span class="com"># Sass source (7-1 architecture) + trueno.js</span>
 │   ├── abstract/
 │   ├── base/
 │   ├── components/
@@ -346,23 +404,25 @@ cd Trueno_CSS_framework</pre>
 │   ├── themes/
 │   ├── utilities/
 │   ├── vendors/
-│   └── main.scss
+│   ├── main.scss
+│   └── trueno.js          <span class="com"># Interactive component logic</span>
 ├── package.json
 ├── README.md
 └── Home.png / Logo.png    <span class="com"># Brand assets</span></pre>
-                    </div>
-                    <p>
-                        For a deep dive into the source layout, see
-                        <a href="architecture.html">Architecture</a>.
-                    </p>
+</div>
+<p>
+    For a deep dive into the source layout, see
+    <a href="architecture.html">Architecture</a>.
+</p>
 
-                    <h2>8. Next Steps</h2>
-                    <ul>
-                        <li>Read <a href="architecture.html">Architecture</a> to understand the 7-1 folder structure.</li>
-                        <li>Explore the <a href="abstract.html">Abstract layer</a> to learn the design tokens.</li>
-                        <li>Browse <a href="components.html">Components</a>, <a href="layout.html">Layout</a>, and <a href="utilities.html">Utilities</a> for the consumable surface.</li>
-                        <li>Customize the framework through <a href="customization.html">Customization &amp; Design Tokens</a>.</li>
-                    </ul>
+<h2>8. Next Steps</h2>
+<ul>
+    <li>Read <a href="architecture.html">Architecture</a> to understand the 7-1 folder structure.</li>
+    <li>Explore the <a href="abstract.html">Abstract layer</a> to learn the design tokens.</li>
+    <li>Browse <a href="components.html">Components</a>, <a href="layout.html">Layout</a>, and <a href="utilities.html">Utilities</a> for the consumable surface.</li>
+    <li>Customize the framework through <a href="customization.html">Customization &amp; Design Tokens</a>.</li>
+</ul>
+
 
                     <nav class="docs-pager" aria-label="Continue reading">
                         <a href="index.html">

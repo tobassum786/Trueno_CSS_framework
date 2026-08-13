@@ -49,12 +49,13 @@ All notable changes to **Trueno CSS Framework** are documented in this file. The
   - Light theme (default)
   - Dark theme (`.theme--dark` class) with overrides for body, headings, links, header, and cards
 - **Vendors** — placeholder for Normalize.css
-- **Build pipeline** — `npm run build` for production (expanded + minified), `npm run dev` for watch mode
+- **Build pipeline** — `npm run build` for production (expanded + minified CSS and JS), `npm run dev` for watch mode
 - **Examples** — starter projects in `examples/`
 - **Brand assets** — `Logo.png`, `Logo-alt.png`, `favicon.png`, `Home.png`
 
 ### Notes
-- Framework is CSS-only — no JavaScript runtime required.
+- Framework is CSS-only by default — an optional vanilla JS bundle powers the interactive components.
+- Official React and Vue wrapper packages live in `wrappers/` (`trueno-css-react`, `trueno-css-vue`).
 - Targets the two latest versions of every major desktop and mobile browser.
 - Follows the 7-1 architecture pattern; entry point is `src/main.scss`.
 

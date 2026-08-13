@@ -1,0 +1,21 @@
+{
+  "name": "trueno-css-react",
+  "version": "1.0.0",
+  "description": "React wrapper components for the Trueno CSS framework.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "keywords": [
+    "trueno",
+    "css",
+    "react",
+    "components",
+    "framework",
+    "ui"
+  ]
+}

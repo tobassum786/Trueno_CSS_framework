@@ -8,7 +8,8 @@
 
     <!-- Trueno CSS Framework -->
     <!-- CDN (jsDelivr) - use this for quick prototyping without npm -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trueno-css-framework@latest/dist/trueno-css-framework.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.css"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.js"></script> -->
     <!-- Local build (for development) -->
     <link rel="stylesheet" href="../dist/trueno-css-framework.css">
 
@@ -48,6 +49,7 @@
                     <li class="main-nav__item"><a href="#components">Components</a></li>
                     <li class="main-nav__item"><a href="#grid">Grid</a></li>
                     <li class="main-nav__item"><a href="#utilities">Utilities</a></li>
+                    <li class="main-nav__item"><a href="#frameworks">React &amp; Vue</a></li>
                     <li class="main-nav__item"><a href="../docs-site/index.html">Docs</a></li>
                     <li class="main-nav__item"><a href="#install">Install</a></li>
                 </ul>
@@ -98,7 +100,7 @@
 $ <span class="tok">npm install</span> trueno-css-framework
 
 <span class="com"># And link it — that's it</span>
-&lt;<span class="tok">link</span> rel="stylesheet" href="trueno.min.css"&gt;
+&lt;<span class="tok">link</span> rel="stylesheet" href="trueno-css-framework.min.css"&gt;
 
 <span class="str">⚡ Build something great.</span></div>
                         </div>
@@ -265,12 +267,12 @@ $ <span class="tok">npm install</span> trueno-css-framework
                     <!-- Modal -->
                     <div class="col-12 col-md-6 mb-lg">
                         <div class="showcase">
-                            <p class="showcase-label">Modal · .modal.is-open via JS</p>
-                            <button class="btn btn--primary" id="openModal">Launch demo modal</button>
+                            <p class="showcase-label">Modal · driven by the Trueno JS bundle</p>
+                            <button class="btn btn--primary" data-trueno-open="#demoModal">Launch demo modal</button>
                             <p class="text-muted mt-md mb-0">
-                                Styles ship with the framework — open/close is handled by toggling the
-                                <code>.is-open</code> class. Focus trapping, backdrop, and Escape handled
-                                below.
+                                Load <code>trueno-css-framework.min.js</code> and modals work via
+                                <code>data-trueno-open</code> / <code>data-trueno-close</code> — focus
+                                management, backdrop clicks, and Escape are handled for you.
                             </p>
                         </div>
                     </div>
@@ -475,7 +477,8 @@ $ <span class="tok">npm install</span> trueno-css-framework
                             </div>
                             <pre data-code="npm">npm install trueno-css-framework
 <span class="com">// main.js</span>
-<span class="tok">import</span> <span class="str">'trueno-css-framework/dist/trueno-css-framework.min.css'</span>;</pre>
+<span class="tok">import</span> <span class="str">'trueno-css-framework/dist/trueno-css-framework.min.css'</span>;
+<span class="tok">import</span> <span class="str">'trueno-css-framework/dist/trueno-css-framework.min.js'</span>;</pre>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 mb-lg">
@@ -486,8 +489,9 @@ $ <span class="tok">npm install</span> trueno-css-framework
                                     Copy
                                 </button>
                             </div>
-                            <pre data-code="cdn">&lt;<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"https://cdn.jsdelivr.net/npm/trueno-css-framework"</span>&gt;
-<span class="com">&lt;!-- Done. Start styling --&gt;</span></pre>
+                            <pre data-code="cdn">&lt;<span class="tag">link</span> rel=<span class="str">"stylesheet"</span> href=<span class="str">"https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.css"</span>&gt;
+&lt;<span class="tag">script</span> src=<span class="str">"https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
+<span class="com">&lt;!-- Pin the version for production. Start styling --&gt;</span></pre>
                         </div>
                     </div>
                 </div>
@@ -510,6 +514,59 @@ $ <span class="tok">npm install</span> trueno-css-framework
     &lt;/<span class="tag">div</span>&gt;
   &lt;/<span class="tag">div</span>&gt;
 &lt;/<span class="tag">body</span>&gt;</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- Ecosystem: React & Vue wrappers                              -->
+        <!-- ============================================================ -->
+        <section class="section section--soft" id="frameworks">
+            <div class="container">
+                <div class="u-text-center">
+                    <span class="section__eyebrow">Ecosystem</span>
+                    <h2 class="section__title">Official React &amp; Vue wrappers</h2>
+                    <p class="section__lead lead-center">
+                        The same components, as first-class bindings for your framework of choice.
+                        Zero extra runtime dependencies.
+                    </p>
+                </div>
+
+                <div class="row mt-xl">
+                    <div class="col-12 col-md-6 mb-lg">
+                        <div class="card">
+                            <div class="card__body">
+                                <span class="feature-card__icon ic-primary">⚛️</span>
+                                <h3 class="card__title">React <span class="badge badge--soft-primary badge--pill">17+</span></h3>
+                                <p class="card__text">
+                                    <code>TruenoButton</code>, <code>TruenoModal</code>, <code>TruenoNavbar</code>,
+                                    form controls, and more — controlled state, refs, and ARIA handled for you.
+                                </p>
+                                <div class="code-block">
+                                    <div class="code-block__bar"><span>npm</span><button class="code-block__copy" type="button" data-copy="react">Copy</button></div>
+                                    <pre data-code="react">npm install trueno-css-react</pre>
+                                </div>
+                                <a href="https://www.npmjs.com/package/trueno-css-react" class="btn btn--primary btn--sm" rel="noopener">View on npm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-lg">
+                        <div class="card">
+                            <div class="card__body">
+                                <span class="feature-card__icon ic-green">🟢</span>
+                                <h3 class="card__title">Vue 3 <span class="badge badge--soft-success badge--pill">3.2+</span></h3>
+                                <p class="card__text">
+                                    Vue 3 SFC components with a drop-in plugin — <code>TruenoModal</code>,
+                                    <code>TruenoNavbar</code>, forms, and theming out of the box.
+                                </p>
+                                <div class="code-block">
+                                    <div class="code-block__bar"><span>npm</span><button class="code-block__copy" type="button" data-copy="vue">Copy</button></div>
+                                    <pre data-code="vue">npm install trueno-css-vue</pre>
+                                </div>
+                                <a href="https://www.npmjs.com/package/trueno-css-vue" class="btn btn--primary btn--sm" rel="noopener">View on npm</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -552,6 +609,7 @@ $ <span class="tok">npm install</span> trueno-css-framework
                     <ul class="main-footer__list">
                         <li><a href="#features">Features</a></li>
                         <li><a href="#components">Components</a></li>
+                        <li><a href="#frameworks">React &amp; Vue</a></li>
                         <li><a href="#grid">Grid</a></li>
                         <li><a href="#utilities">Utilities</a></li>
                     </ul>
@@ -586,7 +644,7 @@ $ <span class="tok">npm install</span> trueno-css-framework
         <div class="modal__dialog">
             <div class="modal__header">
                 <h2 class="modal__title" id="demoModalTitle">Trueno modal ⚡</h2>
-                <button type="button" class="modal__close-btn" aria-label="Close modal" data-modal-close>×</button>
+                <button type="button" class="modal__close-btn" aria-label="Close modal" data-trueno-close>×</button>
             </div>
             <div class="modal__body">
                 <p>You've opened a modal styled entirely by the Trueno framework.</p>
@@ -596,11 +654,14 @@ $ <span class="tok">npm install</span> trueno-css-framework
                 </p>
             </div>
             <div class="modal__footer">
-                <button type="button" class="btn btn--secondary" data-modal-close>Cancel</button>
+                <button type="button" class="btn btn--secondary" data-trueno-close>Cancel</button>
                 <button type="button" class="btn btn--primary">Save changes</button>
             </div>
         </div>
     </div>
+
+    <!-- Trueno CSS Framework JS: powers modals, navbars, dismissible alerts, and the theme toggle -->
+    <script src="../dist/trueno-css-framework.min.js"></script>
 
     <script>
         // ---- Sticky header shadow ----
@@ -622,55 +683,6 @@ $ <span class="tok">npm install</span> trueno-css-framework
                 mainNav.classList.remove('is-open');
                 navToggle.setAttribute('aria-expanded', 'false');
             });
-        });
-
-        // ---- Modal ----
-        const modal = document.getElementById('demoModal');
-        const openModal = document.getElementById('openModal');
-        let lastFocused = null;
-
-        function openDialog() {
-            lastFocused = document.activeElement;
-            modal.classList.add('is-open');
-            modal.setAttribute('aria-hidden', 'false');
-            // Move focus into the dialog
-            modal.querySelector('.modal__close-btn').focus();
-        }
-
-        function closeDialog() {
-            modal.classList.remove('is-open');
-            modal.setAttribute('aria-hidden', 'true');
-            if (lastFocused) lastFocused.focus();
-        }
-
-        openModal.addEventListener('click', openDialog);
-        modal.querySelectorAll('[data-modal-close]').forEach((btn) => {
-            btn.addEventListener('click', closeDialog);
-        });
-        // Backdrop click
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeDialog();
-        });
-        // Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('is-open')) closeDialog();
-        });
-        // Focus trap (simple version)
-        modal.addEventListener('keydown', (e) => {
-            if (e.key === 'Tab' && modal.classList.contains('is-open')) {
-                const focusables = modal.querySelectorAll(
-                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-                );
-                const first = focusables[0];
-                const last = focusables[focusables.length - 1];
-                if (e.shiftKey && document.activeElement === first) {
-                    e.preventDefault();
-                    last.focus();
-                } else if (!e.shiftKey && document.activeElement === last) {
-                    e.preventDefault();
-                    first.focus();
-                }
-            }
         });
 
         // ---- Theme toggle ----

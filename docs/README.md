@@ -42,7 +42,8 @@ Trueno CSS is a lightweight, modular CSS framework written in **Sass**. It provi
 - **Utility-First Utilities** — Spacing, display, text alignment, and more
 - **Pre-Built Components** — Buttons, cards, and modals
 - **Accessible by Default** — Semantic patterns and ARIA-friendly markup
-- **Zero Runtime Dependencies** — Pure CSS output, no JavaScript required
+- **Optional JavaScript** — A ~5 KB vanilla JS bundle powers the interactive components; pure CSS otherwise
+- **Official React & Vue Bindings** — `trueno-css-react` and `trueno-css-vue` wrapper packages
 
 ---
 
@@ -75,11 +76,21 @@ npm run build
 npm run dev
 ```
 
-Then include the compiled stylesheet in your HTML:
+Then include the compiled stylesheet (and the optional JS for interactive components) in your HTML:
 
 ```html
 <link rel="stylesheet" href="dist/trueno-css-framework.min.css">
+<script src="dist/trueno-css-framework.min.js"></script>
 ```
+
+Or use the CDN — [jsDelivr](https://www.jsdelivr.com) serves it straight from npm:
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.css">
+<script src="https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.js"></script>
+```
+
+Use [unpkg](https://unpkg.com) as an alternative, and check [Getting Started](./getting-started.md) for the full installation guide.
 
 ---
 
@@ -87,8 +98,24 @@ Then include the compiled stylesheet in your HTML:
 
 | File | Description |
 | --- | --- |
-| `dist/trueno-css-framework.css` | Expanded (development) build |
-| `dist/trueno-css-framework.min.css` | Compressed (production) build |
+| `dist/trueno-css-framework.css` | Expanded (development) CSS build |
+| `dist/trueno-css-framework.min.css` | Compressed (production) CSS build |
+| `dist/trueno-css-framework.js` | Expanded (development) JavaScript build |
+| `dist/trueno-css-framework.min.js` | Compressed (production) JavaScript build |
+
+---
+
+## ⚛️ React & Vue Bindings
+
+Official wrapper components for your framework of choice:
+
+```bash
+npm install trueno-css-react
+npm install trueno-css-vue
+```
+
+Both packages ship in `wrappers/` and render the framework's exact BEM markup with managed
+interactive state — see `wrappers/react/README.md` and `wrappers/vue/README.md`.
 
 ---
 

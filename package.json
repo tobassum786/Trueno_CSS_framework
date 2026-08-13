@@ -3,12 +3,20 @@
   "version": "1.0.0",
   "description": "A new CSS library named Trueno CSS Framework, built with Sass following best practices.",
   "main": "dist/trueno-css-framework.css",
+  "unpkg": "dist/trueno-css-framework.min.css",
+  "jsdelivr": "dist/trueno-css-framework.min.css",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
     "sass:compile": "sass src/main.scss:dist/trueno-css-framework.css --style expanded --no-source-map",
     "sass:minify": "sass src/main.scss:dist/trueno-css-framework.min.css --style compressed --no-source-map",
-    "build": "npm run clean && npm run sass:compile && npm run sass:minify",
-    "dev": "sass --watch src/main.scss:dist/trueno-css-framework.css --style expanded --no-source-map",
+    "js:build": "esbuild src/trueno.js --bundle --format=iife --target=es2017 --outfile=dist/trueno-css-framework.js",
+    "js:minify": "esbuild src/trueno.js --bundle --format=iife --target=es2017 --minify --outfile=dist/trueno-css-framework.min.js",
+    "build": "npm run clean && npm run sass:compile && npm run sass:minify && npm run js:build && npm run js:minify",
+    "dev": "concurrently -k -n sass,js \"sass --watch src/main.scss:dist/trueno-css-framework.css --style expanded --no-source-map\" \"esbuild src/trueno.js --bundle --format=iife --target=es2017 --watch --outfile=dist/trueno-css-framework.js\"",
     "prepare": "npm run build"
   },
   "keywords": [
@@ -22,6 +30,8 @@
   "author": "Tobassum Munir",
   "license": "MIT",
   "devDependencies": {
+    "concurrently": "^10.0.4",
+    "esbuild": "^0.28.2",
     "sass": "^1.77.0"
   },
   "directories": {

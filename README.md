@@ -30,42 +30,65 @@ Choose the method that best suits your project:
 #### **a. Via NPM (Recommended for modern workflows)**
 
 ```
-npm install truno-css
+npm install trueno-css-framework
 # or
-yarn add truno-css
+yarn add trueno-css-framework
 ```
 
-Then, you can import the framework’s CSS and (if applicable) JavaScript into your project’s entry files (e.g., `main.js` or `app.scss`):
+Then, you can import the framework’s CSS and JavaScript into your project’s entry files (e.g., `main.js` or `app.scss`):
 
 ```
 // main.js or app.js
-import 'trueno/dist/css/trueno.min.css';
-// If your framework includes JS components:
-// import 'trueno/dist/js/trueno.min.js';
+import 'trueno-css-framework/dist/trueno-css-framework.min.css';
+// Optional: enables interactive components (modals, navbar, alerts, themes)
+import 'trueno-css-framework/dist/trueno-css-framework.min.js';
 ```
 
 ```
 // app.scss
-@use 'trueno/src/scss/main.scss'; // For full customization
+@use 'trueno-css-framework/src/main.scss'; // For full customization
 // or
-@import 'trueno/dist/css/trueno.css'; // For pre-compiled
+@import 'trueno-css-framework/dist/trueno-css-framework.css'; // For pre-compiled
 ```
 
 #### **b. Via CDN**
 
-For quick prototyping or projects without a build tool, you can link directly to the CDN:
+For quick prototyping or production projects without a build tool, link directly to a CDN. Trueno CSS is published to **npm** and mirrored automatically by [jsDelivr](https://www.jsdelivr.com) and [unpkg](https://unpkg.com) — no extra hosting required.
+
+**jsDelivr (npm)** — always resolves to the latest release:
 
 ```
 <!-- In your <head> section -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trueno/dist/css/[your-framework-name].min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.css">
 
-<!-- Before closing </body> tag, if your framework has JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/trueno/dist/js/trueno.min.js"></script>
+<!-- Before closing </body> tag: interactive components (modals, navbar, dismissible alerts, theme toggle) -->
+<script src="https://cdn.jsdelivr.net/npm/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.js"></script>
+```
+
+Use `@1` to pin to the latest 1.x release, or `@1.0.0` for an exact, immutable version. For production, **pin an exact version** so your app never changes under you.
+
+**jsDelivr (GitHub)** — served straight from this repository:
+
+```
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tobassum786/Trueno_CSS_framework@main/dist/trueno-css-framework.min.css">
+<script src="https://cdn.jsdelivr.net/gh/tobassum786/Trueno_CSS_framework@main/dist/trueno-css-framework.min.js"></script>
+```
+
+**unpkg:**
+
+```
+<link rel="stylesheet" href="https://unpkg.com/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.css">
+<script src="https://unpkg.com/trueno-css-framework@1.0.0/dist/trueno-css-framework.min.js"></script>
 ```
 
 #### **c. Direct Download**
 
-Download the compiled CSS and JavaScript files directly from our GitHub releases page or website.
+Download the compiled CSS and JavaScript files directly from our GitHub releases page or website. Each release includes:
+
+* `dist/trueno-css-framework.css` — expanded CSS
+* `dist/trueno-css-framework.min.css` — minified CSS
+* `dist/trueno-css-framework.js` — framework JavaScript (unminified)
+* `dist/trueno-css-framework.min.js` — framework JavaScript (minified)
 
 ### **3. Basic Usage**
 
@@ -79,7 +102,7 @@ Once installed, you can start using [Your Framework Name]'s classes in your HTML
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My trueno Project</title>
     <!-- Link to your framework's CSS -->
-    <link rel="stylesheet" href="path/to/trueno.min.css">
+    <link rel="stylesheet" href="path/to/trueno-css-framework.min.css">
 </head>
 <body>
 
@@ -89,7 +112,7 @@ Once installed, you can start using [Your Framework Name]'s classes in your HTML
 
         <div class="row">
             <div class="col-md-6">
-                <button class="btn btn-primary btn-lg">Primary Button</button>
+                <button class="btn btn-primary btn-lg" data-trueno-open="#exampleModal">Open Modal</button>
             </div>
             <div class="col-md-6">
                 <button class="btn btn-outline-secondary">Secondary Button</button>
@@ -97,8 +120,22 @@ Once installed, you can start using [Your Framework Name]'s classes in your HTML
         </div>
     </div>
 
-    <!-- Link to your framework's JavaScript (if any) -->
-    <script src="path/to/trueno.min.js"></script>
+    <!-- Modal example (interactive via data attributes) -->
+    <div class="modal" id="exampleModal" aria-hidden="true">
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="exampleModalTitle">
+            <header class="modal__header">
+                <h3 class="modal__title" id="exampleModalTitle">Example Modal</h3>
+                <button class="modal__close-btn" type="button" aria-label="Close">×</button>
+            </header>
+            <div class="modal__body">
+                <p>Modals open with <code>data-trueno-open="#exampleModal"</code>, close via the
+                close button, backdrop click, or the Escape key.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to your framework's JavaScript (required for interactive components) -->
+    <script src="path/to/trueno-css-framework.min.js"></script>
 </body>
 </html>
 ```
@@ -118,6 +155,75 @@ Trueno CSS is built with minimal external dependencies.
 * **CSS:** Pure CSS (or compiled from Sass/Less).
 * **JavaScript:** (Optional) Vanilla JavaScript. *([Or] If using, list any specific micro-libraries or requirements, e.g., “Requires jQuery if using certain interactive components.”)*
 * **Icons:** (Optional) We recommend using Font Awesome, Bootstrap Icons, or your preferred SVG icon library.
+
+### **6. JavaScript Components**
+
+Trueno CSS ships a dependency-free, ~5 KB (minified) vanilla JavaScript file that powers the interactive components. Load it once and the components **auto-initialize** on `DOMContentLoaded` — no setup required.
+
+**Modals** — open with `data-trueno-open`, close with `data-trueno-close`, the close button, backdrop click, or `Escape`:
+
+```
+<button class="btn btn--primary" data-trueno-open="#myModal">Open</button>
+
+<div class="modal" id="myModal" aria-hidden="true">
+  <div class="modal__dialog" role="dialog" aria-modal="true">
+    <header class="modal__header">
+      <h3 class="modal__title">Title</h3>
+      <button class="modal__close-btn" type="button" aria-label="Close">×</button>
+    </header>
+    <div class="modal__body">...</div>
+  </div>
+</div>
+```
+
+**Navbar** — collapse the mobile menu with `data-trueno-toggle`. `aria-expanded` and `aria-controls` are synced automatically, and menu links close the menu on tap:
+
+```
+<nav class="navbar navbar--dark">
+  <a class="navbar__brand" href="#">Brand</a>
+  <button class="navbar__toggle" type="button" data-trueno-toggle="#navCollapse" aria-expanded="false">☰</button>
+  <div class="navbar__collapse" id="navCollapse">
+    <ul class="navbar__nav">...</ul>
+  </div>
+</nav>
+```
+
+**Dismissible alerts** — the `.alert__close` button fades the alert out and removes it:
+
+```
+<div class="alert alert--success alert--dismissible">
+  <button class="alert__close" type="button" aria-label="Close">×</button>
+</div>
+```
+
+**Dropdowns** — add `data-trueno-dropdown` to a `navbar__has-dropdown` item for click-based toggling (CSS hover still works):
+
+```
+<li class="navbar__item navbar__has-dropdown" data-trueno-dropdown>
+  <a class="navbar__link" href="#">Services ▾</a>
+  <ul class="navbar__dropdown">...</ul>
+</li>
+```
+
+**Theme toggle** — switch between the light and dark themes. The choice persists in `localStorage` and respects `prefers-color-scheme` on first load:
+
+```
+<button type="button" data-trueno-theme-toggle aria-pressed="false">🌙</button>
+```
+
+**Programmatic API** — every component is exposed globally as `Trueno`:
+
+```
+Trueno.Modal.open(document.getElementById('myModal'));
+Trueno.Modal.close(document.getElementById('myModal'));
+Trueno.Alert.dismiss(document.querySelector('.alert'));
+Trueno.Navbar.toggle(document.querySelector('[data-trueno-toggle]'));
+Trueno.Theme.toggle();          // flip theme
+Trueno.Theme.set(true);         // force dark
+Trueno.init();                  // re-bind after dynamic DOM changes
+```
+
+Custom events fire on `document`: `trueno:modal:open`, `trueno:modal:close`, `trueno:navbar:open`, `trueno:navbar:close`, `trueno:alert:dismiss`, `trueno:theme:dark`, `trueno:theme:light`.
 
 ---
 

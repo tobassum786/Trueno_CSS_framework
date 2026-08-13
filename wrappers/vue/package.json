@@ -1,0 +1,20 @@
+{
+  "name": "trueno-css-vue",
+  "version": "1.0.0",
+  "description": "Vue 3 wrapper components for the Trueno CSS framework.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "sideEffects": false,
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "keywords": [
+    "trueno",
+    "css",
+    "vue",
+    "components",
+    "framework",
+    "ui"
+  ]
+}
