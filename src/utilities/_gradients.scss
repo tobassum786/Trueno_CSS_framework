@@ -1,0 +1,526 @@
+// ============================================================
+// Trueno CSS — Gradient utilities
+// ------------------------------------------------------------
+// Single-purpose utilities for backgrounds, text, borders and
+// masks that use CSS gradients. All values are derived from the
+// color plates in `abstract/_colors.scss` so the same "600
+// rule" used everywhere else in the framework applies: solid
+// container fills land on 500/600, readable text on 700+.
+//
+// Like every other utility in the layer, gradients use
+// `!important` so they win against component styles, and are
+// prefixed with `u-` so they are easy to spot in markup.
+//
+// Runtime tuning
+// --------------
+// Every utility sets a default gradient as a `background-image`
+// but also exposes CSS custom properties so a parent — or a
+// single inline style — can override any stop without writing
+// a new class:
+//
+//   <div class="u-bg-gradient-primary"
+//        style="--tr-grad-stop-1: var(--tr-blue-300);
+//               --tr-grad-stop-2: var(--tr-blue-800);">
+//
+// Custom-property defaults
+// ------------------------
+//   --tr-grad-angle           135deg
+//   --tr-grad-stop-1          first stop color  (fallback to the plate's 300 step)
+//   --tr-grad-stop-2          second stop color (fallback to the plate's 700 step)
+//   --tr-grad-stop-3          third stop color  (only used by the 3-stop variants;
+//                                              default null — falls back to stop-2)
+// ============================================================
+
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use '../abstract/variables' as *;
+@use '../abstract/functions' as *;
+
+// ------------------------------------------------------------
+// Direction tokens
+// ------------------------------------------------------------
+//   .u-gradient-to-t   →  to top
+//   .u-gradient-to-tr  →  to top right
+//   .u-gradient-to-r   →  to right
+//   .u-gradient-to-br  →  to bottom right   (default)
+//   .u-gradient-to-b   →  to bottom
+//   .u-gradient-to-bl  →  to bottom left
+//   .u-gradient-to-l   →  to left
+//   .u-gradient-to-tl  →  to top left
+//
+// Each sets --tr-grad-angle so the named gradients below
+// honor whatever direction the user picks.
+// ------------------------------------------------------------
+$gradient-directions: (
+  t:    0deg,
+  tr:   45deg,
+  r:    90deg,
+  br:   135deg,
+  b:    180deg,
+  bl:   225deg,
+  l:    270deg,
+  tl:   315deg,
+);
+
+:root {
+  --tr-grad-angle: 135deg;
+}
+
+@each $abbr, $angle in $gradient-directions {
+  .u-gradient-to-#{$abbr} {
+    --tr-grad-angle: #{$angle} !important;
+  }
+}
+
+// ------------------------------------------------------------
+// Plate → utility map
+// ------------------------------------------------------------
+// Each entry lists the default stop-1 / stop-2 / stop-3 colors
+// for the named gradient. The defaults are picked from the
+// plate so the gradient always reads as "soft → deep" of the
+// same hue, matching the framework's accessibility contract.
+// Keys are quoted to avoid Sass interpreting the names as CSS
+// color values (e.g. `blue`).
+// ------------------------------------------------------------
+$gradient-hues: (
+  "primary":   ( "blue",   400, 700 ),
+  "secondary": ( "gray",   400, 700 ),
+  "success":   ( "green",  400, 700 ),
+  "danger":    ( "red",    400, 700 ),
+  "warning":   ( "amber",  300, 600 ),
+  "info":      ( "cyan",   400, 700 ),
+  "light":     ( "gray",    50, 300 ),
+  "dark":      ( "gray",   700, 950 ),
+  "blue":      ( "blue",   400, 700 ),
+  "indigo":    ( "indigo", 400, 700 ),
+  "violet":    ( "violet", 400, 700 ),
+  "green":     ( "green",  400, 700 ),
+  "red":       ( "red",    400, 700 ),
+  "amber":     ( "amber",  300, 600 ),
+  "cyan":      ( "cyan",   400, 700 ),
+  "gray":      ( "gray",   400, 700 ),
+  "slate":     ( "slate",  400, 900 ),
+  // Brand combo: blue → violet, evocative of "thunder"
+  "thunder":   ( "blue",   500, 900 ),
+);
+
+// ------------------------------------------------------------
+// 1. Base gradient utilities
+// ------------------------------------------------------------
+// Plain linear-gradient scaffolding that takes its colors
+// from --tr-grad-stop-1 / --tr-grad-stop-2 / --tr-grad-stop-3
+// and its direction from --tr-grad-angle. Useful when you want
+// to compose a one-off gradient without picking a named hue.
+// ------------------------------------------------------------
+.u-bg-gradient {
+  background-image: linear-gradient(
+    var(--tr-grad-angle, 135deg),
+    var(--tr-grad-stop-1, #{$color-light}) 0%,
+    var(--tr-grad-stop-2, #{$color-dark})  100%
+  ) !important;
+}
+
+.u-bg-gradient-3 {
+  // Three-stop variant. If --tr-grad-stop-3 is unset, it
+  // collapses to a 2-stop gradient between stop-1 and stop-2.
+  background-image: linear-gradient(
+    var(--tr-grad-angle, 135deg),
+    var(--tr-grad-stop-1, #{$color-light}) 0%,
+    var(--tr-grad-stop-2, #{$color-secondary}) 50%,
+    var(--tr-grad-stop-3, #{$color-dark}) 100%
+  ) !important;
+}
+
+// ------------------------------------------------------------
+// 2. Named plate-driven gradients
+// ------------------------------------------------------------
+// For every hue in $gradient-hues we emit:
+//   .u-bg-gradient-{hue}        → 2-stop
+//   .u-bg-gradient-{hue}-3      → 3-stop (adds a soft tint at the start)
+//
+// The class also pre-sets the corresponding --tr-grad-stop-*
+// variables, so subsequent CSS or inline style overrides for
+// the same element compose cleanly.
+// ------------------------------------------------------------
+@each $name, $tuple in $gradient-hues {
+  $plate:        list.nth($tuple, 1);
+  $stop1-step:   list.nth($tuple, 2);
+  $stop2-step:   list.nth($tuple, 3);
+  $stop1:        plate($plate, $stop1-step);
+  $stop2:        plate($plate, $stop2-step);
+
+  .u-bg-gradient-#{$name} {
+    --tr-grad-stop-1: #{$stop1};
+    --tr-grad-stop-2: #{$stop2};
+
+    background-image: linear-gradient(
+      var(--tr-grad-angle, 135deg),
+      var(--tr-grad-stop-1) 0%,
+      var(--tr-grad-stop-2) 100%
+    ) !important;
+  }
+
+  // 3-stop variant: soft tint (step 200) → mid (500) → deep (800).
+  .u-bg-gradient-#{$name}-3 {
+    $soft: plate($plate, 200);
+    $mid:  plate($plate, 500);
+    $deep: plate($plate, 800);
+
+    --tr-grad-stop-1: #{$soft};
+    --tr-grad-stop-2: #{$mid};
+    --tr-grad-stop-3: #{$deep};
+
+    background-image: linear-gradient(
+      var(--tr-grad-angle, 135deg),
+      var(--tr-grad-stop-1) 0%,
+      var(--tr-grad-stop-2) 50%,
+      var(--tr-grad-stop-3) 100%
+    ) !important;
+  }
+}
+
+// ------------------------------------------------------------
+// 3. Brand combinations
+// ------------------------------------------------------------
+// Pre-baked cross-hue gradients. Each emits a 2-stop linear
+// gradient using two different plates, with the --tr-grad-stop-*
+// properties pre-set so the direction modifier or an inline
+// override can still tune the result.
+// ------------------------------------------------------------
+.u-bg-gradient-sunset {
+  --tr-grad-stop-1: #{plate(amber, 400)};
+  --tr-grad-stop-2: #{plate(red, 700)};
+
+  background-image: linear-gradient(
+    var(--tr-grad-angle, 135deg),
+    var(--tr-grad-stop-1) 0%,
+    var(--tr-grad-stop-2) 100%
+  ) !important;
+}
+
+.u-bg-gradient-ocean {
+  --tr-grad-stop-1: #{plate(cyan, 300)};
+  --tr-grad-stop-2: #{plate(blue, 800)};
+
+  background-image: linear-gradient(
+    var(--tr-grad-angle, 135deg),
+    var(--tr-grad-stop-1) 0%,
+    var(--tr-grad-stop-2) 100%
+  ) !important;
+}
+
+.u-bg-gradient-forest {
+  --tr-grad-stop-1: #{plate(green, 300)};
+  --tr-grad-stop-2: #{plate(green, 800)};
+
+  background-image: linear-gradient(
+    var(--tr-grad-angle, 135deg),
+    var(--tr-grad-stop-1) 0%,
+    var(--tr-grad-stop-2) 100%
+  ) !important;
+}
+
+.u-bg-gradient-aurora {
+  // Multi-hue: cyan → indigo → violet — the namesake "aurora"
+  // belt. Uses the 3-stop variables.
+  --tr-grad-stop-1: #{plate(cyan, 400)};
+  --tr-grad-stop-2: #{plate(indigo, 500)};
+  --tr-grad-stop-3: #{plate(violet, 700)};
+
+  background-image: linear-gradient(
+    var(--tr-grad-angle, 135deg),
+    var(--tr-grad-stop-1) 0%,
+    var(--tr-grad-stop-2) 50%,
+    var(--tr-grad-stop-3) 100%
+  ) !important;
+}
+
+.u-bg-gradient-trueno {
+  // The framework's signature: blue → indigo → violet.
+  --tr-grad-stop-1: #{plate(blue, 500)};
+  --tr-grad-stop-2: #{plate(indigo, 600)};
+  --tr-grad-stop-3: #{plate(violet, 700)};
+
+  background-image: linear-gradient(
+    var(--tr-grad-angle, 135deg),
+    var(--tr-grad-stop-1) 0%,
+    var(--tr-grad-stop-2) 50%,
+    var(--tr-grad-stop-3) 100%
+  ) !important;
+}
+
+.u-bg-gradient-midnight {
+  --tr-grad-stop-1: #{plate(slate, 700)};
+  --tr-grad-stop-2: #{plate(slate, 950)};
+
+  background-image: linear-gradient(
+    var(--tr-grad-angle, 135deg),
+    var(--tr-grad-stop-1) 0%,
+    var(--tr-grad-stop-2) 100%
+  ) !important;
+}
+
+// ------------------------------------------------------------
+// 3b. Advanced gradient recipes
+// ------------------------------------------------------------
+// A curated set of 50 named gradients, each with its own baked-in
+// --tr-grad-angle so every one reads differently out of the box.
+// Like the brand combinations, each recipe exposes its stops as
+// --tr-grad-stop-* custom properties, so a direction modifier
+// (which sets --tr-grad-angle with !important) or an inline style
+// can still reshape the gradient. Stops are evenly spaced across
+// the gradient, so 2-stop recipes are a clean cross-fade and
+// 3+ stop recipes fan out to deep, multi-hue blends.
+//
+//   <div class="u-bg-gradient-galaxy">…</div>
+//   <div class="u-bg-gradient-spectrum u-gradient-to-r">…</div>
+//
+// Angle defaults: recipes pick a fixed angle instead of the base
+// 135deg, but the fallback var() keeps the pattern tunable.
+// ------------------------------------------------------------
+$gradient-recipes: (
+  // ---- Cool blues · indigos · violets ----
+  "ice":           (angle:  90deg, stops: (("blue", 200), ("indigo", 600))),
+  "cobalt":        (angle: 110deg, stops: (("blue", 400), ("blue", 800))),
+  "royal":         (angle:  45deg, stops: (("indigo", 500), ("violet", 800))),
+  "galaxy":        (angle: 130deg, stops: (("indigo", 800), ("slate", 950))),
+  "nebula":        (angle: 160deg, stops: (("violet", 400), ("indigo", 800))),
+  "cosmic":        (angle: 200deg, stops: (("violet", 500), ("blue", 900), ("slate", 950))),
+  "electric":      (angle:  75deg, stops: (("blue", 300), ("indigo", 600))),
+  "aurora-sky":    (angle: 140deg, stops: (("cyan", 400), ("blue", 600), ("indigo", 800))),
+  "deep-sea":      (angle: 170deg, stops: (("cyan", 600), ("blue", 900))),
+  "lagoon":        (angle: 105deg, stops: (("cyan", 400), ("blue", 700))),
+  "arctic":        (angle:  15deg, stops: (("cyan", 200), ("blue", 400), ("indigo", 600))),
+  "nightfall":     (angle: 255deg, stops: (("indigo", 900), ("slate", 950))),
+  "midnight-ice":  (angle: 285deg, stops: (("slate", 800), ("blue", 900), ("slate", 950))),
+  "skyline":       (angle:  60deg, stops: (("cyan", 300), ("blue", 500))),
+  "glacier":       (angle: 320deg, stops: (("slate", 300), ("cyan", 400), ("blue", 600))),
+
+  // ---- Warm reds · ambers ----
+  "embers":        (angle:   0deg, stops: (("amber", 500), ("red", 700))),
+  "blaze":         (angle:  20deg, stops: (("red", 400), ("red", 800))),
+  "flame":         (angle:  35deg, stops: (("amber", 400), ("red", 600))),
+  "crimson":       (angle: 100deg, stops: (("red", 500), ("red", 900))),
+  "golden":        (angle:  70deg, stops: (("amber", 300), ("amber", 700))),
+  "honey":         (angle:  40deg, stops: (("amber", 400), ("red", 500), ("red", 800))),
+  "sunburst":      (angle: 125deg, stops: (("amber", 300), ("red", 600))),
+  "lava":          (angle:  50deg, stops: (("red", 600), ("amber", 500), ("red", 900))),
+  "peach":         (angle: 115deg, stops: (("red", 200), ("amber", 400), ("red", 600))),
+  "coral":         (angle:  95deg, stops: (("red", 400), ("amber", 500))),
+  "tangerine":     (angle: 155deg, stops: (("amber", 400), ("red", 600))),
+  "pumpkin":       (angle: 185deg, stops: (("amber", 500), ("red", 700))),
+  "sunrise":       (angle: 205deg, stops: (("cyan", 200), ("amber", 300), ("red", 500))),
+  "desert":        (angle: 250deg, stops: (("amber", 300), ("amber", 600), ("red", 700))),
+
+  // ---- Greens · teals ----
+  "emerald":       (angle:  80deg, stops: (("green", 400), ("green", 800))),
+  "mint":          (angle: 120deg, stops: (("green", 300), ("green", 600))),
+  "forest-deep":   (angle: 150deg, stops: (("green", 600), ("green", 900))),
+  "jungle":        (angle: 165deg, stops: (("green", 500), ("slate", 800), ("green", 900))),
+  "tropical":      (angle: 135deg, stops: (("cyan", 400), ("green", 500), ("green", 800))),
+  "moss":          (angle: 190deg, stops: (("green", 300), ("green", 700))),
+  "meadow":        (angle: 210deg, stops: (("green", 200), ("green", 500), ("green", 800))),
+  "seafoam":       (angle: 235deg, stops: (("cyan", 300), ("green", 400), ("green", 700))),
+  "fern":          (angle: 260deg, stops: (("green", 500), ("green", 900))),
+  "verdant":       (angle: 280deg, stops: (("green", 400), ("cyan", 600), ("green", 800))),
+
+  // ---- Multi-hue blends ----
+  "sunset-fade":   (angle:  55deg, stops: (("amber", 400), ("red", 600), ("violet", 800))),
+  "trueno-bolt":   (angle:  65deg, stops: (("blue", 500), ("indigo", 600), ("violet", 700))),
+  "passion":       (angle: 145deg, stops: (("violet", 400), ("red", 600))),
+  "berry":         (angle: 175deg, stops: (("violet", 500), ("red", 700))),
+  "grape":         (angle: 180deg, stops: (("violet", 600), ("indigo", 800))),
+  "plum":          (angle: 195deg, stops: (("violet", 700), ("slate", 900))),
+  "orchid":        (angle: 220deg, stops: (("violet", 300), ("indigo", 500), ("violet", 700))),
+  "twilight":      (angle: 225deg, stops: (("indigo", 400), ("violet", 700), ("red", 500))),
+  "sunset-breeze": (angle: 300deg, stops: (("cyan", 300), ("blue", 400), ("violet", 600))),
+  "northern":      (angle: 315deg, stops: (("green", 400), ("cyan", 500), ("indigo", 600))),
+  "sapphire":      (angle: 340deg, stops: (("blue", 400), ("violet", 600), ("blue", 800))),
+);
+
+// Build the evenly-spaced var() stop list for a recipe.
+@function gradient-recipe-stops($stops) {
+  $count: list.length($stops);
+  $result: ();
+
+  @for $i from 1 through $count {
+    $pos: 0%;
+    @if $count > 1 {
+      $pos: math.percentage(math.div($i - 1, $count - 1));
+    }
+    $result: list.append($result, var(--tr-grad-stop-#{$i}) #{$pos}, comma);
+  }
+
+  @return $result;
+}
+
+@each $name, $cfg in $gradient-recipes {
+  $angle: map.get($cfg, angle);
+  $stops: map.get($cfg, stops);
+
+  .u-bg-gradient-#{$name} {
+    --tr-grad-angle: #{$angle};
+
+    @for $i from 1 through list.length($stops) {
+      $tuple: list.nth($stops, $i);
+      --tr-grad-stop-#{$i}: #{plate(list.nth($tuple, 1), list.nth($tuple, 2))};
+    }
+
+    background-image: linear-gradient(
+      var(--tr-grad-angle, #{$angle}),
+      #{gradient-recipe-stops($stops)}
+    ) !important;
+  }
+}
+
+// ------------------------------------------------------------
+// 4. Radial and conic gradients
+// ------------------------------------------------------------
+// Use the same --tr-grad-stop-1 / --tr-grad-stop-2 contract so
+// authors can override colors without writing new classes.
+// ------------------------------------------------------------
+.u-bg-gradient-radial {
+  background-image: radial-gradient(
+    circle at center,
+    var(--tr-grad-stop-1, #{$color-light}) 0%,
+    var(--tr-grad-stop-2, #{$color-dark})  100%
+  ) !important;
+}
+
+.u-bg-gradient-conic {
+  background-image: conic-gradient(
+    from var(--tr-grad-angle, 0deg) at center,
+    var(--tr-grad-stop-1, #{$color-primary})    0deg,
+    var(--tr-grad-stop-2, #{$color-secondary}) 120deg,
+    var(--tr-grad-stop-1, #{$color-primary})   240deg,
+    var(--tr-grad-stop-2, #{$color-secondary}) 360deg
+  ) !important;
+}
+
+// ------------------------------------------------------------
+// 5. Text gradients
+// ------------------------------------------------------------
+// Clip text to its background gradient. Pairs naturally with
+// any --tr-grad-angle / --tr-grad-stop-* override. The text
+// becomes transparent; the gradient is the visible color.
+//
+// Note: `background-clip: text` is a presentational utility.
+// Always pair with a sensible `color` fallback and an explicit
+// `color: transparent` only on the same element so copy-and-
+// paste still copies the text.
+// ------------------------------------------------------------
+@each $name, $tuple in $gradient-hues {
+  $plate:        list.nth($tuple, 1);
+  $stop1-step:   list.nth($tuple, 2);
+  $stop2-step:   list.nth($tuple, 3);
+  $stop1:        plate($plate, $stop1-step);
+  $stop2:        plate($plate, $stop2-step);
+
+  .u-text-gradient-#{$name} {
+    --tr-grad-stop-1: #{$stop1};
+    --tr-grad-stop-2: #{$stop2};
+
+    background-image: linear-gradient(
+      var(--tr-grad-angle, 135deg),
+      var(--tr-grad-stop-1) 0%,
+      var(--tr-grad-stop-2) 100%
+    );
+
+    -webkit-background-clip: text !important;
+            background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+            color: transparent !important;
+  }
+}
+
+.u-text-gradient-trueno {
+  --tr-grad-stop-1: #{plate(blue, 500)};
+  --tr-grad-stop-2: #{plate(indigo, 600)};
+  --tr-grad-stop-3: #{plate(violet, 700)};
+
+  background-image: linear-gradient(
+    var(--tr-grad-angle, 135deg),
+    var(--tr-grad-stop-1) 0%,
+    var(--tr-grad-stop-2) 50%,
+    var(--tr-grad-stop-3) 100%
+  );
+
+  -webkit-background-clip: text !important;
+          background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+          color: transparent !important;
+}
+
+// ------------------------------------------------------------
+// 6. Border gradient (gradient border via background trick)
+// ------------------------------------------------------------
+// Element gets a transparent border and a layered background:
+// 1) the gradient on top, 2) the surface color below. Because
+// the border takes real space, the gradient "peeks through"
+// only on the border — producing a gradient-stroke look that
+// works on any background without a hardcoded color.
+//
+// Pair with .u-text-gradient-* on inner content for hero text.
+// ------------------------------------------------------------
+.u-border-gradient {
+  --tr-grad-stop-1: #{$color-primary};
+  --tr-grad-stop-2: #{$color-info};
+
+  border: 2px solid transparent !important;
+  background-image:
+    linear-gradient(var(--tr-surface, #{$color-white}), var(--tr-surface, #{$color-white})),
+    linear-gradient(
+      var(--tr-grad-angle, 135deg),
+      var(--tr-grad-stop-1),
+      var(--tr-grad-stop-2)
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+}
+
+@each $name, $tuple in $gradient-hues {
+  $plate:        list.nth($tuple, 1);
+  $stop1-step:   list.nth($tuple, 2);
+  $stop2-step:   list.nth($tuple, 3);
+  $stop1:        plate($plate, $stop1-step);
+  $stop2:        plate($plate, $stop2-step);
+
+  .u-border-gradient-#{$name} {
+    --tr-grad-stop-1: #{$stop1};
+    --tr-grad-stop-2: #{$stop2};
+
+    border: 2px solid transparent !important;
+    background-image:
+      linear-gradient(var(--tr-surface, #{$color-white}), var(--tr-surface, #{$color-white})),
+      linear-gradient(
+        var(--tr-grad-angle, 135deg),
+        var(--tr-grad-stop-1),
+        var(--tr-grad-stop-2)
+      ) !important;
+    background-origin: border-box !important;
+    background-clip: padding-box, border-box !important;
+  }
+}
+
+// ------------------------------------------------------------
+// 7. Helpers — surface tuning
+// ------------------------------------------------------------
+// --tr-surface controls the inner color of .u-border-gradient.
+// In a dark theme set it to the dark background, e.g.:
+//   .theme--dark { --tr-surface: var(--tr-slate-900); }
+// ------------------------------------------------------------
+:root {
+  --tr-surface: #{$color-white};
+}
+
+// ------------------------------------------------------------
+// 8. Reduced-motion guard
+// ------------------------------------------------------------
+// Gradient shifts driven by animations live in _motion.scss.
+// The static gradient utilities are visual only and don't
+// animate on their own, so no `prefers-reduced-motion` override
+// is needed here. Authors who compose a gradient with a motion
+// utility (e.g. .u-anim-gradient-shift) get the reduced-motion
+// fallback from the motion layer.
+// ------------------------------------------------------------

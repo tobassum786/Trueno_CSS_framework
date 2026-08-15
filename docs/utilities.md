@@ -7,7 +7,9 @@ Source: `src/utilities/`
 ```
 utilities/
 ├── _spacing.scss
-└── _helpers.scss
+├── _helpers.scss
+├── _motion.scss
+└── _gradients.scss
 ```
 
 ---
@@ -223,9 +225,313 @@ Single-purpose utility classes for alignment, display, visibility, floating, and
 
 ---
 
+## 3. Gradients — `_gradients.scss`
+
+A complete gradient utility layer built on the same color plates that drive every other component. Background, text, and border gradients are all first-class citizens, and every gradient exposes its stops as CSS custom properties so you can tune it at runtime without writing a new class.
+
+### Runtime-tuning variables
+
+Every gradient utility reads three custom properties (with safe fallbacks):
+
+| Custom property | Default | Purpose |
+| --- | --- | --- |
+| `--tr-grad-angle` | `135deg` | Gradient direction. Overridden by `.u-gradient-to-*` modifiers. |
+| `--tr-grad-stop-1` | Plate step (see tables below) | First color stop. |
+| `--tr-grad-stop-2` | Plate step (see tables below) | Second color stop. |
+| `--tr-grad-stop-3` | (unset) | Third color stop, used by `-3` variants. Falls back to a 2-stop gradient when omitted. |
+| `--tr-surface` | `var(--tr-white)` | Inner color used by `.u-border-gradient*` to mask out the gradient inside the border. Override in a dark theme. |
+
+Because the variables are read with `var(..., fallback)`, you can override *any* stop on a single element with an inline style — the rest of the class's defaults are preserved:
+
+```html
+<div class="u-bg-gradient-primary"
+     style="--tr-grad-stop-1: var(--tr-blue-200);
+            --tr-grad-stop-2: var(--tr-blue-900);">
+  …
+</div>
+```
+
+### Direction modifiers
+
+| Class | Sets `--tr-grad-angle` to |
+| --- | --- |
+| `.u-gradient-to-t` | `0deg` |
+| `.u-gradient-to-tr` | `45deg` |
+| `.u-gradient-to-r` | `90deg` |
+| `.u-gradient-to-br` | `135deg` (the default) |
+| `.u-gradient-to-b` | `180deg` |
+| `.u-gradient-to-bl` | `225deg` |
+| `.u-gradient-to-l` | `270deg` |
+| `.u-gradient-to-tl` | `315deg` |
+
+Direction modifiers set `--tr-grad-angle` and compose with any gradient utility:
+
+```html
+<div class="u-bg-gradient-primary u-gradient-to-r">…</div>
+<div class="u-bg-gradient-danger u-gradient-to-bl">…</div>
+```
+
+### Background gradients (linear)
+
+| Class | Plate source | Stop 1 | Stop 2 |
+| --- | --- | --- | --- |
+| `.u-bg-gradient-primary` | `blue` | `400` | `700` |
+| `.u-bg-gradient-secondary` | `gray` | `400` | `700` |
+| `.u-bg-gradient-success` | `green` | `400` | `700` |
+| `.u-bg-gradient-danger` | `red` | `400` | `700` |
+| `.u-bg-gradient-warning` | `amber` | `300` | `600` |
+| `.u-bg-gradient-info` | `cyan` | `400` | `700` |
+| `.u-bg-gradient-light` | `gray` | `50` | `300` |
+| `.u-bg-gradient-dark` | `gray` | `700` | `950` |
+| `.u-bg-gradient-blue` | `blue` | `400` | `700` |
+| `.u-bg-gradient-indigo` | `indigo` | `400` | `700` |
+| `.u-bg-gradient-violet` | `violet` | `400` | `700` |
+| `.u-bg-gradient-green` | `green` | `400` | `700` |
+| `.u-bg-gradient-red` | `red` | `400` | `700` |
+| `.u-bg-gradient-amber` | `amber` | `300` | `600` |
+| `.u-bg-gradient-cyan` | `cyan` | `400` | `700` |
+| `.u-bg-gradient-gray` | `gray` | `400` | `700` |
+| `.u-bg-gradient-slate` | `slate` | `400` | `900` |
+| `.u-bg-gradient-thunder` | `blue` | `500` | `900` |
+
+For every hue above there is a sibling `-3` variant that uses three stops from the same plate — soft (200) → mid (500) → deep (800) — e.g. `.u-bg-gradient-primary-3`, `.u-bg-gradient-violet-3`, etc.
+
+```html
+<!-- Brand primary, default bottom-right angle -->
+<div class="u-bg-gradient-primary p-lg u-text-white">…</div>
+
+<!-- Same gradient, rotated to top-right -->
+<div class="u-bg-gradient-primary u-gradient-to-tr p-lg u-text-white">…</div>
+
+<!-- 3-stop version, more depth -->
+<div class="u-bg-gradient-primary-3 p-lg u-text-white">…</div>
+```
+
+#### Base scaffolding (custom stops only)
+
+When you want full control of the colors:
+
+| Class | Effect |
+| --- | --- |
+| `.u-bg-gradient` | 2-stop linear gradient using `--tr-grad-stop-1` and `--tr-grad-stop-2`. |
+| `.u-bg-gradient-3` | 3-stop linear gradient using `--tr-grad-stop-1`, `--tr-grad-stop-2`, `--tr-grad-stop-3`. |
+
+```html
+<div class="u-bg-gradient u-gradient-to-r p-lg u-text-white"
+     style="--tr-grad-stop-1: var(--tr-amber-300);
+            --tr-grad-stop-2: var(--tr-red-700);">
+  Custom sunset gradient
+</div>
+```
+
+### Pre-baked brand combinations
+
+| Class | Effect |
+| --- | --- |
+| `.u-bg-gradient-sunset` | Amber `400` → Red `700` (warm) |
+| `.u-bg-gradient-ocean` | Cyan `300` → Blue `800` (cool) |
+| `.u-bg-gradient-forest` | Green `300` → Green `800` (monochrome deep) |
+| `.u-bg-gradient-aurora` | Cyan `400` → Indigo `500` → Violet `700` (3-stop, multi-hue) |
+| `.u-bg-gradient-trueno` | Blue `500` → Indigo `600` → Violet `700` (the framework's signature) |
+| `.u-bg-gradient-midnight` | Slate `700` → Slate `950` (dark surfaces) |
+
+```html
+<header class="u-bg-gradient-trueno u-gradient-to-br py-xxl u-text-white">
+  <h1>Built with Trueno</h1>
+</header>
+```
+
+### Advanced gradient recipes
+
+Beyond the hues and brand combos, `_gradients.scss` ships a curated set of **50 named recipes**, each with its own baked-in `--tr-grad-angle` so every one reads differently out of the box. Stops are evenly spaced across the gradient, so 2-stop recipes are a clean cross-fade and 3-stop recipes fan out to deep, multi-hue blends.
+
+| Class | Angle | Stops |
+| --- | --- | --- |
+| `.u-bg-gradient-ice` | `90deg` | Blue `200` → Indigo `600` |
+| `.u-bg-gradient-cobalt` | `110deg` | Blue `400` → Blue `800` |
+| `.u-bg-gradient-royal` | `45deg` | Indigo `500` → Violet `800` |
+| `.u-bg-gradient-galaxy` | `130deg` | Indigo `800` → Slate `950` |
+| `.u-bg-gradient-nebula` | `160deg` | Violet `400` → Indigo `800` |
+| `.u-bg-gradient-cosmic` | `200deg` | Violet `500` → Blue `900` → Slate `950` |
+| `.u-bg-gradient-electric` | `75deg` | Blue `300` → Indigo `600` |
+| `.u-bg-gradient-aurora-sky` | `140deg` | Cyan `400` → Blue `600` → Indigo `800` |
+| `.u-bg-gradient-deep-sea` | `170deg` | Cyan `600` → Blue `900` |
+| `.u-bg-gradient-lagoon` | `105deg` | Cyan `400` → Blue `700` |
+| `.u-bg-gradient-arctic` | `15deg` | Cyan `200` → Blue `400` → Indigo `600` |
+| `.u-bg-gradient-nightfall` | `255deg` | Indigo `900` → Slate `950` |
+| `.u-bg-gradient-midnight-ice` | `285deg` | Slate `800` → Blue `900` → Slate `950` |
+| `.u-bg-gradient-skyline` | `60deg` | Cyan `300` → Blue `500` |
+| `.u-bg-gradient-glacier` | `320deg` | Slate `300` → Cyan `400` → Blue `600` |
+| `.u-bg-gradient-embers` | `0deg` | Amber `500` → Red `700` |
+| `.u-bg-gradient-blaze` | `20deg` | Red `400` → Red `800` |
+| `.u-bg-gradient-flame` | `35deg` | Amber `400` → Red `600` |
+| `.u-bg-gradient-crimson` | `100deg` | Red `500` → Red `900` |
+| `.u-bg-gradient-golden` | `70deg` | Amber `300` → Amber `700` |
+| `.u-bg-gradient-honey` | `40deg` | Amber `400` → Red `500` → Red `800` |
+| `.u-bg-gradient-sunburst` | `125deg` | Amber `300` → Red `600` |
+| `.u-bg-gradient-lava` | `50deg` | Red `600` → Amber `500` → Red `900` |
+| `.u-bg-gradient-peach` | `115deg` | Red `200` → Amber `400` → Red `600` |
+| `.u-bg-gradient-coral` | `95deg` | Red `400` → Amber `500` |
+| `.u-bg-gradient-tangerine` | `155deg` | Amber `400` → Red `600` |
+| `.u-bg-gradient-pumpkin` | `185deg` | Amber `500` → Red `700` |
+| `.u-bg-gradient-sunrise` | `205deg` | Cyan `200` → Amber `300` → Red `500` |
+| `.u-bg-gradient-desert` | `250deg` | Amber `300` → Amber `600` → Red `700` |
+| `.u-bg-gradient-emerald` | `80deg` | Green `400` → Green `800` |
+| `.u-bg-gradient-mint` | `120deg` | Green `300` → Green `600` |
+| `.u-bg-gradient-forest-deep` | `150deg` | Green `600` → Green `900` |
+| `.u-bg-gradient-jungle` | `165deg` | Green `500` → Slate `800` → Green `900` |
+| `.u-bg-gradient-tropical` | `135deg` | Cyan `400` → Green `500` → Green `800` |
+| `.u-bg-gradient-moss` | `190deg` | Green `300` → Green `700` |
+| `.u-bg-gradient-meadow` | `210deg` | Green `200` → Green `500` → Green `800` |
+| `.u-bg-gradient-seafoam` | `235deg` | Cyan `300` → Green `400` → Green `700` |
+| `.u-bg-gradient-fern` | `260deg` | Green `500` → Green `900` |
+| `.u-bg-gradient-verdant` | `280deg` | Green `400` → Cyan `600` → Green `800` |
+| `.u-bg-gradient-sunset-fade` | `55deg` | Amber `400` → Red `600` → Violet `800` |
+| `.u-bg-gradient-trueno-bolt` | `65deg` | Blue `500` → Indigo `600` → Violet `700` |
+| `.u-bg-gradient-passion` | `145deg` | Violet `400` → Red `600` |
+| `.u-bg-gradient-berry` | `175deg` | Violet `500` → Red `700` |
+| `.u-bg-gradient-grape` | `180deg` | Violet `600` → Indigo `800` |
+| `.u-bg-gradient-plum` | `195deg` | Violet `700` → Slate `900` |
+| `.u-bg-gradient-orchid` | `220deg` | Violet `300` → Indigo `500` → Violet `700` |
+| `.u-bg-gradient-twilight` | `225deg` | Indigo `400` → Violet `700` → Red `500` |
+| `.u-bg-gradient-sunset-breeze` | `300deg` | Cyan `300` → Blue `400` → Violet `600` |
+| `.u-bg-gradient-northern` | `315deg` | Green `400` → Cyan `500` → Indigo `600` |
+| `.u-bg-gradient-sapphire` | `340deg` | Blue `400` → Violet `600` → Blue `800` |
+
+```html
+<!-- The baked-in angle ships with the class -->
+<div class="u-bg-gradient-galaxy p-lg u-text-white">…</div>
+
+<!-- A direction modifier still overrides it -->
+<div class="u-bg-gradient-galaxy u-gradient-to-r p-lg u-text-white">…</div>
+```
+
+### Radial and conic
+
+| Class | Effect |
+| --- | --- |
+| `.u-bg-gradient-radial` | Radial gradient (centered) from `--tr-grad-stop-1` to `--tr-grad-stop-2`. |
+| `.u-bg-gradient-conic` | Conic gradient spinning from `--tr-grad-angle` (or `0deg`), alternating between `--tr-grad-stop-1` and `--tr-grad-stop-2`. |
+
+```html
+<!-- Spotlight behind a hero -->
+<div class="u-bg-gradient-radial p-xxl"
+     style="--tr-grad-stop-1: var(--tr-blue-200);
+            --tr-grad-stop-2: var(--tr-blue-900);">
+  …
+</div>
+
+<!-- Conic rainbow backdrop -->
+<div class="u-bg-gradient-conic"
+     style="--tr-grad-stop-1: var(--tr-violet-500);
+            --tr-grad-stop-2: var(--tr-cyan-500);">
+  …
+</div>
+```
+
+### Text gradients
+
+Each hue has a matching `.u-text-gradient-{hue}` class that clips the gradient onto the foreground text. The text becomes transparent and the gradient takes its place.
+
+Available classes: `.u-text-gradient-primary`, `.u-text-gradient-secondary`, `.u-text-gradient-success`, `.u-text-gradient-danger`, `.u-text-gradient-warning`, `.u-text-gradient-info`, `.u-text-gradient-light`, `.u-text-gradient-dark`, `.u-text-gradient-blue`, `.u-text-gradient-indigo`, `.u-text-gradient-violet`, `.u-text-gradient-green`, `.u-text-gradient-red`, `.u-text-gradient-amber`, `.u-text-gradient-cyan`, `.u-text-gradient-gray`, `.u-text-gradient-slate`, `.u-text-gradient-thunder`, and the signature `.u-text-gradient-trueno`.
+
+```html
+<h1 class="u-text-gradient-trueno">Built with Trueno</h1>
+<p class="u-text-gradient-primary u-gradient-to-r">Color → color → color</p>
+```
+
+> ♿ Because the text is rendered with `color: transparent`, always provide a non-empty `color` on a parent or via an `aria-label` if the text content is critical for assistive tech. Gradients are presentational — the underlying HTML text is still copied, indexed, and read aloud.
+
+### Border gradients
+
+`.u-border-gradient` and `.u-border-gradient-{hue}` render a gradient *stroke* around an element using the layered-background technique: a transparent border, a flat inner color (controlled by `--tr-surface`), and a gradient on the border layer.
+
+```html
+<div class="u-border-gradient-primary p-md">Gradient border, default surface</div>
+
+<div class="u-border-gradient-violet p-md"
+     style="--tr-surface: var(--tr-slate-900);"
+     data-theme="dark">
+  Gradient border on a dark surface
+</div>
+```
+
+For dark themes, set `--tr-surface` once at the theme scope:
+
+```css
+.theme--dark {
+  --tr-surface: var(--tr-slate-900);
+}
+```
+
+### Code reference
+
+```scss
+// Direction modifier — composes with any gradient utility
+.u-gradient-to-t  { --tr-grad-angle: 0deg   !important; }
+.u-gradient-to-tr { --tr-grad-angle: 45deg  !important; }
+.u-gradient-to-r  { --tr-grad-angle: 90deg  !important; }
+.u-gradient-to-br { --tr-grad-angle: 135deg !important; } // default
+.u-gradient-to-b  { --tr-grad-angle: 180deg !important; }
+.u-gradient-to-bl { --tr-grad-angle: 225deg !important; }
+.u-gradient-to-l  { --tr-grad-angle: 270deg !important; }
+.u-gradient-to-tl { --tr-grad-angle: 315deg !important; }
+
+// Linear, plate-driven
+.u-bg-gradient-primary {
+  --tr-grad-stop-1: #{plate(blue, 400)};
+  --tr-grad-stop-2: #{plate(blue, 700)};
+  background-image: linear-gradient(
+    var(--tr-grad-angle, 135deg),
+    var(--tr-grad-stop-1) 0%,
+    var(--tr-grad-stop-2) 100%
+  ) !important;
+}
+
+// Text gradient
+.u-text-gradient-primary {
+  --tr-grad-stop-1: #{plate(blue, 400)};
+  --tr-grad-stop-2: #{plate(blue, 700)};
+  background-image: linear-gradient(
+    var(--tr-grad-angle, 135deg),
+    var(--tr-grad-stop-1) 0%,
+    var(--tr-grad-stop-2) 100%
+  );
+  -webkit-background-clip: text !important;
+          background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+          color: transparent !important;
+}
+
+// Border gradient (layered background trick)
+.u-border-gradient-primary {
+  --tr-grad-stop-1: #{plate(blue, 400)};
+  --tr-grad-stop-2: #{plate(blue, 700)};
+  border: 2px solid transparent !important;
+  background-image:
+    linear-gradient(var(--tr-surface, white), var(--tr-surface, white)),
+    linear-gradient(var(--tr-grad-angle, 135deg),
+      var(--tr-grad-stop-1), var(--tr-grad-stop-2)
+    ) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+}
+```
+
+### Best practices
+
+1. **Pick a direction modifier, not a custom angle.** `.u-gradient-to-tr` is more discoverable than a hand-rolled `--tr-grad-angle: 45deg` inline style — and it composes cleanly with any other utility.
+2. **Use `-3` variants for hero sections.** The 3-stop gradients have more visual depth; reserve 2-stop gradients for inline elements (badges, buttons, list accents).
+3. **Use `.u-text-gradient-trueno` for brand headlines.** It's the framework's signature and reads well at large sizes.
+4. **Set `--tr-surface` in dark themes.** Border gradients otherwise show a white inner mask. Set it once on `.theme--dark` and every border gradient on the page adapts.
+5. **Don't animate gradient stops directly.** If you want motion, pair the gradient with the existing `.u-anim-gradient-shift` utility from the [motion layer](./animations.md) — it already respects `prefers-reduced-motion`.
+
+---
+
 ## Utility Best Practices
 
 1. **Use utilities for one-off adjustments.** If you find yourself repeating the same `mb-md` three times in a row, consider promoting it to a component class.
 2. **Compose freely.** A single element can have many utilities: `<div class="m-md p-md u-text-center u-d-flex">…</div>`.
 3. **Don't override utilities with `!important`.** They are already important by design. If you need to override one, write a more specific selector or use a component.
 4. **Use `.u-sr-only` for accessible labels.** It's the right way to provide context to screen readers without affecting the visual design.
+5. **Compose gradients with direction modifiers.** `<div class="u-bg-gradient-primary u-gradient-to-r">…</div>` is more readable than inlining the angle.

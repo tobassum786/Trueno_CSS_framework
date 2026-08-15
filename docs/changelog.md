@@ -7,24 +7,24 @@ All notable changes to **Trueno CSS Framework** are documented in this file. The
 ## [Unreleased]
 
 ### Added
-- Comprehensive per-layer documentation in `docs/`:
-  - `getting-started.md` — install, build, dev workflow
-  - `architecture.md` — 7-1 folder structure and naming conventions
-  - `abstract.md` — variables, mixins, functions, placeholders
-  - `base.md` — resets and typography
-  - `layout.md` — grid system and header
-  - `components.md` — buttons, cards, modals
-  - `utilities.md` — spacing and helpers
-  - `themes.md` — light and dark theme usage
-  - `customization.md` — design tokens, overrides, tree-shaking
-  - `vendors.md` — third-party stylesheet integration
-  - `contributing.md` — contribution guide and code standards
-  - `changelog.md` — this file
-- New docs index at `docs/README.md` with reading order and quick links.
+- **Gradient utilities** — a complete `src/utilities/_gradients.scss` layer covering backgrounds, text, and border gradients:
+  - **Direction modifiers** (`.u-gradient-to-t` / `-tr` / `-r` / `-br` / `-b` / `-bl` / `-l` / `-tl`) that set `--tr-grad-angle` and compose with any gradient utility.
+  - **Named background gradients** (`.u-bg-gradient-{hue}`) for every color plate: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light`, `dark`, `blue`, `indigo`, `violet`, `green`, `red`, `amber`, `cyan`, `gray`, `slate`, `thunder`. Each emits a 2-stop linear gradient.
+  - **3-stop variants** (`.u-bg-gradient-{hue}-3`) for the same hues using soft (200) → mid (500) → deep (800) of the same plate.
+  - **Pre-baked brand combinations**: `.u-bg-gradient-sunset`, `-ocean`, `-forest`, `-aurora`, `-trueno` (the framework's signature), `-midnight`.
+  - **50 advanced gradient recipes** (`.u-bg-gradient-{name}`) — a curated `$gradient-recipes` map where each class ships with its own baked-in `--tr-grad-angle` (0° → 340°) and 2–3 evenly spaced stops, grouped by mood (cool blues/indigos, warm reds/ambers, greens/teals, and multi-hue blends). Direction modifiers still override the baked angle.
+  - **Radial and conic** utilities: `.u-bg-gradient-radial`, `.u-bg-gradient-conic`.
+  - **Text gradients** (`.u-text-gradient-{hue}`, plus `.u-text-gradient-trueno`) using `background-clip: text`.
+  - **Border gradients** (`.u-border-gradient`, `.u-border-gradient-{hue}`) using the layered-background technique with a `--tr-surface` mask.
+  - **Custom-property runtime tuning**: `--tr-grad-angle`, `--tr-grad-stop-1/2/3`, `--tr-surface` — every utility exposes its stops so they can be tuned inline without writing a new class.
+  - **Base scaffolding**: `.u-bg-gradient` and `.u-bg-gradient-3` for fully custom stops.
+- New `Gradients` section in `docs/utilities.md` documenting the runtime variables, all hue tables, the 3-stop variants, the brand combinations, and dark-theme `--tr-surface` integration.
+- `docs/README.md` now lists gradients under the Utilities layer and updates the framework-at-a-glance table.
 
 ### Changed
 - Renamed `src/abstract/_veriables.scss` to `src/abstract/_variables.scss` (typo fix).
 - Expanded and clarified comments across all partials.
+- `src/main.scss` now `@use`s the new `utilities/_gradients` partial as part of layer 6 (utilities).
 
 ### Fixed
 - `base/_typography.scss` link section now correctly notes that link styles are handled in `_resets.scss`.

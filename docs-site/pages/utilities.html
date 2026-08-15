@@ -10,7 +10,9 @@
     <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>tree</span><button class="docs-code__copy" type="button">Copy</button></div>
     <pre>utilities/
 ├── _spacing.scss   <span class="com">→ m-* / p-* spacing scale</span>
-└── _helpers.scss   <span class="com">→ u-* alignment, display, visibility, float</span></pre>
+├── _helpers.scss   <span class="com">→ u-* alignment, display, visibility, float</span>
+├── _motion.scss    <span class="com">→ u-anim-* / u-transition-* motion utilities</span>
+└── _gradients.scss <span class="com">→ u-bg-* / u-text-* / u-border-* gradient utilities</span></pre>
 </div>
 
 <h2 id="how-it-works">How utilities work</h2>
@@ -353,6 +355,313 @@
 <span class="tok">.u-float-right</span> { float: right !important; }
 <span class="tok">.u-float-none</span>  { float: none !important; }</pre>
 </div>
+
+<h2 id="gradients">3. Gradients — <code>u-bg-gradient-*</code></h2>
+<p>
+    A complete gradient utility layer built on the same color plates that drive every other
+    component. Background, text, and border gradients are all first-class citizens, and every
+    gradient exposes its stops as CSS custom properties so you can tune it at runtime without
+    writing a new class. Source: <code>src/utilities/_gradients.scss</code>.
+</p>
+
+<h3 id="gradient-variables">Runtime-tuning variables</h3>
+<table class="docs-table">
+    <thead><tr><th>Custom property</th><th>Default</th><th>Purpose</th></tr></thead>
+    <tbody>
+        <tr><td><code>--tr-grad-angle</code></td><td><code>135deg</code></td><td>Gradient direction. Overridden by <code>.u-gradient-to-*</code> modifiers.</td></tr>
+        <tr><td><code>--tr-grad-stop-1</code></td><td>Plate step (see hue table)</td><td>First color stop.</td></tr>
+        <tr><td><code>--tr-grad-stop-2</code></td><td>Plate step (see hue table)</td><td>Second color stop.</td></tr>
+        <tr><td><code>--tr-grad-stop-3</code></td><td>(unset)</td><td>Third color stop, used by <code>-3</code> variants. Falls back to a 2-stop gradient when omitted.</td></tr>
+        <tr><td><code>--tr-surface</code></td><td><code>var(--tr-white)</code></td><td>Inner color used by <code>.u-border-gradient*</code> to mask the gradient inside the border. Override in a dark theme.</td></tr>
+    </tbody>
+</table>
+<div class="docs-callout docs-callout--tip">
+    <span class="docs-callout__icon">💡</span>
+    <p>
+        Because every variable is read with <code>var(..., fallback)</code>, you can override
+        <em>any</em> stop on a single element with an inline style — the rest of the class's
+        defaults are preserved.
+    </p>
+</div>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">div</span> class=<span class="str">"u-bg-gradient-primary"</span>
+     style=<span class="str">"--tr-grad-stop-1: var(--tr-blue-200); --tr-grad-stop-2: var(--tr-blue-900);"</span>&gt;
+  …
+&lt;/<span class="tag">div</span>&gt;</pre>
+</div>
+
+<h3 id="gradient-directions">Direction modifiers</h3>
+<p>
+    Direction modifiers set <code>--tr-grad-angle</code> and compose with any gradient utility:
+    <code>&lt;div class="u-bg-gradient-primary u-gradient-to-r"&gt;…&lt;/div&gt;</code>.
+</p>
+<div class="docs-demo">
+    <p class="docs-demo__label">Same plate, eight directions</p>
+    <div class="grad-direction-grid">
+        <div class="grad-direction"><div class="grad-direction__tile u-bg-gradient-primary u-gradient-to-t"></div><span class="grad-direction__label">.u-gradient-to-t</span></div>
+        <div class="grad-direction"><div class="grad-direction__tile grad-direction__tile--amber u-bg-gradient-amber u-gradient-to-tr"></div><span class="grad-direction__label">.u-gradient-to-tr</span></div>
+        <div class="grad-direction"><div class="grad-direction__tile grad-direction__tile--green u-bg-gradient-green u-gradient-to-r"></div><span class="grad-direction__label">.u-gradient-to-r</span></div>
+        <div class="grad-direction"><div class="grad-direction__tile grad-direction__tile--violet u-bg-gradient-violet u-gradient-to-br"></div><span class="grad-direction__label">.u-gradient-to-br</span></div>
+        <div class="grad-direction"><div class="grad-direction__tile grad-direction__tile--rose u-bg-gradient-danger u-gradient-to-b"></div><span class="grad-direction__label">.u-gradient-to-b</span></div>
+        <div class="grad-direction"><div class="grad-direction__tile grad-direction__tile--slate u-bg-gradient-slate u-gradient-to-bl"></div><span class="grad-direction__label">.u-gradient-to-bl</span></div>
+        <div class="grad-direction"><div class="grad-direction__tile grad-direction__tile--indigo u-bg-gradient-indigo u-gradient-to-l"></div><span class="grad-direction__label">.u-gradient-to-l</span></div>
+        <div class="grad-direction"><div class="grad-direction__tile grad-direction__tile--cyan u-bg-gradient-info u-gradient-to-tl"></div><span class="grad-direction__label">.u-gradient-to-tl</span></div>
+    </div>
+</div>
+<table class="docs-table">
+    <thead><tr><th>Class</th><th>Sets <code>--tr-grad-angle</code> to</th></tr></thead>
+    <tbody>
+        <tr><td><code>.u-gradient-to-t</code></td><td><code>0deg</code></td></tr>
+        <tr><td><code>.u-gradient-to-tr</code></td><td><code>45deg</code></td></tr>
+        <tr><td><code>.u-gradient-to-r</code></td><td><code>90deg</code></td></tr>
+        <tr><td><code>.u-gradient-to-br</code></td><td><code>135deg</code> (the default)</td></tr>
+        <tr><td><code>.u-gradient-to-b</code></td><td><code>180deg</code></td></tr>
+        <tr><td><code>.u-gradient-to-bl</code></td><td><code>225deg</code></td></tr>
+        <tr><td><code>.u-gradient-to-l</code></td><td><code>270deg</code></td></tr>
+        <tr><td><code>.u-gradient-to-tl</code></td><td><code>315deg</code></td></tr>
+    </tbody>
+</table>
+
+<h3 id="gradient-hues">Background gradients (linear) — named hues</h3>
+<p>
+    Every hue in the color plate gets a 2-stop gradient, plus a <code>-3</code> sibling that uses
+    three stops — soft (200) → mid (500) → deep (800) — for more depth.
+</p>
+<div class="docs-demo">
+    <p class="docs-demo__label">The full hue set at a glance (2-stop)</p>
+    <div class="grad-hue-grid">
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-primary"></div><div class="grad-hue__meta"><div class="grad-hue__name">primary</div><div class="grad-hue__stops">blue 400 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-secondary"></div><div class="grad-hue__meta"><div class="grad-hue__name">secondary</div><div class="grad-hue__stops">gray 400 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-success"></div><div class="grad-hue__meta"><div class="grad-hue__name">success</div><div class="grad-hue__stops">green 400 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-danger"></div><div class="grad-hue__meta"><div class="grad-hue__name">danger</div><div class="grad-hue__stops">red 400 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-warning"></div><div class="grad-hue__meta"><div class="grad-hue__name">warning</div><div class="grad-hue__stops">amber 300 → 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-info"></div><div class="grad-hue__meta"><div class="grad-hue__name">info</div><div class="grad-hue__stops">cyan 400 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-light"></div><div class="grad-hue__meta"><div class="grad-hue__name">light</div><div class="grad-hue__stops">gray 50 → 300</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-dark"></div><div class="grad-hue__meta"><div class="grad-hue__name">dark</div><div class="grad-hue__stops">gray 700 → 950</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-blue"></div><div class="grad-hue__meta"><div class="grad-hue__name">blue</div><div class="grad-hue__stops">blue 400 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-indigo"></div><div class="grad-hue__meta"><div class="grad-hue__name">indigo</div><div class="grad-hue__stops">indigo 400 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-violet"></div><div class="grad-hue__meta"><div class="grad-hue__name">violet</div><div class="grad-hue__stops">violet 400 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-green"></div><div class="grad-hue__meta"><div class="grad-hue__name">green</div><div class="grad-hue__stops">green 400 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-red"></div><div class="grad-hue__meta"><div class="grad-hue__name">red</div><div class="grad-hue__stops">red 400 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-amber"></div><div class="grad-hue__meta"><div class="grad-hue__name">amber</div><div class="grad-hue__stops">amber 300 → 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-cyan"></div><div class="grad-hue__meta"><div class="grad-hue__name">cyan</div><div class="grad-hue__stops">cyan 400 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-gray"></div><div class="grad-hue__meta"><div class="grad-hue__name">gray</div><div class="grad-hue__stops">gray 400 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-slate"></div><div class="grad-hue__meta"><div class="grad-hue__name">slate</div><div class="grad-hue__stops">slate 400 → 900</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-thunder"></div><div class="grad-hue__meta"><div class="grad-hue__name">thunder</div><div class="grad-hue__stops">blue 500 → 900</div></div></div>
+    </div>
+    <p class="util-desc mt-xs mb-0">The <code>-3</code> variant of every hue adds a soft (200) start and mid (500) stop.</p>
+</div>
+
+<h3 id="gradient-builder">Live gradient builder</h3>
+<p>
+    Drag the colors and angle, toggle the third stop, or tap a preset — the preview uses the exact
+    <code>--tr-grad-stop-*</code> / <code>--tr-grad-angle</code> contract the utilities read, so
+    what you see is what you can paste into markup.
+</p>
+<div class="docs-demo">
+    <div class="grad-builder" id="gradBuilder">
+        <div class="grad-builder__preview-wrap">
+            <div class="grad-builder__preview">Live preview</div>
+        </div>
+        <div class="grad-builder__controls">
+            <div class="grad-builder__group">
+                <span class="grad-builder__label">Stop 1 <span class="grad-builder__label-value">--tr-grad-stop-1</span></span>
+                <div class="grad-builder__row">
+                    <input class="grad-builder__color" type="color" id="gradStop1Color" value="#3b82f6" aria-label="First color stop">
+                    <span class="grad-builder__hex" id="gradStop1Hex">#3b82f6</span>
+                </div>
+            </div>
+            <div class="grad-builder__group">
+                <span class="grad-builder__label">Stop 2 <span class="grad-builder__label-value">--tr-grad-stop-2</span></span>
+                <div class="grad-builder__row">
+                    <input class="grad-builder__color" type="color" id="gradStop2Color" value="#4f46e5" aria-label="Second color stop">
+                    <span class="grad-builder__hex" id="gradStop2Hex">#4f46e5</span>
+                </div>
+            </div>
+            <div class="grad-builder__group" id="gradStop3Row">
+                <span class="grad-builder__label">Stop 3 <span class="grad-builder__label-value">--tr-grad-stop-3</span></span>
+                <div class="grad-builder__row">
+                    <input class="grad-builder__color" type="color" id="gradStop3Color" value="#8b5cf6" aria-label="Third color stop">
+                    <span class="grad-builder__hex" id="gradStop3Hex">#8b5cf6</span>
+                    <label class="grad-builder__switch"><input type="checkbox" id="gradStop3Toggle" checked> 3-stop</label>
+                </div>
+            </div>
+            <div class="grad-builder__group">
+                <span class="grad-builder__label">Angle <span class="grad-builder__label-value">--tr-grad-angle</span></span>
+                <div class="grad-builder__angle">
+                    <input type="range" id="gradAngle" min="0" max="360" step="5" value="135" aria-label="Gradient angle">
+                    <span class="grad-builder__angle-value" id="gradAngleValue">135°</span>
+                </div>
+            </div>
+            <div class="grad-builder__group">
+                <span class="grad-builder__label">Presets</span>
+                <div class="grad-builder__presets">
+                    <button class="grad-builder__preset is-active" type="button" data-stop1="#3b82f6" data-stop2="#4f46e5" data-stop3="#8b5cf6">trueno</button>
+                    <button class="grad-builder__preset" type="button" data-stop1="#fbbf24" data-stop2="#b91c1c" data-stop3="">sunset</button>
+                    <button class="grad-builder__preset" type="button" data-stop1="#67e8f9" data-stop2="#1e40af" data-stop3="">ocean</button>
+                    <button class="grad-builder__preset" type="button" data-stop1="#86efac" data-stop2="#166534" data-stop3="">forest</button>
+                    <button class="grad-builder__preset" type="button" data-stop1="#22d3ee" data-stop2="#6366f1" data-stop3="#6d28d9">aurora</button>
+                    <button class="grad-builder__preset" type="button" data-stop1="#334155" data-stop2="#020617" data-stop3="">midnight</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 id="gradient-brand-combos">Pre-baked brand combinations</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label">Cross-hue, ready-to-use gradients</p>
+    <div class="grad-combo-grid">
+        <div class="grad-combo"><div class="grad-combo__fill u-bg-gradient-sunset"></div><div class="grad-combo__meta"><div class="grad-combo__name">sunset</div><div class="grad-combo__class">amber 400 → red 700</div></div></div>
+        <div class="grad-combo"><div class="grad-combo__fill u-bg-gradient-ocean"></div><div class="grad-combo__meta"><div class="grad-combo__name">ocean</div><div class="grad-combo__class">cyan 300 → blue 800</div></div></div>
+        <div class="grad-combo"><div class="grad-combo__fill u-bg-gradient-forest"></div><div class="grad-combo__meta"><div class="grad-combo__name">forest</div><div class="grad-combo__class">green 300 → green 800</div></div></div>
+        <div class="grad-combo"><div class="grad-combo__fill u-bg-gradient-aurora"></div><div class="grad-combo__meta"><div class="grad-combo__name">aurora</div><div class="grad-combo__class">cyan 400 → indigo 500 → violet 700</div></div></div>
+        <div class="grad-combo"><div class="grad-combo__fill u-bg-gradient-trueno"></div><div class="grad-combo__meta"><div class="grad-combo__name">trueno</div><div class="grad-combo__class">blue 500 → indigo 600 → violet 700</div></div></div>
+        <div class="grad-combo"><div class="grad-combo__fill u-bg-gradient-midnight"></div><div class="grad-combo__meta"><div class="grad-combo__name">midnight</div><div class="grad-combo__class">slate 700 → slate 950</div></div></div>
+    </div>
+</div>
+<table class="docs-table">
+    <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+    <tbody>
+        <tr><td><code>.u-bg-gradient-sunset</code></td><td>Amber <code>400</code> → Red <code>700</code> (warm)</td></tr>
+        <tr><td><code>.u-bg-gradient-ocean</code></td><td>Cyan <code>300</code> → Blue <code>800</code> (cool)</td></tr>
+        <tr><td><code>.u-bg-gradient-forest</code></td><td>Green <code>300</code> → Green <code>800</code> (monochrome deep)</td></tr>
+        <tr><td><code>.u-bg-gradient-aurora</code></td><td>Cyan <code>400</code> → Indigo <code>500</code> → Violet <code>700</code> (3-stop, multi-hue)</td></tr>
+        <tr><td><code>.u-bg-gradient-trueno</code></td><td>Blue <code>500</code> → Indigo <code>600</code> → Violet <code>700</code> (the signature)</td></tr>
+        <tr><td><code>.u-bg-gradient-midnight</code></td><td>Slate <code>700</code> → Slate <code>950</code> (dark surfaces)</td></tr>
+    </tbody>
+</table>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre>&lt;<span class="tag">header</span> class=<span class="str">"u-bg-gradient-trueno u-gradient-to-br py-xxl u-text-white"</span>&gt;
+  &lt;<span class="tag">h1</span>&gt;Built with Trueno&lt;/<span class="tag">h1</span>&gt;
+&lt;/<span class="tag">header</span>&gt;</pre>
+</div>
+
+<h3 id="gradient-radial-conic">Radial &amp; conic</h3>
+<div class="docs-demo">
+    <p class="docs-demo__label"><code>.u-bg-gradient-radial</code> · spotlight feel</p>
+    <div class="row">
+        <div class="col-12 col-sm-6 mb-sm"><div class="u-bg-gradient-radial p-xl" style="--tr-grad-stop-1:var(--tr-blue-200);--tr-grad-stop-2:var(--tr-blue-900);border-radius:12px;min-height:140px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;">Spotlight</div></div>
+        <div class="col-12 col-sm-6 mb-sm"><div class="u-bg-gradient-conic p-xl" style="--tr-grad-stop-1:var(--tr-violet-500);--tr-grad-stop-2:var(--tr-cyan-500);border-radius:12px;min-height:140px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;">Rainbow</div></div>
+    </div>
+</div>
+
+<h3 id="gradient-recipes">Advanced gradient recipes</h3>
+<p>
+    Beyond the hues and brand combos, <code>_gradients.scss</code> ships a curated set of
+    <strong>50 named recipes</strong>, each with its own baked-in <code>--tr-grad-angle</code> so
+    every one reads differently out of the box. Stops are evenly spaced, so 2-stop recipes are a
+    clean cross-fade and 3-stop recipes fan out to deep, multi-hue blends. A direction modifier
+    still overrides the baked-in angle.
+</p>
+<div class="docs-demo">
+    <p class="docs-demo__label">The full recipe set at a glance</p>
+    <div class="grad-hue-grid">
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-ice"></div><div class="grad-hue__meta"><div class="grad-hue__name">ice</div><div class="grad-hue__stops">90° · blue 200 → indigo 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-cobalt"></div><div class="grad-hue__meta"><div class="grad-hue__name">cobalt</div><div class="grad-hue__stops">110° · blue 400 → 800</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-royal"></div><div class="grad-hue__meta"><div class="grad-hue__name">royal</div><div class="grad-hue__stops">45° · indigo 500 → violet 800</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-galaxy"></div><div class="grad-hue__meta"><div class="grad-hue__name">galaxy</div><div class="grad-hue__stops">130° · indigo 800 → slate 950</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-nebula"></div><div class="grad-hue__meta"><div class="grad-hue__name">nebula</div><div class="grad-hue__stops">160° · violet 400 → indigo 800</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-cosmic"></div><div class="grad-hue__meta"><div class="grad-hue__name">cosmic</div><div class="grad-hue__stops">200° · violet 500 → blue 900 → slate 950</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-electric"></div><div class="grad-hue__meta"><div class="grad-hue__name">electric</div><div class="grad-hue__stops">75° · blue 300 → indigo 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-aurora-sky"></div><div class="grad-hue__meta"><div class="grad-hue__name">aurora-sky</div><div class="grad-hue__stops">140° · cyan 400 → blue 600 → indigo 800</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-deep-sea"></div><div class="grad-hue__meta"><div class="grad-hue__name">deep-sea</div><div class="grad-hue__stops">170° · cyan 600 → blue 900</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-lagoon"></div><div class="grad-hue__meta"><div class="grad-hue__name">lagoon</div><div class="grad-hue__stops">105° · cyan 400 → blue 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-arctic"></div><div class="grad-hue__meta"><div class="grad-hue__name">arctic</div><div class="grad-hue__stops">15° · cyan 200 → blue 400 → indigo 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-nightfall"></div><div class="grad-hue__meta"><div class="grad-hue__name">nightfall</div><div class="grad-hue__stops">255° · indigo 900 → slate 950</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-midnight-ice"></div><div class="grad-hue__meta"><div class="grad-hue__name">midnight-ice</div><div class="grad-hue__stops">285° · slate 800 → blue 900 → slate 950</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-skyline"></div><div class="grad-hue__meta"><div class="grad-hue__name">skyline</div><div class="grad-hue__stops">60° · cyan 300 → blue 500</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-glacier"></div><div class="grad-hue__meta"><div class="grad-hue__name">glacier</div><div class="grad-hue__stops">320° · slate 300 → cyan 400 → blue 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-embers"></div><div class="grad-hue__meta"><div class="grad-hue__name">embers</div><div class="grad-hue__stops">0° · amber 500 → red 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-blaze"></div><div class="grad-hue__meta"><div class="grad-hue__name">blaze</div><div class="grad-hue__stops">20° · red 400 → 800</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-flame"></div><div class="grad-hue__meta"><div class="grad-hue__name">flame</div><div class="grad-hue__stops">35° · amber 400 → red 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-crimson"></div><div class="grad-hue__meta"><div class="grad-hue__name">crimson</div><div class="grad-hue__stops">100° · red 500 → 900</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-golden"></div><div class="grad-hue__meta"><div class="grad-hue__name">golden</div><div class="grad-hue__stops">70° · amber 300 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-honey"></div><div class="grad-hue__meta"><div class="grad-hue__name">honey</div><div class="grad-hue__stops">40° · amber 400 → red 500 → red 800</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-sunburst"></div><div class="grad-hue__meta"><div class="grad-hue__name">sunburst</div><div class="grad-hue__stops">125° · amber 300 → red 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-lava"></div><div class="grad-hue__meta"><div class="grad-hue__name">lava</div><div class="grad-hue__stops">50° · red 600 → amber 500 → red 900</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-peach"></div><div class="grad-hue__meta"><div class="grad-hue__name">peach</div><div class="grad-hue__stops">115° · red 200 → amber 400 → red 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-coral"></div><div class="grad-hue__meta"><div class="grad-hue__name">coral</div><div class="grad-hue__stops">95° · red 400 → amber 500</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-tangerine"></div><div class="grad-hue__meta"><div class="grad-hue__name">tangerine</div><div class="grad-hue__stops">155° · amber 400 → red 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-pumpkin"></div><div class="grad-hue__meta"><div class="grad-hue__name">pumpkin</div><div class="grad-hue__stops">185° · amber 500 → red 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-sunrise"></div><div class="grad-hue__meta"><div class="grad-hue__name">sunrise</div><div class="grad-hue__stops">205° · cyan 200 → amber 300 → red 500</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-desert"></div><div class="grad-hue__meta"><div class="grad-hue__name">desert</div><div class="grad-hue__stops">250° · amber 300 → 600 → red 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-emerald"></div><div class="grad-hue__meta"><div class="grad-hue__name">emerald</div><div class="grad-hue__stops">80° · green 400 → 800</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-mint"></div><div class="grad-hue__meta"><div class="grad-hue__name">mint</div><div class="grad-hue__stops">120° · green 300 → 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-forest-deep"></div><div class="grad-hue__meta"><div class="grad-hue__name">forest-deep</div><div class="grad-hue__stops">150° · green 600 → 900</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-jungle"></div><div class="grad-hue__meta"><div class="grad-hue__name">jungle</div><div class="grad-hue__stops">165° · green 500 → slate 800 → green 900</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-tropical"></div><div class="grad-hue__meta"><div class="grad-hue__name">tropical</div><div class="grad-hue__stops">135° · cyan 400 → green 500 → green 800</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-moss"></div><div class="grad-hue__meta"><div class="grad-hue__name">moss</div><div class="grad-hue__stops">190° · green 300 → 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-meadow"></div><div class="grad-hue__meta"><div class="grad-hue__name">meadow</div><div class="grad-hue__stops">210° · green 200 → 500 → green 800</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-seafoam"></div><div class="grad-hue__meta"><div class="grad-hue__name">seafoam</div><div class="grad-hue__stops">235° · cyan 300 → green 400 → green 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-fern"></div><div class="grad-hue__meta"><div class="grad-hue__name">fern</div><div class="grad-hue__stops">260° · green 500 → 900</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-verdant"></div><div class="grad-hue__meta"><div class="grad-hue__name">verdant</div><div class="grad-hue__stops">280° · green 400 → cyan 600 → green 800</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-sunset-fade"></div><div class="grad-hue__meta"><div class="grad-hue__name">sunset-fade</div><div class="grad-hue__stops">55° · amber 400 → red 600 → violet 800</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-trueno-bolt"></div><div class="grad-hue__meta"><div class="grad-hue__name">trueno-bolt</div><div class="grad-hue__stops">65° · blue 500 → indigo 600 → violet 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-passion"></div><div class="grad-hue__meta"><div class="grad-hue__name">passion</div><div class="grad-hue__stops">145° · violet 400 → red 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-berry"></div><div class="grad-hue__meta"><div class="grad-hue__name">berry</div><div class="grad-hue__stops">175° · violet 500 → red 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-grape"></div><div class="grad-hue__meta"><div class="grad-hue__name">grape</div><div class="grad-hue__stops">180° · violet 600 → indigo 800</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-plum"></div><div class="grad-hue__meta"><div class="grad-hue__name">plum</div><div class="grad-hue__stops">195° · violet 700 → slate 900</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-orchid"></div><div class="grad-hue__meta"><div class="grad-hue__name">orchid</div><div class="grad-hue__stops">220° · violet 300 → indigo 500 → violet 700</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-twilight"></div><div class="grad-hue__meta"><div class="grad-hue__name">twilight</div><div class="grad-hue__stops">225° · indigo 400 → violet 700 → red 500</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-sunset-breeze"></div><div class="grad-hue__meta"><div class="grad-hue__name">sunset-breeze</div><div class="grad-hue__stops">300° · cyan 300 → blue 400 → violet 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-northern"></div><div class="grad-hue__meta"><div class="grad-hue__name">northern</div><div class="grad-hue__stops">315° · green 400 → cyan 500 → indigo 600</div></div></div>
+        <div class="grad-hue"><div class="grad-hue__fill u-bg-gradient-sapphire"></div><div class="grad-hue__meta"><div class="grad-hue__name">sapphire</div><div class="grad-hue__stops">340° · blue 400 → violet 600 → blue 800</div></div></div>
+    </div>
+    <p class="util-desc mt-xs mb-0">Angles are baked into each class; a <code>.u-gradient-to-*</code> modifier still overrides them.</p>
+</div>
+<div class="docs-code">
+    <div class="docs-code__bar"><span class="dots"><i></i><i></i><i></i></span><span>HTML</span><button class="docs-code__copy" type="button">Copy</button></div>
+    <pre><span class="com">&lt;!-- The baked-in angle ships with the class --&gt;</span>
+&lt;<span class="tag">div</span> class=<span class="str">"u-bg-gradient-galaxy p-lg u-text-white"</span>&gt;…&lt;/<span class="tag">div</span>&gt;
+
+<span class="com">&lt;!-- A direction modifier still overrides it --&gt;</span>
+&lt;<span class="tag">div</span> class=<span class="str">"u-bg-gradient-galaxy u-gradient-to-r p-lg u-text-white"</span>&gt;…&lt;/<span class="tag">div</span>&gt;</pre>
+</div>
+
+<h3 id="gradient-text">Text gradients</h3>
+<div class="docs-demo">
+    <div class="grad-text-row">
+        <h2 class="grad-text-demo u-text-gradient-trueno">Built with Trueno</h2>
+        <small><code>.u-text-gradient-trueno</code> — the signature brand headline</small>
+        <h2 class="grad-text-demo u-text-gradient-danger u-gradient-to-r" style="font-size:clamp(1.6rem, 3.5vw, 2.4rem);">Rotated danger</h2>
+        <small><code>.u-text-gradient-danger .u-gradient-to-r</code> — direction modifier composes</small>
+    </div>
+</div>
+<div class="docs-callout docs-callout--warning">
+    <span class="docs-callout__icon">⚠️</span>
+    <p>
+        Text gradients render with <code>color: transparent</code>. They are presentational — the
+        underlying HTML text is still copied, indexed, and read aloud — but always provide a color
+        fallback on a parent or an <code>aria-label</code> if the text is critical for assistive tech.
+    </p>
+</div>
+
+<h3 id="gradient-border">Border gradients</h3>
+<p>
+    <code>.u-border-gradient</code> and <code>.u-border-gradient-{hue}</code> render a gradient
+    <em>stroke</em> around an element. The inner color is controlled by <code>--tr-surface</code> —
+    set it once on <code>.theme--dark</code> and every border gradient adapts.
+</p>
+<div class="docs-demo">
+    <p class="docs-demo__label">Gradient strokes on light and dark surfaces</p>
+    <div class="grad-border-grid">
+        <div class="grad-border-card u-border-gradient-primary"><span class="u-text-gradient-primary">.u-border-gradient-primary</span></div>
+        <div class="grad-border-card u-border-gradient-violet"><span class="u-text-gradient-violet">.u-border-gradient-violet</span></div>
+        <div class="grad-border-card u-border-gradient" style="--tr-surface:var(--tr-slate-900);background:var(--tr-slate-900);color:#fff;"><span class="u-text-gradient-trueno">on dark surface</span></div>
+    </div>
+</div>
+
+<h3 id="gradient-best-practices">Gradient best practices</h3>
+<ol>
+    <li><strong>Pick a direction modifier, not a custom angle.</strong> <code>.u-gradient-to-tr</code> is more discoverable than a hand-rolled <code>--tr-grad-angle: 45deg</code> inline style — and it composes cleanly with any other utility.</li>
+    <li><strong>Use <code>-3</code> variants for hero sections.</strong> The 3-stop gradients have more visual depth; reserve 2-stop gradients for inline elements (badges, buttons, list accents).</li>
+    <li><strong>Use <code>.u-text-gradient-trueno</code> for brand headlines.</strong> It's the framework's signature and reads well at large sizes.</li>
+    <li><strong>Set <code>--tr-surface</code> in dark themes.</strong> Border gradients otherwise show a white inner mask. Set it once on <code>.theme--dark</code> and every border gradient on the page adapts.</li>
+    <li><strong>Don't animate gradient stops directly.</strong> For motion, pair the gradient with the existing <code>.u-anim-gradient-shift</code> utility from the <a href="animations.html">motion layer</a> — it already respects <code>prefers-reduced-motion</code>.</li>
+</ol>
 
 <h2 id="best-practices">Utility best practices</h2>
 <ol>

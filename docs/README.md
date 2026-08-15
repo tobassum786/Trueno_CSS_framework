@@ -22,7 +22,7 @@ This documentation covers every layer of the framework, from the abstract design
 - [Base Styles](./base.md) — Resets and typography
 - [Layout](./layout.md) — Grid system and header
 - [Components](./components.md) — Buttons, cards, and modals
-- [Utilities](./utilities.md) — Spacing and helper classes
+- [Utilities](./utilities.md) — Spacing, helpers, motion, and gradient utilities
 - [Themes](./themes.md) — Light and dark themes
 - [Vendors](./vendors.md) — Third-party stylesheet integration
 
@@ -39,7 +39,8 @@ Trueno CSS is a lightweight, modular CSS framework written in **Sass**. It provi
 - **Modular Architecture** — Import only the partials you need
 - **Mobile-First Design** — Every breakpoint is min-width based
 - **Theming Support** — Light and dark themes out of the box
-- **Utility-First Utilities** — Spacing, display, text alignment, and more
+- **Utility-First Utilities** — Spacing, display, text alignment, motion, and gradients
+- **Gradient System** — Direction modifiers, plate-driven named gradients, text/border gradients, and pre-baked brand combinations
 - **Pre-Built Components** — Buttons, cards, and modals
 - **Accessible by Default** — Semantic patterns and ARIA-friendly markup
 - **Optional JavaScript** — A ~5 KB vanilla JS bundle powers the interactive components; pure CSS otherwise
@@ -56,7 +57,7 @@ Trueno CSS is a lightweight, modular CSS framework written in **Sass**. It provi
 | Base | `src/base/` | Resets, typography, element defaults |
 | Layout | `src/layout/` | Grid, header, and structural primitives |
 | Components | `src/components/` | Buttons, cards, modals |
-| Utilities | `src/utilities/` | Spacing, helpers, display, text |
+| Utilities | `src/utilities/` | Spacing, helpers, display, text, motion, gradients |
 | Themes | `src/themes/` | Light and dark theme overrides |
 
 The entry point is **`src/main.scss`**, which composes the partials in the canonical 7-1 order.

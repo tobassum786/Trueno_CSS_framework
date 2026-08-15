@@ -135,7 +135,8 @@ const UTILITIES_SUBNAV = [
     ['#spacing', 'Spacing'],
     ['#gap', 'Gap showcase'],
     ['#helpers', 'Helpers'],
-    ['#best-practices', 'Best practices'],
+    ['#gradients', 'Gradients'],
+    ['#gradient-best-practices', 'Best practices'],
 ].map(([href, label]) =>
     `<li><a class="sidebar-subnav__link" href="${href}">${label}</a></li>`
 ).join('\n');

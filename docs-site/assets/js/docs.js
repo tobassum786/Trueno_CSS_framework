@@ -327,4 +327,113 @@
             el.classList.add('is-visible');
         });
     }
+
+    // ============================================================
+    // Gradients (utilities.html)
+    // ------------------------------------------------------------
+    // Live gradient builder: color pickers, an angle slider, and
+    // a stop-3 toggle drive the --tr-grad-stop-* custom properties
+    // and --tr-grad-angle on the preview block. The CSS reads
+    // those properties, so the live output is the exact
+    // .u-bg-gradient-* utility the user can drop into markup.
+    // ============================================================
+    var gradBuilder = document.getElementById('gradBuilder');
+    if (gradBuilder) {
+        var preview = gradBuilder.querySelector('.grad-builder__preview');
+        var stop1Color = gradBuilder.querySelector('#gradStop1Color');
+        var stop1Hex = gradBuilder.querySelector('#gradStop1Hex');
+        var stop2Color = gradBuilder.querySelector('#gradStop2Color');
+        var stop2Hex = gradBuilder.querySelector('#gradStop2Hex');
+        var stop3Color = gradBuilder.querySelector('#gradStop3Color');
+        var stop3Hex = gradBuilder.querySelector('#gradStop3Hex');
+        var stop3Row = gradBuilder.querySelector('#gradStop3Row');
+        var stop3Toggle = gradBuilder.querySelector('#gradStop3Toggle');
+        var angleSlider = gradBuilder.querySelector('#gradAngle');
+        var angleReadout = gradBuilder.querySelector('#gradAngleValue');
+        var presetList = gradBuilder.querySelectorAll('.grad-builder__preset');
+
+        function toHex(input) {
+            if (!input) return '#000000';
+            input = String(input).trim();
+            if (input.charAt(0) === '#') input = input.slice(1);
+            if (input.length === 3) {
+                input = input.split('').map(function (c) { return c + c; }).join('');
+            }
+            if (input.length !== 6) return '#000000';
+            return '#' + input.toLowerCase();
+        }
+
+        function syncHex(colorInput, hexSpan) {
+            if (!colorInput || !hexSpan) return;
+            hexSpan.textContent = toHex(colorInput.value);
+        }
+
+        function applyGradient() {
+            if (!preview) return;
+
+            if (stop1Color) preview.style.setProperty('--tr-grad-stop-1', stop1Color.value);
+            if (stop2Color) preview.style.setProperty('--tr-grad-stop-2', stop2Color.value);
+
+            var useStop3 = stop3Toggle && stop3Toggle.checked;
+            if (useStop3 && stop3Color) {
+                if (stop3Row) stop3Row.style.display = '';
+                preview.style.setProperty('--tr-grad-stop-3', stop3Color.value);
+            } else {
+                if (stop3Row) stop3Row.style.display = 'none';
+                preview.style.removeProperty('--tr-grad-stop-3');
+            }
+
+            var angle = angleSlider ? Number(angleSlider.value) : 135;
+            preview.style.setProperty('--tr-grad-angle', angle + 'deg');
+            if (angleReadout) angleReadout.textContent = angle + '\u00B0';
+
+            syncHex(stop1Color, stop1Hex);
+            syncHex(stop2Color, stop2Hex);
+            syncHex(stop3Color, stop3Hex);
+
+            presetList.forEach(function (btn) {
+                var isActive = btn.getAttribute('data-stop1') === toHex(stop1Color.value)
+                            && btn.getAttribute('data-stop2') === toHex(stop2Color.value)
+                            && btn.getAttribute('data-stop3') === (useStop3 && stop3Color ? toHex(stop3Color.value) : '');
+                btn.classList.toggle('is-active', isActive);
+            });
+        }
+
+        function presetStops(p) {
+            return {
+                stop1: p.getAttribute('data-stop1'),
+                stop2: p.getAttribute('data-stop2'),
+                stop3: p.getAttribute('data-stop3')
+            };
+        }
+
+        [stop1Color, stop2Color, stop3Color].forEach(function (input) {
+            if (input) input.addEventListener('input', applyGradient);
+        });
+
+        if (angleSlider) {
+            angleSlider.addEventListener('input', applyGradient);
+        }
+
+        if (stop3Toggle) {
+            stop3Toggle.addEventListener('change', applyGradient);
+        }
+
+        presetList.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var p = presetStops(btn);
+                if (p.stop1 && stop1Color) stop1Color.value = p.stop1;
+                if (p.stop2 && stop2Color) stop2Color.value = p.stop2;
+                if (p.stop3) {
+                    if (stop3Toggle) stop3Toggle.checked = true;
+                    if (stop3Color) stop3Color.value = p.stop3;
+                } else if (stop3Toggle) {
+                    stop3Toggle.checked = false;
+                }
+                applyGradient();
+            });
+        });
+
+        applyGradient();
+    }
 })();
