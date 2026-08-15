@@ -18,7 +18,8 @@ All notable changes to **Trueno CSS Framework** are documented in this file. The
   - **Border gradients** (`.u-border-gradient`, `.u-border-gradient-{hue}`) using the layered-background technique with a `--tr-surface` mask.
   - **Custom-property runtime tuning**: `--tr-grad-angle`, `--tr-grad-stop-1/2/3`, `--tr-surface` — every utility exposes its stops so they can be tuned inline without writing a new class.
   - **Base scaffolding**: `.u-bg-gradient` and `.u-bg-gradient-3` for fully custom stops.
-- New `Gradients` section in `docs/utilities.md` documenting the runtime variables, all hue tables, the 3-stop variants, the brand combinations, and dark-theme `--tr-surface` integration.
+- New `Gradients` section in `docs/utilities.md` documenting the runtime variables, all hue tables, the 3-stop variants, the brand combinations, the 50 advanced recipes, and dark-theme `--tr-surface` integration.
+- New `Gradients` and `Advanced gradient recipes` sections in the documentation site (`docs-site/pages/utilities.html`) with a hue swatch grid, live gradient builder, brand-combo gallery, and a full 50-recipe gallery with baked-in angles.
 - `docs/README.md` now lists gradients under the Utilities layer and updates the framework-at-a-glance table.
 
 ### Changed
@@ -76,12 +77,9 @@ All notable changes to **Trueno CSS Framework** are documented in this file. The
 The following items are under consideration for future releases:
 
 - **Form components** — input, textarea, select, checkbox, radio, validation states
-- **Navigation components** — navbar, breadcrumbs, tabs, pagination
-- **Feedback components** — alerts, toasts, tooltips, popovers
-- **More utilities** — color helpers (`.text-primary`, `.bg-light`), display helpers, sizing, position
-- **CSS custom properties** — first-class `:root` variables for runtime theming
+- **Feedback components** — toasts, tooltips, popovers
+- **More utilities** — color helpers (`.text-primary`, `.bg-light`), sizing, position, responsive display variants
 - **Additional themes** — high-contrast, sepia, brand-specific starter themes
 - **Unit tests / visual regression** — automated checks for the compiled output
-- **CDN distribution** — pre-built bundles via jsDelivr / unpkg
 
 Have a feature request? Open an issue on [GitHub](https://github.com/tobassum786/Trueno_CSS_framework/issues).

@@ -170,6 +170,15 @@
     }
   }
 
+  // The hamburger only exists below lg — where .main-nav collapses
+  // into the slide-down panel. Hide it on larger screens so the
+  // inline nav row is the only navigation UI.
+  .nav-toggle {
+    @include media-lg {
+      display: none;
+    }
+  }
+
   .btn {
     transition: transform var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out}),
                 box-shadow var(--tr-duration, #{$duration-fast}) var(--tr-easing, #{$ease-out});
